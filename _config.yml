@@ -12,3 +12,4 @@ defaults:
       type: pages
     values:
       layout: default
+      navbar-display: true
