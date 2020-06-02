@@ -6,11 +6,11 @@
   <meta charset="utf-8">
   <title>{% if jekyll.environment == "development" %}[dev] {% endif %}{{ page.title }} | {{ site.title }}</title>
   
-  {% include bootstrap.html %}
+  {% include external/bootstrap.html %}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   
-  {% include favicon.html %}
-  {% include icon-pack.html %}
+  {% include external/favicon.html %}
+  {% include external/icon-pack.html %}
 </head>
 
 <body>
@@ -19,7 +19,7 @@
   {% include footer.html %}
 
   {% if jekyll.environment == "production" %}
-    {% include google-analytics.html %}
+    {% include external/google-analytics.html %}
   {% endif %}
 </body>
 
