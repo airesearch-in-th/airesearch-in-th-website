@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:400,600,700,800,900&display=swap");
 
 $depa-yellow: #fff200;
 $vistec-red: #a6253b;
@@ -12,16 +12,16 @@ $signature-gradient: linear-gradient(
 );
 
 $background-color: #ffffff;
-$body-color: #000000;
-$normal-font-latin: "Work Sans", sans-serif;
-$bold-font-latin: "Work Sans Semibold", $normal-font-latin;
+$foreground-color: #000000;
+$latin-font: "Work Sans", sans-serif;
+// $bold-font-latin: "Work Sans Semibold", $normal-font-latin;
 
 body {
   background: $background-color;
-  color: $body-color;
-  font-family: $normal-font-latin;
+  color: $foreground-color;
+  font-family: $latin-font;
 
-  .font-bold {
-    font-family: $bold-font-latin;
+  .font-weight-semibold {
+    font-weight: 600;
   }
 }
