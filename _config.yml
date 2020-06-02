@@ -1,3 +1,14 @@
 url: "https://airesearch.in.th" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "airesearch.in.th" # the name of your site, e.g. ACME Corp.
+
+collections:
+  pages:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
