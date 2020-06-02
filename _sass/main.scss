@@ -1,11 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
-$backgroundColor: #ffffff;
-$bodyColor: #000000;
-$bodyFont: "Work Sans", sans-serif;
+$depa-yellow: #fff200;
+$vistec-red: #a6253b;
+$vistec-purple: #52348c;
+
+$signature-gradient: linear-gradient(
+  106.39deg,
+  $depa-yellow 0%,
+  $vistec-red 33.4%,
+  $vistec-purple 100%
+);
+
+$background-color: #ffffff;
+$body-color: #000000;
+$normal-font-latin: "Work Sans", sans-serif;
+$bold-font-latin: "Work Sans Semibold", $normal-font-latin;
 
 body {
-  background: $backgroundColor;
-  color: $bodyColor;
-  font-family: $bodyFont;
+  background: $background-color;
+  color: $body-color;
+  font-family: $normal-font-latin;
+
+  .font-bold {
+    font-family: $bold-font-latin;
+  }
 }
