@@ -1,4 +1,5 @@
 .navbar {
+  // $background-color: red;
   $filter: saturate(180%) blur(20px);
   background: rgba($color: $background-color, $alpha: 0.925) !important;
   @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
@@ -20,5 +21,9 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .navbar-brand > img {
+    height: 60px;
   }
 }

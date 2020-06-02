@@ -1,11 +1,20 @@
 .footer {
-    font-size: .8rem;
+  font-size: 0.8rem;
 
+  a {
+    color: $foreground-color;
+  }
+
+  .social-row {
+    font-size: 1.75rem;
     a {
-        color: $foreground-color;
+      display: inline-block;
+      :hover {
+        background: $signature-gradient;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
-
-    .social-row {
-        font-size: 1.75rem;
-    }
+  }
 }
