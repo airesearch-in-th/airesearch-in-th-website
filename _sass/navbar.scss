@@ -9,12 +9,14 @@
 
   a {
     width: fit-content;
+    :not(.disabled) {
+      color: rgba($foreground-color, 0.8) !important;
+    }
   }
 
   .active > a,
-  a:hover {
+  a:hover:not(.disabled) {
     background: $signature-gradient;
-
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
