@@ -5,6 +5,7 @@ title: "airesearch.in.th" # the name of your site, e.g. ACME Corp.
 collections:
   pages:
     output: true
+    permalink: /:path
 
 defaults:
   - scope:
@@ -12,4 +13,4 @@ defaults:
       type: pages
     values:
       layout: default
-      navbar-display: true
+      navbar_display: true
