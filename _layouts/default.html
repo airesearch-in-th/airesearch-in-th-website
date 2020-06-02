@@ -7,6 +7,7 @@
   <title>{% if jekyll.environment == "development" %}[dev] {% endif %}{{ page.title }} | {{ site.title }}</title>
   
   {% include favicon.html %}
+  {% include icon-pack.html %}
   
   {% include bootstrap.html %}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
@@ -16,7 +17,7 @@
   {% include navbar.html %}
   {{ content }}
   {% include footer.html %}
-  
+
   {% if jekyll.environment == "production" %}
     {% include google-analytics.html %}
   {% endif %}
