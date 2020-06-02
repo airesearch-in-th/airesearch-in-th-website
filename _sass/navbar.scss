@@ -1,0 +1,22 @@
+.navbar {
+  $filter: saturate(180%) blur(20px);
+  font-weight: 600;
+  background: rgba($color: #fff, $alpha: 0.925) !important;
+  @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
+    background: rgba($color: #fff, $alpha: 0.75) !important;
+    backdrop-filter: $filter;
+    -webkit-backdrop-filter: $filter;
+  }
+}
+
+.active > a {
+  background: linear-gradient(
+    106.39deg,
+    #fff200 0%,
+    #a6253b 33.4%,
+    #52348c 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

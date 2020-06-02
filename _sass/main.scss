@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
 $backgroundColor: #ffffff;
 $bodyColor: #000000;
-$bodyFont: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$bodyFont: "Work Sans", sans-serif;
 
 body {
   background: $backgroundColor;
