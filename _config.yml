@@ -6,8 +6,6 @@ collections:
   pages:
     output: true
     permalink: /:path
-  carousel_slides:
-    output: true
 
 defaults:
   - scope:
