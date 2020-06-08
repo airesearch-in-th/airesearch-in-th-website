@@ -5,7 +5,12 @@ title: "airesearch.in.th" # the name of your site, e.g. ACME Corp.
 collections:
   pages:
     output: true
-    permalink: /:path
+    sort_by: order
+    permalink: /:name
+  releases:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name
 
 defaults:
   - scope:
@@ -14,3 +19,8 @@ defaults:
     values:
       layout: default
       navbar_display: true
+  - scope:
+      path: ""
+      type: releases
+    values:
+      layout: release

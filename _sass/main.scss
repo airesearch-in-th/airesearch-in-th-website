@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap");
 $latin-font: "Work Sans", sans-serif;
 
 $depa-yellow: #fff200;
@@ -19,6 +19,7 @@ body {
   background: $background-color;
   color: $foreground-color;
   font-family: $latin-font;
+  border-radius: 0 !important;
 
   .font-weight-semibold {
     font-weight: 600;
