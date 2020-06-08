@@ -1,4 +1,4 @@
-.footer {
+footer {
   font-size: 0.8rem;
 
   a {
@@ -6,7 +6,6 @@
   }
 
   .social-row {
-    font-size: 1.75rem;
     a {
       display: inline-block;
       transition-duration: $animation-speed;
@@ -15,6 +14,7 @@
     a:hover,
     a:focus,
     a:active {
+      display: inline-block;
       background: $signature-gradient;
       background-clip: text;
       -webkit-background-clip: text;
