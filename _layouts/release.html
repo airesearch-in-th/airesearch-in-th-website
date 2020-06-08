@@ -20,19 +20,21 @@ layout: default
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-7">
-                {{ content }}
+                <article>
+                    {{ content }}
+                </article>
             </div>
-            <div class="col-lg-5 download-items">
+            <div class="col-lg-5 download-items mt-4 mt-lg-0">
                 {% if page.items %}
                 <h3>Downloads</h3>
                 <div class="list-group rounded-0 border-0">
                     {% for item in page.items %}
                     <a href="{{ item.href }}" class="list-group-item list-group-item-action rounded-0 download-item bg-dark text-white" target="_blank">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{ item.item }}</h6>
-                        <small class="mb-1">{{ item.size }}<i class="fas fa-download fa-sm fa-fw"></i></small>
-                      </div>
-                      <small>{{ item.description }}</small>
+                    <h6 class="">{{ item.item }}</h6>
+                    <p class=""><small>{{ item.description }}</small></p>
+                    <small><i class="fas fa-download fa-sm fa-fw"></i> {{ item.size }}</small><br>
+                    <small><i class="fas fa-hashtag fa-sm fa-fw"></i> SHA256: {{ item.sha256 | truncate: 30 }}</small>
+                    <!-- TODO: Hover to reveal full checksum -->
                     </a>
                     {% endfor %}
                 </div>
