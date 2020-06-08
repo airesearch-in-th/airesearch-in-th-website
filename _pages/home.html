@@ -2,7 +2,7 @@
 permalink: /
 title: Home
 order: 0
-# navbar_display: false
+navbar_display: false
 ---
 
 {% include carousel.html %}
@@ -10,12 +10,6 @@ order: 0
 <section class="pt-5">
     <div class="container">
         <h2>Featured Releases</h2>
-        <!-- <p class="text-justify">
-            The Institute and our partners believe in the openness of education and technology. There should not be any boundary to learn or implement artificial intelligence in your business.
-        </p>
-        <p class="text-justify">
-            We release all our learning materials, dataset, and models to public.
-        </p> -->
     </div>
     <div class="container">
         <div class="row card-stack text-white align-items-stretch">
@@ -39,18 +33,6 @@ order: 0
                 </a>
             </div>
             {% endfor %}
-            <!-- {% for release in site.releases %}
-            <div class="col-lg-6 rounded-0 border-0 p-2">
-                <div class="d-flex flex-column card-stack-item p-4"{% if release.image %} style="background-image: url('{{ release.image }}')"{% endif %}>
-                    <h5 class="font-weight-semibold">{{ release.title }}</h5>
-                    <p>{{ release.description }}</p>
-                    <div class="d-flex flex-row justify-content-between mt-auto">
-                        <p class="mb-0">{{ release.date | date: "%d %b %Y" }}</p>
-                        <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}</p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %} -->
         </div>
     </div>
 </section>
