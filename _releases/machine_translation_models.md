@@ -1,5 +1,5 @@
 ---
-title: Machine Translation Model
+title: Machine Translation Dataset
 description: A short description
 version: 1.0.0
 items:
@@ -13,8 +13,11 @@ items:
         size: 37M
         href: https://download.xyz.com/dataset.d
         sha256: 5464346fe176bd1ba55f86d0264c9c89ea8256d52cb07f831f719847a8607b34
-order: 1
+order: 2
+date: "1 June 2020"
 featured: true
+# image: '/assets/img/releases/test.jpg'
 ---
 # Article space
+
 This is the article space for the MT dataset...

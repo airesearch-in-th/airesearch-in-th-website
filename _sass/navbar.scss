@@ -1,9 +1,9 @@
 .navbar {
   // $background-color: red;
-  $filter: saturate(180%) blur(20px);
+  $filter: saturate(200%) blur(16px);
   background: rgba($color: $background-color, $alpha: 0.925) !important;
   @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
-    background: rgba($color: $background-color, $alpha: 0.75) !important;
+    background: rgba($color: $background-color, $alpha: 0.6) !important;
     backdrop-filter: $filter;
     -webkit-backdrop-filter: $filter;
   }

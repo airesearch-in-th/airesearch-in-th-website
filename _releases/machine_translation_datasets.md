@@ -16,7 +16,7 @@ items:
 order: 1
 date: "1 June 2020"
 featured: true
-# image: '/assets/img/releases/test.jpg'
+image: '/assets/img/releases/test.jpg'
 ---
 # Article space
 

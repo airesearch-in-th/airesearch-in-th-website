@@ -1,6 +1,8 @@
 .release-jumbotron {
-    background: $signature-gradient;
+    background-image: $signature-gradient;
+    background-size: cover;
     height: 50vh;
+    min-height: 360px;
 }
 
 // .download-item:hover {
