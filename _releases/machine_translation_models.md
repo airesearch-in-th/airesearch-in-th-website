@@ -1,5 +1,5 @@
 ---
-title: Machine Translation Dataset
+title: Machine Translation Models
 description: A short description
 version: 1.0.0
 items:
@@ -20,4 +20,4 @@ featured: true
 ---
 # Article space
 
-This is the article space for the MT dataset...
+This is the article space for the MT model...

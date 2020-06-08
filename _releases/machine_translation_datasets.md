@@ -1,5 +1,5 @@
 ---
-title: Machine Translation Dataset
+title: Machine Translation Datasets
 description: A short description
 version: 1.0.0
 items:
@@ -16,7 +16,7 @@ items:
 order: 1
 date: "1 June 2020"
 featured: true
-image: '/assets/img/releases/test.jpg'
+# image: '/assets/img/releases/test.jpg'
 ---
 # Article space
 
