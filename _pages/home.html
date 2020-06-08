@@ -2,7 +2,7 @@
 permalink: /
 title: Home
 order: 0
-navbar_display: false
+# navbar_display: false
 ---
 
 {% include carousel.html %}
@@ -18,20 +18,39 @@ navbar_display: false
         </p> -->
     </div>
     <div class="container">
-        <div class="d-flex flex-row flex-nowrap card-deck text-white">
+        <div class="row card-stack text-white align-items-stretch">
             {% for release in site.releases %}
-            <div class="card rounded-0 border-0 mx-2" {% if release.image %}style="background-image: url('{{ release.image }}')"
-                {% endif %}>
-                <div class="card-body d-flex flex-column">
+            <div class="col-md-6 col-xl-4 rounded-0 border-0 p-0">
+                <a href="{{ release.url }}" class="card-stack-item-link">
+                    <div class="card-stack-item-container m-2">
+                        <div class="card-stack-item h-100 w-100 text-white d-flex flex-column">
+                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1">
+                                <h5 class="font-weight-semibold">{{ release.title }}</h5>
+                                <p>{{ release.description }}</p>
+                                <div class="d-flex flex-row justify-content-between mt-auto">
+                                    <p class="mb-0">{{ release.date | date: "%d %b %Y" }}</p>
+                                    <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}</p>
+                                </div>
+                            </div>
+                            <div class="h-100 w-100 position-absolute card-bg-filter"></div>
+                            <div class="h-100 w-100 position-absolute card-bg"{% if release.image %} style="background-image: url('{{ release.image }}')"{% endif %}></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <!-- {% for release in site.releases %}
+            <div class="col-lg-6 rounded-0 border-0 p-2">
+                <div class="d-flex flex-column card-stack-item p-4"{% if release.image %} style="background-image: url('{{ release.image }}')"{% endif %}>
                     <h5 class="font-weight-semibold">{{ release.title }}</h5>
-                    <p class="card-text">{{ release.description }}</p>
+                    <p>{{ release.description }}</p>
                     <div class="d-flex flex-row justify-content-between mt-auto">
-                        <p class="card-text mb-0">{{ release.date | date: "%d %b %Y" }}</p>
-                        <p class="card-text mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}</p>
+                        <p class="mb-0">{{ release.date | date: "%d %b %Y" }}</p>
+                        <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}</p>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} -->
         </div>
     </div>
 </section>

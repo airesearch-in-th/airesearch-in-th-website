@@ -14,7 +14,8 @@ $signature-gradient: linear-gradient(
 
 $background-color: #ffffff;
 $foreground-color: #303030;
-$standard-box-shadow: 0 0 40px 8px rgba(0, 0, 0, .25);
+$standard-box-shadow: 0 0 40px 8px rgba(0, 0, 0, 0.25);
+$animation-speed: 0.3s;
 
 body {
   background: $background-color;
@@ -26,23 +27,73 @@ body {
     font-weight: 600;
   }
 
-  .card-deck {
+  .card-stack {
     // overflow-x: scroll;
-    margin: 0 -8px;
+    // margin: 0 -8px;
     // position: relative;
     // z-index: 2;
     // overflow-x: scroll;
     // overflow-y: hidden;
     // -webkit-overflow-scrolling: touch;
-    .card {
-      background: $signature-gradient;
-      min-width: 360px;
-      max-width: 360px;
-      min-height: 400px;
+    .card-stack-item {
+      // min-width: 360px;
+      // max-width: 360px;
+      min-height: 300px;
       box-shadow: $standard-box-shadow;
-      
-      // z-index: 2048;
-      // position: relative;
+      z-index: 0;
+      position: relative;
+
+      // display: inline-block;
+      // vertical-align: middle;
+      // transform: translateZ(0);
+      // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      // backface-visibility: hidden;
+      // -moz-osx-font-smoothing: grayscale;
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
+    .card-stack-item:hover,
+    .card-stack-item:focus,
+    .card-stack-item:active {
+      -webkit-transform: scale(1.05);
+      // -ms-transform: scale(1.1);
+      // -moz-transform: scale(1.1);
+      transform: scale(1.05);
+    }
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+    .card-bg-filter {
+      top: 0;
+      left: 0;
+      // background-color: red;
+      $filter: blur(4px);
+      background: rgba($color: $foreground-color, $alpha: 0.5) !important;
+      @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
+        background: rgba($color: $foreground-color, $alpha: 0.2) !important;
+        backdrop-filter: $filter;
+        -webkit-backdrop-filter: $filter;
+      }
+      // transform: scale(1.001);
+      z-index: 2;
+    }
+    .card-bg {
+      top: 0;
+      left: 0;
+      // background-color: black;
+      z-index: 1;
+      background: $signature-gradient;
+      background-size: cover;
+    }
+    .card-item-content {
+      z-index: 3;
     }
   }
+
+  // .filter-div {
+  //   display: table-cell;
+  //   vertical-align: bottom;
+  // }
 }

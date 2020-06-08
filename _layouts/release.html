@@ -29,7 +29,7 @@ layout: default
                 <h3>Downloads</h3>
                 <div class="list-group rounded-0 border-0">
                     {% for item in page.items %}
-                    <a href="{{ item.href }}" class="list-group-item list-group-item-action rounded-0 download-item bg-dark text-white" target="_blank">
+                    <a href="{{ item.href }}" class="list-group-item list-group-item-action rounded-0 download-item" target="_blank">
                     <h6 class="">{{ item.item }}</h6>
                     <p class=""><small>{{ item.description }}</small></p>
                     <small><i class="fas fa-download fa-sm fa-fw"></i> {{ item.size }}</small><br>

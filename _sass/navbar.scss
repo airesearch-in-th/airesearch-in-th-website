@@ -3,24 +3,35 @@
   $filter: saturate(200%) blur(16px);
   background: rgba($color: $background-color, $alpha: 0.925) !important;
   @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
-    background: rgba($color: $background-color, $alpha: 0.6) !important;
+    background: rgba($color: $background-color, $alpha: 0.7) !important;
     backdrop-filter: $filter;
     -webkit-backdrop-filter: $filter;
   }
 
   a {
     width: fit-content;
+    transition-duration: $animation-speed;
+    transition-property: transform;
     :not(.disabled) {
       color: rgba($foreground-color, 0.8) !important;
     }
   }
 
   .active > a,
-  a:hover:not(.disabled) {
+  a:hover:not(.disabled),
+  a:active:not(.disabled),
+  a:focus:not(.disabled) {
     background: $signature-gradient;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  a:hover,
+  a:active,
+  a:focus {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .navbar-brand > img {

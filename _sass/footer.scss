@@ -9,12 +9,18 @@
     font-size: 1.75rem;
     a {
       display: inline-block;
-      :hover {
-        background: $signature-gradient;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
+    a:hover,
+    a:focus,
+    a:active {
+      background: $signature-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
     }
   }
 }
