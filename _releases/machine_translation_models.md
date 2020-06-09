@@ -1,6 +1,6 @@
 ---
 title: Machine Translation Models
-description: Lorem ipsum dolor sit amet tum set to lopa di spiam ging ldfei erfe dolor. Coler eawd wdcsdkigmrkl do l esawe vrgs wcscddvf.
+description: Lorem ipsum dolor sit amet tum set to lopa di spiam ging ldfei erfe dolor, coler eawd wdcsdkigmrkl do l esawe vrgs wcscddvf
 version: 1.0.0
 items:
     -   item: apdf.csv
