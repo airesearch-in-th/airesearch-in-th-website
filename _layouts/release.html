@@ -12,7 +12,7 @@ layout: default
                 </div>
                 <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
                     <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ page.version }}</span>
-                    <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%d %b %Y" }}</span>
+                    <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e %b %Y" }}</span>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@ layout: default
                 <h3>Downloads</h3>
                 <div class="list-group rounded-0 border-0">
                     {% for item in page.items %}
-                    <a href="{{ item.href }}" class="list-group-item list-group-item-action rounded-0 download-item" target="_blank">
+                    <a href="{{ item.href }}" class="list-group-item list-group-item-action download-item" target="_blank">
                     <h6 class="">{{ item.item }}</h6>
                     <p class=""><small>{{ item.description }}</small></p>
                     <small><i class="fas fa-download fa-sm fa-fw"></i> {{ item.size }}</small><br>

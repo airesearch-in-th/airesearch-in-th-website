@@ -14,6 +14,7 @@ footer {
     a:hover,
     a:focus,
     a:active {
+      // TODO: Fix Safari hover bug, or find alternatives
       display: inline-block;
       background: $signature-gradient;
       background-clip: text;
