@@ -15,10 +15,10 @@ collections:
     output: true
     sort_by: order
     permalink: /:collection/:name
-  # resources:
-  #   output: true
-  #   sort_by: order
-  #   permalink: /:collection/:name
+  resources:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name
 
 defaults:
   - scope:
@@ -39,9 +39,9 @@ defaults:
     values:
       layout: service
       featured: false
-  # - scope:
-  #     path: ""
-  #     type: resources
-  #   values:
-  #     layout: resource
-  #     featured: false
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+      featured: false
