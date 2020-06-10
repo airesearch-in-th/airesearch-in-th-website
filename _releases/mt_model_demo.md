@@ -47,7 +47,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       Translate from
       <strong class="lang-input fade-in">Thai</strong>
     </span>
-    <textarea class="textarea-input" id="exampleFormControlTextarea5" rows="3"></textarea>
+    <textarea class="textarea-input" id="exampleFormControlTextarea5" rows="5"></textarea>
   </div>
   <div class="text-center down-box">
     <button class="btn btn-convert">
@@ -60,7 +60,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       to
       <strong class="lang-output fade-in">English</strong>
     </span>
-    <textarea class="textarea-output" id="output-translation" rows="3"></textarea>
+    <textarea class="textarea-output" id="output-translation" rows="5"></textarea>
     <div class="feature-output text-right mt-2">
       <a class="mr-2" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
@@ -69,29 +69,21 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         <i class="fa fa-download"></i>
       </a>
     </div>
-    
   </div>
 </div>
 
 <style>
   .textarea-box {
-    background-color: #F0F0F0;    
-    /* min-height: 200px; */
-    /* text-align: center; */
-    /* padding-top: 14px;     */
+    background-color: #F0F0F0;
   }
 
   textarea { 
-    
-    /* min-width: 500px; 
-    max-width: 500px;  */
-    height: 140px; 
+    /* height: 140px; 
     min-height: 140px;  
-    max-height: 140px;
+    max-height: 140px; */
     resize: none;
     border: 1px solid #ffffff;
     border-radius: .25rem;
-    /* padding: 16px 15px 10px 20px; */
     box-shadow: 0 0 5px #eeeeee;
   }
   textarea:focus {
@@ -115,18 +107,11 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     box-shadow: none;
   }
 
-  .output-box {
-    /* height: 214px;     */
-  }
-
   .feature-output {
     float: right;
-    /* padding-right: 16px; */
-    /* height: 20px; */
   }
 
   .btn-feature {
-    /* padding: 0px 5px 0px 5px; */
     color: #303030;
     background-color: #F0F0F0;
     transition: all 0.5s;
