@@ -56,13 +56,13 @@ order: 0
             {% for service in site.services %}
             {% if service.featured %}
             <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
-                <a href="{{ service.url }}" class="card-stack-item-link">
+                <!-- <a href="{{ service.url }}" class="card-stack-item-link"> -->
                     <div class="card-stack-item-container m-2">
                         <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
                             <div
                                 class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold">{{ service.title }}</h5>
-                                <p class="text-justify">{{ service.description }}</p>
+                                <h5 class="font-weight-semibold mt-auto">{{ service.title }}</h5>
+                                <p class="text-justify mb-0">{{ service.description }}</p>
                                 <!-- <div class="d-flex flex-row justify-content-between mt-auto">
                                     <p class="mb-0">{{ service.date | date: "%d %b %Y" }}</p>
                                     <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ service.version }}</p>
@@ -73,7 +73,7 @@ order: 0
                                 style="background-image: url('{{ service.image }}')" {% endif %}></div>
                         </div>
                     </div>
-                </a>
+                <!-- </a> -->
             </div>
             {% endif %}
             {% endfor %}
@@ -91,13 +91,12 @@ order: 0
             {% for resource in site.resources %}
             {% if resource.featured %}
             <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
-                <a href="{{ resource.url }}" class="card-stack-item-link">
+                <!-- <a href="{{ resource.url }}" class="card-stack-item-link"> -->
                     <div class="card-stack-item-container m-2">
                         <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div
-                                class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold">{{ resource.title }}</h5>
-                                <p class="text-justify">{{ resource.description }}</p>
+                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                                <h5 class="font-weight-semibold mt-auto">{{ resource.title }}</h5>
+                                <p class="text-justify mb-0">{{ resource.description }}</p>
                                 <!-- <div class="d-flex flex-row justify-content-between mt-auto">
                                     <p class="mb-0">{{ resource.date | date: "%d %b %Y" }}</p>
                                     <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ resource.version }}</p>
@@ -109,7 +108,7 @@ order: 0
                                 {% endif %}></div>
                         </div>
                     </div>
-                </a>
+                <!-- </a> -->
             </div>
             {% endif %}
             {% endfor %}
