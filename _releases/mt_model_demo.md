@@ -41,8 +41,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
 # Test the model
 
-<div class="test1">
-  <div class="textarea-box input-box">    
+<div class="test1 w-100 d-flex flex-column">
+  <div class="textarea-box input-box text-center d-flex flex-column pt-2 pb-3 px-3">    
     <span>
       Translate from
       <strong class="lang-input fade-in">Thai</strong>
@@ -55,19 +55,19 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         <i class="fas fa-long-arrow-alt-down icon-down"></i>
     </button>
   </div> 
-  <div class="textarea-box output-box">
+  <div class="textarea-box output-box text-center d-flex flex-column py-2 px-3">
     <span>
       to
       <strong class="lang-output fade-in">English</strong>
     </span>
     <textarea class="textarea-output" id="output-translation" rows="3"></textarea>
-    <div class="feature-output">
-      <button class="btn btn-feature btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+    <div class="feature-output text-right mt-2">
+      <a class="mr-2" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
-      </button>
-      <button class="btn btn-feature btn-savetxt" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
+      </a>
+      <a class="" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
         <i class="fa fa-download"></i>
-      </button>
+      </a>
     </div>
     
   </div>
@@ -75,24 +75,23 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
 <style>
   .textarea-box {
-    background-color: #F0F0F0;
-    width: 530px;
-    height: 200px;
-    text-align: center;
-    padding-top: 14px;    
+    background-color: #F0F0F0;    
+    /* min-height: 200px; */
+    /* text-align: center; */
+    /* padding-top: 14px;     */
   }
 
   textarea { 
-    width: 500px; 
-    min-width: 500px; 
-    max-width: 500px; 
+    
+    /* min-width: 500px; 
+    max-width: 500px;  */
     height: 140px; 
     min-height: 140px;  
     max-height: 140px;
     resize: none;
     border: 1px solid #ffffff;
     border-radius: .25rem;
-    padding: 16px 15px 10px 20px;
+    /* padding: 16px 15px 10px 20px; */
     box-shadow: 0 0 5px #eeeeee;
   }
   textarea:focus {
@@ -117,21 +116,17 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   .output-box {
-    height: 214px;    
+    /* height: 214px;     */
   }
 
-  .down-box {
-    width: 530px;
-  }
-  
   .feature-output {
     float: right;
-    padding-right: 16px;
-    height: 20px;
+    /* padding-right: 16px; */
+    /* height: 20px; */
   }
 
   .btn-feature {
-    padding: 0px 5px 0px 5px;
+    /* padding: 0px 5px 0px 5px; */
     color: #303030;
     background-color: #F0F0F0;
     transition: all 0.5s;
