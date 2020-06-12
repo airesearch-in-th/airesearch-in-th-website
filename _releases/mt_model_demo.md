@@ -127,8 +127,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #303030;
     background-color: #F0F0F0;
     transition: all 0.5s;
-    cursor: pointer;
-    margin: 2px; 
+    cursor: pointer;    
   }
 
   .tooltip > .tooltip-inner {    
