@@ -48,9 +48,10 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <strong class="lang-input fade-in">Thai</strong>
     </span>
     <textarea class="textarea-input" id="exampleFormControlTextarea5" rows="5"></textarea>
+    <button type="button" class="btn btn-sm w-25 mx-auto mt-3 border-0 btn-translate">Translate</button>
   </div>
   <div class="text-center down-box">
-    <button class="btn btn-convert">
+    <button class="btn btn-convert m-2">
         <i class="fas fa-long-arrow-alt-up icon-up"></i>
         <i class="fas fa-long-arrow-alt-down icon-down"></i>
     </button>
@@ -62,12 +63,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     </span>
     <textarea class="textarea-output" id="output-translation" rows="5"></textarea>
     <div class="feature-output text-right mt-2">
-      <a class="mr-2" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+      <button class="border-0 m-1 btn-feature" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
-      </a>
-      <a class="" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
+      </button>
+      <button class="border-0 m-1 btn-feature" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
         <i class="fa fa-download"></i>
-      </a>
+      </button>
     </div>
   </div>
 </div>
@@ -78,9 +79,6 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   textarea { 
-    /* height: 140px; 
-    min-height: 140px;  
-    max-height: 140px; */
     resize: none;
     border: 1px solid #ffffff;
     border-radius: .25rem;
@@ -91,12 +89,30 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     border: 1px solid #393939;    
   }
 
-  .btn-convert {
-    margin: 5px; 
+  .btn-convert {    
     transition: all 0.5s;
     cursor: pointer;
     background-color: #F5F5F5;  
     font-size: 18px;     
+  }
+
+  .btn-translate {   
+    transition: all 0.5s;
+    background-color: #303030;
+    color: #ffffff;
+    outline: 0;
+  }
+
+  .btn-translate:hover, .btn-translate:focus {    
+    background: linear-gradient(
+      111.94deg,
+      #fff200 0%,
+      #a6253b 65%,
+      #52348c 100%
+    );
+    color: #ffffff;
+    transition: all 0.5s;
+    box-shadow: none;
   }
 
   .btn-convert:hover, .btn-convert:focus, .btn-feature:hover, .btn-feature:focus {
@@ -106,11 +122,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     outline: none;
     box-shadow: none;
   }
-
-  .feature-output {
-    float: right;
-  }
-
+  
   .btn-feature {
     color: #303030;
     background-color: #F0F0F0;
@@ -132,11 +144,11 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   .fade-in {
-    animation: fadeIn ease 5s;
-    -webkit-animation: fadeIn ease 5s;
-    -moz-animation: fadeIn ease 5s;
-    -o-animation: fadeIn ease 5s;
-    -ms-animation: fadeIn ease 5s;
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
   }
 
 
@@ -208,10 +220,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   $('.btn-convert').click(function() {
     console.log('click');
-    if($('.lang-input').text() == 'Thai') {
-      $('.lang-input').html('English', function() {
-        $('.lang-input').addClass("fade-in");
-      });
+    if($('.lang-input').text() == 'Thai') {      
+      $('.lang-output').html('English');
       $('.lang-output').html('Thai');
     }else {
       $('.lang-input').html('Thai');
