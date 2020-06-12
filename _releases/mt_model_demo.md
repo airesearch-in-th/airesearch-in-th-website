@@ -136,7 +136,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   strong {
-    transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;    
   }
 
   .lang-input {
@@ -221,7 +221,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   $('.btn-convert').click(function() {
     console.log('click');
     if($('.lang-input').text() == 'Thai') {      
-      $('.lang-output').html('English');
+      $('.lang-input').html('English');
       $('.lang-output').html('Thai');
     }else {
       $('.lang-input').html('Thai');
