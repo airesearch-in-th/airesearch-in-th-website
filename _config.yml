@@ -19,6 +19,9 @@ collections:
     output: true
     sort_by: order
     permalink: /:collection/:name
+  sponsors:
+    output: true
+    sort_by: order
 
 defaults:
   - scope:

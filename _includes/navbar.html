@@ -1,24 +1,23 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
-    <div class="container">
-        <a class="navbar-brand py-2" href="/"><img
-                src="{{ "/assets/img/logo/airesearch-logo.svg" | relative_url }}" alt="airesearch.in.th logo"></a>
-        <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
-            data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
-            <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
-                {% assign pages = site.pages | sort: "order" %}
-                {% for page_ in pages %}
-                <li class="nav-item{% if page.url == page_.url %} active{% endif %}{% unless page_.navbar_display %} d-none disabled{% endunless %}">
-                    <a class="nav-link" href="{{ page_.url }}">
-                        {{ page_.title }}{% if page.url == page_.url %} <span
-                            class="sr-only">(current)</span>{% endif %}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+  <div class="container">
+    <a class="navbar-brand py-2" href="/"><img src="{{ "/assets/img/logo/airesearch-logo.svg" | relative_url }}"
+        alt="airesearch.in.th logo"></a>
+    <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
+      data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
+      <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
+        {% assign pages = site.pages | sort: "order" %}
+        {% for page_ in pages %}
+        <li
+          class="nav-item{% if page.url == page_.url %} active{% endif %}{% unless page_.navbar_display %} d-none disabled{% endunless %}">
+          <a class="nav-link" href="{{ page_.url }}">
+            {{ page_.title }}{% if page.url == page_.url %} <span class="sr-only">(current)</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 </nav>
