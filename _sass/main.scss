@@ -14,7 +14,7 @@ $signature-gradient: linear-gradient(
 
 $background-color: #f5f5f5;
 $foreground-color: #303030;
-$standard-box-shadow: 0 0 40px 8px rgba(0, 0, 0, 0.25);
+$standard-box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.25);
 $animation-speed: 0.3s;
 
 body {
@@ -68,6 +68,30 @@ body {
     }
     .card-item-content {
       z-index: 3;
+    }
+  }
+
+  .sponsors-container {
+    background: $foreground-color;
+    box-shadow: $standard-box-shadow;
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+    .sponsor-logo-container {
+      background-color: $background-color;
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
+
+    .sponsor-logo-container:hover,
+    .sponsor-logo-container:focus,
+    .sponsor-logo-container:active {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
     }
   }
 }
