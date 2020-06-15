@@ -22,6 +22,7 @@ collections:
   sponsors:
     output: true
     sort_by: order
+    permalink: /:collection/:name
 
 defaults:
   - scope:
@@ -47,4 +48,9 @@ defaults:
       type: resources
     values:
       layout: resource
+      featured: false
+  - scope:
+      path: ""
+      type: sponsors
+    values:
       featured: false

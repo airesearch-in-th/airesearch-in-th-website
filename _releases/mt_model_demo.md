@@ -1,6 +1,6 @@
 ---
-title: MT Model Demo
-description: Demonstation of the Machine Tranlsation Model
+title: Machine Translation Model Demo
+description: Demonstration of the Machine Translation Model
 version: 1.0.0
 items:
   - item: apdf.csv
@@ -13,10 +13,10 @@ items:
     size: 37M
     href: https://download.xyz.com/assorted_government.csv
     sha256: 5464346fe176bd1ba55f86d0264c9c89ea8256d52cb07f831f719847a8607b34
-order: 3
+order: 2
 date: "1 June 2020"
 featured: true
-# image: '/assets/img/releases/test.jpg'
+image: '/assets/img/releases/dictionary.jpg'
 ---
 
 # Story of our model
