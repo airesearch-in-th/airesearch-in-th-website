@@ -1,5 +1,5 @@
 ---
-title: Machine Translation Model Demo
+title: Machine Translation Model (with Demo)
 description: Demonstration of the Machine Translation Model
 version: 1.0.0
 items:
@@ -16,7 +16,7 @@ items:
 order: 2
 date: "1 June 2020"
 featured: true
-image: '/assets/img/releases/dictionary.jpg'
+image: '/assets/img/releases/letters.jpg'
 ---
 
 # Story of our model
