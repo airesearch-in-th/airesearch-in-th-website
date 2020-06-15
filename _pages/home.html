@@ -10,19 +10,22 @@ order: 0
 <section class="pt-5">
     <div class="container">
         <h2>Featured Releases</h2>
-        <p class="lead">We and our partners believe in the openness of education and technology. There should not be
+        <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
+            should not be
             a boundary to learn or implement AI for your business</p>
-        <p class="lead">We release all our learning materials, dataset, and models to public</p>
+        <p class="lead text-justify">We release all our learning materials, dataset, and models to public</p>
     </div>
     <div class="container">
         <div class="row card-stack text-white align-items-stretch">
-            {% for release in site.releases %}
+            {% assign releases = site.releases | reverse %}
+            {% for release in releases %}
             {% if release.featured %}
             <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
                 <a href="{{ release.url }}" class="card-stack-item-link">
                     <div class="card-stack-item-container m-2">
                         <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                            <div
+                                class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
                                 <h5 class="font-weight-semibold">{{ release.title }}</h5>
                                 <p class="text-justify">{{ release.description }}</p>
                                 <div class="d-flex flex-row justify-content-between mt-auto">
@@ -32,7 +35,8 @@ order: 0
                                 </div>
                             </div>
                             <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
-                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg"{% if release.image %} style="background-image: url('{{ release.image }}')"{% endif %}></div>
+                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if release.image %}
+                                style="background-image: url('{{ release.image }}')" {% endif %}></div>
                         </div>
                     </div>
                 </a>
@@ -46,31 +50,29 @@ order: 0
     <div class="container">
         {% include separator.html %}
         <h2 class="pt-5">Services</h2>
-        <p class="lead">We provides an advanced AI training course and research translational consultation for
+        <p class="lead text-justify">We provides an advanced AI training course and research translational consultation
+            for
             increasing competitive capability to our partners</p>
     </div>
     <div class="container">
         <div class="row card-stack text-white align-items-stretch">
-            {% for service in site.services %}
+            {% assign services = site.services | reverse %}
+            {% for service in services %}
             {% if service.featured %}
             <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
                 <!-- <a href="{{ service.url }}" class="card-stack-item-link"> -->
-                    <div class="card-stack-item-container m-2">
-                        <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div
-                                class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold mt-auto">{{ service.title }}</h5>
-                                <p class="text-justify mb-0">{{ service.description }}</p>
-                                <!-- <div class="d-flex flex-row justify-content-between mt-auto">
-                                    <p class="mb-0">{{ service.date | date: "%d %b %Y" }}</p>
-                                    <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ service.version }}</p>
-                                </div> -->
-                            </div>
-                            <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
-                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if service.image %}
-                                style="background-image: url('{{ service.image }}')" {% endif %}></div>
+                <div class="card-stack-item-container m-2">
+                    <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
+                        <div
+                            class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                            <h5 class="font-weight-semibold mt-auto">{{ service.title }}</h5>
+                            <p class="text-justify mb-0">{{ service.description }}</p>
                         </div>
+                        <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
+                        <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if service.image %}
+                            style="background-image: url('{{ service.image }}')" {% endif %}></div>
                     </div>
+                </div>
                 <!-- </a> -->
             </div>
             {% endif %}
@@ -82,97 +84,27 @@ order: 0
     <div class="container">
         {% include separator.html %}
         <h2 class="pt-5">Resources</h2>
-        <!-- <p class="lead">We provides an advanced AI training course and research translational consultation for increasing competitive capability to our partners</p> -->
     </div>
     <div class="container">
         <div class="row card-stack text-white align-items-stretch">
-            {% for resource in site.resources %}
+            {% assign resources = site.resources | reverse %}
+            {% for resource in resources %}
             {% if resource.featured %}
             <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
                 <!-- <a href="{{ resource.url }}" class="card-stack-item-link"> -->
-                    <div class="card-stack-item-container m-2">
-                        <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold mt-auto">{{ resource.title }}</h5>
-                                <p class="text-justify mb-0">{{ resource.description }}</p>
-                                <!-- <div class="d-flex flex-row justify-content-between mt-auto">
-                                    <p class="mb-0">{{ resource.date | date: "%d %b %Y" }}</p>
-                                    <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ resource.version }}</p>
-                                </div> -->
-                            </div>
-                            <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
-                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg"
-                                {% if resource.image %} style="background-image: url('{{ resource.image }}')"
-                                {% endif %}></div>
+                <div class="card-stack-item-container m-2">
+                    <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
+                        <div
+                            class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                            <h5 class="font-weight-semibold mt-auto">{{ resource.title }}</h5>
+                            <p class="text-justify mb-0">{{ resource.description }}</p>
                         </div>
+                        <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
+                        <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if resource.image %}
+                            style="background-image: url('{{ resource.image }}')" {% endif %}></div>
                     </div>
+                </div>
                 <!-- </a> -->
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-<section class="pt-5">
-    <div class="container">
-        {% include separator.html %}
-        <h2 class="pt-5">Services</h2>
-        <p class="lead">We provides an advanced AI training course and research translational consultation for increasing competitive capability to our partners</p>
-    </div>
-    <div class="container">
-        <div class="row card-stack text-white align-items-stretch">
-            {% for service in site.services %}
-            {% if service.featured %}
-            <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
-                <a href="{{ service.url }}" class="card-stack-item-link">
-                    <div class="card-stack-item-container m-2">
-                        <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold">{{ service.title }}</h5>
-                                <p class="text-justify">{{ service.description }}</p>
-                                <!-- <div class="d-flex flex-row justify-content-between mt-auto">
-                                    <p class="mb-0">{{ service.date | date: "%d %b %Y" }}</p>
-                                    <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ service.version }}</p>
-                                </div> -->
-                            </div>
-                            <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
-                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg"{% if service.image %} style="background-image: url('{{ service.image }}')"{% endif %}></div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-<section class="pt-5">
-    <div class="container">
-        {% include separator.html %}
-        <h2 class="pt-5">Resources</h2>
-        <!-- <p class="lead">We provides an advanced AI training course and research translational consultation for increasing competitive capability to our partners</p> -->
-    </div>
-    <div class="container">
-        <div class="row card-stack text-white align-items-stretch">
-            {% for resource in site.resources %}
-            {% if resource.featured %}
-            <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
-                <a href="{{ resource.url }}" class="card-stack-item-link">
-                    <div class="card-stack-item-container m-2">
-                        <div class="card-stack-item h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
-                            <div class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
-                                <h5 class="font-weight-semibold">{{ resource.title }}</h5>
-                                <p class="text-justify">{{ resource.description }}</p>
-                                <!-- <div class="d-flex flex-row justify-content-between mt-auto">
-                                    <p class="mb-0">{{ resource.date | date: "%d %b %Y" }}</p>
-                                    <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ resource.version }}</p>
-                                </div> -->
-                            </div>
-                            <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
-                            <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg"{% if resource.image %} style="background-image: url('{{ resource.image }}')"{% endif %}></div>
-                        </div>
-                    </div>
-                </a>
             </div>
             {% endif %}
             {% endfor %}
