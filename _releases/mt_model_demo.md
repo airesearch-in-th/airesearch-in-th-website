@@ -1,6 +1,6 @@
 ---
-title: MT Model Demo
-description: Demonstation of the Machine Tranlsation Model
+title: Machine Translation Model (with Demo)
+description: Demonstation of the Machine Translation Model
 version: 1.0.0
 items:
   - item: apdf.csv
@@ -16,7 +16,7 @@ items:
 order: 3
 date: "1 June 2020"
 featured: true
-# image: '/assets/img/releases/test.jpg'
+image: '/assets/img/releases/letters.jpg'
 ---
 
 # Story of our model
