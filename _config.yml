@@ -1,5 +1,5 @@
-url: "https://airesearch.in.th" # the base hostname & protocol for your site, e.g. http://example.com
-title: "airesearch.in.th" # the name of your site, e.g. ACME Corp.
+url: "https://airesearch.in.th"
+title: "airesearch.in.th"
 timezone: Asia/Bangkok
 
 collections:
