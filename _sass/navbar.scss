@@ -35,6 +35,6 @@
   }
 
   .navbar-brand > img {
-    height: 60px;
+    height: $navbar-height - 1rem;
   }
 }

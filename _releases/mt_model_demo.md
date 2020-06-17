@@ -88,6 +88,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     resize: none;
     border: 1px solid #ffffff;        
   }
+  
   textarea:focus {
     outline: none !important;    
   }
@@ -143,7 +144,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   .tooltip > .tooltip-inner {    
-    font-size: 10px;
+    font-size: .625rem;
   }
 
   .spinner-left {
