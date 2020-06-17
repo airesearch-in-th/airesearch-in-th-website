@@ -56,15 +56,25 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         <i class="fas fa-trash-alt"></i>
       </button>
     </div>
-    <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">Translate</button>
+    <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">
+      Translate      
+    </button>
+    <div class="loading d-none text-center">
+      <div class="spinner-grow spinner-left" role="status">        
+      </div>
+      <div class="spinner-grow spinner-center" role="status">        
+      </div>
+      <div class="spinner-grow spinner-right" role="status">        
+      </div>
+    </div>
   </div>
   <div class="textarea-box translate-output d-none flex-column pt-2 pb-3 px-3">    
     <textarea class="textarea-output p-2 border border-bottom-0" id="output-translation" rows="5"></textarea>
     <div class="feature-output text-right bg-white border border-top-0">
-      <button class="btn btn-sm border-0 bg-white btn-features" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+      <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
       </button>
-      <button class="btn btn-sm border-0 bg-white btn-features mr-2" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
+      <button class="btn btn-sm border-0 bg-white btn-features mr-2 btn-savetxt" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
         <i class="fa fa-download"></i>
       </button>
     </div>
@@ -119,7 +129,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     box-shadow: none;
   }
 
-  .btn-convert:hover, .btn-convert:focus, .btn-remove:hover, .btn-remove:focus {    
+  .btn-convert:hover, .btn-convert:focus,
+  .btn-remove:hover, .btn-remove:focus {    
     outline: none;
     box-shadow: none;
   }
@@ -135,8 +146,16 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     font-size: 10px;
   }
 
-  strong {
-    transition: opacity 0.5s linear;    
+  .spinner-left {
+    color: #fff200;
+  }
+
+  .spinner-center {
+    color: #a6253b;
+  }
+
+  .spinner-right {
+    color: #52348c;
   }
 
   .fade-in {
@@ -156,58 +175,58 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #C5C5C5;
   }
 
-  .btn-features:hover {
+  .btn-features:hover, .btn-features:focus{
     color: #303030;
+    outline: none;
+    box-shadow: none;
   }
 
-  @keyframes fadeIn{
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  @keyframes spinner-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
   }
-
-  @-moz-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  50% {
+    opacity: 1;
   }
-
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  100% {
+    opacity: 0;
+    transform: scale(1);
   }
+}
 
-  @-o-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
+.spinner-grow {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  text-indent: -999em;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation-name: spinner-grow;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
-
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
 </style>
 
 <script>
+
+  async function translate() {
+    $('.loading').removeClass('d-none')
+    const input = $('.textarea-input').val()    
+    const response = await fetch('https://api.dictionaryapi.dev/api/v1/entries/en/' + input);
+    const dataJson = await response.json();   
+    const output = dataJson[0].meaning.noun[0].definition;
+    $('.textarea-output').val(output);
+  }
   
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();       
@@ -236,9 +255,19 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   $('.btn-savetxt').click(function() {
     var outputTxt = $('#output-translation').val(); 
-    if(outputTxt == null){
-      
-    }  
+    if(outputTxt != ''){
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputTxt));
+      element.setAttribute('download', "translation.txt");
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    } 
+     
   })
 
   $('.btn-convert').click(function() {    
@@ -251,10 +280,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     }
   })
 
-  $('.btn-translate').click(function() {    
+  $('.btn-translate').click(async function() {    
     if($(".textarea-input").val() != ''){
-      $('.translate-output').removeClass('d-none')
+      await translate();    
+      $('.loading').addClass('d-none')         
       $('.translate-output').addClass('d-flex')
+      $('.translate-output').removeClass('d-none')
     } 
   })
     
