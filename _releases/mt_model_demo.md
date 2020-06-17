@@ -1,6 +1,6 @@
 ---
-title: Machine Translation Model (with Demo)
-description: Demonstration of the Machine Translation Model
+title: MT Model Demo
+description: Demonstation of the Machine Tranlsation Model
 version: 1.0.0
 items:
   - item: apdf.csv
@@ -13,17 +13,31 @@ items:
     size: 37M
     href: https://download.xyz.com/assorted_government.csv
     sha256: 5464346fe176bd1ba55f86d0264c9c89ea8256d52cb07f831f719847a8607b34
-order: 2
+order: 3
 date: "1 June 2020"
 featured: true
-image: '/assets/img/releases/letters.jpg'
+# image: '/assets/img/releases/test.jpg'
 ---
-
 # Story of our model
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia magna a est faucibus consectetur. Nullam tristique scelerisque turpis. Aenean rutrum urna ac eros rhoncus, sed mollis neque consequat. Aliquam a mauris in nisi commodo dictum quis a mauris. Duis malesuada eu mi in varius. Mauris convallis dui et facilisis condimentum. Pellentesque pellentesque, orci quis fringilla mollis, elit lacus viverra diam, efficitur consequat diam justo sollicitudin mi. Donec gravida eros non congue laoreet. Donec molestie imperdiet metus, id laoreet ante vulputate ut. Praesent quis ultricies neque. Aenean non vehicula massa. Duis velit velit, venenatis sit amet elementum accumsan, auctor sed tortor.
 
 Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed commodo mattis tortor, quis fermentum risus pharetra ac. Nulla laoreet ante mauris, ut pretium felis posuere et. Vestibulum cursus lectus vitae purus efficitur elementum. Mauris ut vehicula quam, eu commodo ligula. Vivamus imperdiet elementum odio tempor commodo. Fusce eros velit, volutpat non vehicula ac, pretium nec erat. Donec maximus mi mauris, nec facilisis ante interdum ac. Proin ac ligula metus. Maecenas mauris tortor, egestas efficitur tincidunt nec, sagittis a ex. Pellentesque eu vestibulum lacus. Morbi hendrerit ante ac ligula vestibulum, quis lacinia nunc vestibulum. Praesent laoreet neque et mauris placerat, sit amet pellentesque risus malesuada.
+
+Donec sed elit felis. Nullam ut facilisis diam. Pellentesque varius ipsum diam, at egestas magna gravida nec. Aliquam faucibus eros molestie condimentum blandit. Donec blandit hendrerit purus. Donec consectetur, elit non efficitur placerat, dolor magna porttitor felis, eu tincidunt lorem nisi id justo. Cras porta risus eu nibh sodales porta id eu purus. Integer vitae nulla velit.
+
+Pellentesque lacus lorem, faucibus at massa eu, finibus blandit felis. Cras ac felis eget nunc semper malesuada vel quis tortor. Curabitur non nulla vitae lacus ultricies efficitur eu at diam. Sed ut mauris risus. Aenean laoreet turpis quis odio faucibus, id accumsan nibh finibus. Cras venenatis sodales semper. Fusce eu convallis ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc eu metus eget nisl accumsan suscipit ut eleifend turpis. Aliquam erat volutpat.
+
+Praesent purus diam, malesuada at dapibus at, malesuada a tortor. Maecenas ac mi luctus justo mattis bibendum. Etiam venenatis ornare urna quis suscipit. Quisque a faucibus ipsum. Integer auctor semper ante at venenatis. Fusce nisi velit, lobortis at risus nec, luctus pulvinar sem. Duis non luctus nunc, non dictum tellus. Integer vitae tristique quam. Aliquam fermentum sodales neque ac tristique. Nunc eu lacus ante. Nam lobortis iaculis tempus. Suspendisse id velit ultricies, consequat ligula non, eleifend tellus. Nullam in suscipit lacus. Morbi faucibus aliquet odio, in aliquam odio.
+
+Sed quis mauris sit amet arcu lobortis elementum. Cras dignissim gravida velit, vitae porta lacus aliquet et. Duis sit amet consequat orci, a interdum mi. Pellentesque ultrices ultrices sapien, a consectetur nisi ultricies ac. Sed eu orci sed tortor consequat malesuada. Integer vel porta ex. Fusce suscipit ante ipsum, nec varius diam tincidunt in. Vestibulum id ultricies dui. Donec vel lacus in risus cursus porta ut nec lorem. Nullam ac interdum elit. Phasellus facilisis nunc eros, id consequat eros condimentum ac.
+
+Praesent ac augue ultricies libero ullamcorper tincidunt. Nullam cursus dictum tincidunt. In ac tortor sed odio feugiat pellentesque. Donec iaculis tincidunt ante a convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris aliquet ligula arcu, et molestie nibh malesuada at. Praesent ac rutrum lacus. Curabitur vitae leo id velit venenatis scelerisque. Maecenas pretium suscipit tortor, at tristique magna scelerisque sit amet. Etiam hendrerit efficitur ligula non consequat. Maecenas interdum scelerisque odio, eu placerat ex dictum a. Pellentesque facilisis nunc quam.
+
+Etiam venenatis congue ex in interdum. Curabitur elementum consequat nisl in efficitur. Donec blandit augue quis eros varius, sed porta velit rutrum. Morbi nec iaculis nunc, eget blandit arcu. Fusce tincidunt velit eu magna suscipit, nec pulvinar nisi congue. Nam sed nibh aliquam turpis volutpat volutpat. Praesent elementum nulla a arcu congue, id rutrum augue aliquet. Nunc dui magna, fermentum at suscipit vel, ultrices in massa. Phasellus ac turpis mi. Nullam rhoncus justo vitae laoreet pellentesque. Vivamus odio mi, porttitor non rutrum eu, pharetra in dolor. Ut ac lectus porttitor, aliquam eros quis, vehicula libero. Suspendisse aliquam molestie neque, et congue neque auctor sed. Donec est risus, ullamcorper eget ligula in, pulvinar commodo neque. Sed finibus lorem nisl, et commodo dui mattis eget. Maecenas quam purus, vehicula eu commodo non, molestie sed enim.
+
+Vestibulum tempus odio ac libero rutrum, ut dictum massa sagittis. Morbi non nunc pellentesque, rutrum diam in, venenatis nulla. Nullam laoreet iaculis turpis a vestibulum. Nulla rutrum euismod nibh, vitae euismod tortor blandit ut. Phasellus a diam blandit, egestas dolor non, luctus ante. Quisque aliquet neque a mauris accumsan, vel finibus ipsum malesuada. Morbi luctus gravida nunc quis aliquet. Nulla nec pretium urna, ut hendrerit velit. Ut non commodo lorem. Duis tempor sollicitudin urna, vel pellentesque eros mollis ut. Integer maximus turpis vel mollis vulputate. Morbi facilisis auctor neque a placerat. Morbi id nibh ut nulla fermentum vulputate.
+
+Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut felis enim. Curabitur a lorem tortor. Maecenas interdum sit amet erat quis convallis. Nam sapien sem, finibus vel ornare non, varius vel dui. Cras ac posuere nisl. Sed fringilla nulla et volutpat porttitor. Duis non iaculis dui. Pellentesque neque orci, lobortis et viverra tincidunt, efficitur vitae orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 # Test the model
 
@@ -68,6 +82,7 @@ Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci 
 </div>
 
 <style>
+
   textarea { 
     resize: none;
     border: 1px solid #ffffff;    
@@ -113,11 +128,13 @@ Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci 
     outline: none;
     box-shadow: none;
   }
-  
-  .feature-output {
-    float: right;
-  }
 
+  .btn-convert:hover, .btn-convert:focus,
+  .btn-remove:hover, .btn-remove:focus {    
+    outline: none;
+    box-shadow: none;
+  }
+  
   .btn-feature {
     color: #303030;
     background-color: #F0F0F0;
@@ -129,75 +146,105 @@ Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci 
     font-size: 10px;
   }
 
-
-  strong {
-    transition: opacity 0.5s linear;
+  .spinner-left {
+    color: #fff200;
   }
 
-  .lang-input {
-    transform: rotate(45deg);
+  .spinner-center {
+    color: #a6253b;
+  }
+
+  .spinner-right {
+    color: #52348c;
   }
 
   .fade-in {
-    animation: fadeIn ease 5s;
-    -webkit-animation: fadeIn ease 5s;
-    -moz-animation: fadeIn ease 5s;
-    -o-animation: fadeIn ease 5s;
-    -ms-animation: fadeIn ease 5s;
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
   }
 
-
-  @keyframes fadeIn{
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  .lang-input, .lang-output{
+    width: 5rem;
+    height: auto;    
   }
 
-  @-moz-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  .btn-features {
+    color: #C5C5C5;
   }
 
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  .btn-features:hover, .btn-features:focus{
+    color: #303030;
+    outline: none;
+    box-shadow: none;
   }
 
-  @-o-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  @keyframes spinner-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
   }
-
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
+  50% {
+    opacity: 1;
   }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
 
+.spinner-grow {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  text-indent: -999em;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation-name: spinner-grow;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
 </style>
 
 <script>
+
+  async function translate() {
+    $('.loading').removeClass('d-none')
+    const input = $('.textarea-input').val()    
+    const response = await fetch('https://api.dictionaryapi.dev/api/v1/entries/en/' + input);
+    const dataJson = await response.json();   
+    const output = dataJson[0].meaning.noun[0].definition;
+    $('.textarea-output').val(output);
+  }
+  
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+    $('[data-toggle="tooltip"]').tooltip();       
   });
+
+  $('input[type="text"], textarea').on('keyup', function () {
+    var textarea_value = $(".textarea-input").val();
+    if (textarea_value == '') {
+      $('.translate-output').removeClass('d-flex')
+      $('.translate-output').addClass('d-none')
+    }
+  });
+
+  $('.btn-remove').click(function(){
+    $(".textarea-input").val('');
+    $('.translate-output').removeClass('d-flex')
+    $('.translate-output').addClass('d-none')
+  })
 
   $('.btn-copy').click(function() {    
     var copyText = document.getElementById('output-translation');
@@ -208,23 +255,38 @@ Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci 
 
   $('.btn-savetxt').click(function() {
     var outputTxt = $('#output-translation').val(); 
+    if(outputTxt != ''){
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputTxt));
+      element.setAttribute('download', "translation.txt");
 
-    if(outputTxt == null){
-      
-    }  
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    } 
+     
   })
 
-  $('.btn-convert').click(function() {
-    console.log('click');
-    if($('.lang-input').text() == 'Thai') {
-      $('.lang-input').html('English', function() {
-        $('.lang-input').addClass("fade-in");
-      });
+  $('.btn-convert').click(function() {    
+    if($('.lang-input').text() == 'Thai') {      
+      $('.lang-input').html('English');
       $('.lang-output').html('Thai');
     }else {
       $('.lang-input').html('Thai');
       $('.lang-output').html('English');
     }
+  })
+
+  $('.btn-translate').click(async function() {    
+    if($(".textarea-input").val() != ''){
+      await translate();    
+      $('.loading').addClass('d-none')         
+      $('.translate-output').addClass('d-flex')
+      $('.translate-output').removeClass('d-none')
+    } 
   })
     
 </script>
