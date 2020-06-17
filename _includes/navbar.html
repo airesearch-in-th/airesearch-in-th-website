@@ -8,6 +8,9 @@
     </button>
     <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
       <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
+        <li class="nav-item">
+          <a href="/#releases" class="nav-link">Releases</a>
+        </li>
         {% assign pages = site.pages | sort: "order" %}
         {% for page_ in pages %}
         <li
