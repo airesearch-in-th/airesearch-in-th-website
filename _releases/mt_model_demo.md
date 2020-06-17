@@ -61,7 +61,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">
       Translate      
     </button>
-    <div class="loading d-none text-center">
+    <div class="loading d-none text-center mt-3 ">
       <div class="spinner-grow spinner-left" role="status">        
       </div>
       <div class="spinner-grow spinner-center" role="status">        
@@ -87,8 +87,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   textarea { 
     resize: none;
-    border: 1px solid #ffffff;    
-    /* box-shadow: 0 0 5px #eeeeee; */
+    border: 1px solid #ffffff;        
   }
   textarea:focus {
     outline: none !important;    
@@ -160,14 +159,6 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #52348c;
   }
 
-  .fade-in {
-    animation: fadeIn ease 2s;
-    -webkit-animation: fadeIn ease 2s;
-    -moz-animation: fadeIn ease 2s;
-    -o-animation: fadeIn ease 2s;
-    -ms-animation: fadeIn ease 2s;
-  }
-
   .lang-input, .lang-output{
     width: 5rem;
     height: auto;    
@@ -217,13 +208,16 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   width: 1rem;
   height: 1rem;
 }
+
 </style>
 
 <script>
 
   async function translate() {
     $('.loading').removeClass('d-none')
-    const input = $('.textarea-input').val()    
+    $('.btn-translate').addClass('d-none')
+    const input = $('.textarea-input').val()   
+     
     const response = await fetch('https://api.dictionaryapi.dev/api/v1/entries/en/' + input);
     const dataJson = await response.json();   
     const output = dataJson[0].meaning.noun[0].definition;
@@ -285,7 +279,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   $('.btn-translate').click(async function() {    
     if($(".textarea-input").val() != ''){
       await translate();    
-      $('.loading').addClass('d-none')         
+      $('.loading').addClass('d-none')  
+      $('.btn-translate').removeClass('d-none')       
       $('.translate-output').addClass('d-flex')
       $('.translate-output').removeClass('d-none')
     } 
