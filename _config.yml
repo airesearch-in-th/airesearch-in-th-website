@@ -1,6 +1,6 @@
 url: "https://airesearch.in.th" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
 title: "airesearch.in.th" # the name of your site, e.g. ACME Corp.
+timezone: Asia/Bangkok
 
 collections:
   pages:
@@ -54,3 +54,16 @@ defaults:
       type: sponsors
     values:
       featured: false
+
+sass:
+  style: compressed
+
+strict_front_matter: true
+
+exclude:
+  - ".gitignore"
+  - ".jekyll-cache"
+  - ".vscode"
+  - Gemfile
+  - Gemfile.lock
+  
