@@ -1,9 +1,10 @@
 .carousel-item > div {
-    background: $signature-gradient;
-    height: 480px;
+  background: $signature-gradient;
+  height: 480px;
 }
 
-.carousel-control-next, .carousel-control-prev {
-    max-width: 10vw;
-    min-width: 2rem;
+.carousel-control-next,
+.carousel-control-prev {
+  max-width: 10vw;
+  min-width: 2rem;
 }
