@@ -41,10 +41,10 @@ Vestibulum tempus odio ac libero rutrum, ut dictum massa sagittis. Morbi non nun
 
 Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut felis enim. Curabitur a lorem tortor. Maecenas interdum sit amet erat quis convallis. Nam sapien sem, finibus vel ornare non, varius vel dui. Cras ac posuere nisl. Sed fringilla nulla et volutpat porttitor. Duis non iaculis dui. Pellentesque neque orci, lobortis et viverra tincidunt, efficitur vitae orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
-# Test the model
+# Try the model
 
 <div class="test1 w-100 d-flex flex-column">  
-  <div class="textarea-box d-flex flex-column pt-2 pb-3 px-3">              
+  <div class="textarea-box d-flex flex-column pt-2 pb-3">              
     <div class="lang-translate d-flex align-items-center justify-content-center border-bottom bg-white">
       <div class="lang-input fade-in font-weight-bold text-right">Thai</div>
       <button class="btn my-0 mx-5 btn-convert p-0 bg-white">
@@ -70,7 +70,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       </div>
     </div>
   </div>
-  <div class="textarea-box translate-output d-none flex-column pt-2 pb-3 px-3">    
+  <div class="textarea-box translate-output d-none flex-column pt-2 pb-3">    
     <textarea class="textarea-output p-2 border border-bottom-0" id="output-translation" rows="5" readonly></textarea>
     <div class="feature-output text-right bg-white border border-top-0">
       <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
@@ -84,7 +84,6 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 </div>
 
 <style>
-
   textarea { 
     resize: none;
     border: 1px solid #ffffff;        
@@ -208,16 +207,13 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   width: 1rem;
   height: 1rem;
 }
-
 </style>
 
 <script>
-
   async function translate() {
     $('.loading').removeClass('d-none')
     $('.btn-translate').addClass('d-none')
     const input = $('.textarea-input').val()   
-     
     const response = await fetch('https://api.dictionaryapi.dev/api/v1/entries/en/' + input);
     const dataJson = await response.json();   
     const output = dataJson[0].meaning.noun[0].definition;
