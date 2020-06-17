@@ -128,7 +128,7 @@ navbar_display: false
         <a href="{{ sponsor.href }}" target="_blank">
           <div
             class="rounded sponsor-logo-container p-4 my-2 sponsor-logo-{{ sponsor.type }} sponsor-logo-{{ sponsor.level }}">
-            <img src="{{ sponsor.logo | relative_url }}" alt="{{ sponsor.full_name }}">
+            <img loading="lazy" src="{{ sponsor.logo | relative_url }}" alt="{{ sponsor.full_name }}">
           </div>
         </a>
         {% endfor %}
