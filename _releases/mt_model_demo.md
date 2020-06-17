@@ -18,7 +18,9 @@ date: "1 June 2020"
 featured: true
 # image: '/assets/img/releases/test.jpg'
 ---
+
 # Story of our model
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia magna a est faucibus consectetur. Nullam tristique scelerisque turpis. Aenean rutrum urna ac eros rhoncus, sed mollis neque consequat. Aliquam a mauris in nisi commodo dictum quis a mauris. Duis malesuada eu mi in varius. Mauris convallis dui et facilisis condimentum. Pellentesque pellentesque, orci quis fringilla mollis, elit lacus viverra diam, efficitur consequat diam justo sollicitudin mi. Donec gravida eros non congue laoreet. Donec molestie imperdiet metus, id laoreet ante vulputate ut. Praesent quis ultricies neque. Aenean non vehicula massa. Duis velit velit, venenatis sit amet elementum accumsan, auctor sed tortor.
 
 Pellentesque pharetra vehicula lacus, convallis semper felis ultricies in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed commodo mattis tortor, quis fermentum risus pharetra ac. Nulla laoreet ante mauris, ut pretium felis posuere et. Vestibulum cursus lectus vitae purus efficitur elementum. Mauris ut vehicula quam, eu commodo ligula. Vivamus imperdiet elementum odio tempor commodo. Fusce eros velit, volutpat non vehicula ac, pretium nec erat. Donec maximus mi mauris, nec facilisis ante interdum ac. Proin ac ligula metus. Maecenas mauris tortor, egestas efficitur tincidunt nec, sagittis a ex. Pellentesque eu vestibulum lacus. Morbi hendrerit ante ac ligula vestibulum, quis lacinia nunc vestibulum. Praesent laoreet neque et mauris placerat, sit amet pellentesque risus malesuada.
