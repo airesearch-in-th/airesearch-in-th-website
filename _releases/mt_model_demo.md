@@ -71,7 +71,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     </div>
   </div>
   <div class="textarea-box translate-output d-none flex-column pt-2 pb-3 px-3">    
-    <textarea class="textarea-output p-2 border border-bottom-0" id="output-translation" rows="5"></textarea>
+    <textarea class="textarea-output p-2 border border-bottom-0" id="output-translation" rows="5" readonly></textarea>
     <div class="feature-output text-right bg-white border border-top-0">
       <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
