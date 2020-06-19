@@ -1,6 +1,6 @@
 ---
 title: Machine Translation Model (with Demo)
-description: Demonstation of the Machine Translation Model
+description: Demonstration of the Machine Translation Model
 version: 1.0.0
 items:
   - item: apdf.csv
