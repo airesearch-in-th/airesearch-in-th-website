@@ -1,12 +1,12 @@
 .contact {
-  $jumbotron-height: 50vh;
-  $filter-height: 32rem;
+  $jumbotron-height: 25vh;
+  $filter-height: 16rem;
 
   .contact-jumbotron {
     background-image: $signature-gradient;
     background-size: cover;
     height: $jumbotron-height;
-    min-height: 28rem;
+    min-height: 14rem;
   }
 
   .contact-jumbotron-filter {
