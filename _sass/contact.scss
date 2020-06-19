@@ -2,6 +2,10 @@
   $jumbotron-height: 25vh;
   $filter-height: 16rem;
 
+  a {
+    color: $foreground-color;
+  }
+
   .contact-jumbotron {
     background-image: $signature-gradient;
     background-size: cover;
