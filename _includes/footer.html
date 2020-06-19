@@ -1,25 +1,45 @@
-<footer class="footer container my-5">
+<footer id="footer" class="footer container my-5">
   {% include separator.html %}
   <div class="row mt-4">
-    <div class="social-row col-lg-12 mb-3">
-      <a class="mr-3" href="https://www.facebook.com/AIResearch.in.th"><i class="fab fa-fw fa-2x fa-facebook"></i></a>
-      <!-- <a class="mr-3" href="#"><i class="fab fa-fw fa-2x fa-youtube"></i></a> -->
-      <a class="mr-3" href="/contact"><i class="fas fa-fw fa-2x fa-envelope"></i></a>
-      <a class="mr-3" href="/contact"><i class="fas fa-fw fa-2x fa-phone-alt"></i></a>
-      <a class="mr-3" href="/contact"><i class="fas fa-fw fa-2x fa-map-marked-alt"></i></a>
+    <div class="col-lg-9 mb-2">
+      <div class="row align-items-center">
+        <div class="col-auto mb-2">
+          <a href="https://www.vistec.ac.th"><img id="vistec-footer-logo" loading="lazy"
+              src="{{ "/assets/img/logo/vistec-logo-notext.svg" | relative_url }}"></a>
+        </div>
+        <div class="col-auto p-0 mb-2">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="col-auto mb-2">
+          <a href="https://www.depa.or.th"><img id="depa-footer-logo" loading="lazy"
+              src="{{ "/assets/img/logo/depa-logo.svg" | relative_url }}"></a>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <h6 class="font-weight-semibold mb-1">VISTEC-depa Thailand Artificial Intelligence Research Institute</h6>
+          A collaborative effort between VISTEC and depa to push forward the Thai artificial intelligence research
+          frontier
+        </div>
+      </div>
     </div>
-    <div class="col-lg-12 mb-1">
-      <h6 class="font-weight-semibold">VISTEC-depa Artificial Intelligence Research Institute</h6>
+    <div class="social-row col-lg-3 mb-3 d-flex justify-content-lg-end mt-lg-3">
+      <a class="ml-0 mr-3" href="https://www.facebook.com/AIResearch.in.th"><i
+          class="fab fa-fw fa-2x fa-facebook"></i></a>
+      <!-- <a class="mr-3" href="#"><i class="fab fa-fw fa-2x fa-youtube"></i></a> -->
+      <a class="mr-3" href="/contact#mail"><i class="fas fa-fw fa-2x fa-envelope"></i></a>
+      <a class="mr-3" href="/contact#phone"><i class="fas fa-fw fa-2x fa-phone-alt"></i></a>
+      <a class="mr-3" href="/contact#maps"><i class="fas fa-fw fa-2x fa-map-marked-alt"></i></a>
     </div>
     <div class="col-lg-6 mb-3">
       <span class="font-weight-semibold">Bangkok Office</span><br>
-      2nd Fl., Ladprao Hills Building<br>
+      2nd Fl., Digital Economy Promotion Agency (depa)<br>
+      Ladprao Hills Building<br>
       80 Soi Lat Phrao 4, Chom Phon<br>
       Chatuchak, Bangkok 10900
     </div>
     <div class="col-lg-6 mb-3">
       <span class="font-weight-semibold">Rayong Office</span><br>
-      M4 Bldg., Vidyasirimedi Institute of Science and Technology<br>
+      3rd Fl., School of Information Science and Technology (IST),<br>
+      Vidyasirimedi Institute of Science and Technology (VISTEC)<br>
       555 Moo 1, Payupnai<br>
       Wangchan, Rayong 21210
     </div>

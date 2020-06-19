@@ -2,5 +2,9 @@
   background-image: $signature-gradient;
   background-size: cover;
   height: 50vh;
-  min-height: 360px;
+  min-height: 28rem;
+}
+
+.release-jumbotron-filter {
+  background: linear-gradient(to top, rgba(0, 0, 0, .75) 0, rgba(0, 0, 0, 0) 32rem)
 }
