@@ -61,7 +61,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">
       Translate      
     </button>
-    <div class="loading d-none text-center mt-3 ">
+    <div class="loading d-none text-center mt-3 "> 
       <div class="spinner-grow spinner-left" role="status">        
       </div>
       <div class="spinner-grow spinner-center" role="status">        
@@ -214,10 +214,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   async function translate() {
     $('.loading').removeClass('d-none')
     $('.btn-translate').addClass('d-none')
-    const input = $('.textarea-input').val()   
-    const response = await fetch('https://api.dictionaryapi.dev/api/v1/entries/en/' + input);
-    const dataJson = await response.json();   
-    const output = dataJson[0].meaning.noun[0].definition;
+    const input = $('.textarea-input').val()
+    const response = await fetch('url' + input);
+    const dataJson = await response.json();
     $('.textarea-output').val(output);
   }
   
@@ -275,7 +274,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   $('.btn-translate').click(async function() {    
     if($(".textarea-input").val() != ''){
-      await translate();    
+      // await translate();    //Translation function
       $('.loading').addClass('d-none')  
       $('.btn-translate').removeClass('d-none')       
       $('.translate-output').addClass('d-flex')
