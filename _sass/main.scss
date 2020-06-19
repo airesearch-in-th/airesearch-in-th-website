@@ -33,7 +33,7 @@ body {
     visibility: hidden;
     z-index: -999999;
   }
-  
+
   .font-weight-semibold {
     font-weight: 600;
   }
@@ -44,12 +44,14 @@ body {
       box-shadow: $standard-box-shadow;
       z-index: 0;
       position: relative;
+    }
+    .card-genie {
       transition-duration: $animation-speed;
       transition-property: transform;
     }
-    .card-stack-item:hover,
-    .card-stack-item:focus,
-    .card-stack-item:active {
+    .card-genie:hover,
+    .card-genie:focus,
+    .card-genie:active {
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
