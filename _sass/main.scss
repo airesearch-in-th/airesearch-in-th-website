@@ -45,21 +45,25 @@ body {
       z-index: 0;
       position: relative;
     }
+
     .card-genie {
       transition-duration: $animation-speed;
       transition-property: transform;
     }
+
     .card-genie:hover,
     .card-genie:focus,
     .card-genie:active {
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
+
     a:hover,
     a:focus,
     a:active {
       text-decoration: none;
     }
+
     .card-bg-filter {
       top: 0;
       left: 0;
@@ -72,6 +76,7 @@ body {
       }
       z-index: 2;
     }
+
     .card-bg {
       top: 0;
       left: 0;
@@ -79,6 +84,7 @@ body {
       background: $signature-gradient;
       background-size: cover;
     }
+    
     .card-item-content {
       z-index: 3;
     }
