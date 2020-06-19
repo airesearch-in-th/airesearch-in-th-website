@@ -23,37 +23,46 @@ collections:
     output: true
     sort_by: order
     permalink: /:collection/:name
+  crew:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name
 
 defaults:
   - scope:
-      path: ""
+      path: 
       type: pages
     values:
       layout: default
       navbar_display: true
   - scope:
-      path: ""
+      path: 
       type: releases
     values:
-      layout: release
       featured: false
+      layout: release
   - scope:
-      path: ""
+      path: 
       type: services
     values:
-      layout: service
       featured: false
+      layout: service
   - scope:
-      path: ""
+      path: 
       type: resources
     values:
-      layout: resource
       featured: false
+      layout: resource
   - scope:
-      path: ""
+      path: 
       type: sponsors
     values:
-      featured: false
+      featured: true
+  - scope:
+      path: 
+      type: crew
+    values:
+      layout: crew_member
 
 sass:
   style: compressed
