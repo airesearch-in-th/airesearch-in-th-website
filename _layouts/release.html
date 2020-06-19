@@ -34,7 +34,8 @@ layout: default
             <h6 class="">{{ item.item }}</h6>
             <p class=""><small>{{ item.description }}</small></p>
             <small><i class="fas fa-download fa-sm fa-fw"></i> {{ item.size }}</small><br>
-            <small><span href="#" data-toggle="tooltip" data-placement="bottom" title="{{ item.sha256 }}"><i class="fas fa-hashtag fa-sm fa-fw"></i> SHA256:
+            <small><span href="#" data-toggle="tooltip" data-placement="bottom" title="{{ item.sha256 }}"><i
+                  class="fas fa-hashtag fa-sm fa-fw"></i> SHA256:
                 {{ item.sha256 | truncate: 30 }}</span></small>
           </a>
           {% endfor %}
