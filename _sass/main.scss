@@ -25,7 +25,7 @@ body {
   border-radius: 0 !important;
 
   // CSS hack to fix anchored link being displayed behind navbar.
-  section:before {
+  [id]:before {
     content: "";
     display: block;
     height: $navbar-height;
@@ -84,7 +84,7 @@ body {
       background: $signature-gradient;
       background-size: cover;
     }
-    
+
     .card-item-content {
       z-index: 3;
     }
