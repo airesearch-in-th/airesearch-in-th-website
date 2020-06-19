@@ -4,7 +4,7 @@ description: Machine Learning and Deep Learning consultation with training cours
 order: 1
 date: "1 June 2020"
 featured: true
-image: "/assets/img/services/gc_training.jpg"
+image: "/assets/img/services/gc-training.jpg"
 ---
 
 # Article space
