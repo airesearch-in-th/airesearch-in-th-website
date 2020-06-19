@@ -32,4 +32,16 @@ footer {
   #vistec-footer-logo {
     height: 1.5625rem;
   }
+
+  .footer-logos {
+    transition-duration: $animation-speed;
+    transition-property: transform;
+  }
+
+  .footer-logos:hover,
+  .footer-logos:focus,
+  .footer-logos:active {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
 }
