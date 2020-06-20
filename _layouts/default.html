@@ -10,17 +10,17 @@
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
 
   {% include external/favicon.html %}
-  {% include external/icon_pack.html %}
+  {% include external/icon-pack.html %}
 </head>
 
 <body>
   {% include navbar.html %}
-  {% include v_spacer.html height="4.75rem" %}
+  {% include vertical-spacer.html height="4.75rem" %}
   {{ content }}
   {% include footer.html %}
 
   {% if jekyll.environment == "production" %}
-  {% include external/google_analytics.html %}
+  {% include external/google-analytics.html %}
   {% endif %}
 </body>
 
