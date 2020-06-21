@@ -12,7 +12,7 @@ navbar_display: false
         <h2>Featured Releases</h2>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
-        <a href="{% link _pages/releases.html %}">All releases</a>
+        <a href="{% link _pages/releases.html %}">All Releases</a>
       </div>
     </div>
     <!-- <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
@@ -32,7 +32,7 @@ navbar_display: false
                 class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
                 <h5 class="font-weight-semibold">{{ release.title }}</h5>
                 <p class="text-justify">{{ release.description }}</p>
-                <div class="d-flex flex-row justify-content-between mt-auto">
+                <div class="d-flex flex-row justify-content-between align-items-center mt-auto">
                   <p class="mb-0">{{ release.date | date: "%e %b %Y" }}</p>
                   <p class="mb-0">
                     {% for category in release.categories limit:2 %}
@@ -57,7 +57,14 @@ navbar_display: false
 <section id="news" class="mt-5">
   <div class="container">
     {% include separator.html %}
-    <h2 class="mt-5">Featured News+Stories</h2>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <h2>Featured News+Stories</h2>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <a href="{% link _pages/posts.html %}">All News+Stories</a>
+      </div>
+    </div>
     <!-- <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
       should not be a boundary to learn or implement AI for your business</p>
     <p class="lead text-justify">We release all our learning materials, dataset, and models to public</p> -->
@@ -74,7 +81,7 @@ navbar_display: false
                 class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
                 <h5 class="font-weight-semibold mb-2">{{ post.title }}</h5>
                 <p class="text-justify my-0 py-0">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
-                <div class="d-flex flex-row justify-content-between mt-auto">
+                <div class="d-flex flex-row justify-content-between align-items-center mt-auto">
                   <p class="mb-0">{{ post.date | date: "%e %b %Y" }}</p>
                   <p class="mb-0">
                     {% for category in post.categories %}
