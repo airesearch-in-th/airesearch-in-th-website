@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
   <div class="container">
-    <a class="navbar-brand py-2" href="/"><img loading="lazy" src="{{ "/assets/img/logo/airesearch-logo.svg" | relative_url }}"
-        alt="airesearch.in.th logo"></a>
+    <a class="navbar-brand py-2" href="/"><img loading="lazy"
+        src="{{ "/assets/img/logo/airesearch-logo.svg" | relative_url }}" alt="airesearch.in.th logo"></a>
     <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
       data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
         <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
           <a href="/#releases" class="nav-link">Releases</a>
         </li>
-        {% assign pages = site.pages | sort: "order" %}
+        {% assign pages = site.pages | reverse %}
         {% for page_ in pages %}
         <li
           class="nav-item{% if page.url == page_.url %} active{% endif %}{% unless page_.navbar_display %} d-none disabled{% endunless %}">

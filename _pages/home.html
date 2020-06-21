@@ -7,10 +7,17 @@ navbar_display: false
 {% include carousel.html %}
 <section id="releases" class="mt-5">
   <div class="container">
-    <h2>Featured Releases</h2>
-    <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Featured Releases</h2>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <a href="{% link _pages/releases.html %}">All releases</a>
+      </div>
+    </div>
+    <!-- <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
       should not be a boundary to learn or implement AI for your business</p>
-    <p class="lead text-justify">We release all our learning materials, dataset, and models to public</p>
+    <p class="lead text-justify">We release all our learning materials, dataset, and models to public</p> -->
   </div>
   <div class="container">
     <div class="row card-stack text-white align-items-stretch">
@@ -27,8 +34,12 @@ navbar_display: false
                 <p class="text-justify">{{ release.description }}</p>
                 <div class="d-flex flex-row justify-content-between mt-auto">
                   <p class="mb-0">{{ release.date | date: "%e %b %Y" }}</p>
-                  <p class="mb-0"><i class="fas fa-code-branch fa-fw fa-sm"></i>
-                    v{{ release.version }}</p>
+                  <p class="mb-0">
+                    {% for category in release.categories limit:2 %}
+                    <span class="badge badge-light">{{ category }}</span>
+                    {% endfor %}
+                    <i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}
+                  </p>
                 </div>
               </div>
               <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
@@ -43,13 +54,53 @@ navbar_display: false
     </div>
   </div>
 </section>
+<section id="news" class="mt-5">
+  <div class="container">
+    {% include separator.html %}
+    <h2 class="mt-5">Featured News+Stories</h2>
+    <!-- <p class="lead text-justify">We and our partners believe in the openness of education and technology. There
+      should not be a boundary to learn or implement AI for your business</p>
+    <p class="lead text-justify">We release all our learning materials, dataset, and models to public</p> -->
+  </div>
+  <div class="container">
+    <div class="row card-stack text-white align-items-stretch">
+      {% for post in site.posts %}
+      {% if post.featured %}
+      <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
+        <a href="{{ post.url }}" class="card-stack-item-link">
+          <div class="card-stack-item-container m-2">
+            <div class="card-stack-item card-genie h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
+              <div
+                class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                <h5 class="font-weight-semibold mb-2">{{ post.title }}</h5>
+                <p class="text-justify my-0 py-0">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+                <div class="d-flex flex-row justify-content-between mt-auto">
+                  <p class="mb-0">{{ post.date | date: "%e %b %Y" }}</p>
+                  <p class="mb-0">
+                    {% for category in post.categories %}
+                    <span class="badge badge-light">{{ category }}</span>
+                    {% endfor %}
+                  </p>
+                </div>
+              </div>
+              <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
+              <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if post.image %}
+                style="background-image: url('{{ post.image }}')" {% endif %}></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
 <section id="services" class="mt-5">
   <div class="container">
     {% include separator.html %}
     <h2 class="mt-5">Services</h2>
     <p class="lead text-justify">We provides an advanced AI training course and research translational consultation
-      for
-      increasing competitive capability to our partners</p>
+      for increasing competitive capability to our partners</p>
   </div>
   <div class="container">
     <div class="row card-stack text-white align-items-stretch">
