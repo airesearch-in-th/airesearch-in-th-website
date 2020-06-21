@@ -13,9 +13,9 @@ items:
     size: 37M
     href: https://download.xyz.com/assorted_government.csv
     sha256: 5464346fe176bd1ba55f86d0264c9c89ea8256d52cb07f831f719847a8607b34
-order: 1
-date: "1 June 2020"
+date: "2 June 2020"
 featured: true
+categories: dataset
 image: "/assets/img/releases/books.jpg"
 ---
 

@@ -13,9 +13,9 @@ items:
     size: 37M
     href: https://download.xyz.com/assorted_government.csv
     sha256: 5464346fe176bd1ba55f86d0264c9c89ea8256d52cb07f831f719847a8607b34
-order: 3
 date: "1 June 2020"
 featured: true
+categories: model demo
 image: '/assets/img/releases/letters.jpg'
 ---
 

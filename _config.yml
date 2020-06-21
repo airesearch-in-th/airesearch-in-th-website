@@ -10,7 +10,7 @@ collections:
     permalink: /:name
   releases:
     output: true
-    sort_by: order
+    sort_by: date
     permalink: /:collection/:name
   services:
     output: true
