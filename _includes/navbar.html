@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
       <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
         <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
-          <a href="/#releases" class="nav-link">Releases</a>
+          <a href="{% link _pages/home.html %}#releases" class="nav-link">Releases</a>
         </li>
         {% assign pages = site.pages | reverse %}
         {% for page_ in pages %}
