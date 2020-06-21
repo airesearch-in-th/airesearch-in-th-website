@@ -1,7 +1,9 @@
 title: "airesearch.in.th"
 url: "https://airesearch.in.th"
+locale: en-US
 timezone: Asia/Bangkok
 permalink: /blog/:categories/:year/:month/:day/:title
+fb_admin_id: 106755957360414
 
 collections:
   pages:
