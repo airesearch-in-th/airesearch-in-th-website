@@ -1,0 +1,64 @@
+---
+title: Contact
+layout: default
+navbar_display: false
+---
+<section class="contact">
+  <section class="contact-jumbotron text-light d-flex flex-col align-items-end position-relative" {% if page.image %}
+    style="background-image: url('{{ page.image | relative_url }}');" {% endif %}>
+    <div class="w-100 h-100 contact-jumbotron-filter position-absolute"></div>
+    <div class="container mb-4">
+      <div class="row align-items-stretch">
+        <div class="col-lg-12">
+          <h1>{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="offices" class="container mt-5">
+    <div class="row">
+      <section id="bangkok-office" class="col-lg-6">
+        <h2>Bangkok Office</h2>
+        <p>
+          2nd Fl., Digital Economy Promotion Agency (depa)<br>
+          Ladprao Hills Building<br>
+          80 Soi Lat Phrao 4, Chom Phon<br>
+          Chatuchak, Bangkok 10900
+        </p>
+      </section>
+      <div class="col-lg-6">
+        <iframe class="maps rounded"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3874.4577269776973!2d100.559998!3d13.8115311!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e283255d67eaf7%3A0xe1c64aa0a0229427!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Liq4LmI4LiH4LmA4Liq4Lij4Li04Lih4LmA4Lio4Lij4Lip4LiQ4LiB4Li04LiI4LiU4Li04LiI4Li04LiX4Lix4LilIChkZXBhKQ!5e0!3m2!1sen!2sth!4v1559573611701!5m2!1sen!2sth"
+          width="100%" height="350" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+      </div>
+      <div class="col-lg-12 my-5">
+        {% include separator.html %}
+      </div>
+      <section id="rayong-office" class="col-lg-6">
+        <h2>Rayong Office</h2>
+        <p>
+          3rd Fl., School of Information Science and Technology (IST),<br>
+          Vidyasirimedhi Institute of Science and Technology (VISTEC)<br>
+          555 Moo 1, Payupnai<br>
+          Wangchan, Rayong 21210
+        </p>
+      </section>
+      <div class="col-lg-6">
+        <iframe class="maps rounded"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5395276609734!2d101.44124701473297!3d13.001277190836422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310323fac434be89%3A0xf7ffe4c5d6dd9446!2sVidyasirimedhi+Institute+of+Science+and+Technology!5e0!3m2!1sen!2sth!4v1559573664758!5m2!1sen!2sth"
+          width="100%" height="350" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+      </div>
+      <div class="col-lg-12 my-5">
+        {% include separator.html %}
+      </div>
+      <div id="enquiries" class="col-lg-12">
+        <h2>Enquiries</h2>
+        <p>If you are interested in our services or collaborating with us, please contact</p>
+        <p class="mb-0">
+          <i class="fas fa-fw fa-envelope"></i> <a href="mailto:onarinl_pro@vistec.ac.th">onarinl_pro@vistec.ac.th</a><br>
+          <i class="fas fa-fw fa-phone-alt"></i> <a href="tel:+6633014307">+66 3301 4307</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</section>

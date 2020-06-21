@@ -1,6 +1,7 @@
-url: "https://airesearch.in.th"
 title: "airesearch.in.th"
+url: "https://airesearch.in.th"
 timezone: Asia/Bangkok
+permalink: /blog/:categories/:year/:month/:day/:title
 
 collections:
   pages:
@@ -29,6 +30,11 @@ collections:
     permalink: /:collection/:name
 
 defaults:
+  - scope:
+      path: 
+      type: posts
+    values:
+      layout: post
   - scope:
       path: 
       type: pages
