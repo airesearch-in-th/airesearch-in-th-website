@@ -1,0 +1,15 @@
+.not-found {
+  $jumbotron-height: 25vh;
+  $filter-height: 16rem;
+
+  a {
+    color: $foreground-color;
+  }
+
+  .not-found-jumbotron {
+    background-image: $signature-gradient;
+    background-size: cover;
+    height: $jumbotron-height;
+    min-height: 14rem;
+  }
+}
