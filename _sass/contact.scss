@@ -7,8 +7,10 @@
   }
 
   .contact-jumbotron {
-    background-image: $signature-gradient;
+    background-image: url('/assets/img/pages/offices.jpg');
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     height: $jumbotron-height;
     min-height: 14rem;
   }
@@ -17,11 +19,11 @@
     box-shadow: $standard-box-shadow;
   }
 
-  // .contact-jumbotron-filter {
-  //   background: linear-gradient(
-  //     to top,
-  //     rgba(0, 0, 0, 0.75) 0,
-  //     rgba(0, 0, 0, 0) $filter-height
-  //   );
-  // }
+  .contact-jumbotron-filter {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.75) 0,
+      rgba(0, 0, 0, 0) $filter-height
+    );
+  }
 }
