@@ -16,7 +16,7 @@ items:
 date: "1 June 2020"
 featured: true
 categories: model demo
-image: '/assets/img/releases/letters.jpg'
+image: "/assets/img/releases/letters.jpg"
 ---
 
 # Story of our model
