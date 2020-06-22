@@ -85,8 +85,7 @@ th2en = TransformerModel.from_pretrained(
             bpe='sentencepiece',
             sentencepiece_vocab=BPE_BASE_DIR + 'spm.th.model')
 
-th2en.translate("งั้นเอาเป็นเวนติ แบล็คแอนด์ไวท์มอคค่าใส่นมสด
-               กับวิปครีม จากสตาร์บัคส์สาขาห้างเบิร์ชวิลล์นะคะ")
+th2en.translate("งั้นเอาเป็นเวนติ แบล็คแอนด์ไวท์มอคค่าใส่นมสดกับวิปครีม จากสตาร์บัคส์สาขาห้างเบิร์ชวิลล์นะคะ")
 ```
 
 ```
