@@ -15,4 +15,5 @@ jobs:
             ${{ runner.os }}-gems-
       - uses: helaili/jekyll-action@2.0.3
         env:
+          JEKYLL_PAT: NON_WORKING_KEY
           JEKYLL_ENV: production
