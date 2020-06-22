@@ -13,7 +13,8 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - name: build
+      - name: jekyll build
+        uses: docker://jekyll/builder:latest
         env:
           JEKYLL_ENV: production
         run: |
