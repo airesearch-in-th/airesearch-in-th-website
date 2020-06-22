@@ -4,6 +4,7 @@ locale: en-US
 timezone: Asia/Bangkok
 permalink: /blog/:categories/:year/:month/:day/:title/
 facebook_page_id: 106755957360414
+google_analytics_id: UA-141096942-1
 seo_keywords:
   - artificial intelligence
   - research
