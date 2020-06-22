@@ -15,7 +15,8 @@ jobs:
             ${{ runner.os }}-gems-
       - uses: docker://ruby:2.7-alpine
         with:
+          entrypoint: /bin/bash
           args: |
-            "jekyll build --trace"
+            "gem install bundle && bundle exec jekyll build --trace"
         env:
           JEKYLL_ENV: production
