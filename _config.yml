@@ -3,7 +3,21 @@ url: "https://airesearch.in.th"
 locale: en-US
 timezone: Asia/Bangkok
 permalink: /blog/:categories/:year/:month/:day/:title
-fb_admin_id: 106755957360414
+facebook_page_id: 106755957360414
+seo_keywords:
+  - artificial intelligence
+  - research
+  - vistec
+  - depa
+  - vidyasirimedhi
+  - vidyasirimedhi institute of science and technology
+  - digital economy promotion agency
+  - machine translation
+  - open data
+  - dataset
+  - model
+  - artificial intelligence research
+  - research institute
 
 collections:
   pages:
