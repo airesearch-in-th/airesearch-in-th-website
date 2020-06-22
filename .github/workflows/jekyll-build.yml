@@ -13,10 +13,8 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - uses: docker://ruby:2.7-alpine
+      - uses: docker://jekyll/builder:latest
         with:
-          entrypoint: /bin/sh
-          args: |
-            gem install bundle && bundle exec jekyll build --trace
+          args: jekyll build --trace
         env:
           JEKYLL_ENV: production
