@@ -63,7 +63,7 @@ featured: true
 
 <br/>
 
-ศูนย์วิจัย AIResearch ซึ่งเกิดจากความร่วมมือระหว่าง VISTEC และ depa ได้ทำการเทรนโมเดลแปลภาษา (Machine Translation) สำหรับการแปลภาษาใน 2 คู่ภาษา ไทย→อังกฤษ และ อังกฤษ→ไทย จากชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย (`scb-mt-en-th-2020`) ซึ่งมีจำนวนกว่า 1 ล้านคู่ประโยค และได้วัดประสิทธิภาพของโมเดลด้วย BLEU score กับข้อมูลชุดทดสอบจาก The International Conference on Spoken Language Translation (IWSLT) ในปี 2015 ซึ่งเป็น คู่ประโยค อังกฤษ-ไทย ที่ได้จากการถอดคำพูด (Transcription) จาก TED Talk จากผลการทดสอบพบว่า โมเดลแปลภาษาสำหรับ ภาษาไทย→อังกฤษ (`SCB_1M+TBASE-th-en_spm-spm_32000-joined_v1.0`) สามารถแปลภาษาได้มีประสิทธิภาพเทียบเท่าได้กับระบบแปลภาษาจาก Google Translation API (ทดสอบ ณ เดือนพฤษภาคม 2020) 
+ศูนย์วิจัย AIResearch ซึ่งเกิดจากความร่วมมือระหว่าง VISTEC และ depa ได้ทำการเทรนโมเดลแปลภาษา (Machine Translation) สำหรับการแปลภาษาใน 2 คู่ภาษา ไทย→อังกฤษ และ อังกฤษ→ไทย จากชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย  (`scb-mt-en-th-2020`) ซึ่งมีจำนวนกว่า 1 ล้านคู่ประโยค และได้วัดประสิทธิภาพของโมเดลด้วย BLEU score กับข้อมูลชุดทดสอบจาก The International Conference on Spoken Language Translation (IWSLT) ในปี 2015 ซึ่งเป็น คู่ประโยค อังกฤษ-ไทย ที่ได้จากการถอดคำพูด (Transcription) จาก TED Talk จากผลการทดสอบพบว่า โมเดลแปลภาษาสำหรับ ภาษาไทย→อังกฤษ (`SCB_1M+TBASE-th-en_spm-spm_32000-joined_v1.0`) สามารถแปลภาษาได้มีประสิทธิภาพเทียบเท่าได้กับระบบแปลภาษาจาก Google Translation API (ทดสอบ ณ เดือนพฤษภาคม 2020) 
 
 <br/>
 
@@ -86,16 +86,16 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 <br/>
 
-สำหรับการเทรนโมเดลนั้น ทางทีมวิจัย ได้เทรนโมเดล Transformer แบบ Base ซึ่งมีจำนวนพารามิเตอร์ทั้งหมดกว่า 74 ล้านพารามิเตอร์ และใช้ Python library `fairseq` จาก Facebook AI Research โดยเทรนโมเดลบน NVIDIA DGX-1 ซึ่งเป็น Cluster ของ GPU NVIDIA V100
+สำหรับการเทรนโมเดลนั้น ทางทีมวิจัย ได้เทรนโมเดล Transformer แบบ Base ซึ่งมีจำนวนพารามิเตอร์ทั้งหมดกว่า 74 ล้านพารามิเตอร์ และใช้ Python library `fairseq` จาก Facebook AI Research [Ott et al. 2019] โดยเทรนโมเดลบน NVIDIA DGX-1 ซึ่งเป็น Cluster ของ GPU NVIDIA V100
 
-ชุดข้อมูลที่ใช้ในการเทรนโมเดลครั้งนี้มาจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย(`scb-mt-en-th-2020)` ซึ่งมีจำนวนกว่า 1 ล้านคู่ประโยค จากแหล่งที่มาต่างๆเช่น การจ้างนักแปลภาษา แปลบทสนทนาจากภาษาอังกฤษเป็นไทย และการ Crawl ข้อมูลจากเว็บไซต์ข่าวหรือองค์กร ที่มีเนื้อหาในทั้งสองภาษา โดยสามารถดูรายละเอียดเพิ่มเติมได้ที่ [English-Thai Machine Translation Dataset](https://airesearch.in.th/releases/machine-translation-datasets)
+ชุดข้อมูลที่ใช้ในการเทรนโมเดลครั้งนี้มาจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย (`scb-mt-en-th-2020)` ซึ่งมีจำนวน 1,001,752 คู่ประโยค จากแหล่งที่มาต่างๆเช่น การจ้างนักแปลภาษา แปลบทสนทนาจากภาษาอังกฤษเป็นไทย และการ Crawl ข้อมูลจากเว็บไซต์ข่าวหรือองค์กร ที่มีเนื้อหาในทั้งสองภาษา โดยสามารถดูรายละเอียดเพิ่มเติมได้ที่ [English-Thai Machine Translation Dataset](https://airesearch.in.th/releases/machine-translation-datasets)
 <br/>
 
 ### Evaluation results
 
 <br/>
 
-การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดลที่เทรนจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `scb-mt-en-th-2020` (Our baseline) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
+การเปรียบเทียบ BLEU score และ **n**-gram precision ระหว่าง ผลการแปลของโมเดลที่เทรนจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `scb-mt-en-th-2020` (Our baseline) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
 
 
 <center>
@@ -104,11 +104,11 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 <br/>
 
-### Example 
+### Example use
 
 <br/>
 
-```
+```python
 from fairseq.models.transformer import TransformerModel
 
 MODEL_BASE_DIR = './SCB_1M+TBASE_th-en_spm-spm_32000-joined_v1.0/models/'
@@ -154,6 +154,8 @@ and whipped cream from the starbucks at the birchville mall.
 <br/>
 
 - Vaswani, Ashish & Shazeer, Noam & Parmar, Niki & Uszkoreit, Jakob & Jones, Llion & Gomez, Aidan & Kaiser, Lukasz & Polosukhin, Illia. (2017). Attention Is All You Need.
+
+- Ott, M., Edunov, S., Baevski, A., Fan, A., Gross, S., Ng, N., Grangier, D., & Auli, M. (2019). fairseq: A Fast, Extensible Toolkit for Sequence Modeling. NAACL-HLT.
 
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 
