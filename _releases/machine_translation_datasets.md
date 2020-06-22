@@ -20,8 +20,6 @@ featured: true
 
 ---
 
-<br/>
-
 ### Overview
 
 <br/>
