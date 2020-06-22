@@ -1,4 +1,4 @@
-name: "Jekyll: Build"
+name: "Jekyll: Build (latest)"
 
 on: [push, pull_request]
 
@@ -13,7 +13,8 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - name: jekyll build
-        uses: docker://jekyll/builder:latest
+      - uses: docker://jekyll/builder:latest
+        with:
+          args: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
