@@ -7,15 +7,14 @@ footer {
 
   .social-row {
     a {
-      display: inline-block;
+      display: inline;
       transition-duration: $animation-speed;
       transition-property: transform;
     }
     a:hover,
     a:focus,
     a:active {
-      // TODO: Fix Safari hover bug, or find alternatives
-      display: inline-block;
+      display: inline;
       background: $signature-gradient;
       background-clip: text;
       -webkit-background-clip: text;
@@ -23,5 +22,25 @@ footer {
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
     }
+  }
+
+  #depa-footer-logo {
+    height: 3.125rem;
+  }
+
+  #vistec-footer-logo {
+    height: 1.5625rem;
+  }
+
+  .footer-logos {
+    transition-duration: $animation-speed;
+    transition-property: transform;
+  }
+
+  .footer-logos:hover,
+  .footer-logos:focus,
+  .footer-logos:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
 }

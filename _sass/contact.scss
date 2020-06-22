@@ -1,0 +1,29 @@
+.contact {
+  $jumbotron-height: 25vh;
+  $filter-height: 16rem;
+
+  a {
+    color: $foreground-color;
+  }
+
+  .contact-jumbotron {
+    background-image: url('/assets/img/pages/offices.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: $jumbotron-height;
+    min-height: 14rem;
+  }
+
+  .maps {
+    box-shadow: $standard-box-shadow;
+  }
+
+  .contact-jumbotron-filter {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.75) 0,
+      rgba(0, 0, 0, 0) $filter-height
+    );
+  }
+}
