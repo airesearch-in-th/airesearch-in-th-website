@@ -135,7 +135,7 @@ and whipped cream from the starbucks at the birchville mall.
 
 <br/>
 
-นอกจากนี้ทางศุนย์วิจัยได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล Machine Translation ได้โดยทันทีผ่าน [Google Colaboratory](https://colab.research.google.com/drive/1b7Uo9Ic1UltWvC2S7-qqix5WUL-P86xD?usp=sharing)
+นอกจากนี้ทางศูนย์วิจัยได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล Machine Translation ได้โดยทันทีผ่าน [Google Colaboratory](https://colab.research.google.com/drive/1b7Uo9Ic1UltWvC2S7-qqix5WUL-P86xD?usp=sharing)
 
 <br/>
 
