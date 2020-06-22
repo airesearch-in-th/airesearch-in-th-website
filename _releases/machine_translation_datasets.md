@@ -103,7 +103,7 @@ featured: true
 
 <br/>
 
-### อ้างอิง
+### References
 
 <br/>
 
