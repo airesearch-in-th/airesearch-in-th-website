@@ -16,6 +16,6 @@ jobs:
       - uses: docker://ruby:2.7-alpine
         with:
           args: |
-            bundle install && bundle exec jekyll build --trace
+            '"bundle install && bundle exec jekyll build --trace"'
         env:
           JEKYLL_ENV: production
