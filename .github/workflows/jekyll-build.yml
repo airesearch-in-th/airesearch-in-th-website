@@ -1,4 +1,4 @@
-name: Test building Jekyll site
+name: "Jekyll: Build"
 
 on: [push, pull_request]
 
