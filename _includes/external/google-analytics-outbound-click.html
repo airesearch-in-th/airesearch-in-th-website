@@ -44,7 +44,7 @@
 
             console.log("add event", url);
             // Log even to Analytics, once done, go to the link
-            ga('send', 'event', 'outbound', 'click', url,
+            gtag('event', 'click', 'outbound', 'click', url,
               { 'hitCallback': hitCallbackHandler(url, win), 'transport': 'beacon' }
             );
 
