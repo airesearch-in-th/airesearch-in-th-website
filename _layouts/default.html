@@ -2,25 +2,27 @@
 <html lang="{{ site.lang | default: "en-US" }}">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8">
   <title>{% if jekyll.environment == "development" %}[dev] {% endif %}{{ page.title }} | {{ site.title }}</title>
-  
-  {% include external/bootstrap.html %}
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  
+
+  {% include meta-tags.html %}
+
+  {% include external/bootstrap-css.html %}
+
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+
   {% include external/favicon.html %}
   {% include external/icon-pack.html %}
 </head>
 
 <body>
   {% include navbar.html %}
-  {% include v_spacer.html height="76px" %}
+  {% include vertical-spacer.html height="4.75rem" %}
   {{ content }}
   {% include footer.html %}
 
   {% if jekyll.environment == "production" %}
-    {% include external/google-analytics.html %}
+  {% include external/bootstrap-js.html %}
+  {% include external/google-analytics.html %}
   {% endif %}
 </body>
 

@@ -12,10 +12,11 @@ $signature-gradient: linear-gradient(
   $vistec-purple 100%
 );
 
-$background-color: #F5F5F5;
+$background-color: #f5f5f5;
 $foreground-color: #303030;
-$standard-box-shadow: 0 0 40px 8px rgba(0, 0, 0, 0.25);
+$standard-box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.25);
 $animation-speed: 0.3s;
+$navbar-height: 4.75rem;
 
 body {
   background: $background-color;
@@ -23,30 +24,46 @@ body {
   font-family: $latin-font;
   border-radius: 0 !important;
 
+  // CSS hack to fix anchored link being displayed behind navbar.
+  [id]:before {
+    content: "";
+    display: block;
+    height: $navbar-height;
+    margin-top: -$navbar-height;
+    visibility: hidden;
+    z-index: -999999;
+  }
+
   .font-weight-semibold {
     font-weight: 600;
   }
 
   .card-stack {
     .card-stack-item {
-      min-height: 300px;
+      min-height: 18.75rem;
       box-shadow: $standard-box-shadow;
       z-index: 0;
       position: relative;
+    }
+
+    .card-genie {
       transition-duration: $animation-speed;
       transition-property: transform;
     }
-    .card-stack-item:hover,
-    .card-stack-item:focus,
-    .card-stack-item:active {
+
+    .card-genie:hover,
+    .card-genie:focus,
+    .card-genie:active {
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
+
     a:hover,
     a:focus,
     a:active {
       text-decoration: none;
     }
+
     .card-bg-filter {
       top: 0;
       left: 0;
@@ -59,6 +76,7 @@ body {
       }
       z-index: 2;
     }
+
     .card-bg {
       top: 0;
       left: 0;
@@ -66,8 +84,33 @@ body {
       background: $signature-gradient;
       background-size: cover;
     }
+
     .card-item-content {
       z-index: 3;
+    }
+  }
+
+  .sponsors-container {
+    background: $foreground-color;
+    box-shadow: $standard-box-shadow;
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+    .sponsor-logo-container {
+      background-color: $background-color;
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
+
+    .sponsor-logo-container:hover,
+    .sponsor-logo-container:focus,
+    .sponsor-logo-container:active {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
     }
   }
 }
