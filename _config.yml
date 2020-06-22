@@ -98,6 +98,7 @@ kramdown:
     default_lang: plaintext
     
 exclude:
+  - ".github"
   - ".gitignore"
   - ".jekyll-cache"
   - ".vscode"
