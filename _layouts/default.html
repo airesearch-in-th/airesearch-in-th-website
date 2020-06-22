@@ -6,9 +6,9 @@
 
   {% include meta-tags.html %}
 
-  {% include external/bootstrap.html %}
+  {% include external/bootstrap-css.html %}
 
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
 
   {% include external/favicon.html %}
   {% include external/icon-pack.html %}
@@ -21,6 +21,7 @@
   {% include footer.html %}
 
   {% if jekyll.environment == "production" %}
+  {% include external/bootstrap-js.html %}
   {% include external/google-analytics.html %}
   {% endif %}
 </body>
