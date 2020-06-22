@@ -2,7 +2,7 @@ title: "airesearch.in.th"
 url: "https://airesearch.in.th"
 locale: en-US
 timezone: Asia/Bangkok
-permalink: /blog/:categories/:year/:month/:day/:title
+permalink: /blog/:categories/:year/:month/:day/:title/
 facebook_page_id: 106755957360414
 seo_keywords:
   - artificial intelligence
@@ -23,27 +23,27 @@ collections:
   pages:
     output: true
     sort_by: order
-    permalink: /:name
+    permalink: /:name/
   releases:
     output: true
     sort_by: date
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
   services:
     output: true
     sort_by: order
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
   resources:
     output: true
     sort_by: order
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
   sponsors:
     output: true
     sort_by: order
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
   crew:
     output: true
     sort_by: order
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
