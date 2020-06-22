@@ -17,5 +17,3 @@ jobs:
         uses: docker://jekyll/builder:latest
         env:
           JEKYLL_ENV: production
-        run: |
-          bundle exec jekyll build --trace
