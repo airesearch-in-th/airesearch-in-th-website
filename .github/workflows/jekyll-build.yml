@@ -3,8 +3,8 @@ name: "Jekyll: Build"
 on: [push, pull_request]
 
 jobs:
-  github-pages:
-    runs-on: ubuntu-16.04
+  jekyll-build:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
@@ -13,7 +13,8 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - uses: helaili/jekyll-action@2.0.3
+      - name: build
         env:
-          JEKYLL_PAT: NON_WORKING_KEY
           JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build --trace
