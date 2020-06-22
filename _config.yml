@@ -91,14 +91,14 @@ sass:
 
 strict_front_matter: true
 
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: plaintext
+    
 exclude:
   - ".gitignore"
   - ".jekyll-cache"
   - ".vscode"
   - Gemfile
   - Gemfile.lock
-
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    default_lang: plaintext
