@@ -15,6 +15,6 @@ jobs:
             ${{ runner.os }}-gems-
       - uses: docker://jekyll/builder:latest
         with:
-          args: jekyll build --trace
+          args: jekyll build --trace -d build
         env:
           JEKYLL_ENV: production
