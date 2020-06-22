@@ -43,7 +43,7 @@ items:
     size: 667M
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_th-en_spm-spm_32000-joined_v1.0.tar.gz
     sha256: 69bec33d471114ef51a0564a48b3c5c528e19544464361d62509531c5bfad153
-date: "22 June 2020"
+date: "23 June 2020"
 featured: true
 categories: model demo
 image: "/assets/img/releases/letters.jpg"

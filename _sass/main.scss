@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap");
-$latin-font: "Work Sans", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap");
+$standard-font: "Work Sans", "Sarabun", sans-serif;
 
 $depa-yellow: #fff200;
 $vistec-red: #a6253b;
@@ -21,7 +22,7 @@ $navbar-height: 4.75rem;
 body {
   background: $background-color;
   color: $foreground-color;
-  font-family: $latin-font;
+  font-family: $standard-font;
   border-radius: 0 !important;
 
   // CSS hack to fix anchored link being displayed behind navbar.
