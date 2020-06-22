@@ -95,7 +95,7 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 <br/>
 
-การเปรียบเทียบ BLEU score และ **n**-gram precision ระหว่าง ผลการแปลของโมเดลที่เทรนจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `scb-mt-en-th-2020` (Our baseline) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
+การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดลที่เทรนจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `scb-mt-en-th-2020` (Our baseline) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
 
 
 <center>
