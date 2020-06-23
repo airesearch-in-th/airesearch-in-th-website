@@ -16,9 +16,7 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - run: sudo timedatectl set-timezone Asia/Bangkok
       - uses: helaili/jekyll-action@2.0.3
         env:
           JEKYLL_PAT: "${{ secrets.JEKYLL_PAT }}"
           JEKYLL_ENV: production
-          TZ: Asia/Bangkok
