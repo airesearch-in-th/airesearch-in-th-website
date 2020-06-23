@@ -4,46 +4,45 @@ description: โมเดลแปลภาษา อังกฤษ-ไทย �
 version: 1.0
 items:
   - item: SCB_1M+TBASE_en-th_moses-newmm_space_130000-130000_v1.0.tar.gz
-    description: "Pre-trained en→th, word→word Transformer Base Model v1.0"
+    description: "Pre-trained en→th, word→word Transformer Base Model v1.0 (SCB_1M)"
     size: 1.75G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_en-th_moses-newmm_space_130000-130000_v1.0.tar.gz
     sha256: d2fb125ba0283e93c82416ec473e8308556ac4834bd1942a004a21ad8143b746
   - item: SCB_1M+TBASE_en-th_moses-spm_130000-16000_v1.0.tar.gz
-    description: "Pre-trained en→th, word→bpe Transformer Base Model v1.0"
+    description: "Pre-trained en→th, word→bpe Transformer Base Model v1.0 (SCB_1M)"
     size: 1.09G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_en-th_moses-spm_130000-16000_v1.0.tar.gz
     sha256: 4e8bb0a6323dc6c370d24f568775afa62011871467f474fbda03d4ac0b7681fa
   - item: SCB_1M+TBASE_en-th_spm-newmm_space_16000-130000_v1.0.tar.gz
-    description: "Pre-trained en→th, bpe→word Transformer Base Model v1.0"
+    description: "Pre-trained en→th, bpe→word Transformer Base Model v1.0 (SCB_1M)"
     size: 1.22G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_en-th_spm-newmm_space_16000-130000_v1.0.tar.gz
     sha256: 5ae3b712d97af0d1025e909866764772c44cb9f22435c1e91e5e7fb3e833d2c0
   - item: SCB_1M+TBASE_en-th_spm-spm_32000-joined_v1.0.tar.gz
-    description: "Pre-trained en→th, bpe→bpe Transformer Base Model v1.0"
+    description: "Pre-trained en→th, bpe→bpe Transformer Base Model v1.0 (SCB_1M)"
     size: 667M
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_en-th_spm-spm_32000-joined_v1.0.tar.gz
     sha256: 016b9fb25f89c381271a098aeb04948bc4ed724cf211f061d561c3199f5f41c3
   - item: SCB_1M+TBASE_th-en_newmm-moses_130000-130000_v1.0.tar.gz
-    description: "Pre-trained th→en, word→word Transformer Base Model v1.0"
+    description: "Pre-trained th→en, word→word Transformer Base Model v1.0 (SCB_1M)"
     size: 1.75G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_th-en_newmm-moses_130000-130000_v1.0.tar.gz
     sha256: 7e255e2690964a6387909015682118d3afcccacfaf38e26eb5c6cd3b074c671b
   - item: SCB_1M+TBASE_th-en_newmm-spm_130000-16000_v1.0.tar.gz
-    description: "Pre-trained th→en, word→bpe Transformer Base Model v1.0"
+    description: "Pre-trained th→en, word→bpe Transformer Base Model v1.0 (SCB_1M)"
     size: 1.1G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_th-en_newmm-spm_130000-16000_v1.0.tar.gz
     sha256: 9d1d3d7e30c9cdb91823ec99125e2a2e1f58c1b9a3e84fca6e0abcfcb6f4cbd1
   - item: SCB_1M+TBASE_th-en_spm-moses_16000-130000_v1.0.tar.gz
-    description: "Pre-trained th→en, bpe→word Transformer Base Model v1.0"
+    description: "Pre-trained th→en, bpe→word Transformer Base Model v1.0 (SCB_1M)"
     size: 1.21G
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_th-en_spm-moses_16000-130000_v1.0.tar.gz
     sha256: 92a68c4b4902d5fb1fba70f2849f09b0535a16a8f4a16277f8fb833d244989b8
   - item: SCB_1M+TBASE_th-en_spm-spm_32000-joined_v1.0.tar.gz
-    description: "Pre-trained th→en, bpe→bpe Transformer Base Model v1.0"
+    description: "Pre-trained th→en, bpe→bpe Transformer Base Model v1.0 (SCB_1M)"
     size: 667M
     href: https://github.com/vistec-AI/model-releases/releases/download/SCB_1M%2BTBASE_v1.0/SCB_1M+TBASE_th-en_spm-spm_32000-joined_v1.0.tar.gz
     sha256: 69bec33d471114ef51a0564a48b3c5c528e19544464361d62509531c5bfad153
-
 
 date: "23 June 2020"
 featured: true
