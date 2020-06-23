@@ -1,24 +1,106 @@
+title: "airesearch.in.th"
+url: "https://airesearch.in.th"
+locale: en-US
+timezone: Asia/Bangkok
+permalink: /blog/:categories/:year/:month/:day/:title/
+facebook_page_id: 106755957360414
+google_tag_id: UA-141096942-1
+seo_keywords:
+  - artificial intelligence
+  - research
+  - vistec
+  - depa
+  - vidyasirimedhi
+  - vidyasirimedhi institute of science and technology
+  - digital economy promotion agency
+  - machine translation
+  - open data
+  - dataset
+  - model
+  - artificial intelligence research
+  - research institute
+
 collections:
-  authors:
+  pages:
     output: true
+    sort_by: order
+    permalink: /:name/
+  releases:
+    output: true
+    sort_by: date
+    permalink: /:collection/:name/
+  services:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name/
+  resources:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name/
+  sponsors:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name/
+  crew:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
-      path: ""
-      type: "authors"
+      path: 
+      type: posts
     values:
-      layout: "author"
+      layout: post
   - scope:
-      path: ""
-      type: "posts"
+      path: 
+      type: pages
     values:
-      layout: "post"
+      layout: default
+      navbar_display: true
   - scope:
-      path: ""
+      path: 
+      type: releases
     values:
-      layout: "default"
+      featured: false
+      layout: release
+  - scope:
+      path: 
+      type: services
+    values:
+      featured: false
+      layout: service
+  - scope:
+      path: 
+      type: resources
+    values:
+      featured: false
+      layout: resource
+  - scope:
+      path: 
+      type: sponsors
+    values:
+      featured: true
+  - scope:
+      path: 
+      type: crew
+    values:
+      layout: crew_member
 
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+sass:
+  style: compressed
+
+strict_front_matter: true
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: plaintext
+    
+exclude:
+  - ".github"
+  - ".gitignore"
+  - ".jekyll-cache"
+  - ".vscode"
+  - Gemfile
+  - Gemfile.lock

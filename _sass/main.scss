@@ -1,37 +1,119 @@
-@import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext,thai");
+$standard-font: "Work Sans", "Sarabun", sans-serif;
+
+$depa-yellow: #fff200;
+$vistec-red: #a6253b;
+$vistec-purple: #52348c;
+
+$signature-gradient: linear-gradient(
+  111.94deg,
+  $depa-yellow 0%,
+  $vistec-red 65%,
+  $vistec-purple 100%
+);
+
+$background-color: #f5f5f5;
+$foreground-color: #303030;
+$standard-box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.25);
+$animation-speed: 0.3s;
+$navbar-height: 4.75rem;
 
 body {
-  font-family: "Bai Jamjuree", sans-serif;
-  font-weight: 500;
-  background-color: #111;
-}
+  background: $background-color;
+  color: $foreground-color;
+  font-family: $standard-font;
+  border-radius: 0 !important;
 
-.main-nav {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, .975) 0%,
-    rgba(255, 255, 255, .85) 100%
-  );
-}
+  // CSS hack to fix anchored link being displayed behind navbar.
+  [id]:before {
+    content: "";
+    display: block;
+    height: $navbar-height;
+    margin-top: -$navbar-height;
+    visibility: hidden;
+    z-index: -999999;
+  }
 
-.main-content {
-  min-height: calc(100vh - 2.25rem);
-}
+  .font-weight-semibold {
+    font-weight: 600;
+  }
 
-.nav-logo {
-  height: 4.25rem;
-}
+  .card-stack {
+    .card-stack-item {
+      min-height: 18.75rem;
+      box-shadow: $standard-box-shadow;
+      z-index: 0;
+      position: relative;
+    }
 
-.nav-link {
-  font-weight: bold;
-}
+    .card-genie {
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
 
-.footer {
-  min-height: 2.25rem;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 1.5rem;
-  font-size: 0.75rem;
-  text-align: right;
-  display: flex;
+    .card-genie:hover,
+    .card-genie:focus,
+    .card-genie:active {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+    .card-bg-filter {
+      top: 0;
+      left: 0;
+      $filter: blur(2px);
+      background: rgba($color: $foreground-color, $alpha: 0.75) !important;
+      @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
+        background: rgba($color: $foreground-color, $alpha: 0.4) !important;
+        backdrop-filter: $filter;
+        -webkit-backdrop-filter: $filter;
+      }
+      z-index: 2;
+    }
+
+    .card-bg {
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background: $signature-gradient;
+      background-size: cover;
+    }
+
+    .card-item-content {
+      z-index: 3;
+    }
+  }
+
+  .sponsors-container {
+    background: $foreground-color;
+    box-shadow: $standard-box-shadow;
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+    .sponsor-logo-container {
+      background-color: $background-color;
+      transition-duration: $animation-speed;
+      transition-property: transform;
+    }
+
+    .sponsor-logo-container:hover,
+    .sponsor-logo-container:focus,
+    .sponsor-logo-container:active {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+  }
+
+  article * {
+    max-width: 100%;
+  }
 }

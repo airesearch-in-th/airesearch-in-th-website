@@ -1,1 +1,4 @@
-airesearch.in.th
+---
+layout: none
+---
+{% assign url = site.url | strip | split: '/' %}{% assign url = url[2] | split: ':' %}{{ url[0] }}
