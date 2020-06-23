@@ -1,4 +1,4 @@
-name: "Jekyll: Build (latest)"
+name: "Jekyll: Build"
 
 on: [push, pull_request]
 
