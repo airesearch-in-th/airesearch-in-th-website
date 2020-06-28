@@ -86,3 +86,5 @@ image: "/assets/img/releases/books.jpg"
 ## Sponsor
 
 ![SCB](/assets/img/sponsors/scb-logo.svg)
+
+โดยทาง SCB ได้บริจาค ชุดข้อมูลนี้ให้แก่สาธารณะ ภายใต้ CC-BY-SA 4.0
