@@ -23,3 +23,7 @@ jobs:
       - run: bundle exec jekyll build --trace -d build
         env:
           JEKYLL_ENV: production
+      - uses: actions/upload-artifact@v2
+        with:
+          name: jekyll-site
+          path: build/
