@@ -32,13 +32,13 @@ image: "/assets/img/releases/books.jpg"
 3. การ Paraphrase ประโยคภาษาไทย
 4. การคัดแยกคะแนนที่ได้รับจากรีวิวสินค้าในภาษาไทย
 
-## Dataset Statistics
+## สถิติชุดข้อมูล
 
 ![Dataset Statistics](/assets/img/releases/machine_translation_datasets/scb-mt-en-th-2020_stats_v1.0.png)
 
 <p style="text-align: center;">ตาราง 1: จำนวนคู่ประโยคในภาษาอังกฤษ-ไทย แบ่งตาม แหล่งที่มาของข้อมูลและวิธีการจับคู่ประโยค รวมจำนวนคู่ประโยคทั้งหมดคือ 1,001,752 คู่ประโยค</p>
 
-## Sources
+## แหล่งที่มา
 
 สำหรับแหล่งที่มาของชุดข้อมูลคู่ประโยค มีดังนี้
 
@@ -48,7 +48,7 @@ image: "/assets/img/releases/books.jpg"
 4. เอกสารราชการที่มีเนื้อหาทั้งภาษาไทยและอังกฤษ อาทิเช่น แผนพัฒนาการเศรษฐกิจและสังคมแห่งชาติ ประมวลกฎหมายแพ่งและพาณิชย์
 5. บทความจากวิกิพีเดียในภาษาไทยและภาษาอังกฤษ ที่มีเนื้อหาในหัวข้อเดียวกัน
 
-## Methodology
+## ระเบียบวิธี
 
 ##### การจ้างนักแปลภาษาโดยตรง
 
@@ -66,15 +66,15 @@ image: "/assets/img/releases/books.jpg"
 
 การจับคู่ประโยค ในส่วนของข้อมูลจากการ Crawl และ เอกสารราชการนั้น จะเป็นการจับคู่เอกสาร บทความ และ หน้าเว็บไซต์ก่อน (Document alignment / URL alginemnt ) แล้วจึงทำการจับคู่ประโยค (Sentence alignment)
 
-## Quality check
+## การตรวจคุณภาพ
 
 สำหรับ การแปลจากการจ้างนักแปลโดยตรง จะมีทีมนักแปลที่ทำหน้าที่ตรวจสอบคุณภาพการแปล แต่ในส่วนของการ Crawl ข้อมูลนั้น จะมีความผิดพลาดในการการจับคู่ประโยคสูง ทางศูนย์วิจัย ได้ใช้ โมเดล Universal Sentence Encoder Multilingual [Cer et al. 2018] ในการคำนวณหาการแปลที่ตรงกันระหว่างประโยคภาษาอังกฤษและไทย และคัดกรองเอาคู่ประโยคไม่ได้จับคู่กันอย่างถูกต้องออก สำหรับวิธีการใช้ Universal Sentence Encoder Multilingual สามารถดูเพิ่มเติมได้จากบทความ [ตรวจสอบความถูกต้องของการแปล ด้วย Universal Sentence Encoder](https://medium.com/airesearch-in-th/%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%96%E0%B8%B9%E0%B8%81%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9B%E0%B8%A5-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-universal-sentence-encoder-ad3c156c2e9b)
 
-## Versions
+## เวอร์ชัน
 
 - **Version 1.0 (23 June 2020):** ชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย จำนวน 1,001,752 คู่ประโยค
 
-## References
+## อ้างอิง
 
 - Byrne, B., Krishnamoorthi, K., Sankar, C., Neelakantan, A., Goodrich, B., Duckworth, D., ... & Cedilnik, A. (2019). Taskmaster-1: Toward a Realistic and Diverse Dialog Dataset. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP) (pp. 4506-4517).
 - Tao Chen and Min-Yen Kan (2013). Creating a Live, Public Short Message Service Corpus: The NUS SMS Corpus. Language Resources and Evaluation, 47(2)(2013), pages 299-355.
