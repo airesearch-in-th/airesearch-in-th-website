@@ -1,4 +1,4 @@
-name: "Jekyll: Build"
+name: "Jekyll: Build and upload artifacts"
 
 on: [push, pull_request]
 

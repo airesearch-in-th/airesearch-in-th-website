@@ -9,7 +9,7 @@ navbar_display: false
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h2>Featured Releases</h2>
+        <h2>ชุดข้อมูลและโมเดลที่น่าสนใจ</h2>
       </div>
       <!-- <div class="col-md-4 d-md-flex d-none align-items-center justify-content-end">
         <i class="fas fa-stream fa-fw fa-sm"></i> <a class="text-dark" href="{% link _pages/releases.html %}">All
@@ -34,7 +34,7 @@ navbar_display: false
                 <h5 class="font-weight-semibold">{{ release.title }}</h5>
                 <p class="text-justify">{{ release.description }}</p>
                 <div class="d-flex flex-row justify-content-between align-items-center mt-auto">
-                  <p class="mb-0">{{ release.date | date: "%e %b %Y" }}</p>
+                  <p class="mb-0">{{ release.date | date: "%e/%-m/%Y" }}</p>
                   <p class="mb-0">
                     {% for category in release.categories limit:2 %}
                     <span class="badge badge-light">{{ category }}</span>
@@ -116,9 +116,9 @@ navbar_display: false
 <section id="services" class="mt-5">
   <div class="container">
     {% include separator.html %}
-    <h2 class="mt-5">Services</h2>
-    <p class="lead text-justify">We provides an advanced AI training course and research translational consultation
-      for increasing competitive capability to our partners</p>
+    <h2 class="mt-5">บริการ</h2>
+    <!-- <p class="lead text-justify">We provides an advanced AI training course and research translational consultation
+      for increasing competitive capability to our partners</p> -->
   </div>
   <div class="container">
     <div class="row card-stack text-white align-items-stretch">
@@ -149,7 +149,7 @@ navbar_display: false
 <section id="resources" class="mt-5">
   <div class="container">
     {% include separator.html %}
-    <h2 class="mt-5">Resources</h2>
+    <h2 class="mt-5">ขุมพลังประมวลผล</h2>
   </div>
   <div class="container">
     <div class="row card-stack text-white align-items-stretch">
@@ -184,7 +184,7 @@ navbar_display: false
   <div class="container px-2">
     <div class="sponsors-container container rounded py-4 mt-5">
       <div class="container">
-        <h2>Sponsored by</h2>
+        <h2>สนับสนุนโดย</h2>
         <!-- <p class="lead text-justify">Placeholder placeholder placeholder placeholder placeholder placeholder placeholder
                 placeholder placeholder placeholder</p> -->
       </div>

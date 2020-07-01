@@ -9,12 +9,12 @@
     <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
       <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
         <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
-          <a href="{% link _pages/home.html %}#releases" class="nav-link">Releases</a>
-        <!-- <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="{% link _pages/home.html %}#releases" class="nav-link">ชุดข้อมูลและโมเดล</a>
+          <!-- <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
           <a href="{% link _pages/home.html %}#posts" class="nav-link">News+Stories</a>
         </li> -->
-        {% assign pages = site.pages | reverse %}
-        {% for page_ in pages %}
+          {% assign pages = site.pages | reverse %}
+          {% for page_ in pages %}
         <li
           class="nav-item{% if page.url == page_.url %} active{% endif %}{% unless page_.navbar_display %} d-none disabled{% endunless %}">
           <a class="nav-link" href="{{ page_.url }}">
