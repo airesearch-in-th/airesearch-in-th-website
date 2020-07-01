@@ -64,7 +64,7 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 ชุดข้อมูลที่ใช้ในการเทรนโมเดลครั้งนี้มาจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `(scb-mt-en-th-2020)` ซึ่งมีจำนวน 1,001,752 คู่ประโยค จากแหล่งที่มาต่างๆเช่น การจ้างนักแปลภาษา แปลบทสนทนาจากภาษาอังกฤษเป็นไทย และการ Crawl ข้อมูลจากเว็บไซต์ข่าวหรือองค์กร ที่มีเนื้อหาในทั้งสองภาษา โดยสามารถดูรายละเอียดเพิ่มเติมได้ที่ [English-Thai Machine Translation Dataset](https://airesearch.in.th/releases/machine-translation-datasets)
 
-## Evaluation results
+## ผลการทดสอบ
 
 การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดล Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคจาก `scb-mt-en-th-2020` (SCB_1M), ชุดข้อมูลคู่ประโยคจาก Open Parallel Corpus [Tiedemann et al. 2012] ในส่วนที่เป็นคู่ประโยคภาษาอังกฤษและไทย ([mt-opus](https://github.com/vistec-AI/mt-opus)), ชุดข้อมูลคู่ประโยคที่รวมทั้ง `scb-mt-en-th-2020` และ `mt-opus` (SCB_1M + MT_OPUS), ผลการแปลของโมเดลแปลภาษาเฉพาะการแปลจากอังกฤษ→ไทย จาก AI for Thai (aiforthai.in.th) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) 
 
@@ -72,7 +72,7 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 ![Evaluation Result](/assets/img/releases/machine_translation_models/eval_iwslt2015.png)
 
-## Python example
+## ตัวอย่างการใช้ในภาษา Python
 
 ```python
 from fairseq.models.transformer import TransformerModel
@@ -99,11 +99,11 @@ and whipped cream from the starbucks at the birchville mall.
 
 นอกจากนี้ทางศูนย์วิจัยได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล Machine Translation ได้โดยทันทีผ่าน [Google Colaboratory](https://colab.research.google.com/drive/1b7Uo9Ic1UltWvC2S7-qqix5WUL-P86xD?usp=sharing)
 
-## Versions
+## เวอร์ชัน
 
 - **Version 1.0 (23 June 2020):** โมเดล Pre-trained Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย `scb-mt-en-th-2020` เวอร์ชั่น 1.0
 
-## References
+## อ้างอิง
 
 - Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. In Advances in neural information processing systems (pp. 5998-6008).
 - Ott, M., Edunov, S., Baevski, A., Fan, A., Gross, S., Ng, N., Grangier, D., & Auli, M. (2019). fairseq: A Fast, Extensible Toolkit for Sequence Modeling. NAACL-HLT.
