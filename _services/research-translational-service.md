@@ -1,6 +1,6 @@
 ---
-title: Research Translational Project
-description: Intensity knowledge transfer project for a capability to do internal cutting-edge translational research for unfair advantage to the company
+title: งานวิจัยเชื่อมต่ออุตสาหกรรม
+description: โปรแกรมพัฒนาศักยภาพปัญญาประดิษฐ์ โดยผ่านโครงการวิจัยร่วม และการถ่ายทอดความรู้ชั้นสูง เพื่อความได้เปรียบทางนวัตกรรม
 order: 2
 date: "1 June 2020"
 featured: true
