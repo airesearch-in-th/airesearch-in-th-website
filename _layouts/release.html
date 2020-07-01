@@ -13,7 +13,7 @@ layout: default
         </div>
         <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
           <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ page.version }}</span>
-          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e %b %Y" }}</span>
+          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e/%-m/%Y" }}</span>
           <div class="d-flex flex-row mt-2">
             {% for category in page.categories %}
             <span class="badge badge-light mr-1">{{ category }}</span>
@@ -32,7 +32,7 @@ layout: default
       </div>
       <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
         {% if page.items %}
-        <h3>Downloads</h3>
+        <h3>ดาวน์โหลด</h3>
         <div class="list-group rounded-0 border-0">
           {% for item in page.items %}
           <a href="{{ item.href }}" class="list-group-item list-group-item-action download-item" target="_blank">
