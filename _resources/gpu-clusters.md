@@ -1,6 +1,6 @@
 ---
-title: High Performance GPU Clusters
-description: 640 CPU cores, 4TB of memory and 64 Nvidia V100 GPUs enables us to find an solutions for businesses faster than ever
+title: GPU Cluster ประสิทธิภาพสูง
+description: ด้วยการ์ดประมวลผล Nvidia V100 GPU 64 หน่วย พร้อมกับ CPU กว่า 640 cores และหน่วยความจำกว่า 4 TB
 order: 2
 date: "1 June 2020"
 featured: true
