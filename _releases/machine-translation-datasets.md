@@ -83,8 +83,8 @@ image: "/assets/img/releases/books.jpg"
 - Keskar, N.S., McCann, B., Varshney, L.R., Xiong, C., & Socher, R. (2019). CTRL: A Conditional Transformer Language Model for Controllable Generation. ArXiv, abs/1909.05858.
 - Cer, D.M., Yang, Y., Kong, S., Hua, N., Limtiaco, N., John, R.S., Constant, N., Guajardo-Cespedes, M., Yuan, S., Tar, C., Sung, Y., Strope, B., & Kurzweil, R. (2018). Universal Sentence Encoder. ArXiv, abs/1803.11175.
 
-## Sponsor
+## ผู้สนับสนุน
 
 ![SCB](/assets/img/sponsors/scb-logo.svg)
 
-โดยทาง SCB ได้บริจาค ชุดข้อมูลนี้ให้แก่สาธารณะ ภายใต้ CC-BY-SA 4.0
+บมจ. ธนาคารไทยพาณิชย์ ได้ทำการบริจาคชุดข้อมูลนี้ให้แก่สาธารณะ ภายใต้เงื่อนไขลิขสิทธิ์แบบ[*ครีเอทีฟคอมมอนส์ แสดงที่มา-อนุญาตแบบเดียวกัน 4.0 International (CC BY-SA 4.0)*](https://creativecommons.org/licenses/by-sa/4.0/deed.th)
