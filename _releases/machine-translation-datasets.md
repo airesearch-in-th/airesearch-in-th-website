@@ -5,14 +5,14 @@ version: 1.0
 items:
   - item: scb-mt-en-th-2020.zip
     description: "Version 1.0 (zip)"
-    size: 144M
+    size: 113M
     href: https://github.com/vistec-AI/dataset-releases/releases/download/scb-mt-en-th-2020_v1.0/scb-mt-en-th-2020.zip
-    sha256: 603e6256638db601763cff3291a296e4152fad6fddb4721031cce0f27925e7fe
+    sha256: d902eb187c3140150f7156e8433d0da7486be53e83dd342698b56ed6f74e09fb
   - item: scb-mt-en-th-2020.tar.gz
     description: "Version 1.0 (tar.gz)"
-    size: 144M
+    size: 112M
     href: https://github.com/vistec-AI/dataset-releases/releases/download/scb-mt-en-th-2020_v1.0/scb-mt-en-th-2020.tar.gz
-    sha256: e9461b629ea88f5f02bf0c818404a3a45662ab04f4dfc3be913f39b951e011bb
+    sha256: 700b044b84d456261b681ad20e28ff5cab3af389238f876ee435b3e0850d0858
 date: "23 June 2020"
 featured: true
 categories: dataset
