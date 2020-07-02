@@ -37,7 +37,7 @@ collections:
     output: true
     sort_by: order
     permalink: /:collection/:name/
-  sponsors:
+  supporters:
     output: true
     sort_by: order
     permalink: /:collection/:name/
@@ -78,7 +78,7 @@ defaults:
       layout: resource
   - scope:
       path: 
-      type: sponsors
+      type: supporters
     values:
       featured: true
   - scope:
