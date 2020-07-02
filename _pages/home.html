@@ -177,25 +177,25 @@ navbar_display: false
     </div>
   </div>
 </section>
-<section id="sponsors" class="mt-5 text-white">
+<section id="supporters" class="mt-5 text-white">
   <div class="container">
     {% include separator.html %}
   </div>
   <div class="container px-2">
-    <div class="sponsors-container container rounded py-4 mt-5">
+    <div class="supporters-container container rounded py-4 mt-5">
       <div class="container">
         <h2>สนับสนุนโดย</h2>
         <!-- <p class="lead text-justify">Placeholder placeholder placeholder placeholder placeholder placeholder placeholder
                 placeholder placeholder placeholder</p> -->
       </div>
-      <div class="rounded mt-2 container sponsors">
-        <div class="sponsors-box d-flex align-items-stretch flex-wrap w-100">
-          {% assign sponsors = site.sponsors | reverse %}
-          {% for sponsor in sponsors %}
+      <div class="rounded mt-2 container supporters">
+        <div class="supporters-box d-flex align-items-stretch flex-wrap w-100">
+          {% assign supporters = site.supporters | reverse %}
+          {% for supporter in supporters %}
           <div
-            class="rounded sponsor-logo-container my-2 mx-1 sponsor-logo-{{ sponsor.type }} sponsor-logo-{{ sponsor.level }}">
-            <a href="{{ sponsor.href }}" target="_blank">
-              <img class="p-4" loading="lazy" src="{{ sponsor.logo | relative_url }}" alt="{{ sponsor.full_name }}">
+            class="rounded supporter-logo-container my-2 mx-1 supporter-logo-{{ supporter.type }} supporter-logo-{{ supporter.level }}">
+            <a href="{{ supporter.href }}" target="_blank">
+              <img class="p-4" loading="lazy" src="{{ supporter.logo | relative_url }}" alt="{{ supporter.full_name }}">
             </a>
           </div>
           {% endfor %}

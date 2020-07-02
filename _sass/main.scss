@@ -89,7 +89,7 @@ body {
     }
   }
 
-  .sponsors-container {
+  .supporters-container {
     background: $foreground-color;
     box-shadow: $standard-box-shadow;
 
@@ -99,15 +99,15 @@ body {
       text-decoration: none;
     }
 
-    .sponsor-logo-container {
+    .supporter-logo-container {
       background-color: $background-color;
       transition-duration: $animation-speed;
       transition-property: transform;
     }
 
-    .sponsor-logo-container:hover,
-    .sponsor-logo-container:focus,
-    .sponsor-logo-container:active {
+    .supporter-logo-container:hover,
+    .supporter-logo-container:focus,
+    .supporter-logo-container:active {
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }

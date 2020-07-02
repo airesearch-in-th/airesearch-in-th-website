@@ -85,6 +85,6 @@ image: "/assets/img/releases/books.jpg"
 
 ## ผู้สนับสนุน และสิทธิ์การใช้งาน
 
-![SCB](/assets/img/sponsors/scb-logo.svg)
+![SCB](/assets/img/supporters/scb-logo.svg)
 
 บมจ. ธนาคารไทยพาณิชย์ ได้ทำการบริจาคชุดข้อมูลนี้ให้แก่สาธารณะ ภายใต้เงื่อนไขลิขสิทธิ์แบบ[*ครีเอทีฟคอมมอนส์ แสดงที่มา-อนุญาตแบบเดียวกัน 4.0 International (CC BY-SA 4.0)*](https://creativecommons.org/licenses/by-sa/4.0/deed.th)
