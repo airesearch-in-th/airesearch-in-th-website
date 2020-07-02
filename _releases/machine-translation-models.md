@@ -50,7 +50,7 @@ categories: model demo
 image: "/assets/img/releases/letters.jpg"
 ---
 
-ศูนย์วิจัย AIResearch ซึ่งเกิดจากความร่วมมือระหว่าง VISTEC และ depa ได้ทำการเทรนโมเดลแปลภาษา (Machine Translation) สำหรับการแปลภาษาใน 2 คู่ภาษา ไทย→อังกฤษ และ อังกฤษ→ไทย จากชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย (scb-mt-en-th-2020) ซึ่งมีจำนวนกว่า 1 ล้านคู่ประโยค และได้วัดประสิทธิภาพของโมเดลด้วย BLEU score กับข้อมูลชุดทดสอบจาก The International Conference on Spoken Language Translation (IWSLT) ในปี 2015 ซึ่งเป็น คู่ประโยค อังกฤษ-ไทย ที่ได้จากการถอดคำพูด (Transcription) จาก TED Talk จากผลการทดสอบพบว่า โมเดลแปลภาษาสำหรับ ภาษาไทย→อังกฤษ (`SCB_1M-MT_OPUS+TBASE`) และ ภาษาอังกฤษ→ไทย (`SCB_1M-MT_OPUS+TBASE`) สามารถแปลภาษาได้มีประสิทธิภาพเทียบเท่าหรือดีกว่าระบบแปลภาษาจาก Google Translation API (ทดสอบ ณ เดือนพฤษภาคม 2020)
+สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย ได้ทำการเทรนโมเดลแปลภาษา (Machine Translation) สำหรับการแปลภาษาใน 2 คู่ภาษา ไทย→อังกฤษ และ อังกฤษ→ไทย จากชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย (scb-mt-en-th-2020) ซึ่งมีจำนวนกว่า 1 ล้านคู่ประโยค และได้วัดประสิทธิภาพของโมเดลด้วย BLEU score กับข้อมูลชุดทดสอบจาก The International Conference on Spoken Language Translation (IWSLT) ในปี 2015 ซึ่งเป็น คู่ประโยค อังกฤษ-ไทย ที่ได้จากการถอดคำพูด (Transcription) จาก TED Talk จากผลการทดสอบพบว่า โมเดลแปลภาษาสำหรับ ภาษาไทย→อังกฤษ (`SCB_1M-MT_OPUS+TBASE`) และ ภาษาอังกฤษ→ไทย (`SCB_1M-MT_OPUS+TBASE`) สามารถแปลภาษาได้มีประสิทธิภาพเทียบเท่าหรือดีกว่าระบบแปลภาษาจาก Google Translation API (ทดสอบ ณ เดือนพฤษภาคม 2020)
 
 ## Transformer
 
@@ -97,7 +97,7 @@ so a venti black and white mocha with whole milk
 and whipped cream from the starbucks at the birchville mall.
 ```
 
-นอกจากนี้ทางศูนย์วิจัยได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล Machine Translation ได้โดยทันทีผ่าน [Google Colaboratory](https://colab.research.google.com/drive/1b7Uo9Ic1UltWvC2S7-qqix5WUL-P86xD?usp=sharing)
+นอกจากนี้ทางสถาบันฯ ได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล Machine Translation ได้โดยทันทีผ่าน [Google Colaboratory](https://colab.research.google.com/drive/1b7Uo9Ic1UltWvC2S7-qqix5WUL-P86xD?usp=sharing)
 
 ## เวอร์ชัน
 
