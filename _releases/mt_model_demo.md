@@ -45,15 +45,15 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
 <div class="test1 w-100 d-flex flex-column">  
   <div class="textarea-box d-flex flex-column pt-2 pb-3">              
-    <div class="lang-translate d-flex align-items-center justify-content-center border-bottom bg-white">
-      <div class="lang-input fade-in font-weight-bold text-right">Thai</div>
+    <div class="lang-translate d-flex align-items-center justify-content-center border border-bottom-0 bg-white">
+      <div class="lang-input font-weight-bold text-center d-flex align-items-center justify-content-center">Thai</div>
       <button class="btn my-0 mx-5 btn-convert p-0 bg-white">
         <i class="fas fa-exchange-alt"></i>          
       </button>
-      <div class="lang-output fade-in font-weight-bold text-left">English</div>
+      <div class="lang-output font-weight-bold text-center">English</div>
     </div>    
-    <textarea class="textarea-input p-2" id="exampleFormControlTextarea5" rows="5"></textarea>
-    <div class="feature-input text-right w-100 bg-white">
+    <textarea class="textarea-input px-3 py-2 border border-bottom-0" rows="5"></textarea>
+    <div class="feature-input text-right w-100 bg-white border border-top-0">
       <button type="button" class="btn btn-sm bg-white mr-3 border-0 btn-features btn-remove" data-toggle="tooltip" data-placement="bottom" title="remove all">
         <i class="fas fa-trash-alt"></i>
       </button>
@@ -70,9 +70,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       </div>
     </div>
   </div>
-  <div class="textarea-box translate-output d-none flex-column pt-2 pb-3">    
-    <textarea class="textarea-output p-2 border border-bottom-0" id="output-translation" rows="5" readonly></textarea>
-    <div class="feature-output text-right bg-white border border-top-0">
+  <div class="textarea-box translate-output d-none flex-column border">    
+    <textarea class="textarea-output px-3 py-2" id="output-translation" rows="6" readonly></textarea>
+    <div class="feature-output text-right bg-white">
       <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
         <i class="fa fa-clone"></i>
       </button>
@@ -81,7 +81,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       </button>
     </div>
   </div>
+  <span class="compare-tran text-right d-none my-4">Compare with <a class="link-google-tran">Google Translate</a></span>
 </div>
+
 
 <style>
   textarea { 
@@ -100,7 +102,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   .btn-convert {    
     transition: all 0.5s;
     cursor: pointer;
-    background-color: #F5F5F5;        
+    color: #A0A0A0;        
   }
 
   .btn-translate {   
@@ -111,15 +113,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   .btn-translate:hover, .btn-translate:focus {    
-    background: linear-gradient(
-      111.94deg,
-      #fff200 0%,
-      #a6253b 65%,
-      #52348c 100%
-    );
+    background: #52348c;
     color: #ffffff;
     transition: all 0.5s;
     box-shadow: none;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .btn-feature:hover, .btn-feature:focus {
@@ -134,6 +133,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   .btn-remove:hover, .btn-remove:focus {    
     outline: none;
     box-shadow: none;
+    color: #303030;
   }
   
   .btn-feature {
@@ -159,11 +159,6 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #52348c;
   }
 
-  .lang-input, .lang-output{
-    width: 5rem;
-    height: auto;    
-  }
-
   .btn-features {
     color: #C5C5C5;
   }
@@ -172,6 +167,20 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #303030;
     outline: none;
     box-shadow: none;
+  }
+
+  .lang-input, .lang-output {
+    width: 5rem;
+  }
+
+  .lang-input {
+    color: #52348c;
+    height: 100%;
+    border-bottom: 2px solid #52348c;
+  }
+
+  .lang-output {
+    color: #A0A0A0;
   }
 
   @keyframes spinner-grow {
@@ -208,34 +217,72 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   width: 1rem;
   height: 1rem;
 }
+
+.link-google-tran {
+  color: #4284f3 !important;
+  cursor: pointer;
+}
 </style>
 
 <script>
+  
+  let sl = "", tl = ""  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   async function translate() {
     $('.loading').removeClass('d-none')
     $('.btn-translate').addClass('d-none')
     const input = $('.textarea-input').val()
-    const response = await fetch('url' + input);
+    console.log('input:', input)
+    check_lang()
+    const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
+                    + sl + '&tl=' 
+                    + tl + '&dt=t&q=' 
+                    + input);
     const dataJson = await response.json();
-    $('.textarea-output').val(output);
+    console.log('json:', dataJson)
+    var result = ''
+    for(var i = 0; i < dataJson[0].length; i++){
+      result += dataJson[0][i][0]
+      console.log(dataJson[0][i][0])
+    }
+    await sleep(1200);
+    $('.textarea-output').val(result);
+  }
+
+    function check_lang() {
+    if($('.lang-input').text() == 'Thai'){
+      sl = "th"
+      tl = "en"
+    } else {
+      sl = "en"
+      tl = "th"
+    }
+  }
+
+  function change_lang(original_lang, target_lang) {
+    $('.lang-input').html(original_lang);
+    $('.lang-output').html(target_lang);
   }
   
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();       
   });
-
+  
   $('input[type="text"], textarea').on('keyup', function () {
-    var textarea_value = $(".textarea-input").val();
-    if (textarea_value == '') {
-      $('.translate-output').removeClass('d-flex')
-      $('.translate-output').addClass('d-none')
-    }
+    $('.translate-output').removeClass('d-flex')
+    $('.btn-translate').removeClass('d-none')
+    $('.translate-output').addClass('d-none')    
+    $('.compare-tran').addClass('d-none')    
   });
 
   $('.btn-remove').click(function(){
     $(".textarea-input").val('');
     $('.translate-output').removeClass('d-flex')
-    $('.translate-output').addClass('d-none')
+    $('.btn-translate').removeClass('d-none')
+    $('.translate-output').addClass('d-none')   
+    $('.compare-tran').addClass('d-none')     
   })
 
   $('.btn-copy').click(function() {    
@@ -264,22 +311,33 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   $('.btn-convert').click(function() {    
     if($('.lang-input').text() == 'Thai') {      
-      $('.lang-input').html('English');
-      $('.lang-output').html('Thai');
+      change_lang('English', 'Thai');
     }else {
-      $('.lang-input').html('Thai');
-      $('.lang-output').html('English');
+      change_lang('Thai', 'English');
     }
   })
 
-  $('.btn-translate').click(async function() {    
+  $('.btn-translate').click(async function() {        
     if($(".textarea-input").val() != ''){
-      // await translate();    //Translation function
-      $('.loading').addClass('d-none')  
-      $('.btn-translate').removeClass('d-none')       
-      $('.translate-output').addClass('d-flex')
-      $('.translate-output').removeClass('d-none')
+      await translate();    //Translation function
+      $('.loading').addClass('d-none')        
+      $('.compare-tran').removeClass('d-none')    
+      $('.translate-output').removeClass('d-none')   
+      $('.translate-output').addClass('d-flex')      
     } 
+  })
+
+  $('.link-google-tran').click(function() {
+    check_lang()
+    window.open(
+      'https://translate.google.co.th/#view=home&op=translate&'
+      + 'sl=' + sl + '&' 
+      + 'tl=' + tl
+      + '&text=' + $(".textarea-input").val()
+      ,
+      '_blank' // <- This is what makes it open in a new window.
+    );
   })
     
 </script>
+
