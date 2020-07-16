@@ -70,18 +70,31 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       </div>
     </div>
   </div>
-  <div class="textarea-box translate-output d-none flex-column border">    
-    <textarea class="textarea-output px-3 py-2" id="output-translation" rows="6" readonly></textarea>
-    <div class="feature-output text-right bg-white">
-      <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
-        <i class="fa fa-clone"></i>
-      </button>
-      <button class="btn btn-sm border-0 bg-white btn-features mr-2 btn-savetxt" data-toggle="tooltip" data-placement="bottom" title="save as .txt file">
-        <i class="fa fa-download"></i>
-      </button>
+  <div class="compare-output-container d-flex flex-row">    
+    <div class="textarea-box translate-output d-none flex-column border flex-fill mr-1">
+      <div class="mt-container px-3 pt-2 bg-white border-bottom">
+        <div class="mt-title pb-1">MT Model</div>
+      </div>
+      <textarea class="textarea-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <div class="feature-output text-right bg-white">
+        <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+          <i class="fa fa-clone"></i>
+        </button>
+      </div>
+    </div>    
+    <div class="textarea-box translate-output d-none flex-column border flex-fill ml-1">    
+      <div class="gt-container px-3 pt-2 bg-white border-bottom">
+        <div class="gt-title pb-1">Google Translation Model</div>
+      </div>
+      <textarea class="textarea-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <div class="feature-output text-right bg-white">
+        <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+          <i class="fa fa-clone"></i>
+        </button>
+      </div>
     </div>
   </div>
-  <span class="compare-tran text-right d-none my-4">Compare with <a class="link-google-tran">Google Translate</a></span>
+  <!-- <span class="compare-tran text-right d-none my-4">Compare with <a class="link-google-tran">Google Translate</a></span> -->
 </div>
 
 
@@ -169,11 +182,17 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     box-shadow: none;
   }
 
-  .lang-input, .lang-output {
+  .lang-input, .lang-output, .mt-title {
     width: 5rem;
   }
 
-  .lang-input {
+  .gt-title {
+    width: 13rem;
+    border-bottom: 2px solid #4284f3;
+    color: #4284f3;
+  }
+
+  .lang-input, .mt-title {
     color: #52348c;
     height: 100%;
     border-bottom: 2px solid #52348c;
@@ -230,17 +249,30 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  async function translate() {
-    $('.loading').removeClass('d-none')
-    $('.btn-translate').addClass('d-none')
-    const input = $('.textarea-input').val()
-    console.log('input:', input)
-    check_lang()
+
+  async function googleApi(input){    
     const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
                     + sl + '&tl=' 
                     + tl + '&dt=t&q=' 
-                    + input);
-    const dataJson = await response.json();
+                    + input)
+      .then(res => res.json().then(data => ({status: res.status, body: data})))
+    if(response.status !== '200') {
+      console.log('ok')
+    }
+    return response.body
+  }
+
+  async function translate() {
+    $('.loading').removeClass('d-none')
+    $('.btn-translate').addClass('d-none')
+    const input = $('.textarea-input').val()    
+    check_lang()
+    // const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
+    //                 + sl + '&tl=' 
+    //                 + tl + '&dt=t&q=' 
+    //                 + input)
+    const dataJson = await googleApi(input)
+    
     console.log('json:', dataJson)
     var result = ''
     for(var i = 0; i < dataJson[0].length; i++){
@@ -251,7 +283,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     $('.textarea-output').val(result);
   }
 
-    function check_lang() {
+  function check_lang() {
     if($('.lang-input').text() == 'Thai'){
       sl = "th"
       tl = "en"
@@ -269,7 +301,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();       
   });
-  
+
   $('input[type="text"], textarea').on('keyup', function () {
     $('.translate-output').removeClass('d-flex')
     $('.btn-translate').removeClass('d-none')
@@ -290,23 +322,6 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");    
-  })
-
-  $('.btn-savetxt').click(function() {
-    var outputTxt = $('#output-translation').val(); 
-    if(outputTxt != ''){
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputTxt));
-      element.setAttribute('download', "translation.txt");
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    } 
-     
   })
 
   $('.btn-convert').click(function() {    
