@@ -61,6 +61,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">
       Translate      
     </button>
+    <!-- <div class="mx-auto mt-3 border-0"><i class="fa fa-angle-double-down"></i></div> -->
     <div class="loading d-none text-center mt-3 "> 
       <div class="spinner-grow spinner-left" role="status">        
       </div>
@@ -75,7 +76,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">MT Model</div>
       </div>
-      <textarea class="textarea-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-mt-output p-3" id="output-translation" rows="6" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
@@ -86,17 +87,21 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Google Translation Model</div>
       </div>
-      <textarea class="textarea-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-gt-output p-3" id="output-translation" rows="6" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
         </button>
       </div>
     </div>
-  </div>
-  <!-- <span class="compare-tran text-right d-none my-4">Compare with <a class="link-google-tran">Google Translate</a></span> -->
+  </div>  
+  <span class="compare-tran text-right d-none">
+    Compare with <a class="link-google-tran">Google Translate</a>
+  </span>	
+  <button type="button" class="btn btn-remove btn-remove-all d-none btn-light mx-auto mt-3 border border-secondary">
+    <i class="fa fa-undo"></i> Remove
+  </button>
 </div>
-
 
 <style>
   textarea { 
@@ -187,7 +192,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   .gt-title {
-    width: 13rem;
+    width: 12.5rem;
     border-bottom: 2px solid #4284f3;
     color: #4284f3;
   }
@@ -200,6 +205,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   .lang-output {
     color: #A0A0A0;
+  }
+
+  .catch-error {
+    color: #E62020;
+    font-size: 0.8rem;
+    height: 100%;
   }
 
   @keyframes spinner-grow {
@@ -241,25 +252,71 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   color: #4284f3 !important;
   cursor: pointer;
 }
+
+.compare-tran {
+  font-size: 0.9rem;  
+}
+
+@media screen and (max-width: 450px)   { 
+  .compare-output-container {
+    flex-direction: column !important;    
+  }
+  .translate-output {
+    margin: 0 !important;
+  }
+} 
 </style>
 
 <script>
   
   let sl = "", tl = ""  
+
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   async function googleApi(input){    
-    const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
+    try {
+      const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
                     + sl + '&tl=' 
                     + tl + '&dt=t&q=' 
-                    + input)
-      .then(res => res.json().then(data => ({status: res.status, body: data})))
-    if(response.status !== '200') {
-      console.log('ok')
+                    + input)  
+      return response.json()                  
+    } 
+    catch (err) {
+      $('.textarea-gt-output').addClass('catch-error');
+      $('.compare-tran').removeClass('d-none')   
+      $('.textarea-gt-output').val("429 Too Many Request Error." +
+      "\nYou have sent too many requests recently." +
+      "\n\nPlease try again later or compare directly with google translation website link below."); 
     }
-    return response.body
+  }
+
+  async function mtApi(input){    
+    const input_json = {
+      text: input,
+      source: sl,
+      target: tl
+    }         
+    const response = await fetch('https://mt-api.airesearch.in.th', {
+        method: 'POST',
+        headers: {            
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(input_json)
+        })
+        .then(response => response.text())
+        .then(data => {          
+          $('.textarea-mt-output').val(data.substring(1, data.length-1));          
+        }).catch(error => {
+          console.log(error)
+          $('.textarea-mt-output').addClass('catch-error');
+          $('.compare-tran').removeClass('d-none')   
+          $('.textarea-mt-output').val("429 Too Many Request Error." +
+          "\nYou have sent too many requests recently.");
+        });      
+        
   }
 
   async function translate() {
@@ -267,20 +324,17 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     $('.btn-translate').addClass('d-none')
     const input = $('.textarea-input').val()    
     check_lang()
-    // const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
-    //                 + sl + '&tl=' 
-    //                 + tl + '&dt=t&q=' 
-    //                 + input)
-    const dataJson = await googleApi(input)
-    
-    console.log('json:', dataJson)
-    var result = ''
-    for(var i = 0; i < dataJson[0].length; i++){
-      result += dataJson[0][i][0]
-      console.log(dataJson[0][i][0])
-    }
-    await sleep(1200);
-    $('.textarea-output').val(result);
+    const outputMT = await mtApi(input)  
+    const dataJsonGT = await googleApi(input)              
+
+    if(Array.isArray(dataJsonGT)){
+      var resultGt = ''
+      for(var i = 0; i < dataJsonGT[0].length; i++){
+        resultGt += dataJsonGT[0][i][0]        
+      }
+      await sleep(1200);
+      $('.textarea-gt-output').val(resultGt);       
+    }     
   }
 
   function check_lang() {
@@ -297,24 +351,26 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     $('.lang-input').html(original_lang);
     $('.lang-output').html(target_lang);
   }
+
+  function change_class() {
+    $('.translate-output').removeClass('d-flex')
+    $('.btn-translate').removeClass('d-none')
+    $('.translate-output').addClass('d-none')    
+    $('.compare-tran').addClass('d-none')    
+    $('.btn-remove-all').addClass('d-none')    
+  }
   
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();       
   });
 
   $('input[type="text"], textarea').on('keyup', function () {
-    $('.translate-output').removeClass('d-flex')
-    $('.btn-translate').removeClass('d-none')
-    $('.translate-output').addClass('d-none')    
-    $('.compare-tran').addClass('d-none')    
+    change_class()
   });
 
   $('.btn-remove').click(function(){
     $(".textarea-input").val('');
-    $('.translate-output').removeClass('d-flex')
-    $('.btn-translate').removeClass('d-none')
-    $('.translate-output').addClass('d-none')   
-    $('.compare-tran').addClass('d-none')     
+    change_class() 
   })
 
   $('.btn-copy').click(function() {    
@@ -335,10 +391,10 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   $('.btn-translate').click(async function() {        
     if($(".textarea-input").val() != ''){
       await translate();    //Translation function
-      $('.loading').addClass('d-none')        
-      $('.compare-tran').removeClass('d-none')    
+      $('.loading').addClass('d-none')              
       $('.translate-output').removeClass('d-none')   
-      $('.translate-output').addClass('d-flex')      
+      $('.translate-output').addClass('d-flex')    
+      $('.btn-remove-all').removeClass('d-none')   
     } 
   })
 
