@@ -321,21 +321,22 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   async function translate() {
     $('.loading').removeClass('d-none')
     $('.btn-translate').addClass('d-none')
+
+    $('.textarea-gt-output').removeClass('catch-error');
+    $('.textarea-mt-output').removeClass('catch-error');
+
     const input = $('.textarea-input').val()    
     check_lang()
-  
     const [outputMT, dataJsonGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
          
-    var resultGt = ''      
+    var resultGT = ''      
     for(var i = 0; i < dataJsonGT[0].length; i++){
-      resultGt += dataJsonGT[0][i][0]        
+      resultGT += dataJsonGT[0][i][0]        
     }      
     
-    console.log('gt: ', resultGt)
-    console.log('mt: ', outputMT)
     await sleep(1200);
-    if(resultGt) {
-      $('.textarea-gt-output').val(resultGt);  
+    if(resultGT) {
+      $('.textarea-gt-output').val(resultGT);  
     }
     if(outputMT) {
       $('.textarea-mt-output').val(outputMT); 
@@ -412,7 +413,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       + 'tl=' + tl
       + '&text=' + $(".textarea-input").val()
       ,
-      '_blank' // <- This is what makes it open in a new window.
+      '_blank' 
     );
   })
     
