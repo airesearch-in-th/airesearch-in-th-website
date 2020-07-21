@@ -58,7 +58,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         <i class="fas fa-trash-alt"></i>
       </button>
     </div>
-    <button type="button" class="btn mx-auto mt-3 border-0 btn-translate">
+    <button type="button" class="btn mx-auto mt-3 border-0 btn-translate btn-translate-fn">
       Translate      
     </button>
     <!-- <div class="mx-auto mt-3 border-0"><i class="fa fa-angle-double-down"></i></div> -->
@@ -98,9 +98,14 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   <span class="compare-tran text-right d-none">
     Compare with <a class="link-google-tran">Google Translate</a>
   </span>	
-  <button type="button" class="btn btn-remove btn-remove-all d-none btn-light mx-auto mt-3 border border-secondary">
-    <i class="fa fa-undo"></i> Remove
-  </button>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-retry btn-light btn-translate-fn mt-3 border border-secondary m-2 rounded-20 d-none">
+      <i class="fa fa-undo"></i> Try Again
+    </button>
+    <button type="button" class="btn btn-remove btn-remove-all btn-light mt-3 border border-secondary m-2 d-none">
+      <i class="fa fa-trash-alt"></i> Remove
+    </button>
+  </div>
 </div>
 
 <style>
@@ -257,6 +262,13 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   font-size: 0.9rem;  
 }
 
+.btn-remove-all, .btn-retry {
+  border-radius: 20px;
+  width: 7rem;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
 @media screen and (max-width: 450px)   { 
   .compare-output-container {
     flex-direction: column !important;    
@@ -285,7 +297,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     } 
     catch (err) {
       $('.textarea-gt-output').addClass('catch-error');
-      $('.compare-tran').removeClass('d-none')   
+      $('.compare-tran').removeClass('d-none')         
       $('.textarea-gt-output').val("429 Too Many Request Error." +
       "\nYou have sent too many requests recently." +
       "\n\nPlease try again later or compare directly with google translation website link below."); 
@@ -309,8 +321,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         })
       return response.json()      
     } catch (err) {    
-      $('.textarea-mt-output').addClass('catch-error');
-      $('.compare-tran').removeClass('d-none')   
+      $('.textarea-mt-output').addClass('catch-error');            
       $('.textarea-mt-output').val("429 Too Many Request Error." +
       "\nYou have sent too many requests recently."); 
       console.log('mterr: ', err)  
@@ -321,9 +332,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   async function translate() {
     $('.loading').removeClass('d-none')
     $('.btn-translate').addClass('d-none')
-
+    $('.compare-tran').addClass('d-none')        
     $('.textarea-gt-output').removeClass('catch-error');
-    $('.textarea-mt-output').removeClass('catch-error');
+    $('.textarea-mt-output').removeClass('catch-error');    
 
     const input = $('.textarea-input').val()    
     check_lang()
@@ -359,12 +370,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     $('.lang-output').html(target_lang);
   }
 
-  function change_class() {
+  function change_class() {     
     $('.translate-output').removeClass('d-flex')
     $('.btn-translate').removeClass('d-none')
     $('.translate-output').addClass('d-none')    
-    $('.compare-tran').addClass('d-none')    
-    $('.btn-remove-all').addClass('d-none')    
+    $('.btn-remove-all').addClass('d-none')   
+    $('.btn-retry').addClass('d-none')    
   }
   
   $(document).ready(function(){
@@ -395,13 +406,14 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     }
   })
 
-  $('.btn-translate').click(async function() {        
+  $('.btn-translate-fn').click(async function() {        
     if($(".textarea-input").val() != ''){
       await translate();    //Translation function
       $('.loading').addClass('d-none')              
       $('.translate-output').removeClass('d-none')   
       $('.translate-output').addClass('d-flex')    
-      $('.btn-remove-all').removeClass('d-none')   
+      $('.btn-remove-all').removeClass('d-none')  
+      $('.btn-retry').removeClass('d-none')   
     } 
   })
 
