@@ -280,7 +280,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       const response = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
                     + sl + '&tl=' 
                     + tl + '&dt=t&q=' 
-                    + input)  
+                    + input)                
       return response.json()                  
     } 
     catch (err) {
@@ -297,8 +297,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       text: input,
       source: sl,
       target: tl
-    }         
-    const response = await fetch('https://mt-api.airesearch.in.th', {
+    }      
+    try {
+      const response = await fetch('https://mt-api.airesearch.in.th', {
         method: 'POST',
         headers: {            
           'Accept': 'application/json',
@@ -306,16 +307,14 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         },
         body: JSON.stringify(input_json)
         })
-        .then(response => response.text())
-        .then(data => {          
-          $('.textarea-mt-output').val(data.substring(1, data.length-1));          
-        }).catch(error => {
-          console.log(error)
-          $('.textarea-mt-output').addClass('catch-error');
-          $('.compare-tran').removeClass('d-none')   
-          $('.textarea-mt-output').val("429 Too Many Request Error." +
-          "\nYou have sent too many requests recently.");
-        });      
+      return response.json()      
+    } catch (err) {    
+      $('.textarea-mt-output').addClass('catch-error');
+      $('.compare-tran').removeClass('d-none')   
+      $('.textarea-mt-output').val("429 Too Many Request Error." +
+      "\nYou have sent too many requests recently."); 
+      console.log('mterr: ', err)  
+    }    
         
   }
 
@@ -324,17 +323,24 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     $('.btn-translate').addClass('d-none')
     const input = $('.textarea-input').val()    
     check_lang()
-    const outputMT = await mtApi(input)  
-    const dataJsonGT = await googleApi(input)              
-
-    if(Array.isArray(dataJsonGT)){
-      var resultGt = ''
-      for(var i = 0; i < dataJsonGT[0].length; i++){
-        resultGt += dataJsonGT[0][i][0]        
-      }
-      await sleep(1200);
-      $('.textarea-gt-output').val(resultGt);       
-    }     
+  
+    const [outputMT, dataJsonGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
+         
+    var resultGt = ''      
+    for(var i = 0; i < dataJsonGT[0].length; i++){
+      resultGt += dataJsonGT[0][i][0]        
+    }      
+    
+    console.log('gt: ', resultGt)
+    console.log('mt: ', outputMT)
+    await sleep(1200);
+    if(resultGt) {
+      $('.textarea-gt-output').val(resultGt);  
+    }
+    if(outputMT) {
+      $('.textarea-mt-output').val(outputMT); 
+    }
+                
   }
 
   function check_lang() {
