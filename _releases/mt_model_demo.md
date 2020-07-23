@@ -59,7 +59,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       </button>
     </div>
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-translate btn-light btn-translate-fn border border-secondary my-2 mx-3">
+      <button type="button" class="btn btn-translate btn-light border border-secondary my-2 mx-3" id="btn-translate">
         <i class="fa fa-globe"></i> Translate
       </button>
       <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none">
@@ -76,7 +76,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   </div>
   </div>
   <div class="compare-output-container d-flex flex-row mb-2">    
-    <div class="textarea-result translate-output d-none flex-column border flex-fill mr-1 w-100">
+    <div class="textarea-mt-result translate-output d-none flex-column border flex-fill mr-1 w-100">
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">MT Model</div>
       </div>
@@ -87,7 +87,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         </button>
       </div>
     </div>    
-    <div class="textarea-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
+    <div class="textarea-gt-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Google Translation Model</div>
       </div>
@@ -273,6 +273,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   font-size: 0.9rem;  
 }
 
+.translate-output {
+  height: 14rem;
+}
 
 @media screen and (max-width: 500px)   { 
   .compare-output-container {
@@ -280,9 +283,11 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
   .translate-output {
     margin: 0 !important;
+    height: 11rem;
   }
-  .gt-title, .mt-title {
-    font-size: 0.9rem;
+  .btn-translate, .btn-remove-all {
+    font-size: 0.8rem;
+    width: 6rem;
   }
 } 
 </style>
@@ -304,8 +309,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     catch (err) {
       $('.textarea-gt-output').addClass('catch-error');
       $('.compare-tran').removeClass('d-none')         
-      $('.textarea-gt-output').val("429: Too Many Request Error." +
-      "\nYou have sent too many requests recently." +
+      $('.textarea-gt-output').val(      
+      "You have sent too many requests recently." +
       "\n\nPlease try again later or compare directly with google translation website link below."); 
     }
   }
@@ -326,8 +331,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     } catch (err) {     
       console.log(err)     
       $('.textarea-mt-output').addClass('catch-error');            
-      $('.textarea-mt-output').val("503: Service Temporarily Unavailable." +
-      "\nYou have sent a request for exceeding the limit rate." + 
+      $('.textarea-mt-output').val(
+      "You have sent a request for exceeding the limit rate." + 
       "\n\nPlease try again in a few seconds.");       
     }    
         
@@ -409,7 +414,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     }
   })
 
-  $('.btn-translate-fn').click(async function() {        
+  $('#btn-translate').click(async function() {        
     if($(".textarea-input").val() != ''){
       await translate();    //Translation function
       $('.loading').addClass('d-none')              
