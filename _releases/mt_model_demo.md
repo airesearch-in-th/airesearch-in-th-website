@@ -46,11 +46,11 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 <div class="test1 w-100 d-flex flex-column">  
   <div class="textarea-box d-flex flex-column pt-2 pb-3">              
     <div class="lang-translate d-flex align-items-center justify-content-center border border-bottom-0 bg-white">
-      <div class="lang-input font-weight-bold text-center d-flex align-items-center justify-content-center">Thai</div>
-      <button class="btn my-0 mx-5 btn-convert p-0 bg-white">
+      <div class="lang-input font-weight-bold text-center d-flex align-items-center justify-content-center" id="lang-input">Thai</div>
+      <button class="btn my-0 mx-5 btn-convert p-0 bg-white" id="btn-convert">
         <i class="fas fa-exchange-alt"></i>          
       </button>
-      <div class="lang-output font-weight-bold text-center">English</div>
+      <div class="lang-output font-weight-bold text-center" id="lang-output">English</div>
     </div>    
     <textarea class="textarea-input px-3 py-2 border border-bottom-0" rows="5"></textarea>
     <div class="feature-input text-right w-100 bg-white border border-top-0">
@@ -62,10 +62,10 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <button type="button" class="btn btn-translate btn-light border border-secondary my-2 mx-3" id="btn-translate">
         <i class="fa fa-globe"></i> Translate
       </button>
-      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none">
+      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none" id="btn-remove-all">
         <i class="fa fa-trash-alt"></i> Remove
       </button>
-      <div class="loading d-none text-center my-2 mx-3"> 
+      <div class="loading d-none text-center my-2 mx-3" id="loading"> 
         <div class="spinner-grow spinner-left" role="status">        
         </div>
         <div class="spinner-grow spinner-center" role="status">        
@@ -80,9 +80,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">MT Model</div>
       </div>
-      <textarea class="textarea-mt-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-mt-output p-3" id="output-mt-translation" rows="6" readonly></textarea>
       <div class="feature-output text-right bg-white">
-        <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
         </button>
       </div>
@@ -91,16 +91,16 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Google Translation Model</div>
       </div>
-      <textarea class="textarea-gt-output p-3" id="output-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-gt-output p-3" id="output-gt-translation" rows="6" readonly></textarea>
       <div class="feature-output text-right bg-white">
-        <button class="btn btn-sm border-0 bg-white btn-features btn-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
         </button>
       </div>
     </div>
   </div>  
-  <span class="compare-tran text-right d-none">
-    Compare with <a class="link-google-tran">Google Translate</a>
+  <span class="compare-tran text-right d-none" id="compare-translate">
+    Compare with <a class="link-google-tran" id="link-google-translate">Google Translate</a>
   </span>	  
 </div>
 
@@ -307,8 +307,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       return response.data                
     } 
     catch (err) {
-      $('.textarea-gt-output').addClass('catch-error');
-      $('.compare-tran').removeClass('d-none')         
+      $('#compare-translate').removeClass('d-none')      
+      $('.textarea-gt-output').addClass('catch-error');         
       $('.textarea-gt-output').val(      
       "You have sent too many requests recently." +
       "\n\nPlease try again later or compare directly with google translation website link below."); 
@@ -339,10 +339,10 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   async function translate() {
-    $('.loading').removeClass('d-none')
-    $('.btn-translate').addClass('d-none')
-    $('.btn-remove-all').addClass('d-none')
-    $('.compare-tran').addClass('d-none')         
+    $('#loading').removeClass('d-none')
+    $('#btn-translate').addClass('d-none')
+    $('#btn-remove-all').addClass('d-none')
+    $('#compare-translate').addClass('d-none')         
 
     const input = $('.textarea-input').val()    
     check_lang()
@@ -366,7 +366,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   function check_lang() {
-    if($('.lang-input').text() == 'Thai'){
+    if($('#lang-input').text() == 'Thai'){
       sl = "th"
       tl = "en"
     } else {
@@ -376,14 +376,14 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   function change_lang(original_lang, target_lang) {
-    $('.lang-input').html(original_lang);
-    $('.lang-output').html(target_lang);
+    $('#lang-input').html(original_lang);
+    $('#lang-output').html(target_lang);
   }
 
   function change_class() {     
     $('.textarea-gt-output').val('')
     $('.textarea-mt-output').val('')
-    $('.btn-translate').removeClass('d-none')              
+    $('#btn-translate').removeClass('d-none')              
   }
   
   $(document).ready(function(){
@@ -399,15 +399,22 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     change_class() 
   })
 
-  $('.btn-copy').click(function() {    
-    var copyText = document.getElementById('output-translation');
+  $('#btn-mt-copy').click(function() {    
+    var copyText = document.getElementById('output-mt-translation');
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");    
   })
 
-  $('.btn-convert').click(function() {    
-    if($('.lang-input').text() == 'Thai') {      
+  $('#btn-gt-copy').click(function() {    
+    var copyText = document.getElementById('output-gt-translation');
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");    
+  })
+
+  $('#btn-convert').click(function() {    
+    if($('#lang-input').text() == 'Thai') {      
       change_lang('English', 'Thai');
     }else {
       change_lang('Thai', 'English');
@@ -417,15 +424,15 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   $('#btn-translate').click(async function() {        
     if($(".textarea-input").val() != ''){
       await translate();    //Translation function
-      $('.loading').addClass('d-none')              
+      $('#loading').addClass('d-none')              
       $('.translate-output').removeClass('d-none')   
       $('.translate-output').addClass('d-flex')    
-      $('.btn-remove-all').removeClass('d-none')  
-      $('.btn-translate').removeClass('d-none')   
+      $('#btn-remove-all').removeClass('d-none')  
+      $('#btn-translate').removeClass('d-none')   
     } 
   })
 
-  $('.link-google-tran').click(function() {
+  $('#link-google-translate').click(function() {
     check_lang()
     const input = $(".textarea-input").val()
     window.open(
