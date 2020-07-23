@@ -58,10 +58,22 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
         <i class="fas fa-trash-alt"></i>
       </button>
     </div>
-    <!-- <button type="button" class="btn mx-auto mt-3 border-0 btn-translate btn-translate-fn">
-      Translate      
-    </button> -->
-    <!-- <div class="mx-auto mt-3 border-0"><i class="fa fa-angle-double-down"></i></div> -->
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-translate btn-light btn-translate-fn border border-secondary my-2 mx-3">
+        <i class="fa fa-globe"></i> Translate
+      </button>
+      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none">
+        <i class="fa fa-trash-alt"></i> Remove
+      </button>
+      <div class="loading d-none text-center my-2 mx-3"> 
+        <div class="spinner-grow spinner-left" role="status">        
+        </div>
+        <div class="spinner-grow spinner-center" role="status">        
+        </div>
+        <div class="spinner-grow spinner-right" role="status">        
+      </div>
+    </div>
+  </div>
   </div>
   <div class="compare-output-container d-flex flex-row mb-2">    
     <div class="textarea-result translate-output d-none flex-column border flex-fill mr-1 w-100">
@@ -89,23 +101,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   </div>  
   <span class="compare-tran text-right d-none">
     Compare with <a class="link-google-tran">Google Translate</a>
-  </span>	
-  <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-translate btn-light btn-translate-fn border border-secondary m-2">
-      <i class="fa fa-globe"></i> Translate
-    </button>
-    <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary m-2 d-none">
-      <i class="fa fa-trash-alt"></i> Remove
-    </button>
-    <div class="loading d-none text-center mt-3 "> 
-      <div class="spinner-grow spinner-left" role="status">        
-      </div>
-      <div class="spinner-grow spinner-center" role="status">        
-      </div>
-      <div class="spinner-grow spinner-right" role="status">        
-      </div>
-    </div>
-  </div>
+  </span>	  
 </div>
 
 <style>
@@ -133,28 +129,26 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     transition: all 0.3s;
     background-color: #303030;
     color: #ffffff;
-    outline: 0;
-    border-radius: 20px;
+    outline: 0;    
     width: 7rem;
     font-size: 0.9rem;
+  }
+
+  .btn-remove-all {
+    background: #ffffff;
+    color: #303030;
   }
 
   .btn-translate:hover, .btn-translate:focus {    
     background: #52348c;
     color: #ffffff;
-    transition: all 0.5s;
+    transition: all 0.3s;
     box-shadow: none;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);    
   }
 
   .btn-remove-all:hover, .btn-remove-all:focus {    
-    background: #ffffff;
-    color: #303030;
-    transition: all 0.5s;
+    transition: all 0.3s;
     box-shadow: none;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
   }
 
   .btn-feature:hover, .btn-feature:focus {
@@ -203,6 +197,10 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     color: #303030;
     outline: none;
     box-shadow: none;
+  }
+
+  .lang-input {
+    font-size: 1.1rem;
   }
 
   .lang-input, .lang-output, .mt-title {
@@ -300,10 +298,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   async function googleApi(input){    
     try {
-      const response = await axios.get('https://translate.googleapis.com/translate_a/single?client=gtx&sl='
-                    + sl + '&tl=' 
-                    + tl + '&dt=t&q=' 
-                    + input)             
+      const response = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${input}`)          
       return response.data                
     } 
     catch (err) {
@@ -381,19 +376,16 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   function change_class() {     
-    // $('.translate-output').removeClass('d-flex')
-    // $('.translate-output').addClass('d-none') 
     $('.textarea-gt-output').val('')
     $('.textarea-mt-output').val('')
-    $('.btn-translate').removeClass('d-none')      
-    $('.btn-remove-all').addClass('d-none')         
+    $('.btn-translate').removeClass('d-none')              
   }
   
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();       
   });
 
-  $('input[type="text"], textarea').on('keyup', function () {
+  $('input[type="text"], textarea').on('input', function () {
     change_class()
   });
 
@@ -430,11 +422,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
   $('.link-google-tran').click(function() {
     check_lang()
+    const input = $(".textarea-input").val()
     window.open(
-      'https://translate.google.co.th/#view=home&op=translate&'
-      + 'sl=' + sl + '&' 
-      + 'tl=' + tl
-      + '&text=' + $(".textarea-input").val()
+      `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
       ,
       '_blank' 
     );
