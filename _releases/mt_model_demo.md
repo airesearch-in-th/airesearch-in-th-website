@@ -80,7 +80,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">MT Model</div>
       </div>
-      <textarea class="textarea-mt-output p-3" id="output-mt-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-mt-output p-3" id="output-mt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
@@ -91,7 +91,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Google Translation Model</div>
       </div>
-      <textarea class="textarea-gt-output p-3" id="output-gt-translation" rows="6" readonly></textarea>
+      <textarea class="textarea-gt-output p-3" id="output-gt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
@@ -106,8 +106,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
 
 <style>
   textarea { 
-    resize: none;
-    border: 1px solid #ffffff;        
+    border: 1px solid #ffffff;   
+    resize: none;                
   }
   
   textarea:focus {
@@ -273,17 +273,12 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   font-size: 0.9rem;  
 }
 
-.translate-output {
-  height: 14rem;
-}
-
 @media screen and (max-width: 500px)   { 
   .compare-output-container {
     flex-direction: column !important;    
   }
   .translate-output {
     margin: 0 !important;
-    height: 11rem;
   }
   .btn-translate, .btn-remove-all {
     font-size: 0.8rem;
@@ -291,6 +286,7 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 } 
 </style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
 <script>
@@ -308,8 +304,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     } 
     catch (err) {
       $('#compare-translate').removeClass('d-none')      
-      $('.textarea-gt-output').addClass('catch-error');         
-      $('.textarea-gt-output').val(      
+      $('#output-gt-translation').addClass('catch-error');         
+      $('#output-gt-translation').val(      
       "You have sent too many requests recently." +
       "\n\nPlease try again later or compare directly with google translation website link below."); 
     }
@@ -330,8 +326,8 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       return response.data
     } catch (err) {     
       console.log(err)     
-      $('.textarea-mt-output').addClass('catch-error');            
-      $('.textarea-mt-output').val(
+      $('#output-mt-translation').addClass('catch-error');            
+      $('#output-mt-translation').val(
       "You have sent a request for exceeding the limit rate." + 
       "\n\nPlease try again in a few seconds.");       
     }    
@@ -339,9 +335,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   async function translate() {
-    $('#loading').removeClass('d-none')
-    $('#btn-translate').addClass('d-none')
+    $('#loading').removeClass('d-none')    
     $('#btn-remove-all').addClass('d-none')
+    $('#btn-translate').addClass('d-none')  
     $('#compare-translate').addClass('d-none')         
 
     const input = $('.textarea-input').val()    
@@ -355,16 +351,16 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     
     await sleep(1200);
     if(resultGT) {
-      $('.textarea-gt-output').removeClass('catch-error');         
-      $('.textarea-gt-output').val(resultGT);  
+      $('#output-gt-translation').removeClass('catch-error');         
+      $('#output-gt-translation').val(resultGT)
     }
     if(resultMT) {
-      $('.textarea-mt-output').removeClass('catch-error');
-      $('.textarea-mt-output').val(resultMT); 
+      $('#output-mt-translation').removeClass('catch-error');
+      $('#output-mt-translation').val(resultMT)
     }
                 
   }
-
+  
   function check_lang() {
     if($('#lang-input').text() == 'Thai'){
       sl = "th"
@@ -381,14 +377,23 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   }
 
   function change_class() {     
-    $('.textarea-gt-output').val('')
-    $('.textarea-mt-output').val('')
-    $('#btn-translate').removeClass('d-none')              
+    $('#output-gt-translation').val('')
+    $('#output-mt-translation').val('')
+    $('#btn-translate').removeClass('d-none')   
+    $('#output-gt-translation').height('auto')
+    $('#output-mt-translation').height('auto')      
   }
   
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();       
+    $('[data-toggle="tooltip"]').tooltip();         
   });
+
+  $('textarea').on('change input', function() {
+    $(this).height('auto'); 
+    if($(this)[0].scrollHeight >= 157){
+      $(this).height((this.scrollHeight - 20) + 'px')      
+    }   
+  }); 
 
   $('input[type="text"], textarea').on('input', function () {
     change_class()
@@ -400,14 +405,14 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
   })
 
   $('#btn-mt-copy').click(function() {    
-    var copyText = document.getElementById('output-mt-translation');
+    var copyText = $('#output-mt-translation')[0]
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");    
   })
 
   $('#btn-gt-copy').click(function() {    
-    var copyText = document.getElementById('output-gt-translation');
+    var copyText = $('#output-gt-translation')[0]
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");    
@@ -421,12 +426,26 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
     }
   })
 
-  $('#btn-translate').click(async function() {        
+  $('#btn-translate').click(async function() {       
     if($(".textarea-input").val() != ''){
-      await translate();    //Translation function
+      change_class()
+      await translate();  
       $('#loading').addClass('d-none')              
       $('.translate-output').removeClass('d-none')   
-      $('.translate-output').addClass('d-flex')    
+      $('.translate-output').addClass('d-flex')   
+      const outpuGT = $('#output-gt-translation')
+      const outpuMT = $('#output-mt-translation')
+      const heightGT = outpuGT[0].scrollHeight-20
+      const heightMT = outpuMT[0].scrollHeight-20
+      if(heightGT > heightMT) {        
+        console.log('g')
+        outpuGT.height(heightGT+'px')        
+        outpuMT.height(heightGT+'px')
+      } else {        
+        console.log('m')
+        outpuMT.height(heightMT+'px')
+        outpuGT.height(heightMT+'px')
+      }    
       $('#btn-remove-all').removeClass('d-none')  
       $('#btn-translate').removeClass('d-none')   
     } 
@@ -440,7 +459,9 @@ Aenean malesuada blandit elementum. Curabitur id tortor turpis. Phasellus ut fel
       ,
       '_blank' 
     );
-  })
+  })  
+
+  
     
 </script>
 
