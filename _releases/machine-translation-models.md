@@ -122,7 +122,7 @@ and whipped cream from the starbucks at the birchville mall.
       </button>
       <div class="lang-output font-weight-bold text-center" id="lang-output">English</div>
     </div>    
-    <textarea class="textarea-input px-3 py-2 border border-bottom-0" rows="5"></textarea>
+    <textarea class="textarea-input px-3 py-2 border border-bottom-0 data-hj-allow" rows="5"></textarea>
     <div class="feature-input text-right w-100 bg-white border border-top-0">
       <button type="button" class="btn btn-sm bg-white mr-3 border-0 btn-features btn-remove" data-toggle="tooltip" data-placement="bottom" title="remove all">
         <i class="fas fa-trash-alt"></i>
@@ -150,7 +150,7 @@ and whipped cream from the starbucks at the birchville mall.
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">MT Model</div>
       </div>
-      <textarea class="textarea-mt-output p-3" id="output-mt-translation" readonly></textarea>
+      <textarea class="textarea-mt-output p-3 data-hj-allow" id="output-mt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
@@ -161,7 +161,7 @@ and whipped cream from the starbucks at the birchville mall.
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Google Translation Model</div>
       </div>
-      <textarea class="textarea-gt-output p-3" id="output-gt-translation" readonly></textarea>
+      <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
