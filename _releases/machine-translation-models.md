@@ -114,28 +114,20 @@ and whipped cream from the starbucks at the birchville mall.
 ## ทดลองใช้โมเดล
 
 <div id="model-demo" class="test1 w-100 d-flex flex-column">  
-  <div class="textarea-box d-flex flex-column pt-2 pb-3">              
-    <div class="lang-translate d-flex align-items-center justify-content-center border border-bottom-0 bg-white">
-      <div class="lang-input font-weight-bold text-center d-flex align-items-center justify-content-center" id="lang-input">Thai</div>
-      <button class="btn my-0 mx-5 btn-convert p-0 bg-white" id="btn-convert">
-        <i class="fas fa-exchange-alt"></i>          
-      </button>
-      <div class="lang-output font-weight-bold text-center" id="lang-output">English</div>
-    </div>    
-    <textarea class="textarea-input px-3 py-2 border border-bottom-0" rows="5"></textarea>
-    <div class="feature-input text-right w-100 bg-white border border-top-0">
-      <button type="button" class="btn btn-sm bg-white mr-3 border-0 btn-features btn-remove" data-toggle="tooltip" data-placement="bottom" title="remove all">
-        <i class="fas fa-trash-alt"></i>
-      </button>
-    </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-select-lang border bg-white selected-lang" id="thai-lang">Thai -> English</button>    
+    <button type="button" class="btn btn-select-lang border bg-white" id="eng-lang">English -> Thai</button>
+  </div>
+  <div class="textarea-box d-flex flex-column pb-3">              
+    <textarea class="textarea-input py-2 px-3 border" rows="5"></textarea>
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-translate btn-light border border-secondary my-2 mx-3" id="btn-translate">
-        <i class="fa fa-globe"></i> Translate
+      <button type="button" class="btn btn-translate btn-light border border-secondary m-3 d-flex justify-content-center align-items-center" id="btn-translate">
+        <i class="fa fa-language icon-btn pr-1"></i> Submit
       </button>
-      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none" id="btn-remove-all">
-        <i class="fa fa-trash-alt"></i> Remove
+      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary m-3 d-none" id="btn-remove-all">
+        <i class="fa fa-trash-alt"></i> Reset
       </button>
-      <div class="loading d-none text-center my-2 mx-3" id="loading"> 
+      <div class="loading d-none text-center m-3" id="loading"> 
         <div class="spinner-grow spinner-left" role="status">        
         </div>
         <div class="spinner-grow spinner-center" role="status">        
@@ -148,7 +140,7 @@ and whipped cream from the starbucks at the birchville mall.
   <div class="compare-output-container d-flex flex-row mb-2">    
     <div class="textarea-mt-result translate-output d-none flex-column border flex-fill mr-1 w-100">
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
-        <div class="mt-title pb-1">MT Model</div>
+        <div class="mt-title pb-1">Our result</div>
       </div>
       <textarea class="textarea-mt-output p-3" id="output-mt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
@@ -159,7 +151,7 @@ and whipped cream from the starbucks at the birchville mall.
     </div>    
     <div class="textarea-gt-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
-        <div class="gt-title pb-1">Google Translation Model</div>
+        <div class="gt-title pb-1">Result from Google Translate</div>
       </div>
       <textarea class="textarea-gt-output p-3" id="output-gt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
@@ -184,16 +176,22 @@ and whipped cream from the starbucks at the birchville mall.
     outline: none !important;    
   }
 
-  .lang-translate {
-    height: 3rem;
+  .btn-select-lang {    
+    width: 10rem;
+    font-size: 0.9rem;
   }
 
-  .btn-convert {    
-    transition: all 0.5s;
-    cursor: pointer;
-    color: #A0A0A0;        
+  .btn-select-lang:hover, .btn-select-lang:focus {
+    background-color: #52348c !important;
+    color: #ffffff;
+    box-shadow: none;
+    outline: none;    
   }
 
+  .selected-lang {
+    background-color: #52348c !important;
+    color: #ffffff;
+  }
 
   .btn-remove-all, .btn-translate {   
     transition: all 0.3s;
@@ -202,6 +200,10 @@ and whipped cream from the starbucks at the birchville mall.
     outline: 0;    
     width: 7rem;
     font-size: 0.9rem;
+  }
+
+  .icon-btn {
+    font-size: 1.5rem;
   }
 
   .btn-remove-all {
@@ -229,7 +231,6 @@ and whipped cream from the starbucks at the birchville mall.
     box-shadow: none;
   }
 
-  .btn-convert:hover, .btn-convert:focus,
   .btn-remove:hover, .btn-remove:focus {    
     outline: none;
     box-shadow: none;
@@ -269,28 +270,18 @@ and whipped cream from the starbucks at the birchville mall.
     box-shadow: none;
   }
 
-  .lang-input {
-    font-size: 1.1rem;
-  }
-
-  .lang-input, .lang-output, .mt-title {
+  .mt-title {
     width: 5rem;
-  }
-
-  .gt-title {
-    width: 12.5rem;
-    border-bottom: 2px solid #4284f3;
-    color: #4284f3;
-  }
-
-  .lang-input, .mt-title {
     color: #52348c;
     height: 100%;
     border-bottom: 2px solid #52348c;
   }
 
-  .lang-output {
-    color: #A0A0A0;
+  .gt-title {
+    white-space: nowrap;
+    width: 14.5rem;
+    border-bottom: 2px solid #4284f3;
+    color: #4284f3;
   }
 
   .catch-error {
@@ -361,15 +352,17 @@ and whipped cream from the starbucks at the birchville mall.
 
 <script>
   
-  let sl = "", tl = ""  
+  let sl = "th", tl = "en" 
 
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function googleApi(input){    
+  async function googleApi(input){  
+    const res = ''
     try {
-      const response = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${input}`)          
+      const uri = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(input)}`
+      const response = await axios.get(uri)         
       return response.data                
     } 
     catch (err) {
@@ -381,13 +374,13 @@ and whipped cream from the starbucks at the birchville mall.
     }
   }
 
-  async function mtApi(input){    
+  async function mtApi(input){   
     const input_json = {
       text: input,
       source: sl,
       target: tl
-    }      
-    try {
+    }          
+    try {      
       const response = await axios.post('https://mt-api.airesearch.in.th', JSON.stringify(input_json), {                  
         headers: {                            
           'Content-Type': 'application/json',  
@@ -407,17 +400,16 @@ and whipped cream from the starbucks at the birchville mall.
   async function translate() {
     $('#loading').removeClass('d-none')    
     $('#btn-remove-all').addClass('d-none')
-    $('#btn-translate').addClass('d-none')  
+    $('#btn-translate').removeClass('d-flex').addClass('d-none')
     $('#compare-translate').addClass('d-none')         
 
     const input = $('.textarea-input').val()    
-    check_lang()
     const [resultMT, dataJsonGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
          
     var resultGT = ''      
     for(var i = 0; i < dataJsonGT[0].length; i++){
       resultGT += dataJsonGT[0][i][0]        
-    }        
+    }            
     
     await sleep(1200);
     if(resultGT) {
@@ -430,26 +422,24 @@ and whipped cream from the starbucks at the birchville mall.
     }
                 
   }
-  
-  function check_lang() {
-    if($('#lang-input').text() == 'Thai'){
-      sl = "th"
-      tl = "en"
-    } else {
-      sl = "en"
-      tl = "th"
-    }
-  }
+  $('#thai-lang').click(function() {
+    sl = "th"
+    tl = "en"
+    $('#eng-lang').removeClass('selected-lang')
+    $(this).addClass('selected-lang')
+  })
 
-  function change_lang(original_lang, target_lang) {
-    $('#lang-input').html(original_lang);
-    $('#lang-output').html(target_lang);
-  }
+  $('#eng-lang').click(function() {
+    sl = "en"
+    tl = "th"
+    $('#thai-lang').removeClass('selected-lang')
+    $(this).addClass('selected-lang')
+  })
 
   function change_class() {     
     $('#output-gt-translation').val('')
     $('#output-mt-translation').val('')
-    $('#btn-translate').removeClass('d-none')   
+    $('#btn-translate').removeClass('d-none').addClass('d-flex')   
     $('#output-gt-translation').height('auto')
     $('#output-mt-translation').height('auto')      
   }
@@ -488,14 +478,6 @@ and whipped cream from the starbucks at the birchville mall.
     document.execCommand("copy");    
   })
 
-  $('#btn-convert').click(function() {    
-    if($('#lang-input').text() == 'Thai') {      
-      change_lang('English', 'Thai');
-    }else {
-      change_lang('Thai', 'English');
-    }
-  })
-
   $('#btn-translate').click(async function() {       
     if($(".textarea-input").val() != ''){
       change_class()
@@ -507,22 +489,19 @@ and whipped cream from the starbucks at the birchville mall.
       const outpuMT = $('#output-mt-translation')
       const heightGT = outpuGT[0].scrollHeight-20
       const heightMT = outpuMT[0].scrollHeight-20
-      if(heightGT > heightMT) {        
-        console.log('g')
+      if(heightGT > heightMT) {                
         outpuGT.height(heightGT+'px')        
         outpuMT.height(heightGT+'px')
-      } else {        
-        console.log('m')
+      } else {                
         outpuMT.height(heightMT+'px')
         outpuGT.height(heightMT+'px')
       }    
       $('#btn-remove-all').removeClass('d-none')  
-      $('#btn-translate').removeClass('d-none')   
+      $('#btn-translate').removeClass('d-none').addClass('d-flex') 
     } 
   })
 
-  $('#link-google-translate').click(function() {
-    check_lang()
+  $('#link-google-translate').click(function() {    
     const input = $(".textarea-input").val()
     window.open(
       `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
