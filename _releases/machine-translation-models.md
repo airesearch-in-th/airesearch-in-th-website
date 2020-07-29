@@ -66,9 +66,9 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 ## ผลการทดสอบ
 
-การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดล Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคจาก `scb-mt-en-th-2020` (SCB_1M), ชุดข้อมูลคู่ประโยคจาก Open Parallel Corpus [Tiedemann et al. 2012] ในส่วนที่เป็นคู่ประโยคภาษาอังกฤษและไทย ([mt-opus](https://github.com/vistec-AI/mt-opus)), ชุดข้อมูลคู่ประโยคที่รวมทั้ง `scb-mt-en-th-2020` และ `mt-opus` (SCB_1M + MT_OPUS), ผลการแปลของโมเดลแปลภาษาเฉพาะการแปลจากอังกฤษ→ไทย จาก AI for Thai (aiforthai.in.th) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) 
+การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดล Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคจาก `scb-mt-en-th-2020` (SCB_1M), ชุดข้อมูลคู่ประโยคจาก Open Parallel Corpus [Tiedemann et al. 2012] ในส่วนที่เป็นคู่ประโยคภาษาอังกฤษและไทย ([mt-opus](https://github.com/vistec-AI/mt-opus)), ชุดข้อมูลคู่ประโยคที่รวมทั้ง `scb-mt-en-th-2020` และ `mt-opus` (SCB_1M + MT_OPUS), ผลการแปลของโมเดลแปลภาษาเฉพาะการแปลจากอังกฤษ→ไทย จาก AI for Thai (aiforthai.in.th) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020)
 
-สำหรับคู่ประโยคทีใช้ทดสอบ เป็นชุดข้อมูลทดสอบจาก IWSLT 2015 ประกอบด้วย 46 Transcript ที่มีการถอดคำและแปลในภาษาอังกฤษและไทย จาก TED Talk  ระหว่างปี 2010 ถึง 2013 (tst2010-2013) รวมเป็น 4,242 ประโยค โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
+สำหรับคู่ประโยคทีใช้ทดสอบ เป็นชุดข้อมูลทดสอบจาก IWSLT 2015 ประกอบด้วย 46 Transcript ที่มีการถอดคำและแปลในภาษาอังกฤษและไทย จาก TED Talk ระหว่างปี 2010 ถึง 2013 (tst2010-2013) รวมเป็น 4,242 ประโยค โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
 
 ![Evaluation Result](/assets/img/releases/machine_translation_models/eval_iwslt2015.png)
 
@@ -110,3 +110,424 @@ and whipped cream from the starbucks at the birchville mall.
 - Tiedemann, J. (2012). Parallel Data, Tools and Interfaces in OPUS. LREC.
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 - Post, M. (2018). A Call for Clarity in Reporting BLEU Scores. WMT.
+
+## ทดลองใช้โมเดล
+
+<div id="model-demo" class="test1 w-100 d-flex flex-column">  
+  <div class="textarea-box d-flex flex-column pt-2 pb-3">              
+    <div class="lang-translate d-flex align-items-center justify-content-center border border-bottom-0 bg-white">
+      <div class="lang-input font-weight-bold text-center d-flex align-items-center justify-content-center" id="lang-input">Thai</div>
+      <button class="btn my-0 mx-5 btn-convert p-0 bg-white" id="btn-convert">
+        <i class="fas fa-exchange-alt"></i>          
+      </button>
+      <div class="lang-output font-weight-bold text-center" id="lang-output">English</div>
+    </div>    
+    <textarea class="textarea-input px-3 py-2 border border-bottom-0" rows="5"></textarea>
+    <div class="feature-input text-right w-100 bg-white border border-top-0">
+      <button type="button" class="btn btn-sm bg-white mr-3 border-0 btn-features btn-remove" data-toggle="tooltip" data-placement="bottom" title="remove all">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-translate btn-light border border-secondary my-2 mx-3" id="btn-translate">
+        <i class="fa fa-globe"></i> Translate
+      </button>
+      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary my-2 mx-3 d-none" id="btn-remove-all">
+        <i class="fa fa-trash-alt"></i> Remove
+      </button>
+      <div class="loading d-none text-center my-2 mx-3" id="loading"> 
+        <div class="spinner-grow spinner-left" role="status">        
+        </div>
+        <div class="spinner-grow spinner-center" role="status">        
+        </div>
+        <div class="spinner-grow spinner-right" role="status">        
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="compare-output-container d-flex flex-row mb-2">    
+    <div class="textarea-mt-result translate-output d-none flex-column border flex-fill mr-1 w-100">
+      <div class="mt-container px-3 pt-2 bg-white border-bottom">
+        <div class="mt-title pb-1">MT Model</div>
+      </div>
+      <textarea class="textarea-mt-output p-3" id="output-mt-translation" readonly></textarea>
+      <div class="feature-output text-right bg-white">
+        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+          <i class="fa fa-clone"></i>
+        </button>
+      </div>
+    </div>    
+    <div class="textarea-gt-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
+      <div class="gt-container px-3 pt-2 bg-white border-bottom">
+        <div class="gt-title pb-1">Google Translation Model</div>
+      </div>
+      <textarea class="textarea-gt-output p-3" id="output-gt-translation" readonly></textarea>
+      <div class="feature-output text-right bg-white">
+        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+          <i class="fa fa-clone"></i>
+        </button>
+      </div>
+    </div>
+  </div>  
+  <span class="compare-tran text-right d-none" id="compare-translate">
+    Compare with <a class="link-google-tran" id="link-google-translate">Google Translate</a>
+  </span>	  
+</div>
+
+<style>
+  textarea { 
+    border: 1px solid #ffffff;   
+    resize: none;                
+  }
+  
+  textarea:focus {
+    outline: none !important;    
+  }
+
+  .lang-translate {
+    height: 3rem;
+  }
+
+  .btn-convert {    
+    transition: all 0.5s;
+    cursor: pointer;
+    color: #A0A0A0;        
+  }
+
+
+  .btn-remove-all, .btn-translate {   
+    transition: all 0.3s;
+    background-color: #303030;
+    color: #ffffff;
+    outline: 0;    
+    width: 7rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-remove-all {
+    background: #ffffff;
+    color: #303030;
+  }
+
+  .btn-translate:hover, .btn-translate:focus {    
+    background: #52348c;
+    color: #ffffff;
+    transition: all 0.3s;
+    box-shadow: none;
+  }
+
+  .btn-remove-all:hover, .btn-remove-all:focus {    
+    transition: all 0.3s;
+    box-shadow: none;
+  }
+
+  .btn-feature:hover, .btn-feature:focus {
+    border-color: transparent;    
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);    
+    outline: none;
+    box-shadow: none;
+  }
+
+  .btn-convert:hover, .btn-convert:focus,
+  .btn-remove:hover, .btn-remove:focus {    
+    outline: none;
+    box-shadow: none;
+    color: #303030;
+  }
+  
+  .btn-feature {
+    color: #303030;
+    background-color: #F0F0F0;
+    transition: all 0.5s;
+    cursor: pointer;    
+  }
+
+  .tooltip > .tooltip-inner {    
+    font-size: .625rem;
+  }
+
+  .spinner-left {
+    color: #fff200;
+  }
+
+  .spinner-center {
+    color: #a6253b;
+  }
+
+  .spinner-right {
+    color: #52348c;
+  }
+
+  .btn-features {
+    color: #C5C5C5;
+  }
+
+  .btn-features:hover, .btn-features:focus{
+    color: #303030;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .lang-input {
+    font-size: 1.1rem;
+  }
+
+  .lang-input, .lang-output, .mt-title {
+    width: 5rem;
+  }
+
+  .gt-title {
+    width: 12.5rem;
+    border-bottom: 2px solid #4284f3;
+    color: #4284f3;
+  }
+
+  .lang-input, .mt-title {
+    color: #52348c;
+    height: 100%;
+    border-bottom: 2px solid #52348c;
+  }
+
+  .lang-output {
+    color: #A0A0A0;
+  }
+
+  .catch-error {
+    color: #E62020;
+    font-size: 0.8rem;
+    height: 100%;
+  }
+
+  @keyframes spinner-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.spinner-grow {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  text-indent: -999em;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation-name: spinner-grow;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.link-google-tran {
+  color: #4284f3 !important;
+  cursor: pointer;
+}
+
+.compare-tran {
+  font-size: 0.9rem;  
+}
+
+@media screen and (max-width: 500px)   { 
+  .compare-output-container {
+    flex-direction: column !important;    
+  }
+  .translate-output {
+    margin: 0 !important;
+  }
+  .btn-translate, .btn-remove-all {
+    font-size: 0.8rem;
+    width: 6rem;
+  }
+} 
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+<script>
+  
+  let sl = "", tl = ""  
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function googleApi(input){    
+    try {
+      const response = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${input}`)          
+      return response.data                
+    } 
+    catch (err) {
+      $('#compare-translate').removeClass('d-none')      
+      $('#output-gt-translation').addClass('catch-error');         
+      $('#output-gt-translation').val(      
+      "You have sent too many requests recently." +
+      "\n\nPlease try again later or compare directly with google translation website link below."); 
+    }
+  }
+
+  async function mtApi(input){    
+    const input_json = {
+      text: input,
+      source: sl,
+      target: tl
+    }      
+    try {
+      const response = await axios.post('https://mt-api.airesearch.in.th', JSON.stringify(input_json), {                  
+        headers: {                            
+          'Content-Type': 'application/json',  
+        }               
+      })
+      return response.data
+    } catch (err) {     
+      console.log(err)     
+      $('#output-mt-translation').addClass('catch-error');            
+      $('#output-mt-translation').val(
+      "You have sent a request for exceeding the limit rate." + 
+      "\n\nPlease try again in a few seconds.");       
+    }    
+        
+  }
+
+  async function translate() {
+    $('#loading').removeClass('d-none')    
+    $('#btn-remove-all').addClass('d-none')
+    $('#btn-translate').addClass('d-none')  
+    $('#compare-translate').addClass('d-none')         
+
+    const input = $('.textarea-input').val()    
+    check_lang()
+    const [resultMT, dataJsonGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
+         
+    var resultGT = ''      
+    for(var i = 0; i < dataJsonGT[0].length; i++){
+      resultGT += dataJsonGT[0][i][0]        
+    }        
+    
+    await sleep(1200);
+    if(resultGT) {
+      $('#output-gt-translation').removeClass('catch-error');         
+      $('#output-gt-translation').val(resultGT)
+    }
+    if(resultMT) {
+      $('#output-mt-translation').removeClass('catch-error');
+      $('#output-mt-translation').val(resultMT)
+    }
+                
+  }
+  
+  function check_lang() {
+    if($('#lang-input').text() == 'Thai'){
+      sl = "th"
+      tl = "en"
+    } else {
+      sl = "en"
+      tl = "th"
+    }
+  }
+
+  function change_lang(original_lang, target_lang) {
+    $('#lang-input').html(original_lang);
+    $('#lang-output').html(target_lang);
+  }
+
+  function change_class() {     
+    $('#output-gt-translation').val('')
+    $('#output-mt-translation').val('')
+    $('#btn-translate').removeClass('d-none')   
+    $('#output-gt-translation').height('auto')
+    $('#output-mt-translation').height('auto')      
+  }
+  
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();         
+  });
+
+  $('textarea').on('change input', function() {
+    $(this).height('auto'); 
+    if($(this)[0].scrollHeight >= 157){
+      $(this).height((this.scrollHeight - 20) + 'px')      
+    }   
+  }); 
+
+  $('input[type="text"], textarea').on('input', function () {
+    change_class()
+  });
+
+  $('.btn-remove').click(function(){
+    $(".textarea-input").val('');
+    change_class() 
+  })
+
+  $('#btn-mt-copy').click(function() {    
+    var copyText = $('#output-mt-translation')[0]
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");    
+  })
+
+  $('#btn-gt-copy').click(function() {    
+    var copyText = $('#output-gt-translation')[0]
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");    
+  })
+
+  $('#btn-convert').click(function() {    
+    if($('#lang-input').text() == 'Thai') {      
+      change_lang('English', 'Thai');
+    }else {
+      change_lang('Thai', 'English');
+    }
+  })
+
+  $('#btn-translate').click(async function() {       
+    if($(".textarea-input").val() != ''){
+      change_class()
+      await translate();  
+      $('#loading').addClass('d-none')              
+      $('.translate-output').removeClass('d-none')   
+      $('.translate-output').addClass('d-flex')   
+      const outpuGT = $('#output-gt-translation')
+      const outpuMT = $('#output-mt-translation')
+      const heightGT = outpuGT[0].scrollHeight-20
+      const heightMT = outpuMT[0].scrollHeight-20
+      if(heightGT > heightMT) {        
+        console.log('g')
+        outpuGT.height(heightGT+'px')        
+        outpuMT.height(heightGT+'px')
+      } else {        
+        console.log('m')
+        outpuMT.height(heightMT+'px')
+        outpuGT.height(heightMT+'px')
+      }    
+      $('#btn-remove-all').removeClass('d-none')  
+      $('#btn-translate').removeClass('d-none')   
+    } 
+  })
+
+  $('#link-google-translate').click(function() {
+    check_lang()
+    const input = $(".textarea-input").val()
+    window.open(
+      `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
+      ,
+      '_blank' 
+    );
+  })
+</script>
