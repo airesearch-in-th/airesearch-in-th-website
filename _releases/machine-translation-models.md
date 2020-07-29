@@ -119,7 +119,7 @@ and whipped cream from the starbucks at the birchville mall.
     <button type="button" class="btn btn-select-lang border bg-white" id="eng-lang">English -> Thai</button>
   </div>
   <div class="textarea-box d-flex flex-column pb-3">              
-    <textarea class="textarea-input py-2 px-3 border" rows="5"></textarea>
+    <textarea class="textarea-input py-2 px-3 border data-hj-allow" rows="5"></textarea>
     <div class="d-flex justify-content-center">
       <button type="button" class="btn btn-translate btn-light border border-secondary m-3 d-flex justify-content-center align-items-center" id="btn-translate">
         <i class="fa fa-language icon-btn pr-1"></i> Submit
@@ -142,7 +142,7 @@ and whipped cream from the starbucks at the birchville mall.
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">Our result</div>
       </div>
-      <textarea class="textarea-mt-output p-3" id="output-mt-translation" readonly></textarea>
+      <textarea class="textarea-mt-output p-3 data-hj-allow" id="output-mt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
@@ -153,7 +153,7 @@ and whipped cream from the starbucks at the birchville mall.
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Result from Google Translate</div>
       </div>
-      <textarea class="textarea-gt-output p-3" id="output-gt-translation" readonly></textarea>
+      <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
         <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
           <i class="fa fa-clone"></i>
