@@ -358,8 +358,7 @@ and whipped cream from the starbucks at the birchville mall.
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function googleApi(input){  
-    const res = ''
+  async function googleApi(input){      
     try {
       const uri = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(input)}`
       const response = await axios.get(uri)         
@@ -375,8 +374,9 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   async function mtApi(input){   
+    const input_arr = input.split('\n');    
     const input_json = {
-      text: input,
+      text: input_arr,
       source: sl,
       target: tl
     }          
@@ -387,8 +387,7 @@ and whipped cream from the starbucks at the birchville mall.
         }               
       })
       return response.data
-    } catch (err) {     
-      console.log(err)     
+    } catch (err) {             
       $('#output-mt-translation').addClass('catch-error');            
       $('#output-mt-translation').val(
       "You have sent a request for exceeding the limit rate." + 
@@ -404,12 +403,16 @@ and whipped cream from the starbucks at the birchville mall.
     $('#compare-translate').addClass('d-none')         
 
     const input = $('.textarea-input').val()    
-    const [resultMT, dataJsonGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
-         
-    var resultGT = ''      
-    for(var i = 0; i < dataJsonGT[0].length; i++){
-      resultGT += dataJsonGT[0][i][0]        
-    }            
+    const [dataArrMT, dataArrGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
+    
+    var resultGT = '', resultMT = ''      
+    for(var i = 0; i < dataArrGT[0].length; i++){
+      resultGT += dataArrGT[0][i][0]        
+    }      
+    for(var item of dataArrMT) {
+      resultMT += item 
+      resultMT += '\n' 
+    }    
     
     await sleep(1200);
     if(resultGT) {
@@ -451,7 +454,7 @@ and whipped cream from the starbucks at the birchville mall.
   $('textarea').on('change input', function() {
     $(this).height('auto'); 
     if($(this)[0].scrollHeight >= 157){
-      $(this).height((this.scrollHeight - 20) + 'px')      
+      $(this).height(this.scrollHeight + 'px')      
     }   
   }); 
 
@@ -478,8 +481,8 @@ and whipped cream from the starbucks at the birchville mall.
     document.execCommand("copy");    
   })
 
-  $('#btn-translate').click(async function() {       
-    if($(".textarea-input").val() != ''){
+  $('#btn-translate').click(async function() {         
+    if($(".textarea-input").val().trim() !== ''){
       change_class()
       await translate();  
       $('#loading').addClass('d-none')              
