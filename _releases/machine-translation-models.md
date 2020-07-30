@@ -119,15 +119,18 @@ and whipped cream from the starbucks at the birchville mall.
     <button type="button" class="btn btn-select-lang border bg-white" id="eng-lang">English -> Thai</button>
   </div>
   <div class="textarea-box d-flex flex-column pb-3">              
-    <textarea class="textarea-input py-2 px-3 border data-hj-allow" rows="5"></textarea>
+    <textarea class="textarea-input py-2 px-3 border data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
+    <div class="text-right limit-length" id="limit-length">
+      <span id="char-lefts">0</span>/1000
+    </div>
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-translate btn-light border border-secondary m-3 d-flex justify-content-center align-items-center" id="btn-translate">
+      <button type="button" class="btn btn-translate btn-light border border-secondary mx-3 d-flex justify-content-center align-items-center" id="btn-translate">
         <i class="fa fa-language icon-btn pr-1"></i> Submit
       </button>
-      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary m-3 d-none" id="btn-remove-all">
+      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary mx-3 d-none" id="btn-remove-all">
         <i class="fa fa-trash-alt"></i> Reset
       </button>
-      <div class="loading d-none text-center m-3" id="loading"> 
+      <div class="loading d-none text-center mx-3" id="loading"> 
         <div class="spinner-grow spinner-left" role="status">        
         </div>
         <div class="spinner-grow spinner-center" role="status">        
@@ -169,7 +172,7 @@ and whipped cream from the starbucks at the birchville mall.
 <style>
   textarea { 
     border: 1px solid #ffffff;   
-    resize: none;                
+    resize: none;              
   }
   
   textarea:focus {
@@ -288,6 +291,11 @@ and whipped cream from the starbucks at the birchville mall.
     color: #E62020;
     font-size: 0.8rem;
     height: 100%;
+  }
+
+  .limit-length {
+    font-size: 0.8rem;
+    color: #777777;
   }
 
   @keyframes spinner-grow {
@@ -414,7 +422,7 @@ and whipped cream from the starbucks at the birchville mall.
     $('#btn-translate').removeClass('d-flex').addClass('d-none')
     $('#compare-translate').addClass('d-none')         
 
-    const input = $('.textarea-input').val()    
+    const input = $('#textarea-input').val()    
     const [dataArrMT, dataArrGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
     
     var resultGT = '', resultMT = ''      
@@ -456,26 +464,19 @@ and whipped cream from the starbucks at the birchville mall.
     $('#output-mt-translation').val('')
     $('#btn-translate').removeClass('d-none').addClass('d-flex')   
     $('#output-gt-translation').height('auto')
-    $('#output-mt-translation').height('auto')      
+    $('#output-mt-translation').height('auto')              
   }
   
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();         
+    $('[data-toggle="tooltip"]').tooltip();           
   });
-
-  $('textarea').on('change input', function() {
-    $(this).height('auto'); 
-    if($(this)[0].scrollHeight >= 157){
-      $(this).height(this.scrollHeight + 'px')      
-    }   
-  }); 
 
   $('input[type="text"], textarea').on('input', function () {
     change_class()
   });
 
   $('.btn-remove').click(function(){
-    $(".textarea-input").val('');
+    $("#textarea-input").val('');
     change_class() 
   })
 
@@ -494,7 +495,7 @@ and whipped cream from the starbucks at the birchville mall.
   })
 
   $('#btn-translate').click(async function() {         
-    if($(".textarea-input").val().trim() !== ''){
+    if($("#textarea-input").val().trim() !== ''){
       change_class()
       await translate();  
       $('#loading').addClass('d-none')              
@@ -517,11 +518,28 @@ and whipped cream from the starbucks at the birchville mall.
   })
 
   $('#link-google-translate').click(function() {    
-    const input = $(".textarea-input").val()
+    const input = $("#textarea-input").val()
     window.open(
       `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
       ,
       '_blank' 
     );
   })
+
+  $('#textarea-input').on("input keyup", function(){    
+    $(this).height('auto')    
+    if($(this)[0].scrollHeight >= 157){
+      $(this).height(this.scrollHeight+'px')      
+    } 
+
+    var currentLength = $(this).val().length;
+    var maxLength = $(this).attr('maxlength');    
+    if(currentLength >= maxLength) {                    
+      $('#limit-length').css('color', '#E62020');    
+    }else {
+      $('#limit-length').css('color', '#777777');    
+    }
+    $('#char-lefts').text(currentLength)    
+        
+  });
 </script>
