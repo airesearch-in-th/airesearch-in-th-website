@@ -114,22 +114,26 @@ and whipped cream from the starbucks at the birchville mall.
 ## ทดลองใช้โมเดล
 
 <div id="model-demo" class="test1 w-100 d-flex flex-column">  
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-select-lang border bg-white selected-lang" id="thai-lang">Thai -> English</button>    
-    <button type="button" class="btn btn-select-lang border bg-white" id="eng-lang">English -> Thai</button>
-  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="thai-lang" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thai <i class="fa fa-long-arrow-alt-right"></i> English</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="eng-lang" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">English <i class="fa fa-long-arrow-alt-right"></i> Thai</a>
+    </li>
+  </ul>
   <div class="textarea-box d-flex flex-column pb-3">              
-    <textarea class="textarea-input py-2 px-3 border data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
-    <div class="text-right limit-length" id="limit-length">
-      <span id="char-lefts">0</span>/1000
+    <textarea class="textarea-input py-2 px-3 border border-bottom-0 border-top-0 data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
+    <div class="feature-input d-flex justify-content-end bg-white border border-top-0">   
+      <button type="button" class="btn btn-translate btn-sm rounded rounded-lg btn-light border border-secondary my-2" id="btn-translate">
+        Submit
+      </button> 
+      <button type="button" class="btn btn-remove btn-sm btn-remove-all rounded rounded-lg border m-2 border-secondary" id="btn-remove-all" data-toggle="tooltip" data-placement="bottom" title="Remove">
+        <i class="fa fa-trash-alt"></i>
+      </button>   
     </div>
+    <span class="limit-length text-right" id="char-lefts">0/1000</span>
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-translate btn-light border border-secondary mx-3 d-flex justify-content-center align-items-center" id="btn-translate">
-        <i class="fa fa-language icon-btn pr-1"></i> Submit
-      </button>
-      <button type="button" class="btn btn-remove btn-remove-all btn-light border border-secondary mx-3 d-none" id="btn-remove-all">
-        <i class="fa fa-trash-alt"></i> Reset
-      </button>
       <div class="loading d-none text-center mx-3" id="loading"> 
         <div class="spinner-grow spinner-left" role="status">        
         </div>
@@ -137,17 +141,16 @@ and whipped cream from the starbucks at the birchville mall.
         </div>
         <div class="spinner-grow spinner-right" role="status">        
       </div>
-    </div>
-  </div>
-  </div>
-  <div class="compare-output-container d-flex flex-row mb-2">    
+    </div>  
+  </div>  
+  <div class="compare-output-container d-flex flex-row my-3">    
     <div class="textarea-mt-result translate-output d-none flex-column border flex-fill mr-1 w-100">
       <div class="mt-container px-3 pt-2 bg-white border-bottom">
         <div class="mt-title pb-1">Our result</div>
       </div>
       <textarea class="textarea-mt-output p-3 data-hj-allow" id="output-mt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
-        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+        <button class="btn btn-sm btn-secondary m-2" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
           <i class="fa fa-clone"></i>
         </button>
       </div>
@@ -158,7 +161,7 @@ and whipped cream from the starbucks at the birchville mall.
       </div>
       <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
       <div class="feature-output text-right bg-white">
-        <button class="btn btn-sm border-0 bg-white btn-features" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="copy to clipboard">
+        <button class="btn btn-sm btn-secondary m-2" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
           <i class="fa fa-clone"></i>
         </button>
       </div>
@@ -197,12 +200,16 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   .btn-remove-all, .btn-translate {   
-    transition: all 0.3s;
-    background-color: #303030;
-    color: #ffffff;
-    outline: 0;    
-    width: 7rem;
+    transition: all 0.3s;        
+    outline: 0;        
     font-size: 0.9rem;
+    color: #ffffff;
+  }
+
+  .btn-translate {
+    background-color: #52348c;
+    color: #ffffff;
+    width: 7rem;
   }
 
   .icon-btn {
@@ -210,20 +217,23 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   .btn-remove-all {
-    background: #ffffff;
+    background-color: #fafafa;
     color: #303030;
   }
 
-  .btn-translate:hover, .btn-translate:focus {    
-    background: #52348c;
-    color: #ffffff;
+  .btn-translate:hover, .btn-translate:focus {        
+    background: #432A73;   
+    color: #ffffff; 
     transition: all 0.3s;
-    box-shadow: none;
+    box-shadow: none;    
   }
 
   .btn-remove-all:hover, .btn-remove-all:focus {    
+    background: #E9E9E9;
     transition: all 0.3s;
     box-shadow: none;
+    color: #303030;
+    outline: none;
   }
 
   .btn-feature:hover, .btn-feature:focus {
@@ -232,12 +242,6 @@ and whipped cream from the starbucks at the birchville mall.
     transform: scale(1.2);    
     outline: none;
     box-shadow: none;
-  }
-
-  .btn-remove:hover, .btn-remove:focus {    
-    outline: none;
-    box-shadow: none;
-    color: #303030;
   }
   
   .btn-feature {
@@ -264,7 +268,8 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   .btn-features {
-    color: #C5C5C5;
+    color: #303030;
+    background: #C5C5C5;
   }
 
   .btn-features:hover, .btn-features:focus{
@@ -342,6 +347,23 @@ and whipped cream from the starbucks at the birchville mall.
   font-size: 0.9rem;  
 }
 
+.feature-input {
+  height: 3rem;
+}
+
+.active {
+  color: #52348c !important;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #495057;
+}
+
+.nav-link:hover {
+  color: #52348c;  
+}
+
 @media screen and (max-width: 500px)   { 
   .compare-output-container {
     flex-direction: column !important;    
@@ -349,9 +371,13 @@ and whipped cream from the starbucks at the birchville mall.
   .translate-output {
     margin: 0 !important;
   }
-  .btn-translate, .btn-remove-all {
+  .btn-translate {
     font-size: 0.8rem;
     width: 6rem;
+  }
+  .btn-remove-all {
+    width: 2.5rem;
+    font-size: 0.8rem;
   }
 } 
 </style>
@@ -394,7 +420,7 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   async function mtApi(input){   
-    const input_arr = input.split('\n');    
+    const input_arr = input.split('\n');        
     const input_json = {
       text: input_arr,
       source: sl,
@@ -419,7 +445,7 @@ and whipped cream from the starbucks at the birchville mall.
   async function translate() {
     $('#loading').removeClass('d-none')    
     $('#btn-remove-all').addClass('d-none')
-    $('#btn-translate').removeClass('d-flex').addClass('d-none')
+    $('#btn-translate').addClass('d-none')
     $('#compare-translate').addClass('d-none')         
 
     const input = $('#textarea-input').val()    
@@ -428,8 +454,8 @@ and whipped cream from the starbucks at the birchville mall.
     var resultGT = '', resultMT = ''      
     for(var i = 0; i < dataArrGT[0].length; i++){
       resultGT += dataArrGT[0][i][0]        
-    }      
-    for(var item of dataArrMT) {
+    }          
+    for(var item of dataArrMT) {      
       resultMT += item 
       resultMT += '\n' 
     }    
@@ -448,21 +474,19 @@ and whipped cream from the starbucks at the birchville mall.
   $('#thai-lang').click(function() {
     sl = "th"
     tl = "en"
-    $('#eng-lang').removeClass('selected-lang')
-    $(this).addClass('selected-lang')
+    change_class()
   })
 
   $('#eng-lang').click(function() {
     sl = "en"
     tl = "th"
-    $('#thai-lang').removeClass('selected-lang')
-    $(this).addClass('selected-lang')
+    change_class()
   })
 
   function change_class() {     
     $('#output-gt-translation').val('')
     $('#output-mt-translation').val('')
-    $('#btn-translate').removeClass('d-none').addClass('d-flex')   
+    $('#btn-translate').removeClass('d-none')
     $('#output-gt-translation').height('auto')
     $('#output-mt-translation').height('auto')              
   }
@@ -513,7 +537,7 @@ and whipped cream from the starbucks at the birchville mall.
         outpuGT.height(heightMT+'px')
       }    
       $('#btn-remove-all').removeClass('d-none')  
-      $('#btn-translate').removeClass('d-none').addClass('d-flex') 
+      $('#btn-translate').removeClass('d-none') 
     } 
   })
 
@@ -535,11 +559,10 @@ and whipped cream from the starbucks at the birchville mall.
     var currentLength = $(this).val().length;
     var maxLength = $(this).attr('maxlength');    
     if(currentLength >= maxLength) {                    
-      $('#limit-length').css('color', '#E62020');    
+      $('.limit-length').css('color', '#E62020');    
     }else {
-      $('#limit-length').css('color', '#777777');    
+      $('.limit-length').css('color', '#777777');    
     }
-    $('#char-lefts').text(currentLength)    
-        
+    $('#char-lefts').text(currentLength + '/1000')            
   });
 </script>
