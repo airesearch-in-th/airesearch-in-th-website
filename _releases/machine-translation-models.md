@@ -111,6 +111,96 @@ and whipped cream from the starbucks at the birchville mall.
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 - Post, M. (2018). A Call for Clarity in Reporting BLEU Scores. WMT.
 
+
+### ข้อจำกัดของโมเดลแปลภาษาที่พบและการแก้ไขเบื้องต้น
+
+จากการทดสอบโมเดลแปลภาษาเบื้องต้น พบว่ามีข้อจำกัดบางประการที่เกิดขึ้นได้จากโมเดลแปลภาษา ดังนี้
+
+1. การแปลข้อความที่มีหลายบรรทัด (multi-line sentences)
+
+    ```
+    >> en2th.translate("The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald")
+    "ผู้คนสร้างโอเอซิสด้วยน้ําทะเล By Chloe Berge และ Sunny Fitzgerald"
+    ```
+
+    __แนวทางการแก้ไข:__ เนื่องจากการรับข้อมูลจาก Textbox ข้อความอาจจะประกอบด้วยหลายบรรทัด โดยมีการแบ่งด้วย `\n` ซึ่งอาจจะส่งผลให้ข้อความยาวเกินข้อจำกัดของโมเดลแปลภาษา หรือมีผลการแปลที่ไม่ถูกต้องได้ ผู้ใช้สามารถแยกข้อความตาม `\n` แล้วจึงส่ง List ของข้อความที่ถูกแบ่ง ไปยังโมเดล โดยผลการแปลจะคืนค่าเป็น List ของผลการแปล
+
+    ```
+    >> text_input = "The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald"
+    >> segments = text_input.split("\n")
+    >> segments
+    [ "The people creating an oasis with seawater", 
+      "By Chloe Berge and Sunny Fitzgerald"]
+    >> results = en2th.translate(segments)
+    >> results
+    ["ผู้คนสร้างโอเอซิสด้วยน้ําทะเล",
+     "โดย Chloe Berge และ Sunny Fitzgerald"]
+    ```
+
+2. การแปลข้อความเปล่า หรือ empty string และโมเดลได้ให้ผลแปลที่ไม่ถูกต้อง  ตัวอย่างเช่น
+
+    ```
+    >> th2en.translate("")
+    "I don't think so."
+
+    >> en2th.translate("")
+    ". ."
+    ```
+
+    __แนวทางการแก้ไข:__ ผู้ใช้สามารถระบุให้ข้อความที่เป็น empty string ไม่ส่งไปยังโมเดลแปลภาษา และให้คืนค่าเป็น empty string เหมือนเดิม
+
+    ```python
+    def translate_segment(text):
+      if len(text.strip()) == 0:
+        return ""
+    ```
+3. การแปลข้อความโดยที่ภาษาต้นทางของโมเดลไม่ตรงกัน เช่น การแปลด้วยโมเดล อังกฤษ→ไทย แต่ข้อความนำเข้าเป็นภาษาไทย
+
+    ```
+    >> th2en.translate("ฉันอยากจองเที่ยวบินไปโตเกียว")
+    "I'd like to book a flight to Tokyo."
+
+    >> en2th.translate("ฉันอยากจองเที่ยวบินไปโตเกียว") # ข้อความนำเข้าควรเป็นภาษาอังกฤษ
+    "ไล่ระดับสี"
+    ```
+
+    __แนวทางการแก้ไข:__ เนื่องจากโมเดลถูกเทรนแยกกันในการแปลระหว่าง อังกฤษ→ไทย และ ไทย→อังกฤษ ผู้ใช้งานสามารถกำหนดเงื่อนไขให้ของข้อความนำเข้าว่าควรเป็นข้อความในภาษาต้นทางที่โมเดลได้ถูกเทรนมา เพื่อป้องกันข้อผิดพลาดนี้
+
+    ```python
+    import re
+
+    def translate_en2th(text):
+      if re.search(r"ก-๙", text):
+        raise "Input text should be in English."
+    ```
+
+4. การแปลคำหนึ่งคำในภาษาอังกฤษอาจส่งผลให้โมเดลแปลผลได้ไม่ถูกต้อง
+
+    ```
+    >> en2th.translate("method")
+    วิธีการ@ label
+  
+    >> en2th.translate("methodology.") 
+    กลไกComment
+
+    >> en2th.translate("cat")
+    แมวName
+
+    ```
+
+    __แนวทางการแก้ไข:__ ในบางกรณีการแปลคำหนึ่งคำอาจจะมีผลการแปลที่ไม่ถูกต้องได้ เนื่องจากชุดข้อมูลที่ใช้เทรนโมเดลมักจะเป็นในระดับประโยค การแก้ปัญหาเบื้องต้นสามารถทำได้โดยการเพิ่ม "." ต่อท้ายข้อความนำเข้า แล้วจึงทำการ post-processing ด้วยการลบ "." ที่ต่อท้ายผลการแปล
+
+    ```
+    >> en2th.translate("method.")
+    วิธีการ.
+    
+    >> en2th.translate("methodology.") 
+    ระเบียบวิธี
+
+    >> en2th.translate("cat.")
+    แมว
+  ```
+
 ## ทดลองใช้โมเดล
 
 <div id="model-demo" class="test1 w-100 d-flex flex-column">  
