@@ -111,7 +111,7 @@ and whipped cream from the starbucks at the birchville mall.
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 - Post, M. (2018). A Call for Clarity in Reporting BLEU Scores. WMT.
 
-## ทดลองใช้โมเดล
+## ทดลองแปลด้วยโมเดล
 
 <div id="model-demo" class="test1 w-100 d-flex flex-column">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
