@@ -116,17 +116,17 @@ and whipped cream from the starbucks at the birchville mall.
 <div id="model-demo" class="test1 w-100 d-flex flex-column">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="thai-lang" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thai <i class="fa fa-long-arrow-alt-right"></i> English</a>
+      <a class="nav-link active" id="thai-lang" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ไทย <i class="fa fa-long-arrow-alt-right"></i> อังกฤษ</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="eng-lang" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">English <i class="fa fa-long-arrow-alt-right"></i> Thai</a>
+      <a class="nav-link" id="eng-lang" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">อังกฤษ <i class="fa fa-long-arrow-alt-right"></i> ไทย</a>
     </li>
   </ul>
   <div class="textarea-box d-flex flex-column pb-3">
     <textarea class="textarea-input py-2 px-3 border border-bottom-0 border-top-0 data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
     <div class="feature-input d-flex justify-content-end bg-white border border-top-0">   
       <button type="button" class="btn btn-translate btn-sm rounded rounded-lg btn-light border border-secondary my-2" id="btn-translate">
-        Submit
+        แปล
       </button> 
       <button type="button" class="btn btn-remove btn-sm btn-remove-all rounded rounded-lg border m-2 border-secondary" id="btn-remove-all" data-toggle="tooltip" data-placement="bottom" title="Remove">
         <i class="fa fa-trash-alt"></i>
