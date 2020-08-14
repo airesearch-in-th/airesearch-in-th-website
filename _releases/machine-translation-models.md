@@ -256,13 +256,18 @@ and whipped cream from the starbucks at the birchville mall.
         </button>
       </div>
     </div>
-  </div>  
-  <span class="compare-tran text-right d-none" id="compare-translate">
-    Compare with <a class="link-google-tran" id="link-google-translate">Google Translate</a>
-  </span>	  
+  </div>   
+  <div class="compare-tran text-right d-none" id="compare-translate">
+    Compare with  
+    <a class="link-google-tran" id="link-google-translate">Google Translate</a>   
+  </div>     
 </div>
 
 <style>
+  body [id]:before {
+    content: none;
+  }
+  
   textarea { 
     border: 1px solid #ffffff;   
     resize: none;              
@@ -383,8 +388,7 @@ and whipped cream from the starbucks at the birchville mall.
   }
 
   .catch-error {
-    color: #E62020;
-    font-size: 0.8rem;
+    color: #E62020;    
     height: 100%;
   }
 
@@ -431,6 +435,7 @@ and whipped cream from the starbucks at the birchville mall.
 .link-google-tran {
   color: #4284f3 !important;
   cursor: pointer;
+  width: 9rem;
 }
 
 .compare-tran {
@@ -500,12 +505,11 @@ and whipped cream from the starbucks at the birchville mall.
       const response = await axios.get(uri)         
       return response.data                
     } 
-    catch (err) {
-      $('#compare-translate').removeClass('d-none')      
-      $('#output-gt-translation').addClass('catch-error');         
-      $('#output-gt-translation').val(      
-      "You have sent too many requests recently." +
-      "\n\nPlease try again later or compare directly with google translation website link below."); 
+    catch (err) {         
+      $('#output-gt-translation').addClass('catch-error').val(      
+        "You have sent too many requests recently." +
+        "\n\nPlease try again later or compare directly with google translation website link below.");         
+      $('#compare-translate').removeClass('d-none')   
     }
   }
 
@@ -524,10 +528,9 @@ and whipped cream from the starbucks at the birchville mall.
       })
       return response.data
     } catch (err) {             
-      $('#output-mt-translation').addClass('catch-error');            
-      $('#output-mt-translation').val(
+      $('#output-mt-translation').addClass('catch-error').val(
       "You have sent a request for exceeding the limit rate." + 
-      "\n\nPlease try again in a few seconds.");       
+      "\n\nPlease try again in a few seconds.");     
     }    
         
   }
@@ -539,25 +542,31 @@ and whipped cream from the starbucks at the birchville mall.
     $('#compare-translate').addClass('d-none')         
 
     const input = $('#textarea-input').val()    
-    const [dataArrMT, dataArrGT] = await Promise.all([mtApi(input) ,googleApi(input)]);  
     
-    var resultGT = '', resultMT = ''      
-    for(var i = 0; i < dataArrGT[0].length; i++){
-      resultGT += dataArrGT[0][i][0]        
-    }          
-    for(var item of dataArrMT) {      
-      resultMT += item 
-      resultMT += '\n' 
-    }    
+    const dataArrMT = await mtApi(input);
+    const dataArrGT = await googleApi(input);
+    
+    var resultGT = '', resultMT = '' 
+    
+    if(dataArrGT) {
+      for(var i = 0; i < dataArrGT[0].length; i++){
+        resultGT += dataArrGT[0][i][0]        
+      }  
+    } 
+
+    if(dataArrMT) {
+      for(var item of dataArrMT) {      
+        resultMT += item 
+        resultMT += '\n' 
+      } 
+    }                   
     
     await sleep(1200);
     if(resultGT) {
-      $('#output-gt-translation').removeClass('catch-error');         
-      $('#output-gt-translation').val(resultGT)
+      $('#output-gt-translation').removeClass('catch-error').val(resultGT);               
     }
     if(resultMT) {
-      $('#output-mt-translation').removeClass('catch-error');
-      $('#output-mt-translation').val(resultMT)
+      $('#output-mt-translation').removeClass('catch-error').val(resultMT);      
     }
                 
   }
@@ -578,7 +587,8 @@ and whipped cream from the starbucks at the birchville mall.
     $('#output-mt-translation').val('')
     $('#btn-translate').removeClass('d-none')
     $('#output-gt-translation').height('auto')
-    $('#output-mt-translation').height('auto')              
+    $('#output-mt-translation').height('auto')  
+    $('#compare-translate').addClass('d-none')               
   }
   
   $(document).ready(function(){
