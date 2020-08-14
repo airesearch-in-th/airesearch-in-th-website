@@ -111,99 +111,9 @@ and whipped cream from the starbucks at the birchville mall.
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 - Post, M. (2018). A Call for Clarity in Reporting BLEU Scores. WMT.
 
-
-### ข้อจำกัดของโมเดลแปลภาษาที่พบและการแก้ไขเบื้องต้น
-
-จากการทดสอบโมเดลแปลภาษาเบื้องต้น พบว่ามีข้อจำกัดบางประการที่เกิดขึ้นได้จากโมเดลแปลภาษา ดังนี้
-
-1. การแปลข้อความที่มีหลายบรรทัด (multi-line sentences)
-
-    ```
-    >> en2th.translate("The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald")
-    "ผู้คนสร้างโอเอซิสด้วยน้ําทะเล By Chloe Berge และ Sunny Fitzgerald"
-    ```
-
-    __แนวทางการแก้ไข:__ เนื่องจากการรับข้อมูลจาก Textbox ข้อความอาจจะประกอบด้วยหลายบรรทัด โดยมีการแบ่งด้วย `\n` ซึ่งอาจจะส่งผลให้ข้อความยาวเกินข้อจำกัดของโมเดลแปลภาษา หรือมีผลการแปลที่ไม่ถูกต้องได้ ผู้ใช้สามารถแยกข้อความตาม `\n` แล้วจึงส่ง List ของข้อความที่ถูกแบ่ง ไปยังโมเดล โดยผลการแปลจะคืนค่าเป็น List ของผลการแปล
-
-    ```
-    >> text_input = "The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald"
-    >> segments = text_input.split("\n")
-    >> segments
-    [ "The people creating an oasis with seawater", 
-      "By Chloe Berge and Sunny Fitzgerald"]
-    >> results = en2th.translate(segments)
-    >> results
-    ["ผู้คนสร้างโอเอซิสด้วยน้ําทะเล",
-     "โดย Chloe Berge และ Sunny Fitzgerald"]
-    ```
-
-2. การแปลข้อความเปล่า หรือ empty string และโมเดลได้ให้ผลแปลที่ไม่ถูกต้อง  ตัวอย่างเช่น
-
-    ```
-    >> th2en.translate("")
-    "I don't think so."
-
-    >> en2th.translate("")
-    ". ."
-    ```
-
-    __แนวทางการแก้ไข:__ ผู้ใช้สามารถระบุให้ข้อความที่เป็น empty string ไม่ส่งไปยังโมเดลแปลภาษา และให้คืนค่าเป็น empty string เหมือนเดิม
-
-    ```python
-    def translate_segment(text):
-      if len(text.strip()) == 0:
-        return ""
-    ```
-3. การแปลข้อความโดยที่ภาษาต้นทางของโมเดลไม่ตรงกัน เช่น การแปลด้วยโมเดล อังกฤษ→ไทย แต่ข้อความนำเข้าเป็นภาษาไทย
-
-    ```
-    >> th2en.translate("ฉันอยากจองเที่ยวบินไปโตเกียว")
-    "I'd like to book a flight to Tokyo."
-
-    >> en2th.translate("ฉันอยากจองเที่ยวบินไปโตเกียว") # ข้อความนำเข้าควรเป็นภาษาอังกฤษ
-    "ไล่ระดับสี"
-    ```
-
-    __แนวทางการแก้ไข:__ เนื่องจากโมเดลถูกเทรนแยกกันในการแปลระหว่าง อังกฤษ→ไทย และ ไทย→อังกฤษ ผู้ใช้งานสามารถกำหนดเงื่อนไขให้ของข้อความนำเข้าว่าควรเป็นข้อความในภาษาต้นทางที่โมเดลได้ถูกเทรนมา เพื่อป้องกันข้อผิดพลาดนี้
-
-    ```python
-    import re
-
-    def translate_en2th(text):
-      if re.search(r"ก-๙", text):
-        raise "Input text should be in English."
-    ```
-
-4. การแปลคำหนึ่งคำในภาษาอังกฤษอาจส่งผลให้โมเดลแปลผลได้ไม่ถูกต้อง
-
-    ```
-    >> en2th.translate("method")
-    วิธีการ@ label
-  
-    >> en2th.translate("methodology.") 
-    กลไกComment
-
-    >> en2th.translate("cat")
-    แมวName
-
-    ```
-
-    __แนวทางการแก้ไข:__ ในบางกรณีการแปลคำหนึ่งคำอาจจะมีผลการแปลที่ไม่ถูกต้องได้ เนื่องจากชุดข้อมูลที่ใช้เทรนโมเดลมักจะเป็นในระดับประโยค การแก้ปัญหาเบื้องต้นสามารถทำได้โดยการเพิ่ม "." ต่อท้ายข้อความนำเข้า แล้วจึงทำการ post-processing ด้วยการลบ "." ที่ต่อท้ายผลการแปล
-
-    ```
-    >> en2th.translate("method.")
-    วิธีการ.
-    
-    >> en2th.translate("methodology.") 
-    ระเบียบวิธี
-
-    >> en2th.translate("cat.")
-    แมว
-  ```
-
 ## ทดลองใช้โมเดล
 
-<div id="model-demo" class="test1 w-100 d-flex flex-column">  
+<div id="model-demo" class="test1 w-100 d-flex flex-column">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="thai-lang" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thai <i class="fa fa-long-arrow-alt-right"></i> English</a>
@@ -212,7 +122,7 @@ and whipped cream from the starbucks at the birchville mall.
       <a class="nav-link" id="eng-lang" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">English <i class="fa fa-long-arrow-alt-right"></i> Thai</a>
     </li>
   </ul>
-  <div class="textarea-box d-flex flex-column pb-3">              
+  <div class="textarea-box d-flex flex-column pb-3">
     <textarea class="textarea-input py-2 px-3 border border-bottom-0 border-top-0 data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
     <div class="feature-input d-flex justify-content-end bg-white border border-top-0">   
       <button type="button" class="btn btn-translate btn-sm rounded rounded-lg btn-light border border-secondary my-2" id="btn-translate">
@@ -248,421 +158,510 @@ and whipped cream from the starbucks at the birchville mall.
     <div class="textarea-gt-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
       <div class="gt-container px-3 pt-2 bg-white border-bottom">
         <div class="gt-title pb-1">Result from Google Translate</div>
+        </div>
+        <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
+        <div class="feature-output text-right bg-white">
+          <button class="btn btn-sm btn-secondary m-2" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+            <i class="fa fa-clone"></i>
+          </button>
+        </div>
       </div>
-      <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
-      <div class="feature-output text-right bg-white">
-        <button class="btn btn-sm btn-secondary m-2" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
-          <i class="fa fa-clone"></i>
-        </button>
-      </div>
-    </div>
-  </div>   
-  <div class="compare-tran text-right d-none" id="compare-translate">
-    Compare with  
-    <a class="link-google-tran" id="link-google-translate">Google Translate</a>   
-  </div>     
+    </div>   
+    <div class="compare-tran text-right d-none" id="compare-translate">
+      Compare with  
+      <a class="link-google-tran" id="link-google-translate">Google Translate</a>   
+    </div>     
+  </div>
 </div>
 
+## ข้อจำกัดของโมเดลแปลภาษาที่พบ และวิธีการแก้ไขเบื้องต้น
+
+จากการทดสอบโมเดลแปลภาษาเบื้องต้น พบว่ามีข้อจำกัดบางประการที่เกิดขึ้นได้จากโมเดลแปลภาษา ดังนี้
+
+#### การแปลข้อความที่มีหลายบรรทัด (multi-line sentences)
+
+```python
+>> en2th.translate("The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald")
+"ผู้คนสร้างโอเอซิสด้วยน้ําทะเล By Chloe Berge และ Sunny Fitzgerald"
+```
+
+**แนวทางการแก้ไข:** เนื่องจากการรับข้อมูลจาก Textbox ข้อความอาจจะประกอบด้วยหลายบรรทัด โดยมีการแบ่งด้วย `\n` ซึ่งอาจจะส่งผลให้ข้อความยาวเกินข้อจำกัดของโมเดลแปลภาษา หรือมีผลการแปลที่ไม่ถูกต้องได้ ผู้ใช้สามารถแยกข้อความตาม `\n` แล้วจึงส่ง List ของข้อความที่ถูกแบ่ง ไปยังโมเดล โดยผลการแปลจะคืนค่าเป็น List ของผลการแปล
+
+```python
+>> text_input = "The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald"
+>> segments = text_input.split("\n")
+>> segments
+[ "The people creating an oasis with seawater",
+"By Chloe Berge and Sunny Fitzgerald"]
+>> results = en2th.translate(segments)
+>> results
+["ผู้คนสร้างโอเอซิสด้วยน้ําทะเล",
+"โดย Chloe Berge และ Sunny Fitzgerald"]
+```
+
+#### การแปลข้อความเปล่า หรือ empty string และโมเดลได้ให้ผลแปลที่ไม่ถูกต้อง ตัวอย่างเช่น
+
+```python
+>> th2en.translate("")
+"I don't think so."
+
+>> en2th.translate("")
+". ."
+```
+
+**แนวทางการแก้ไข:** ผู้ใช้สามารถระบุให้ข้อความที่เป็น empty string ไม่ส่งไปยังโมเดลแปลภาษา และให้คืนค่าเป็น empty string เหมือนเดิม
+
+```python
+def translate_segment(text):
+  if len(text.strip()) == 0:
+    return ""
+```
+
+#### การแปลข้อความโดยที่ภาษาต้นทางของโมเดลไม่ตรงกัน เช่น การแปลด้วยโมเดล อังกฤษ→ไทย แต่ข้อความนำเข้าเป็นภาษาไทย
+
+```python
+>> th2en.translate("ฉันอยากจองเที่ยวบินไปโตเกียว")
+"I'd like to book a flight to Tokyo."
+
+>> en2th.translate("ฉันอยากจองเที่ยวบินไปโตเกียว") # ข้อความนำเข้าควรเป็นภาษาอังกฤษ
+"ไล่ระดับสี"
+```
+
+**แนวทางการแก้ไข:** เนื่องจากโมเดลถูกเทรนแยกกันในการแปลระหว่าง อังกฤษ→ไทย และ ไทย→อังกฤษ ผู้ใช้งานสามารถกำหนดเงื่อนไขให้ของข้อความนำเข้าว่าควรเป็นข้อความในภาษาต้นทางที่โมเดลได้ถูกเทรนมา เพื่อป้องกันข้อผิดพลาดนี้
+
+```python
+import re
+
+def translate_en2th(text):
+  if re.search(r"ก-๙", text):
+    raise "Input text should be in English."
+```
+
+#### การแปลคำหนึ่งคำในภาษาอังกฤษอาจส่งผลให้โมเดลแปลผลได้ไม่ถูกต้อง
+
+```python
+>> en2th.translate("method")
+วิธีการ@ label
+
+>> en2th.translate("methodology.")
+กลไกComment
+
+>> en2th.translate("cat")
+แมวName
+```
+
+**แนวทางการแก้ไข:** ในบางกรณีการแปลคำหนึ่งคำอาจจะมีผลการแปลที่ไม่ถูกต้องได้ เนื่องจากชุดข้อมูลที่ใช้เทรนโมเดลมักจะเป็นในระดับประโยค การแก้ปัญหาเบื้องต้นสามารถทำได้โดยการเพิ่ม "." ต่อท้ายข้อความนำเข้า แล้วจึงทำการ post-processing ด้วยการลบ "." ที่ต่อท้ายผลการแปล
+
+```python
+>> en2th.translate("method.")
+วิธีการ.
+
+>> en2th.translate("methodology.")
+ระเบียบวิธี
+
+>> en2th.translate("cat.")
+แมว
+```
+
 <style>
-  body [id]:before {
-    content: none;
-  }
-  
-  textarea { 
-    border: 1px solid #ffffff;   
-    resize: none;              
-  }
-  
-  textarea:focus {
-    outline: none !important;    
-  }
+body [id]:before {
+  content: none;
+}
 
-  .btn-select-lang {    
-    width: 10rem;
-    font-size: 0.9rem;
-  }
+textarea {
+  border: 1px solid #ffffff;
+  resize: none;
+}
 
-  .btn-select-lang:hover, .btn-select-lang:focus {
-    background-color: #52348c !important;
-    color: #ffffff;
-    box-shadow: none;
-    outline: none;    
-  }
+textarea:focus {
+  outline: none !important;
+}
 
-  .selected-lang {
-    background-color: #52348c !important;
-    color: #ffffff;
-  }
+.btn-select-lang {
+  width: 10rem;
+  font-size: 0.9rem;
+}
 
-  .btn-remove-all, .btn-translate {   
-    transition: all 0.3s;        
-    outline: 0;        
-    font-size: 0.9rem;
-    color: #ffffff;
-  }
+.btn-select-lang:hover, .btn-select-lang:focus {
+  background-color: #52348c !important;
+  color: #ffffff;
+  box-shadow: none;
+  outline: none;
+}
 
-  .btn-translate {
-    background-color: #52348c;
-    color: #ffffff;
-    width: 7rem;
-  }
+.selected-lang {
+  background-color: #52348c !important;
+  color: #ffffff;
+}
 
-  .icon-btn {
-    font-size: 1.5rem;
-  }
+.btn-remove-all, .btn-translate {
+  transition: all 0.3s;
+  outline: 0;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
 
-  .btn-remove-all {
-    background-color: #fafafa;
-    color: #303030;
-  }
+.btn-translate {
+  background-color: #52348c;
+  color: #ffffff;
+  width: 7rem;
+}
 
-  .btn-translate:hover, .btn-translate:focus {        
-    background: #432A73;   
-    color: #ffffff; 
-    transition: all 0.3s;
-    box-shadow: none;    
-  }
+.icon-btn {
+  font-size: 1.5rem;
+}
 
-  .btn-remove-all:hover, .btn-remove-all:focus {    
-    background: #E9E9E9;
-    transition: all 0.3s;
-    box-shadow: none;
-    color: #303030;
-    outline: none;
-  }
+.btn-remove-all {
+  background-color: #fafafa;
+  color: #303030;
+}
 
-  .btn-feature:hover, .btn-feature:focus {
-    border-color: transparent;    
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);    
-    outline: none;
-    box-shadow: none;
-  }
-  
-  .btn-feature {
-    color: #303030;
-    background-color: #F0F0F0;
-    transition: all 0.5s;
-    cursor: pointer;    
-  }
+.btn-translate:hover, .btn-translate:focus {
+  background: #432A73;
+  color: #ffffff;
+  transition: all 0.3s;
+  box-shadow: none;
+}
 
-  .tooltip > .tooltip-inner {    
-    font-size: .625rem;
-  }
+.btn-remove-all:hover, .btn-remove-all:focus {
+  background: #E9E9E9;
+  transition: all 0.3s;
+  box-shadow: none;
+  color: #303030;
+  outline: none;
+}
 
-  .spinner-left {
-    color: #fff200;
-  }
+.btn-feature:hover, .btn-feature:focus {
+  border-color: transparent;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  outline: none;
+  box-shadow: none;
+}
 
-  .spinner-center {
-    color: #a6253b;
-  }
+.btn-feature {
+  color: #303030;
+  background-color: #F0F0F0;
+  transition: all 0.5s;
+  cursor: pointer;
+}
 
-  .spinner-right {
-    color: #52348c;
-  }
+.tooltip > .tooltip-inner {
+  font-size: .625rem;
+}
 
-  .btn-features {
-    color: #303030;
-    background: #C5C5C5;
-  }
+.spinner-left {
+  color: #fff200;
+}
 
-  .btn-features:hover, .btn-features:focus{
-    color: #303030;
-    outline: none;
-    box-shadow: none;
-  }
+.spinner-center {
+  color: #a6253b;
+}
 
-  .mt-title {
-    width: 5rem;
-    color: #52348c;
-    height: 100%;
-    border-bottom: 2px solid #52348c;
-  }
+.spinner-right {
+  color: #52348c;
+}
 
-  .gt-title {
-    white-space: nowrap;
-    width: 14.5rem;
-    border-bottom: 2px solid #4284f3;
-    color: #4284f3;
-  }
+.btn-features {
+  color: #303030;
+  background: #C5C5C5;
+}
 
-  .catch-error {
-    color: #E62020;    
-    height: 100%;
-  }
+.btn-features:hover, .btn-features:focus{
+  color: #303030;
+  outline: none;
+  box-shadow: none;
+}
 
-  .limit-length {
-    font-size: 0.8rem;
-    color: #777777;
-  }
+.mt-title {
+  width: 5rem;
+  color: #52348c;
+  height: 100%;
+  border-bottom: 2px solid #52348c;
+}
 
-  @keyframes spinner-grow {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
+.gt-title {
+  white-space: nowrap;
+  width: 14.5rem;
+  border-bottom: 2px solid #4284f3;
+  color: #4284f3;
+}
+
+.catch-error {
+  color: #E62020;
+  height: 100%;
+}
+
+.limit-length {
+  font-size: 0.8rem;
+  color: #777777;
+}
+
+@keyframes spinner-grow {
+0% {
+  opacity: 0;
+  transform: scale(0);
+}
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  transform: scale(1);
+}
 }
 
 .spinner-grow {
-  position: relative;
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  overflow: hidden;
-  text-indent: -999em;
-  vertical-align: text-bottom;
-  background-color: currentColor;
-  border-radius: 50%;
-  animation-name: spinner-grow;
-  animation-duration: .75s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+position: relative;
+display: inline-block;
+width: 2rem;
+height: 2rem;
+overflow: hidden;
+text-indent: -999em;
+vertical-align: text-bottom;
+background-color: currentColor;
+border-radius: 50%;
+animation-name: spinner-grow;
+animation-duration: .75s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
 }
 
 .spinner-grow-sm {
-  width: 1rem;
-  height: 1rem;
+width: 1rem;
+height: 1rem;
 }
 
 .link-google-tran {
-  color: #4284f3 !important;
-  cursor: pointer;
-  width: 9rem;
+color: #4284f3 !important;
+cursor: pointer;
+width: 9rem;
 }
 
 .compare-tran {
-  font-size: 0.9rem;  
+font-size: 0.9rem;
 }
 
 .feature-input {
-  height: 3rem;
+height: 3rem;
 }
 
 .active {
-  color: #52348c !important;
-  font-weight: 600;
+color: #52348c !important;
+font-weight: 600;
 }
 
 .nav-link {
-  color: #495057;
+color: #495057;
 }
 
 .nav-link:hover {
-  color: #52348c;  
+color: #52348c;
 }
 
-@media screen and (max-width: 500px)   { 
-  .compare-output-container {
-    flex-direction: column !important;    
-  }
-  .translate-output {
-    margin: 0 !important;
-  }
-  .btn-translate {
-    font-size: 0.8rem;
-    width: 6rem;
-  }
-  .btn-remove-all {
-    width: 2.5rem;
-    font-size: 0.8rem;
-  }
-} 
+@media screen and (max-width: 500px)   {
+.compare-output-container {
+  flex-direction: column !important;
+}
+.translate-output {
+  margin: 0 !important;
+}
+.btn-translate {
+  font-size: 0.8rem;
+  width: 6rem;
+}
+.btn-remove-all {
+  width: 2.5rem;
+  font-size: 0.8rem;
+}
+}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
 <!-- Hotjar Tracking Code for https://airesearch.in.th -->
 <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1922787,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:1922787,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 
 <script>
-  
-  let sl = "th", tl = "en" 
+let sl = "th", tl = "en"
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function googleApi(input){
+  try {
+    const uri = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(input)}`
+    const response = await axios.get(uri)
+    return response.data
+  }
+  catch (err) {
+    $('#output-gt-translation').addClass('catch-error').val(
+      "You have sent too many requests recently." +
+      "\n\nPlease try again later or compare directly with google translation website link below.");
+    $('#compare-translate').removeClass('d-none')
+  }
+}
+
+async function mtApi(input){
+  const input_arr = input.split('\n');
+  const input_json = {
+    text: input_arr,
+    source: sl,
+    target: tl
+  }
+  try {
+    const response = await axios.post('https://mt-api.airesearch.in.th', JSON.stringify(input_json), {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    return response.data
+  } catch (err) {
+    $('#output-mt-translation').addClass('catch-error').val(
+    "You have sent a request for exceeding the limit rate." +
+    "\n\nPlease try again in a few seconds.");
   }
 
-  async function googleApi(input){      
-    try {
-      const uri = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(input)}`
-      const response = await axios.get(uri)         
-      return response.data                
-    } 
-    catch (err) {         
-      $('#output-gt-translation').addClass('catch-error').val(      
-        "You have sent too many requests recently." +
-        "\n\nPlease try again later or compare directly with google translation website link below.");         
-      $('#compare-translate').removeClass('d-none')   
+}
+
+async function translate() {
+  $('#loading').removeClass('d-none')
+  $('#btn-remove-all').addClass('d-none')
+  $('#btn-translate').addClass('d-none')
+  $('#compare-translate').addClass('d-none')
+
+  const input = $('#textarea-input').val()
+
+  const dataArrMT = await mtApi(input);
+  const dataArrGT = await googleApi(input);
+
+  var resultGT = '', resultMT = ''
+
+  if(dataArrGT) {
+    for(var i = 0; i < dataArrGT[0].length; i++){
+      resultGT += dataArrGT[0][i][0]
     }
   }
 
-  async function mtApi(input){   
-    const input_arr = input.split('\n');        
-    const input_json = {
-      text: input_arr,
-      source: sl,
-      target: tl
-    }          
-    try {      
-      const response = await axios.post('https://mt-api.airesearch.in.th', JSON.stringify(input_json), {                  
-        headers: {                            
-          'Content-Type': 'application/json',  
-        }               
-      })
-      return response.data
-    } catch (err) {             
-      $('#output-mt-translation').addClass('catch-error').val(
-      "You have sent a request for exceeding the limit rate." + 
-      "\n\nPlease try again in a few seconds.");     
-    }    
-        
+  if(dataArrMT) {
+    for(var item of dataArrMT) {
+      resultMT += item
+      resultMT += '\n'
+    }
   }
 
-  async function translate() {
-    $('#loading').removeClass('d-none')    
-    $('#btn-remove-all').addClass('d-none')
-    $('#btn-translate').addClass('d-none')
-    $('#compare-translate').addClass('d-none')         
-
-    const input = $('#textarea-input').val()    
-    
-    const dataArrMT = await mtApi(input);
-    const dataArrGT = await googleApi(input);
-    
-    var resultGT = '', resultMT = '' 
-    
-    if(dataArrGT) {
-      for(var i = 0; i < dataArrGT[0].length; i++){
-        resultGT += dataArrGT[0][i][0]        
-      }  
-    } 
-
-    if(dataArrMT) {
-      for(var item of dataArrMT) {      
-        resultMT += item 
-        resultMT += '\n' 
-      } 
-    }                   
-    
-    await sleep(1200);
-    if(resultGT) {
-      $('#output-gt-translation').removeClass('catch-error').val(resultGT);               
-    }
-    if(resultMT) {
-      $('#output-mt-translation').removeClass('catch-error').val(resultMT);      
-    }
-                
+  await sleep(1200);
+  if(resultGT) {
+    $('#output-gt-translation').removeClass('catch-error').val(resultGT);
   }
-  $('#thai-lang').click(function() {
-    sl = "th"
-    tl = "en"
+  if(resultMT) {
+    $('#output-mt-translation').removeClass('catch-error').val(resultMT);
+  }
+
+}
+$('#thai-lang').click(function() {
+  sl = "th"
+  tl = "en"
+  change_class()
+})
+
+$('#eng-lang').click(function() {
+  sl = "en"
+  tl = "th"
+  change_class()
+})
+
+function change_class() {
+  $('#output-gt-translation').val('')
+  $('#output-mt-translation').val('')
+  $('#btn-translate').removeClass('d-none')
+  $('#output-gt-translation').height('auto')
+  $('#output-mt-translation').height('auto')
+  $('#compare-translate').addClass('d-none')
+}
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+$('input[type="text"], textarea').on('input', function () {
+  change_class()
+});
+
+$('.btn-remove').click(function(){
+  $("#textarea-input").val('');
+  change_class()
+})
+
+$('#btn-mt-copy').click(function() {
+  var copyText = $('#output-mt-translation')[0]
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+})
+
+$('#btn-gt-copy').click(function() {
+  var copyText = $('#output-gt-translation')[0]
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+})
+
+$('#btn-translate').click(async function() {
+  if($("#textarea-input").val().trim() !== ''){
     change_class()
-  })
-
-  $('#eng-lang').click(function() {
-    sl = "en"
-    tl = "th"
-    change_class()
-  })
-
-  function change_class() {     
-    $('#output-gt-translation').val('')
-    $('#output-mt-translation').val('')
+    await translate();
+    $('#loading').addClass('d-none')
+    $('.translate-output').removeClass('d-none')
+    $('.translate-output').addClass('d-flex')
+    const outpuGT = $('#output-gt-translation')
+    const outpuMT = $('#output-mt-translation')
+    const heightGT = outpuGT[0].scrollHeight-20
+    const heightMT = outpuMT[0].scrollHeight-20
+    if(heightGT > heightMT) {
+      outpuGT.height(heightGT+'px')
+      outpuMT.height(heightGT+'px')
+    } else {
+      outpuMT.height(heightMT+'px')
+      outpuGT.height(heightMT+'px')
+    }
+    $('#btn-remove-all').removeClass('d-none')
     $('#btn-translate').removeClass('d-none')
-    $('#output-gt-translation').height('auto')
-    $('#output-mt-translation').height('auto')  
-    $('#compare-translate').addClass('d-none')               
   }
-  
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();           
-  });
+})
 
-  $('input[type="text"], textarea').on('input', function () {
-    change_class()
-  });
+$('#link-google-translate').click(function() {
+  const input = $("#textarea-input").val()
+  window.open(
+    `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
+    ,
+    '_blank'
+  );
+})
 
-  $('.btn-remove').click(function(){
-    $("#textarea-input").val('');
-    change_class() 
-  })
+$('#textarea-input').on("input keyup", function(){
+  $(this).height('auto')
+  if($(this)[0].scrollHeight >= 157){
+    $(this).height(this.scrollHeight+'px')
+  }
 
-  $('#btn-mt-copy').click(function() {    
-    var copyText = $('#output-mt-translation')[0]
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");    
-  })
-
-  $('#btn-gt-copy').click(function() {    
-    var copyText = $('#output-gt-translation')[0]
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");    
-  })
-
-  $('#btn-translate').click(async function() {         
-    if($("#textarea-input").val().trim() !== ''){
-      change_class()
-      await translate();  
-      $('#loading').addClass('d-none')              
-      $('.translate-output').removeClass('d-none')   
-      $('.translate-output').addClass('d-flex')   
-      const outpuGT = $('#output-gt-translation')
-      const outpuMT = $('#output-mt-translation')
-      const heightGT = outpuGT[0].scrollHeight-20
-      const heightMT = outpuMT[0].scrollHeight-20
-      if(heightGT > heightMT) {                
-        outpuGT.height(heightGT+'px')        
-        outpuMT.height(heightGT+'px')
-      } else {                
-        outpuMT.height(heightMT+'px')
-        outpuGT.height(heightMT+'px')
-      }    
-      $('#btn-remove-all').removeClass('d-none')  
-      $('#btn-translate').removeClass('d-none') 
-    } 
-  })
-
-  $('#link-google-translate').click(function() {    
-    const input = $("#textarea-input").val()
-    window.open(
-      `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
-      ,
-      '_blank' 
-    );
-  })
-
-  $('#textarea-input').on("input keyup", function(){    
-    $(this).height('auto')    
-    if($(this)[0].scrollHeight >= 157){
-      $(this).height(this.scrollHeight+'px')      
-    } 
-
-    var currentLength = $(this).val().length;
-    var maxLength = $(this).attr('maxlength');    
-    if(currentLength >= maxLength) {                    
-      $('.limit-length').css('color', '#E62020');    
-    }else {
-      $('.limit-length').css('color', '#777777');    
-    }
-    $('#char-lefts').text(currentLength + '/1000')            
-  });
+  var currentLength = $(this).val().length;
+  var maxLength = $(this).attr('maxlength');
+  if(currentLength >= maxLength) {
+    $('.limit-length').css('color', '#E62020');
+  }else {
+    $('.limit-length').css('color', '#777777');
+  }
+  $('#char-lefts').text(currentLength + '/1000')
+});
 </script>
