@@ -492,176 +492,274 @@ color: #52348c;
 </script>
 
 <script>
-let sl = "th", tl = "en"
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (
+      Array.isArray(o) ||
+      (it = _unsupportedIterableToArray(o)) ||
+      (allowArrayLike && o && typeof o.length === "number")
+    ) {
+      if (it) o = it;
+      var i = 0;
+      var F = function F() {};
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return { done: true };
+          return { done: false, value: o[i++] };
+        },
+        e: function e(_e) {
+          throw _e;
+        },
+        f: F
+      };
+    }
+    throw new TypeError(
+      "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+    );
+  }
+  var normalCompletion = true,
+    didErr = false,
+    err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e2) {
+      didErr = true;
+      err = _e2;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+    return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+
+var sl = "th",
+  tl = "en";
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(function (resolve) {
+    return setTimeout(resolve, ms);
+  });
 }
 
-async function googleApi(input){
+async function googleApi(input) {
   try {
-    const uri = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(input)}`
-    const response = await axios.get(uri)
-    return response.data
-  }
-  catch (err) {
-    $('#output-gt-translation').addClass('catch-error').val(
-      "You have sent too many requests recently." +
-      "\n\nPlease try again later or compare directly with google translation website link below.");
-    $('#compare-translate').removeClass('d-none')
+    var uri = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
+      .concat(sl, "&tl=")
+      .concat(tl, "&dt=t&q=")
+      .concat(encodeURIComponent(input));
+    var response = await axios.get(uri);
+    return response.data;
+  } catch (err) {
+    $("#output-gt-translation")
+      .addClass("catch-error")
+      .val(
+        "You have sent too many requests recently." +
+          "\n\nPlease try again later or compare directly with google translation website link below."
+      );
+    $("#compare-translate").removeClass("d-none");
   }
 }
 
-async function mtApi(input){
-  const input_arr = input.split('\n');
-  const input_json = {
+async function mtApi(input) {
+  var input_arr = input.split("\n");
+  var input_json = {
     text: input_arr,
     source: sl,
     target: tl
-  }
-  try {
-    const response = await axios.post('https://mt-api.airesearch.in.th', JSON.stringify(input_json), {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-    return response.data
-  } catch (err) {
-    $('#output-mt-translation').addClass('catch-error').val(
-    "You have sent a request for exceeding the limit rate." +
-    "\n\nPlease try again in a few seconds.");
-  }
+  };
 
+  try {
+    var response = await axios.post(
+      "https://mt-api.airesearch.in.th",
+      JSON.stringify(input_json),
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    return response.data;
+  } catch (err) {
+    $("#output-mt-translation")
+      .addClass("catch-error")
+      .val(
+        "You have sent a request for exceeding the limit rate." +
+          "\n\nPlease try again in a few seconds."
+      );
+  }
 }
 
 async function translate() {
-  $('#loading').removeClass('d-none')
-  $('#btn-remove-all').addClass('d-none')
-  $('#btn-translate').addClass('d-none')
-  $('#compare-translate').addClass('d-none')
+  $("#loading").removeClass("d-none");
+  $("#btn-remove-all").addClass("d-none");
+  $("#btn-translate").addClass("d-none");
+  $("#compare-translate").addClass("d-none");
+  var input = $("#textarea-input").val();
+  var dataArrMT = await mtApi(input);
+  var dataArrGT = await googleApi(input);
+  var resultGT = "",
+    resultMT = "";
 
-  const input = $('#textarea-input').val()
-
-  const dataArrMT = await mtApi(input);
-  const dataArrGT = await googleApi(input);
-
-  var resultGT = '', resultMT = ''
-
-  if(dataArrGT) {
-    for(var i = 0; i < dataArrGT[0].length; i++){
-      resultGT += dataArrGT[0][i][0]
+  if (dataArrGT) {
+    for (var i = 0; i < dataArrGT[0].length; i++) {
+      resultGT += dataArrGT[0][i][0];
     }
   }
 
-  if(dataArrMT) {
-    for(var item of dataArrMT) {
-      resultMT += item
-      resultMT += '\n'
+  if (dataArrMT) {
+    var _iterator = _createForOfIteratorHelper(dataArrMT),
+      _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var item = _step.value;
+        resultMT += item;
+        resultMT += "\n";
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
     }
   }
 
   await sleep(1200);
-  if(resultGT) {
-    $('#output-gt-translation').removeClass('catch-error').val(resultGT);
-  }
-  if(resultMT) {
-    $('#output-mt-translation').removeClass('catch-error').val(resultMT);
+
+  if (resultGT) {
+    $("#output-gt-translation").removeClass("catch-error").val(resultGT);
   }
 
+  if (resultMT) {
+    $("#output-mt-translation").removeClass("catch-error").val(resultMT);
+  }
 }
-$('#thai-lang').click(function() {
-  sl = "th"
-  tl = "en"
-  change_class()
-})
 
-$('#eng-lang').click(function() {
-  sl = "en"
-  tl = "th"
-  change_class()
-})
+$("#thai-lang").click(function () {
+  sl = "th";
+  tl = "en";
+  change_class();
+});
+$("#eng-lang").click(function () {
+  sl = "en";
+  tl = "th";
+  change_class();
+});
 
 function change_class() {
-  $('#output-gt-translation').val('')
-  $('#output-mt-translation').val('')
-  $('#btn-translate').removeClass('d-none')
-  $('#output-gt-translation').height('auto')
-  $('#output-mt-translation').height('auto')
-  $('#compare-translate').addClass('d-none')
+  $("#output-gt-translation").val("");
+  $("#output-mt-translation").val("");
+  $("#btn-translate").removeClass("d-none");
+  $("#output-gt-translation").height("auto");
+  $("#output-mt-translation").height("auto");
+  $("#compare-translate").addClass("d-none");
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
-
-$('input[type="text"], textarea').on('input', function () {
-  change_class()
+$('input[type="text"], textarea').on("input", function () {
+  change_class();
+});
+$(".btn-remove").click(function () {
+  $("#textarea-input").val("");
+  change_class();
+});
+$("#btn-mt-copy").click(function () {
+  var copyText = $("#output-mt-translation")[0];
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+});
+$("#btn-gt-copy").click(function () {
+  var copyText = $("#output-gt-translation")[0];
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
 });
 
-$('.btn-remove').click(function(){
-  $("#textarea-input").val('');
-  change_class()
-})
-
-$('#btn-mt-copy').click(function() {
-  var copyText = $('#output-mt-translation')[0]
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-})
-
-$('#btn-gt-copy').click(function() {
-  var copyText = $('#output-gt-translation')[0]
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-})
-
-$('#btn-translate').click(async function() {
-  if($("#textarea-input").val().trim() !== ''){
-    change_class()
+$("#btn-translate").click(async function () {
+  if ($("#textarea-input").val().trim() !== "") {
+    change_class();
     await translate();
-    $('#loading').addClass('d-none')
-    $('.translate-output').removeClass('d-none')
-    $('.translate-output').addClass('d-flex')
-    const outpuGT = $('#output-gt-translation')
-    const outpuMT = $('#output-mt-translation')
-    const heightGT = outpuGT[0].scrollHeight-20
-    const heightMT = outpuMT[0].scrollHeight-20
-    if(heightGT > heightMT) {
-      outpuGT.height(heightGT+'px')
-      outpuMT.height(heightGT+'px')
+    $("#loading").addClass("d-none");
+    $(".translate-output").removeClass("d-none");
+    $(".translate-output").addClass("d-flex");
+    var outpuGT = $("#output-gt-translation");
+    var outpuMT = $("#output-mt-translation");
+    var heightGT = outpuGT[0].scrollHeight - 20;
+    var heightMT = outpuMT[0].scrollHeight - 20;
+
+    if (heightGT > heightMT) {
+      outpuGT.height(heightGT + "px");
+      outpuMT.height(heightGT + "px");
     } else {
-      outpuMT.height(heightMT+'px')
-      outpuGT.height(heightMT+'px')
+      outpuMT.height(heightMT + "px");
+      outpuGT.height(heightMT + "px");
     }
-    $('#btn-remove-all').removeClass('d-none')
-    $('#btn-translate').removeClass('d-none')
+
+    $("#btn-remove-all").removeClass("d-none");
+    $("#btn-translate").removeClass("d-none");
   }
-})
+});
 
-$('#link-google-translate').click(function() {
-  const input = $("#textarea-input").val()
+$("#link-google-translate").click(function () {
+  var input = $("#textarea-input").val();
   window.open(
-    `https://translate.google.co.th/#view=home&op=translate&sl=${sl}&tl=${tl}&text=${input}`
-    ,
-    '_blank'
+    "https://translate.google.co.th/#view=home&op=translate&sl="
+      .concat(sl, "&tl=")
+      .concat(tl, "&text=")
+      .concat(input),
+    "_blank"
   );
-})
+});
 
-$('#textarea-input').on("input keyup", function(){
-  $(this).height('auto')
-  if($(this)[0].scrollHeight >= 157){
-    $(this).height(this.scrollHeight+'px')
+$("#textarea-input").on("input keyup", function () {
+  $(this).height("auto");
+
+  if ($(this)[0].scrollHeight >= 157) {
+    $(this).height(this.scrollHeight + "px");
   }
 
   var currentLength = $(this).val().length;
-  var maxLength = $(this).attr('maxlength');
-  if(currentLength >= maxLength) {
-    $('.limit-length').css('color', '#E62020');
-  }else {
-    $('.limit-length').css('color', '#777777');
+  var maxLength = $(this).attr("maxlength");
+
+  if (currentLength >= maxLength) {
+    $(".limit-length").css("color", "#E62020");
+  } else {
+    $(".limit-length").css("color", "#777777");
   }
-  $('#char-lefts').text(currentLength + '/1000')
+
+  $("#char-lefts").text(currentLength + "/1000");
 });
 </script>
