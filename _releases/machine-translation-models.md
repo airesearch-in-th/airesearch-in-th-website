@@ -66,9 +66,9 @@ Transformer [Vaswani et al. 2017] เป็นโมเดลประเภท 
 
 ## ผลการทดสอบ
 
-การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดล Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคจาก `scb-mt-en-th-2020` (SCB_1M), ชุดข้อมูลคู่ประโยคจาก Open Parallel Corpus [Tiedemann et al. 2012] ในส่วนที่เป็นคู่ประโยคภาษาอังกฤษและไทย ([mt-opus](https://github.com/vistec-AI/mt-opus)), ชุดข้อมูลคู่ประโยคที่รวมทั้ง `scb-mt-en-th-2020` และ `mt-opus` (SCB_1M + MT_OPUS), ผลการแปลของโมเดลแปลภาษาเฉพาะการแปลจากอังกฤษ→ไทย จาก AI for Thai (aiforthai.in.th) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020) 
+การเปรียบเทียบ BLEU score และ n-gram precision ระหว่าง ผลการแปลของโมเดล Transformer Base ที่เทรนจาก ชุดข้อมูลคู่ประโยคจาก `scb-mt-en-th-2020` (SCB_1M), ชุดข้อมูลคู่ประโยคจาก Open Parallel Corpus [Tiedemann et al. 2012] ในส่วนที่เป็นคู่ประโยคภาษาอังกฤษและไทย ([mt-opus](https://github.com/vistec-AI/mt-opus)), ชุดข้อมูลคู่ประโยคที่รวมทั้ง `scb-mt-en-th-2020` และ `mt-opus` (SCB_1M + MT_OPUS), ผลการแปลของโมเดลแปลภาษาเฉพาะการแปลจากอังกฤษ→ไทย จาก AI for Thai (aiforthai.in.th) และ ผลการแปลจาก Google Translation API (ทดสอบและวัดผลใน เดือนพฤษภาคม 2020)
 
-สำหรับคู่ประโยคทีใช้ทดสอบ เป็นชุดข้อมูลทดสอบจาก IWSLT 2015 ประกอบด้วย 46 Transcript ที่มีการถอดคำและแปลในภาษาอังกฤษและไทย จาก TED Talk  ระหว่างปี 2010 ถึง 2013 (tst2010-2013) รวมเป็น 4,242 ประโยค โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
+สำหรับคู่ประโยคทีใช้ทดสอบ เป็นชุดข้อมูลทดสอบจาก IWSLT 2015 ประกอบด้วย 46 Transcript ที่มีการถอดคำและแปลในภาษาอังกฤษและไทย จาก TED Talk ระหว่างปี 2010 ถึง 2013 (tst2010-2013) รวมเป็น 4,242 ประโยค โดยใช้ SacreBLEU [Post et al. 2018] (case sensitive / case-insentive) สำหรับภาษาอังกฤษเป็น Target language และ BLEU4 [Papineni et al. 2002] สำหรับภาษาไทยเป็น Target language
 
 ![Evaluation Result](/assets/img/releases/machine_translation_models/eval_iwslt2015.png)
 
@@ -110,3 +110,656 @@ and whipped cream from the starbucks at the birchville mall.
 - Tiedemann, J. (2012). Parallel Data, Tools and Interfaces in OPUS. LREC.
 - Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.
 - Post, M. (2018). A Call for Clarity in Reporting BLEU Scores. WMT.
+
+## ทดลองแปลด้วยโมเดล
+
+<div id="model-demo" class="test1 w-100 d-flex flex-column">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="thai-lang" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ไทย <i class="fa fa-long-arrow-alt-right"></i> อังกฤษ</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="eng-lang" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">อังกฤษ <i class="fa fa-long-arrow-alt-right"></i> ไทย</a>
+    </li>
+  </ul>
+  <div class="textarea-box d-flex flex-column pb-3">
+    <textarea class="textarea-input py-2 px-3 border border-bottom-0 border-top-0 data-hj-allow" maxlength="1000" id="textarea-input" rows="5"></textarea>
+    <div class="feature-input d-flex justify-content-end bg-white border border-top-0">   
+      <button type="button" class="btn btn-translate btn-sm rounded rounded-lg btn-light border border-secondary my-2" id="btn-translate">
+        แปล
+      </button> 
+      <button type="button" class="btn btn-remove btn-sm btn-remove-all rounded rounded-lg border m-2 border-secondary" id="btn-remove-all" data-toggle="tooltip" data-placement="bottom" title="Remove">
+        <i class="fa fa-trash-alt"></i>
+      </button>   
+    </div>
+    <span class="limit-length text-right" id="char-lefts">0/1000</span>
+    <div class="d-flex justify-content-center">
+      <div class="loading d-none text-center mx-3" id="loading"> 
+        <div class="spinner-grow spinner-left" role="status">        
+        </div>
+        <div class="spinner-grow spinner-center" role="status">        
+        </div>
+        <div class="spinner-grow spinner-right" role="status">        
+      </div>
+    </div>  
+  </div>  
+  <div class="compare-output-container d-flex flex-row my-3">    
+    <div class="textarea-mt-result translate-output d-none flex-column border flex-fill mr-1 w-100">
+      <div class="mt-container px-3 pt-2 bg-white border-bottom">
+        <div class="mt-title pb-1">Our result</div>
+      </div>
+      <textarea class="textarea-mt-output p-3 data-hj-allow" id="output-mt-translation" readonly></textarea>
+      <div class="feature-output text-right bg-white">
+        <button class="btn btn-sm btn-secondary m-2" id="btn-mt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+          <i class="fa fa-clone"></i>
+        </button>
+      </div>
+    </div>    
+    <div class="textarea-gt-result translate-output d-none flex-column border flex-fill ml-1 w-100">    
+      <div class="gt-container px-3 pt-2 bg-white border-bottom">
+        <div class="gt-title pb-1">Result from Google Translate</div>
+        </div>
+        <textarea class="textarea-gt-output p-3 data-hj-allow" id="output-gt-translation" readonly></textarea>
+        <div class="feature-output text-right bg-white">
+          <button class="btn btn-sm btn-secondary m-2" id="btn-gt-copy" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+            <i class="fa fa-clone"></i>
+          </button>
+        </div>
+      </div>
+    </div>   
+    <div class="compare-tran text-right d-none" id="compare-translate">
+      Compare with  
+      <a class="link-google-tran" id="link-google-translate">Google Translate</a>   
+    </div>     
+  </div>
+</div>
+
+## ข้อจำกัดของโมเดล และวิธีการแก้ไขเบื้องต้น
+
+จากการทดสอบโมเดลแปลภาษาเบื้องต้น พบว่ามีข้อจำกัดบางประการที่เกิดขึ้นได้จากโมเดลแปลภาษา ดังนี้
+
+#### การแปลข้อความที่มีหลายบรรทัด (multi-line sentences)
+
+```python
+>> en2th.translate("The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald")
+"ผู้คนสร้างโอเอซิสด้วยน้ําทะเล By Chloe Berge และ Sunny Fitzgerald"
+```
+
+**แนวทางการแก้ไข:** เนื่องจากการรับข้อมูลจาก Textbox ข้อความอาจจะประกอบด้วยหลายบรรทัด โดยมีการแบ่งด้วย `\n` ซึ่งอาจจะส่งผลให้ข้อความยาวเกินข้อจำกัดของโมเดลแปลภาษา หรือมีผลการแปลที่ไม่ถูกต้องได้ ผู้ใช้สามารถแยกข้อความตาม `\n` แล้วจึงส่ง List ของข้อความที่ถูกแบ่ง ไปยังโมเดล โดยผลการแปลจะคืนค่าเป็น List ของผลการแปล
+
+```python
+>> text_input = "The people creating an oasis with seawater\nBy Chloe Berge and Sunny Fitzgerald"
+>> segments = text_input.split("\n")
+>> segments
+[ "The people creating an oasis with seawater",
+"By Chloe Berge and Sunny Fitzgerald"]
+>> results = en2th.translate(segments)
+>> results
+["ผู้คนสร้างโอเอซิสด้วยน้ําทะเล",
+"โดย Chloe Berge และ Sunny Fitzgerald"]
+```
+
+#### การแปลข้อความเปล่า หรือ empty string และโมเดลได้ให้ผลแปลที่ไม่ถูกต้อง ตัวอย่างเช่น
+
+```python
+>> th2en.translate("")
+"I don't think so."
+
+>> en2th.translate("")
+". ."
+```
+
+**แนวทางการแก้ไข:** ผู้ใช้สามารถระบุให้ข้อความที่เป็น empty string ไม่ส่งไปยังโมเดลแปลภาษา และให้คืนค่าเป็น empty string เหมือนเดิม
+
+```python
+def translate_segment(text):
+  if len(text.strip()) == 0:
+    return ""
+```
+
+#### การแปลข้อความโดยที่ภาษาต้นทางของโมเดลไม่ตรงกัน เช่น การแปลด้วยโมเดล อังกฤษ→ไทย แต่ข้อความนำเข้าเป็นภาษาไทย
+
+```python
+>> th2en.translate("ฉันอยากจองเที่ยวบินไปโตเกียว")
+"I'd like to book a flight to Tokyo."
+
+>> en2th.translate("ฉันอยากจองเที่ยวบินไปโตเกียว") # ข้อความนำเข้าควรเป็นภาษาอังกฤษ
+"ไล่ระดับสี"
+```
+
+**แนวทางการแก้ไข:** เนื่องจากโมเดลถูกเทรนแยกกันในการแปลระหว่าง อังกฤษ→ไทย และ ไทย→อังกฤษ ผู้ใช้งานสามารถกำหนดเงื่อนไขให้ของข้อความนำเข้าว่าควรเป็นข้อความในภาษาต้นทางที่โมเดลได้ถูกเทรนมา เพื่อป้องกันข้อผิดพลาดนี้
+
+```python
+import re
+
+def translate_en2th(text):
+  if re.search(r"ก-๙", text):
+    raise "Input text should be in English."
+```
+
+#### การแปลคำหนึ่งคำในภาษาอังกฤษอาจส่งผลให้โมเดลแปลผลได้ไม่ถูกต้อง
+
+```python
+>> en2th.translate("method")
+วิธีการ@ label
+
+>> en2th.translate("methodology.")
+กลไกComment
+
+>> en2th.translate("cat")
+แมวName
+```
+
+**แนวทางการแก้ไข:** ในบางกรณีการแปลคำหนึ่งคำอาจจะมีผลการแปลที่ไม่ถูกต้องได้ เนื่องจากชุดข้อมูลที่ใช้เทรนโมเดลมักจะเป็นในระดับประโยค การแก้ปัญหาเบื้องต้นสามารถทำได้โดยการเพิ่ม "." ต่อท้ายข้อความนำเข้า แล้วจึงทำการ post-processing ด้วยการลบ "." ที่ต่อท้ายผลการแปล
+
+```python
+>> en2th.translate("method.")
+วิธีการ.
+
+>> en2th.translate("methodology.")
+ระเบียบวิธี
+
+>> en2th.translate("cat.")
+แมว
+```
+
+<style>
+body [id]:before {
+  content: none;
+}
+
+textarea {
+  border: 1px solid #ffffff;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none !important;
+}
+
+.btn-select-lang {
+  width: 10rem;
+  font-size: 0.9rem;
+}
+
+.btn-select-lang:hover, .btn-select-lang:focus {
+  background-color: #52348c !important;
+  color: #ffffff;
+  box-shadow: none;
+  outline: none;
+}
+
+.selected-lang {
+  background-color: #52348c !important;
+  color: #ffffff;
+}
+
+.btn-remove-all, .btn-translate {
+  transition: all 0.3s;
+  outline: 0;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.btn-translate {
+  background-color: #52348c;
+  color: #ffffff;
+  width: 7rem;
+}
+
+.icon-btn {
+  font-size: 1.5rem;
+}
+
+.btn-remove-all {
+  background-color: #fafafa;
+  color: #303030;
+}
+
+.btn-translate:hover, .btn-translate:focus {
+  background: #432A73;
+  color: #ffffff;
+  transition: all 0.3s;
+  box-shadow: none;
+}
+
+.btn-remove-all:hover, .btn-remove-all:focus {
+  background: #E9E9E9;
+  transition: all 0.3s;
+  box-shadow: none;
+  color: #303030;
+  outline: none;
+}
+
+.btn-feature:hover, .btn-feature:focus {
+  border-color: transparent;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-feature {
+  color: #303030;
+  background-color: #F0F0F0;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.tooltip > .tooltip-inner {
+  font-size: .625rem;
+}
+
+.spinner-left {
+  color: #fff200;
+}
+
+.spinner-center {
+  color: #a6253b;
+}
+
+.spinner-right {
+  color: #52348c;
+}
+
+.btn-features {
+  color: #303030;
+  background: #C5C5C5;
+}
+
+.btn-features:hover, .btn-features:focus{
+  color: #303030;
+  outline: none;
+  box-shadow: none;
+}
+
+.mt-title {
+  width: 5rem;
+  color: #52348c;
+  height: 100%;
+  border-bottom: 2px solid #52348c;
+}
+
+.gt-title {
+  white-space: nowrap;
+  width: 14.5rem;
+  border-bottom: 2px solid #4284f3;
+  color: #4284f3;
+}
+
+.catch-error {
+  color: #E62020;
+  height: 100%;
+}
+
+.limit-length {
+  font-size: 0.8rem;
+  color: #777777;
+}
+
+@keyframes spinner-grow {
+0% {
+  opacity: 0;
+  transform: scale(0);
+}
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  transform: scale(1);
+}
+}
+
+.spinner-grow {
+position: relative;
+display: inline-block;
+width: 2rem;
+height: 2rem;
+overflow: hidden;
+text-indent: -999em;
+vertical-align: text-bottom;
+background-color: currentColor;
+border-radius: 50%;
+animation-name: spinner-grow;
+animation-duration: .75s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+
+.spinner-grow-sm {
+width: 1rem;
+height: 1rem;
+}
+
+.link-google-tran {
+color: #4284f3 !important;
+cursor: pointer;
+width: 9rem;
+}
+
+.compare-tran {
+font-size: 0.9rem;
+}
+
+.feature-input {
+height: 3rem;
+}
+
+.active {
+color: #52348c !important;
+font-weight: 600;
+}
+
+.nav-link {
+color: #495057;
+}
+
+.nav-link:hover {
+color: #52348c;
+}
+
+@media screen and (max-width: 500px)   {
+.compare-output-container {
+  flex-direction: column !important;
+}
+.translate-output {
+  margin: 0 !important;
+}
+.btn-translate {
+  font-size: 0.8rem;
+  width: 6rem;
+}
+.btn-remove-all {
+  width: 2.5rem;
+  font-size: 0.8rem;
+}
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+<!-- Hotjar Tracking Code for https://airesearch.in.th -->
+<script>
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:1922787,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script>
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (
+      Array.isArray(o) ||
+      (it = _unsupportedIterableToArray(o)) ||
+      (allowArrayLike && o && typeof o.length === "number")
+    ) {
+      if (it) o = it;
+      var i = 0;
+      var F = function F() {};
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return { done: true };
+          return { done: false, value: o[i++] };
+        },
+        e: function e(_e) {
+          throw _e;
+        },
+        f: F
+      };
+    }
+    throw new TypeError(
+      "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+    );
+  }
+  var normalCompletion = true,
+    didErr = false,
+    err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e2) {
+      didErr = true;
+      err = _e2;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+    return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+
+var sl = "th",
+  tl = "en";
+
+function sleep(ms) {
+  return new Promise(function (resolve) {
+    return setTimeout(resolve, ms);
+  });
+}
+
+async function googleApi(input) {
+  try {
+    var uri = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
+      .concat(sl, "&tl=")
+      .concat(tl, "&dt=t&q=")
+      .concat(encodeURIComponent(input));
+    var response = await axios.get(uri);
+    return response.data;
+  } catch (err) {
+    $("#output-gt-translation")
+      .addClass("catch-error")
+      .val(
+        "You have sent too many requests recently." +
+          "\n\nPlease try again later or compare directly with google translation website link below."
+      );
+    $("#compare-translate").removeClass("d-none");
+  }
+}
+
+async function mtApi(input) {
+  var input_arr = input.split("\n");
+  var input_json = {
+    text: input_arr,
+    source: sl,
+    target: tl
+  };
+
+  try {
+    var response = await axios.post(
+      "https://mt-api.airesearch.in.th",
+      JSON.stringify(input_json),
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    return response.data;
+  } catch (err) {
+    $("#output-mt-translation")
+      .addClass("catch-error")
+      .val(
+        "You have sent a request for exceeding the limit rate." +
+          "\n\nPlease try again in a few seconds."
+      );
+  }
+}
+
+async function translate() {
+  $("#loading").removeClass("d-none");
+  $("#btn-remove-all").addClass("d-none");
+  $("#btn-translate").addClass("d-none");
+  $("#compare-translate").addClass("d-none");
+  var input = $("#textarea-input").val();
+  var dataArrMT = await mtApi(input);
+  var dataArrGT = await googleApi(input);
+  var resultGT = "",
+    resultMT = "";
+
+  if (dataArrGT) {
+    for (var i = 0; i < dataArrGT[0].length; i++) {
+      resultGT += dataArrGT[0][i][0];
+    }
+  }
+
+  if (dataArrMT) {
+    var _iterator = _createForOfIteratorHelper(dataArrMT),
+      _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var item = _step.value;
+        resultMT += item;
+        resultMT += "\n";
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+
+  await sleep(1200);
+
+  if (resultGT) {
+    $("#output-gt-translation").removeClass("catch-error").val(resultGT);
+  }
+
+  if (resultMT) {
+    $("#output-mt-translation").removeClass("catch-error").val(resultMT);
+  }
+}
+
+$("#thai-lang").click(function () {
+  sl = "th";
+  tl = "en";
+  change_class();
+});
+$("#eng-lang").click(function () {
+  sl = "en";
+  tl = "th";
+  change_class();
+});
+
+function change_class() {
+  $("#output-gt-translation").val("");
+  $("#output-mt-translation").val("");
+  $("#btn-translate").removeClass("d-none");
+  $("#output-gt-translation").height("auto");
+  $("#output-mt-translation").height("auto");
+  $("#compare-translate").addClass("d-none");
+}
+
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+$('input[type="text"], textarea').on("input", function () {
+  change_class();
+});
+$(".btn-remove").click(function () {
+  $("#textarea-input").val("");
+  change_class();
+});
+$("#btn-mt-copy").click(function () {
+  var copyText = $("#output-mt-translation")[0];
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+});
+$("#btn-gt-copy").click(function () {
+  var copyText = $("#output-gt-translation")[0];
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+});
+
+$("#btn-translate").click(async function () {
+  if ($("#textarea-input").val().trim() !== "") {
+    change_class();
+    await translate();
+    $("#loading").addClass("d-none");
+    $(".translate-output").removeClass("d-none");
+    $(".translate-output").addClass("d-flex");
+    var outpuGT = $("#output-gt-translation");
+    var outpuMT = $("#output-mt-translation");
+    var heightGT = outpuGT[0].scrollHeight - 20;
+    var heightMT = outpuMT[0].scrollHeight - 20;
+
+    if (heightGT > heightMT) {
+      outpuGT.height(heightGT + "px");
+      outpuMT.height(heightGT + "px");
+    } else {
+      outpuMT.height(heightMT + "px");
+      outpuGT.height(heightMT + "px");
+    }
+
+    $("#btn-remove-all").removeClass("d-none");
+    $("#btn-translate").removeClass("d-none");
+  }
+});
+
+$("#link-google-translate").click(function () {
+  var input = $("#textarea-input").val();
+  window.open(
+    "https://translate.google.co.th/#view=home&op=translate&sl="
+      .concat(sl, "&tl=")
+      .concat(tl, "&text=")
+      .concat(input),
+    "_blank"
+  );
+});
+
+$("#textarea-input").on("input keyup", function () {
+  $(this).height("auto");
+
+  if ($(this)[0].scrollHeight >= 157) {
+    $(this).height(this.scrollHeight + "px");
+  }
+
+  var currentLength = $(this).val().length;
+  var maxLength = $(this).attr("maxlength");
+
+  if (currentLength >= maxLength) {
+    $(".limit-length").css("color", "#E62020");
+  } else {
+    $(".limit-length").css("color", "#777777");
+  }
+
+  $("#char-lefts").text(currentLength + "/1000");
+});
+</script>
