@@ -34,10 +34,10 @@ navbar_display: false
                 <h5 class="font-weight-semibold">{{ release.title }}</h5>
                 <p class="text-justify">{{ release.description }}</p>
                 <div class="d-flex flex-row justify-content-between align-items-center mt-auto">
-                  <p class="mb-0">{{ release.date | date: "%e/%-m/%Y" }}</p>
-                  <p class="mb-0">
+                  <p class="mb-0">{{ release.date | date: "%e %b %Y" }}</p>
+                  <p class="mb-0 d-flex flex-row align-items-center">
                     {% for category in release.categories limit:2 %}
-                    <span class="badge badge-light">{{ category }}</span>
+                    <span class="badge badge-light mr-1">{{ category }}</span>
                     {% endfor %}
                     <i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}
                   </p>
