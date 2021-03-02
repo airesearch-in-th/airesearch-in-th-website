@@ -5,6 +5,7 @@ version: 1.0
 date: "2 Mar 2021"
 featured: true
 categories: model
+image: "/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg"
 ---
 
 สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (Thailand Artificial Intelligence Research Institute) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)
@@ -33,7 +34,7 @@ categories: model
 
 4. การตัดแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า `sefr`) จากบทความทางวิชาการชื่อ "Stacked Ensemble Filter and Refine for Word Segmentation" [Limkonchotiwat et al., 2020]
 
-![Illutration of word segmentation algorithm](/assets/img/releases/wangchanberta-pre-trained-thai-language-model/illutration_word-segmentation.png)
+![Illustration of word segmentation algorithm](/assets/img/releases/wangchanberta-pre-trained-thai-language-model/illustration_word-segmentation.png)
 
 <p style="text-align: center;">รูป 1: ภาพประกอบแสดงการตัดแบ่งคำ, พยางค์ และหน่วยคำย่อยจากโมเดลการตัดแบ่งตามหน่อยคำ, หน่วยคำย่อย, หน่วยพยางค์ และหน่วยตัวอักษร</p>
 
