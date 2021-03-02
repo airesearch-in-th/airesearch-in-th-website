@@ -8,32 +8,30 @@ categories: model
 image: "/assets/img/releases/letters.jpg"
 ---
 
-สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ได้ทำการเทรนโมเดลภาษา (Language Model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆเช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งที่ขนาดรวมข้อมูลรวม 78.5GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน Micro-averaged F1 score ที่สูงที่สุดเป็นจำนวน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล ซึ่งเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT[[github](https://github.com/google-research/bert/blob/master/multilingual.md)] และ XLMR [[github](https://github.com/pytorch/fairseq/tree/master/examples/xlmr)])
-
-
+สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆเช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score ที่สูงที่สุดจำนวน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT  และ XLMR)
 ## โมเดลทางภาษาจาก Google AI Language และ Facebook AI Research
 
-ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (Language Model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ (BookCorpus) ในภาษาอังกฤษ และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆเช่น text classificatio, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI
+ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (language model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ (BookCorpus) ในภาษาอังกฤษ และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆ เช่น text classification, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI
 
 ถัดมาในปี 2019 Facebook AI Research นำเสนอ เป็นเทคนิคการเทรนโมเดลภาษาให้มีประสิทธิภาพมากยิ่งขึ้น โดยใ้ช้ชื่อว่า RoBERTa [Liu et al., 2019] โดยเป็นการต่อยอดจาก BERT จากผลการทดลองพบว่าได้คะแนนสูงสุด บนชุดข้อมูล GLUE, SQuAD 1.1, SQuAD 2.0 และ MultiNLI โดยโมเดลที่ได้นั้นมีประสิทธิภาพสูงกว่า BERT
 
 ## ข้อจำกัดของ Multilingual BERT และ RoBERTa กับภาษาไทย
 
-เนื่องด้วยปัจจุบันโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่รวมภาษาไทยในชุดเข้าไปอยู่ในชุดข้อมูลฝึกฝนด้วย (อาทิเช่น mBERT [Devlin et al., 2019] และ XLMR [Conneau et al., 2020]) ยังมีข้อจำกัดบางประการอาทิเช่น การฝึกฝนโมเดลจะต้องเรียนรู้บนช้อมูลในภาษาอื่นๆรวมกว่า 100 ภาษาพร้อมกันทำให้ไม่สามารถที่จะเจาะจงไปที่รูปแบบการใช้ภาษา หรือการเพิ่มความหลากหลายของหัวข้อที่ปรากฏในชุดข้อมูลของภาษาไทยโดยเฉพาะได้ (เช่น XLMR อาศัยชุดข้อมูลจากการ crawl เว็บไซต์เพียงแหล่งเดียว หรือ mBERT ที่อาศัยข้อมูลจากวิกิพีเดียเท่านั้น) ทาง AIResearch จึงได้เริ่มการเทรนโมเดลแบบภาษาเดียว (monolingual language model) บนชุดข้อมูลภาษาไทยขนาดกว่า 78.5 GB จากแหล่งหลายแหล่ง โดยได้เลือกใช้วิธีการที่ชื่อ RoBERTa ในการเทรนครั้งนี้
+เนื่องด้วยปัจจุบันโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่รวมภาษาไทยในชุดเข้าไปอยู่ในชุดข้อมูลฝึกฝนด้วย (อาทิเช่น [mBERT](https://github.com/google-research/bert/blob/master/multilingual.md) [Devlin et al., 2019] และ [XLMR](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) [Conneau et al., 2020]) ยังมีข้อจำกัดบางประการอาทิเช่น การฝึกฝนโมเดลจะต้องเรียนรู้บนช้อมูลในภาษาอื่นๆรวมกว่า 100 ภาษาพร้อมกันทำให้ไม่สามารถที่จะเจาะจงไปที่รูปแบบการใช้ภาษา หรือการเพิ่มความหลากหลายของหัวข้อที่ปรากฏในชุดข้อมูลของภาษาไทยโดยเฉพาะได้ (ตัวอย่างเช่น XLMR อาศัยชุดข้อมูลจากการ crawl เว็บไซต์เพียงแหล่งเดียว หรือ mBERT ที่อาศัยข้อมูลจากวิกิพีเดียเท่านั้น) ทาง AIResearch จึงได้เริ่มการเทรนโมเดลแบบภาษาเดียว (monolingual language model) บนชุดข้อมูลภาษาไทยขนาดกว่า 78.5 GB จากแหล่งข้อมูลต่างๆ โดยได้เลือกใช้วิธีการที่ชื่อ RoBERTa ในการเทรนครั้งนี้
 
 ## วิธีการเทรนโมเดล
 
-สำหรับการเทรนโมเดลนั้นจะใช้ objective คือ masked language model (MLM) หรือการทำนายคำในประโยคที่ถูกแทนที่ด้วย masked token โดยชุดข้อมูลที่ใช้ในการเทรนโมเดล จะเป็นชุดข้อมูลจากแหล่งต่างๆ เช่น วิกิพีเดียภาษาไทย, ข่าวจากสำนักข่าวในประเทศไทย, โพสท์/คอมเม้นจากสื่อโซเชียวเน็ตเวิร์ค, ซับไตเติ้ลจากโครงการ OpenSubtitles และชุดข้อมูลอื่นๆที่มีการเผยแพร่และเปิดข้อมูลสู่สาธารณะจะสำหรับการฝึกฝนโมเดลการประมวลผลภาษาไทยในโจทย์ต่างๆเช่น machine translation, sentiment analysis, และ text classification รวมเป็นข้อมูลขนาด 78.5 GB โมเดลที่เทรนบนชุดมูลดังกล่าวจะอยู่ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-att` นอกจากนี่ได้มีการเทรนโมเดลบนข้อมูลในเฉพาะส่วนที่มาจากวิกิพีเดียภาษาไทย (ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-wiki`)
+สำหรับการเทรนโมเดลนั้นจะใช้ objective คือ Masked Language Model (MLM) หรือการทำนายคำในประโยคที่ถูกแทนที่ด้วย masked token โดยชุดข้อมูลที่ใช้ในการเทรนโมเดล จะเป็นชุดข้อมูลจากแหล่งต่างๆ เช่น วิกิพีเดียภาษาไทย, ข่าวจากสำนักข่าวในประเทศไทย, โพสท์/คอมเมนต์จากสื่อโซเชียลเน็ตเวิร์ค, ซับไตเติ้ลจากโครงการ OpenSubtitles และชุดข้อมูลอื่นๆที่มีการเผยแพร่และเปิดข้อมูลสู่สาธารณะจะสำหรับการฝึกฝนโมเดลการประมวลผลภาษาไทยในโจทย์ต่างๆเช่น machine translation (เฉพาะส่วนที่เป็นภาษาไทย) , sentiment analysis, และ text classification รวมเป็นข้อมูลขนาด 78.5 GB โมเดลที่เทรนบนชุดมูลดังกล่าวจะอยู่ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-att` นอกจากนี่ได้มีการเทรนโมเดลบนข้อมูลในเฉพาะส่วนที่มาจากวิกิพีเดียภาษาไทย (ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-wiki`)
 
 เนื่องด้วยการนำชุดข้อมูลเข้าสู่โมเดลเพื่อทำการทำนาย masked token จะต้องผ่านกระบวนการตัดแบ่งคำ (word tokenization) โดยการตัดแบ่งคำที่ใช้นั้นจะเป็น 4 รูปแบบการตัดแบ่งคำคือ
 
-  1) การตัวแบ่งหน่วยคำย่อย (subword-level tokenation) ด้วยไลบรารี่ [SentencePiece](https://github.com/google/sentencepiece) [Kudo et al., 2018] (ใช้ชื่อย่อว่า `spm`) โดยตัวตัดแบ่งหน่วยคำย่อยอาศัยข้อมูลทางสถิติของการปรากฏร่วมกันของตัวอักษรในชุดข้อมูลในการกำหนดขอบเขตของหน่วยคำย่อย
+  1) การตัดแบ่งหน่วยคำย่อย (subword-level tokenization) ด้วยไลบรารี่ [SentencePiece](https://github.com/google/sentencepiece) [Kudo et al., 2018] (ใช้ชื่อย่อว่า `spm`) โดยตัวตัดแบ่งหน่วยคำย่อยอาศัยข้อมูลทางสถิติของการปรากฏร่วมกันของตัวอักษรในชุดข้อมูลในการกำหนดขอบเขตของหน่วยคำย่อย
 
-  2) การตัวแบ่งคำจาก dictionary ของคำในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า `newmm`) ด้วยไลบรารี่ PyThaiNLP
+  2) การตัดแบ่งคำจาก dictionary ของคำในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า `newmm`) ด้วยไลบรารี่ [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp) [Phatthiyaphaibun et al., 2016]
 
-  3) การตัวแบ่งพยางค์ในภาษาไทย ด้วยโมเดล Conditional Random Fields (CRFs) (ใช้ชื่อย่อว่า `ssg`) ซึ่งตัดแบ่งพยางค์นี้เป็นส่วนหนึ่งของตัวตัดแบ่งคำ attacut จากบทความทางวิชาการชื่อ "Syllable-­based Neural Thai Word Segmentation" [Chormai et al., 2020]
+  3) การตัดแบ่งพยางค์ในภาษาไทย ด้วยโมเดล Conditional Random Fields (CRFs) (ใช้ชื่อย่อว่า `ssg`) ซึ่งตัดแบ่งพยางค์นี้เป็นส่วนหนึ่งของตัวตัดแบ่งคำ `AttaCut` จากบทความทางวิชาการชื่อ "Syllable-­based Neural Thai Word Segmentation" [Chormai et al., 2020]
 
-  4) การตัวแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า `sefr`) จากบทความทางวิชาการชื่อ "Stacked Ensemble Filter and Refine for Word Segmentation" [Limkonchotiwat et al., 2020]
+  4) การตัดแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า `sefr`) จากบทความทางวิชาการชื่อ "Stacked Ensemble Filter and Refine for Word Segmentation" [Limkonchotiwat et al., 2020]
 
 ![Illutration of word segmentation algorithm](/assets/img/releases/wangchanberta-pretrained-thai-language-model/illutration_word-segmentation.png)
 
@@ -41,7 +39,7 @@ image: "/assets/img/releases/letters.jpg"
 
 <br>
 
-โดยการเทรนโมเดลในชุดข้อมูลขนาด 78.5GB จะใช้ตัวแบ่งหน่วยคำย่อย (spm)และการเทรนโมเดลในชุดข้อมูลวิกิพีเดียภาษาไทยจะใช้ตัวตัดแบ่งคำในทั้ง 4 รูปแบบ
+โดยการเทรนโมเดลในชุดข้อมูลขนาด 78.5GB จะใช้ตัดแบ่งหน่วยคำย่อย (`spm`)และการเทรนโมเดลในชุดข้อมูลวิกิพีเดียภาษาไทยจะใช้ตัวตัดแบ่งคำในทั้ง 4 รูปแบบ
 
 ในการเทรนโมเดลด้วย Nvidia DGX-1 ซึ่งประกอบด้วย GPU รุ่น Nvidia Tesla V100 ขนาด 32GB จำนวน 8 หน่วย ใช้เวลาประมาณ 125 วัน สำหรับการเทรนโมเดลจากชุดข้อมูล 78.5GB (`wangchanberta-base-att`) เป็นจำนวน 500,000 training steps (หรือเป็นการเทรนจำนวนประมาณ 5 รอบของชุดข้อมูลฝึกฝน หรือ 5 epochs)
 
@@ -51,7 +49,7 @@ image: "/assets/img/releases/letters.jpg"
 
 ## การวัดผลโมเดล
 
-การเปรียบเทียบ Micro F1-score จากโมเดล WangchanBERTa ในรูปแบบต่างๆที่ finetune บน ชุดข้อมูลสำหรับโจทย์ multi-class sequence classification, Multi-label sequence classification และ Token classification โดยชุดข้อมูลที่นำมา finetune และเปรียบเทียบประสิทธิภาพโมเดลมีดังนนี้
+การเปรียบเทียบ micro F1-score จากโมเดล WangchanBERTa ในรูปแบบต่างๆที่ finetune บน ชุดข้อมูลสำหรับโจทย์ multi-class sequence classification, multi-label sequence classification และ token classification โดยชุดข้อมูลที่นำมา finetune และเปรียบเทียบประสิทธิภาพโมเดลมีดังนนี้
 
 Multi-class sequence classification
 
@@ -87,12 +85,12 @@ Token classification
 ติดตั้ง Python package ดังต่อไปนี้ `transformers` และ `thai2transformers` ด้วย **pip**
 
 ```
-pip install transformers==3.5.1 thai2transformers
+pip install transformers==3.5.1 thai2transformers==0.1.1
 ```
 
 <details>
 <summary>
-1.  สำหรับการทำโจทย์ Masked Language Model
+1.  สำหรับการทำโจทย์ Masked Language Model (MLM)
 </summary>
 
 ```
@@ -159,7 +157,7 @@ print(fill_mask(processed_input_text))
 
 <details>
 <summary>
-2. สำหรับ Sequence Classification
+2. สำหรับการทำโจทย์ Sequence classification
 </summary>
 
 ```
@@ -210,7 +208,7 @@ print(classify_sequence(processed_input_text))
 
 <details>
 <summary>
-3. สำหรับ Token-level
+3. สำหรับการทำโจทย์ Token classification
 </summary>
 
 ```
@@ -271,8 +269,8 @@ print(classify_token(processed_input_text))
     - โมเดล `wangcahbert-base-wiki-newmm` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 5,000
     - โมเดล `wangcahbert-base-wiki-ssg` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 8,000
     - โมเดล `wangcahbert-base-wiki-sefr` ที่ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 4,500
-    - โมเดล `bert-base-multilingual-cased` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน Micro F1 score สูงที่สุด
-    - โมเดล `xlm-roberta-base` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน Micro F1 score สูงที่สุด
+    - โมเดล `bert-base-multilingual-cased` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
+    - โมเดล `xlm-roberta-base` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
 
 ## อ้างอิง
 
