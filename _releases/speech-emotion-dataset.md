@@ -1,3 +1,18 @@
+---
+title: Thai Speech Emotion Dataset
+description: ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย
+version: 1.0
+items:
+  - item: Download on GitHub
+    description: AIS-SER-TH-2020
+    size: ~9.85G
+    href: https://github.com/vistec-AI/dataset-releases/releases/tag/v0.8
+date: "2 March 2021"
+featured: true
+categories: dataset
+image: "/assets/img/releases/letters.jpg"
+---
+
 ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย (Thai Speech Emotion Dataset) ประกอบไปด้วยเสียงพูดภาษาไทยที่สื่ออารมณ์ทั้งหมด 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ โดยนักแสดง 200 คน (ชาย 87 และหญิง 113) จำนวน 36 ชม. (23,797 ประโยค) พัฒนาโดยสถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ร่วมมือกับคณะวิศวกรรมศาสตร์ ภาควิชาวิศวกรรมคอมพิวเตอร์ และคณะอักษรศาสคร์ภาควิชาภาควิชาศิลปการละคร จุฬาลงกรณ์มหาวิทยาลัย และได้รับการสนับสนุนโดยบริษัท แอดวานซ์ อินโฟร์ เซอร์วิส จำกัด (AIS)
 
 ในปัจจุบันมีชุดข้อมูลจำแนกอารมณ์จากเสียงพูดในภาษาต่างๆอยู่ค่อนข้างจำกัด ไม่ว่าจะเป็นภาษาอังกฤษ เยอรมัน อิตาเลี่ยน และอื่นๆ ดังตัวอย่างในตารางที่ 1 แต่สำหรับข้อมูลภาษาไทยยังไม่มีงานวิจัยที่พัฒนาชุดข้อมูลนี้ขึ้นมา ชุดข้อมูลนี้จึงเป็นชุดข้อมูลแรกที่วิจัยในภาษาไทย โดยมีวัตถุประสงค์เพื่อใช้ในการพัฒนาโมเดลการรู้จำอารมณ์จากเสียงพูด และเพื่อนำโมเดลไปประยุกต์ใช้ในอุปกรณ์หรือแอปพลิเคชั่นต่างๆ
@@ -100,7 +115,7 @@
 
 <p style="text-align: center">รูปที่ 3: emotion confusion matrix แสดงค่าหลังจากคัดกรองค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.7 (ปกติ: Neutral, โกรธ: Angry, สุข: Happy, เศร้า: Sad, หงุดหงิด: Frustrated, อารมณ์อื่นๆ: Other, ไม่มีความเห็นพ้อง: None)</p>
 
-<br><h2>Reference:</h2>
+## อ้างอิง
 
 - C. Busso, M. Bulut, C.C. Lee, A. Kazemzadeh, E. Mower, S. Kim, J.N. Chang, S. Lee, and S.S. Narayanan (2008). IEMO-CAP: Interactive emotional dyadic motion capture database. InJournal of Language Resources and Evaluation, vol.42, no. 4, (pp. 335-359).
 - Michael Grimm, Kristian Kroschel, and Shrikanth Narayanan.The Vera am Mittag German Audio-Visual EmotionalSpeech Database (2008). InIEEE International Conference on Multimedia and Expo (ICME), Hannover, (pp.865-868).
