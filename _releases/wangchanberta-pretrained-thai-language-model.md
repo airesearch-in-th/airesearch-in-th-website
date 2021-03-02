@@ -5,7 +5,6 @@ version: 1.0
 date: "2 Mar 2021"
 featured: true
 categories: model
-image: "/assets/img/releases/letters.jpg"
 ---
 
 สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (Thailand Artificial Intelligence Research Institute) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)
@@ -175,12 +174,11 @@ input_text = "สั่งไป 2 เมนูคือมัชฉะลาเ
 processed_input_text = process_transformers(input_text)
 print('\n', processed_input_text, '\n')
 print(classify_sequence(processed_input_text))
-
 ```
 
 **Output:**
 
-```
+```python
 ฟอร์ด<_>บุกตลาด<_>อีวี<_>ในอินเดีย<_>#prachachat<_>#ตลาดรถยนต์
 [{'label': 'neu', 'score': 0.9879224896430969}]
 
@@ -190,7 +188,7 @@ print(classify_sequence(processed_input_text))
 
 ### 3. สำหรับการทำโจทย์ Token classification
 
-```
+```python
 from transformers import (
     CamembertTokenizer,
     AutoModelForTokenClassification,
@@ -222,7 +220,7 @@ print(classify_token(processed_input_text))
 
 **Output:**
 
-```
+```python
 [{'entity_group': 'ORGANIZATION', 'score': 0.9989495873451233, 'word': ''},
 {'entity_group': 'ORGANIZATION', 'score': 0.9986395835876465, 'word': 'ก'},
 {'entity_group': 'ORGANIZATION', 'score': 0.9985694289207458, 'word': 'ส'},
