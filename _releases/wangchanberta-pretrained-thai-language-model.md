@@ -8,7 +8,7 @@ categories: model
 image: "/assets/img/releases/letters.jpg"
 ---
 
-สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)
+สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (Thailand Artificial Intelligence Research Institute) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)
 ## โมเดลทางภาษาจาก Google AI Language และ Facebook AI Research
 
 ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (language model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ในภาษาอังกฤษ (BookCorpus) และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆ เช่น text classification, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI
@@ -37,16 +37,11 @@ image: "/assets/img/releases/letters.jpg"
 
 <p style="text-align: center;">รูป 1: ภาพประกอบแสดงการตัดแบ่งคำ, พยางค์ และหน่วยคำย่อยจากโมเดลการตัดแบ่งตามหน่อยคำ, หน่วยคำย่อย, หน่วยพยางค์ และหน่วยตัวอักษร</p>
 
-<br>
-
 โดยการเทรนโมเดลในชุดข้อมูลขนาด 78.5GB จะใช้ตัดแบ่งหน่วยคำย่อย (`spm`)และการเทรนโมเดลในชุดข้อมูลวิกิพีเดียภาษาไทยจะใช้ตัวตัดแบ่งคำในทั้ง 4 รูปแบบ
 
 ในการเทรนโมเดลด้วย Nvidia DGX-1 ซึ่งประกอบด้วย GPU รุ่น Nvidia Tesla V100 ขนาด 32GB จำนวน 8 หน่วย ใช้เวลาประมาณ 125 วัน สำหรับการเทรนโมเดลจากชุดข้อมูล 78.5GB (`wangchanberta-base-att`) เป็นจำนวน 500,000 training steps (หรือเป็นการเทรนจำนวนประมาณ 5 รอบของชุดข้อมูลฝึกฝน หรือ 5 epochs)
 
 และใช้เวลาอยู่ในช่วงระหว่าง 2-4 วัน สำหรับการเทรนโมเดลบนชุดข้อมูลากวิกิพีเดียภาษาไทย (`wangchanberta-base-wiki`) ในแต่ละรูปแบบของ token ที่เลือกใช้
-
-<br>
-
 ## การวัดผลโมเดล
 
 การเปรียบเทียบ micro F1-score จากโมเดล WangchanBERTa ในรูปแบบต่างๆที่ finetune บน ชุดข้อมูลสำหรับโจทย์ multi-class sequence classification, multi-label sequence classification และ token classification โดยชุดข้อมูลที่นำมา finetune และเปรียบเทียบประสิทธิภาพโมเดลมีดังนนี้
@@ -65,8 +60,6 @@ Multi-label sequence classificaion
 
 <p style="text-align: center;">ตารางที่ 1: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ sequence classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
-<br>
-
 Token classification
 
 - ThaiNER ([github](https://github.com/wannaphong/thai-ner)): เป็นชุดข้อมูลการกำกับ หน้าที่ของคำ (Named-entity recognition; NER) ในภาษาไทย โดยมีจำนวน NER tags ทั้งหมด 13 ประเภท ชุดข้อมูลนี้รวบรวมโดยคุณ [Wannaphong Phatthiyaphaibun](https://github.com/wannaphong) ซึ่งเป็นการพัฒนาต่อจากชุดข้อมูลจาก คุณ Nutcha Tirasaroj [[Tirasaroj and  Aroonmanakun, 2011](https://www.aclweb.org/anthology/people/n/nutcha-tirasaroj/)] จำนวน 2,258 ข้อความ
@@ -76,24 +69,17 @@ Token classification
 
 <p style="text-align: center;">ตารางที่ 2: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ token classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
-<br>
-
 ## ตัวอย่างการใช้ในภาษา Python
 
-<br>
-
-ติดตั้ง Python package ดังต่อไปนี้ `transformers` และ `thai2transformers` ด้วย **pip**
+ติดตั้ง Python package ดังต่อไปนี้ `transformers` และ `thai2transformers` ด้วย `pip`
 
 ```
 pip install transformers==3.5.1 thai2transformers==0.1.1
 ```
 
-<details>
-<summary>
-1. สำหรับการทำโจทย์ Masked Language Model (MLM)
-</summary>
+### 1. สำหรับการทำโจทย์ Masked Language Model (MLM)
 
-```
+```python
 from transformers import (
     CamembertTokenizer,
     AutoModelForMaskedLM,
@@ -125,7 +111,7 @@ print(fill_mask(processed_input_text))
 
 **Output:**
 
-```
+```python
 โครงการมีระยะทางทั้งหมด<_>114.3<_><mask><_>มีจำนวนสถานี<_>36<_>สถานี
 
 [{'sequence': '<s> โครงการมีระยะทางทั้งหมด<_>114.3<_>กิโลเมตร <_>มีจํานวนสถานี<_>36<_>สถานี</s>',
@@ -152,15 +138,10 @@ print(fill_mask(processed_input_text))
   'token_str': 'ไมล์'
   }]
 ```
-</details>
 
+### 2. สำหรับการทำโจทย์ Sequence classification
 
-<details>
-<summary>
-2. สำหรับการทำโจทย์ Sequence classification
-</summary>
-
-```
+```python
 from transformers import (
     CamembertTokenizer,
     AutoModelForSequenceClassification,
@@ -204,12 +185,8 @@ print(classify_sequence(processed_input_text))
 สั่งไป<_>2<_>เมนูคือมัชฉะลาเต้ร้อนกับไอศครีมชาเขียว<_>มัชฉะลาเต้ร้อน<_>รสชาเขียวเข้มข้น<_>หอม<_>มัน<_>แต่ไม่กลมกล่อม<_>มันจืดแบบจืดสนิท<_>ส่วนไอศครีมชาเขียว<_>ทานแล้วรสมันออกใบไม้ๆมากกว่าชาเขียว<_>แล้วก็หวานไป<_>โดยรวมแล้วเฉยมากก<_>ดีแค่รสชาเขียวเข้ม<_>มีน้ำเปล่าบริการฟรี
 [{'label': 'neg', 'score': 0.9252662062644958}]
 ```
-</details>
 
-<details>
-<summary>
-3. สำหรับการทำโจทย์ Token classification
-</summary>
+### 3. สำหรับการทำโจทย์ Token classification
 
 ```
 from transformers import (
@@ -251,9 +228,6 @@ print(classify_token(processed_input_text))
 {'entity_group': 'ORGANIZATION', 'score': 0.9971947073936462, 'word': '.'}, 
 {'entity_group': 'DATE', 'score': 0.9695429682731629, 'word': '25<_>กค<_>'}]
 ```
-
-</details>
-
 
 ## ทดลองใช้งานโมเดล
 
