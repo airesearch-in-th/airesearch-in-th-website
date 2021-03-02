@@ -4,8 +4,8 @@
   background: rgba($color: $background-color, $alpha: 0.925) !important;
   @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
     background: rgba($color: $background-color, $alpha: 0.75) !important;
-    backdrop-filter: $filter;
     -webkit-backdrop-filter: $filter;
+    backdrop-filter: $filter;
   }
 
   a {
