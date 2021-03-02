@@ -1,5 +1,5 @@
 ---
-title: "WangchanBERTa: Pretrained Thai Language Model"
+title: "WangchanBERTa: Pre-trained Thai Language Model"
 description: "WangchanBERTa: โมเดลภาษาสำหรับงานประมวลผลและการเข้าใจภาษาไทย"
 version: 1.0
 date: "2 Mar 2021"
@@ -33,7 +33,7 @@ categories: model
 
 4. การตัดแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า `sefr`) จากบทความทางวิชาการชื่อ "Stacked Ensemble Filter and Refine for Word Segmentation" [Limkonchotiwat et al., 2020]
 
-![Illutration of word segmentation algorithm](/assets/img/releases/wangchanberta-pretrained-thai-language-model/illutration_word-segmentation.png)
+![Illutration of word segmentation algorithm](/assets/img/releases/wangchanberta-pre-trained-thai-language-model/illutration_word-segmentation.png)
 
 <p style="text-align: center;">รูป 1: ภาพประกอบแสดงการตัดแบ่งคำ, พยางค์ และหน่วยคำย่อยจากโมเดลการตัดแบ่งตามหน่อยคำ, หน่วยคำย่อย, หน่วยพยางค์ และหน่วยตัวอักษร</p>
 
@@ -57,7 +57,7 @@ Multi-label sequence classificaion
 
 - Prachathai67k ([github](https://github.com/PyThaiNLP/prachathai-67k)): เป็นชุดข้อมูลข่าวจาก [Prachathai.com](http://prachathai.com/) ซึ่งเป็นโจทย์ประเภท multi-label classification โดยเป็นการกำกับว่า พาดหัวข่าวดังกล่าว จะอยู่ในหมวดหมู่ (tag) ของข่าวใดบ้าง โดยจะมีจำนวน 12 หมวดหมู่ เช่น ข่าวการเมือง, เศรษฐกิจ, ต่างประเทศ, สิ่งแวดล้อม, และ สิทธิมนุษยชน เป็นต้น โดยหนึ่งพาดหัวข่าวจะมีการกำกับหมวดหมู่ ได้มากกว่า 1 หมวดหมู่
 
-![Evaluation result on sequence classification dataset](/assets/img/releases/wangchanberta-pretrained-thai-language-model/tab1_text-cls-results.png)
+![Evaluation result on sequence classification dataset](/assets/img/releases/wangchanberta-pre-trained-thai-language-model/tab1_text-cls-results.png)
 
 <p style="text-align: center;">ตารางที่ 1: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ sequence classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
@@ -66,7 +66,7 @@ Token classification
 - ThaiNER ([github](https://github.com/wannaphong/thai-ner)): เป็นชุดข้อมูลการกำกับ หน้าที่ของคำ (Named-entity recognition; NER) ในภาษาไทย โดยมีจำนวน NER tags ทั้งหมด 13 ประเภท ชุดข้อมูลนี้รวบรวมโดยคุณ [Wannaphong Phatthiyaphaibun](https://github.com/wannaphong) ซึ่งเป็นการพัฒนาต่อจากชุดข้อมูลจาก คุณ Nutcha Tirasaroj [[Tirasaroj and Aroonmanakun, 2011](https://www.aclweb.org/anthology/people/n/nutcha-tirasaroj/)] จำนวน 2,258 ข้อความ
 - LST20 ([website](https://aiforthai.in.th/corpus.php), [paper](https://arxiv.org/abs/2008.05055v1)): เป็นชุดมูลสำหรับ การตัดแบ่งคำ, ประโยค, อนุประโยค, หน้าที่ของคำ และ นามจำเพาะ พัฒนาโดยศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC) มีจำนวนการกำกับข้อความทั้งสิ้น 78,931 ข้อความ โดยในการทดลองนี้ได้ใช้โจทย์การกำกับ หน้าที่ของคำ (Part-of-speech; POS) และ การกำกับนามจำเพาะ (NER) โดยมีจำนวน tag สำหรับ POS 16 ประเภท และ สำหรับ NER 10 ประเภท
 
-![Evaluation result on token classification dataset](/assets/img/releases/wangchanberta-pretrained-thai-language-model/tab2_token-cls-results.png)
+![Evaluation result on token classification dataset](/assets/img/releases/wangchanberta-pre-trained-thai-language-model/tab2_token-cls-results.png)
 
 <p style="text-align: center;">ตารางที่ 2: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ token classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
@@ -89,13 +89,13 @@ from transformers import (
 from thai2transformers.preprocess import process_transformers
 
 # Load pre-trained tokenizer
-tokenizer = CamembertTokenizer.from_pretrained(
+tokenizer = CamembertTokenizer.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='main')
 tokenizer.additional_special_tokens = ['<s>NOTUSED', '</s>NOTUSED', '<_>']
 
 # Load pre-trained model
-model = AutoModelForMaskedLM.from_pretrained(
+model = AutoModelForMaskedLM.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='main')
 
@@ -151,13 +151,13 @@ from transformers import (
 from thai2transformers.preprocess import process_transformers
 
 # Load pre-trained tokenizer
-tokenizer = CamembertTokenizer.from_pretrained(
+tokenizer = CamembertTokenizer.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='main')
 tokenizer.additional_special_tokens = ['<s>NOTUSED', '</s>NOTUSED', '<_>']
 
 # Load pre-trained model
-model = AutoModelForSequenceClassification.from_pretrained(
+model = AutoModelForSequenceClassification.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='finetuned@wisesight_sentiment')
 
@@ -197,13 +197,13 @@ from transformers import (
 from thai2transformers.preprocess import process_transformers
 
 # Load pre-trained tokenizer
-tokenizer = CamembertTokenizer.from_pretrained(
+tokenizer = CamembertTokenizer.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='main')
 tokenizer.additional_special_tokens = ['<s>NOTUSED', '</s>NOTUSED', '<_>']
 
 # Load pre-trained model
-model = AutoModelForTokenClassification.from_pretrained(
+model = AutoModelForTokenClassification.from_pre-trained(
                                   'airesearch/wangchanberta-base-att-spm-uncased',
                                   revision='finetuned@thainer-ner')
 
