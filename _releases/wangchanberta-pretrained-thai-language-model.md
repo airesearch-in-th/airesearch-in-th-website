@@ -8,10 +8,10 @@ categories: model
 image: "/assets/img/releases/letters.jpg"
 ---
 
-สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆเช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score ที่สูงที่สุดจำนวน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT  และ XLMR)
+สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)
 ## โมเดลทางภาษาจาก Google AI Language และ Facebook AI Research
 
-ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (language model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ (BookCorpus) ในภาษาอังกฤษ และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆ เช่น text classification, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI
+ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (language model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ในภาษาอังกฤษ (BookCorpus) และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆ เช่น text classification, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI
 
 ถัดมาในปี 2019 Facebook AI Research นำเสนอ เป็นเทคนิคการเทรนโมเดลภาษาให้มีประสิทธิภาพมากยิ่งขึ้น โดยใ้ช้ชื่อว่า RoBERTa [Liu et al., 2019] โดยเป็นการต่อยอดจาก BERT จากผลการทดลองพบว่าได้คะแนนสูงสุด บนชุดข้อมูล GLUE, SQuAD 1.1, SQuAD 2.0 และ MultiNLI โดยโมเดลที่ได้นั้นมีประสิทธิภาพสูงกว่า BERT
 
@@ -21,7 +21,7 @@ image: "/assets/img/releases/letters.jpg"
 
 ## วิธีการเทรนโมเดล
 
-สำหรับการเทรนโมเดลนั้นจะใช้ objective คือ Masked Language Model (MLM) หรือการทำนายคำในประโยคที่ถูกแทนที่ด้วย masked token โดยชุดข้อมูลที่ใช้ในการเทรนโมเดล จะเป็นชุดข้อมูลจากแหล่งต่างๆ เช่น วิกิพีเดียภาษาไทย, ข่าวจากสำนักข่าวในประเทศไทย, โพสท์/คอมเมนต์จากสื่อโซเชียลเน็ตเวิร์ค, ซับไตเติ้ลจากโครงการ OpenSubtitles และชุดข้อมูลอื่นๆที่มีการเผยแพร่และเปิดข้อมูลสู่สาธารณะจะสำหรับการฝึกฝนโมเดลการประมวลผลภาษาไทยในโจทย์ต่างๆเช่น machine translation (เฉพาะส่วนที่เป็นภาษาไทย) , sentiment analysis, และ text classification รวมเป็นข้อมูลขนาด 78.5 GB โมเดลที่เทรนบนชุดมูลดังกล่าวจะอยู่ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-att` นอกจากนี่ได้มีการเทรนโมเดลบนข้อมูลในเฉพาะส่วนที่มาจากวิกิพีเดียภาษาไทย (ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-wiki`)
+สำหรับการเทรนโมเดลนั้นจะใช้ objective คือ Masked Language Model (MLM) หรือการทำนายคำในประโยคที่ถูกแทนที่ด้วย masked token โดยชุดข้อมูลที่ใช้ในการเทรนโมเดล จะเป็นชุดข้อมูลจากแหล่งต่างๆ เช่น วิกิพีเดียภาษาไทย, ข่าวจากสำนักข่าวในประเทศไทย, โพสท์/คอมเมนต์จากสื่อโซเชียลมีเดีย, ซับไตเติ้ลจากโครงการ OpenSubtitles และชุดข้อมูลอื่นๆที่มีการเผยแพร่และเปิดข้อมูลสู่สาธารณะจะสำหรับการฝึกฝนโมเดลการประมวลผลภาษาไทยในโจทย์ต่างๆเช่น machine translation (เฉพาะส่วนที่เป็นภาษาไทย) , sentiment analysis, และ text classification รวมเป็นข้อมูลขนาด 78.5 GB โมเดลที่เทรนบนชุดมูลดังกล่าวจะอยู่ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-att` นอกจากนี่ได้มีการเทรนโมเดลบนข้อมูลในเฉพาะส่วนที่มาจากวิกิพีเดียภาษาไทย (ภายใต้ชื่อขึ้นต้นว่า `wangchanberta-base-wiki`)
 
 เนื่องด้วยการนำชุดข้อมูลเข้าสู่โมเดลเพื่อทำการทำนาย masked token จะต้องผ่านกระบวนการตัดแบ่งคำ (word tokenization) โดยการตัดแบ่งคำที่ใช้นั้นจะเป็น 4 รูปแบบการตัดแบ่งคำคือ
 
@@ -53,28 +53,28 @@ image: "/assets/img/releases/letters.jpg"
 
 Multi-class sequence classification
 
-  - Wisesight Sentiment Corpus ([github](https://github.com/PyThaiNLP/wisesight-sentiment)) เป็นชุดมูลสำหรับจำแนกอารมณ์จากข้อความ (sentiment analysis) จากข้อความในโซเชียลเน็ตเวิร์ค ว่ามีอารมณ์เป็นไปทางบวก, กลาง, ลบ หรือเป็นข้อความประเภทคำถาม
-  - Wongnai Reviews ([github](https://github.com/wongnai/wongnai-corpus)) เป็นชุดมูลสำหรับจำแนกรีวิวร้านอาหารจากผู้ใช้บริการแพลทฟอร์ม Wongnai โดยจะมีการกำกับว่าผู้ใช้บริการรีวิวได้เขียนรีวิวพร้อมให้คะแนนร้านอาหารจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)
-  - English-Thai Generated Reviews — ([github](https://github.com/vistec-AI/dataset-releases/releases/tag/scb-mt-en-th-2020_v1.0), [paper](https://arxiv.org/abs/2007.03541)) เป็นชุดข้อมูล การรีวิวและให้คะแนนสินค้า ที่ถูกสร้างขึ้นด้วยโมเดล CTRL (machine-generated texts) เป็นภาษาอังกฤษแล้วแปลเป็นภาษาไทยด้วยคนและ Google Translate โดยจะมีการกำกับว่ารีวิวดังกล่าวเป็นรีวิวที่ได้มีการให้คะแนนต่อสินค่านั้นๆจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)
+  - Wisesight Sentiment Corpus ([github](https://github.com/PyThaiNLP/wisesight-sentiment)): เป็นชุดมูลสำหรับการจำแนกอารมณ์จากข้อความ (sentiment analysis) จากข้อความในโซเชียลเน็ตเวิร์ค ว่ามีอารมณ์เป็นไปทางบวก, กลาง, ลบ หรือเป็นข้อความประเภทคำถาม
+  - Wongnai Reviews ([github](https://github.com/wongnai/wongnai-corpus)):  เป็นชุดมูลสำหรับการจำแนกรีวิวร้านอาหารจากผู้ใช้บริการแพลทฟอร์ม Wongnai โดยจะมีการกำกับว่าผู้ใช้บริการรีวิวได้เขียนรีวิวพร้อมให้คะแนนร้านอาหารจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)
+  - English-Thai Generated Reviews ([github](https://github.com/vistec-AI/dataset-releases/releases/tag/scb-mt-en-th-2020_v1.0), [paper](https://arxiv.org/abs/2007.03541)): เป็นชุดข้อมูล การจำแนกคะแนนจากรีวิวสินค้า ที่ถูกสร้างขึ้นด้วยโมเดล [CTRL](https://github.com/salesforce/ctrl) (machine-generated texts) เป็นภาษาอังกฤษแล้วแปลเป็นภาษาไทยด้วยคนและ Google Translate โดยจะมีการกำกับว่ารีวิวดังกล่าวเป็นรีวิวที่ได้มีการให้คะแนนต่อสินค่านั้นๆจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)
 
 Multi-label sequence classificaion
 
-  - Prachathai67k ([github](https://github.com/PyThaiNLP/prachathai-67k)) : เป็นชุดข้อมูลข่าวจาก [Prachathai.com](http://prachathai.com/) ซึ่งเป็นโจทย์ประเภท multi-label classification โดยเป็นการกำกับว่า พาดหัวข่าวดังกล่าว จะอยู่ในหมวดหมู่ (tag) ของข่าวใดบ้าง โดยจะมีจำนวน 12 หมวดหมู่ เช่น ข่าวการเมือง, เศรษฐกิจ, ต่างประเทศ, สิ่งแวดล้อม, และ สิทธิมนุษยชน เป็นต้น โดยหนึ่งพาดหัวข่าวจะมีการกำกับหมวดหมู่ ได้มากกว่า 1 หมวดหมู่
+  - Prachathai67k ([github](https://github.com/PyThaiNLP/prachathai-67k)): เป็นชุดข้อมูลข่าวจาก [Prachathai.com](http://prachathai.com/) ซึ่งเป็นโจทย์ประเภท multi-label classification โดยเป็นการกำกับว่า พาดหัวข่าวดังกล่าว จะอยู่ในหมวดหมู่ (tag) ของข่าวใดบ้าง โดยจะมีจำนวน 12 หมวดหมู่ เช่น ข่าวการเมือง, เศรษฐกิจ, ต่างประเทศ, สิ่งแวดล้อม, และ สิทธิมนุษยชน เป็นต้น โดยหนึ่งพาดหัวข่าวจะมีการกำกับหมวดหมู่ ได้มากกว่า 1 หมวดหมู่
 
 ![Evaluation result on sequence classification dataset](/assets/img/releases/wangchanberta-pretrained-thai-language-model/tab1_text-cls-results.png)
 
-<p style="text-align: center;">ตารางที่ 1: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ sequence classification บนชุดทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ Micro-averaged F1 score</p>
+<p style="text-align: center;">ตารางที่ 1: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ sequence classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
 <br>
 
 Token classification
 
-- ThaiNER ([github](https://github.com/wannaphong/thai-ner)): เป็นชุดข้อมูลการกำกับ หน้าที่ของคำ (Named-entity recognition; NER )ในภาษาไทย โดยมีจำนวน NE tags ทั้งหมด 13 ประเภท ชุดข้อมูลนี้รวบรวมโดยคุณ [Wannaphong Phatthiyaphaibun](https://github.com/wannaphong) ซึ่งเป็นการพัฒนาต่อจากชุดข้อมูลจาก คุณ Nutcha Tirasaroj [[Tirasaroj and  Aroonmanakun, 2011](https://www.aclweb.org/anthology/people/n/nutcha-tirasaroj/)] จำนวน 2,258 ข้อความ
-- LST20 ([website](https://aiforthai.in.th/corpus.php), [paper](https://arxiv.org/abs/2008.05055v1)): เป็นชุดมูลสำหรับ การตัดแบ่งคำ,ประโยค,อนุประโยค,หน้าที่ของคำ และ นามจำเพาะ พัฒนาโดยศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC) มีจำนวนการกำกับข้อความทั้งสิ้น 78,931 ข้อความ โดยในการทดลองนี้ได้ใช้โจทย์การกำกับ หน้าที่ของคำ (Part-of-speech; POS) ละ การกำกับนามจำเพาะ (NER) โดยมีจำนวน tag สำหรับ POS x ประเภท และ สำหรับ NER x ประเภท
+- ThaiNER ([github](https://github.com/wannaphong/thai-ner)): เป็นชุดข้อมูลการกำกับ หน้าที่ของคำ (Named-entity recognition; NER) ในภาษาไทย โดยมีจำนวน NER tags ทั้งหมด 13 ประเภท ชุดข้อมูลนี้รวบรวมโดยคุณ [Wannaphong Phatthiyaphaibun](https://github.com/wannaphong) ซึ่งเป็นการพัฒนาต่อจากชุดข้อมูลจาก คุณ Nutcha Tirasaroj [[Tirasaroj and  Aroonmanakun, 2011](https://www.aclweb.org/anthology/people/n/nutcha-tirasaroj/)] จำนวน 2,258 ข้อความ
+- LST20 ([website](https://aiforthai.in.th/corpus.php), [paper](https://arxiv.org/abs/2008.05055v1)): เป็นชุดมูลสำหรับ การตัดแบ่งคำ, ประโยค, อนุประโยค, หน้าที่ของคำ และ นามจำเพาะ พัฒนาโดยศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC) มีจำนวนการกำกับข้อความทั้งสิ้น 78,931 ข้อความ โดยในการทดลองนี้ได้ใช้โจทย์การกำกับ หน้าที่ของคำ (Part-of-speech; POS) และ การกำกับนามจำเพาะ (NER) โดยมีจำนวน tag สำหรับ POS 16 ประเภท และ สำหรับ NER 10 ประเภท
 
 ![Evaluation result on token classification dataset](/assets/img/releases/wangchanberta-pretrained-thai-language-model/tab2_token-cls-results.png)
 
-<p style="text-align: center;">ตารางที่ 2: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ token classification บนชุดทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ Micro-averaged F1 score</p>
+<p style="text-align: center;">ตารางที่ 2: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ token classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
 
 <br>
 
@@ -90,7 +90,7 @@ pip install transformers==3.5.1 thai2transformers==0.1.1
 
 <details>
 <summary>
-1.  สำหรับการทำโจทย์ Masked Language Model (MLM)
+1. สำหรับการทำโจทย์ Masked Language Model (MLM)
 </summary>
 
 ```
@@ -268,7 +268,7 @@ print(classify_token(processed_input_text))
     - โมเดล `wangcahbert-base-wiki-spm` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 7,000
     - โมเดล `wangcahbert-base-wiki-newmm` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 5,000
     - โมเดล `wangcahbert-base-wiki-ssg` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 8,000
-    - โมเดล `wangcahbert-base-wiki-sefr` ที่ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 4,500
+    - โมเดล `wangcahbert-base-wiki-sefr` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 4,500
     - โมเดล `bert-base-multilingual-cased` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
     - โมเดล `xlm-roberta-base` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
 
