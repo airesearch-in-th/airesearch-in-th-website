@@ -1,6 +1,6 @@
 ---
 title: "WangchanBERTa: Pre-trained Thai Language Model"
-description: "WangchanBERTa: โมเดลภาษาสำหรับงานประมวลผลและการเข้าใจภาษาไทย"
+description: "WangchanBERTa: โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย"
 version: 1.0
 date: "2 Mar 2021"
 featured: true
