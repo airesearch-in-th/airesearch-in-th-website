@@ -2,7 +2,7 @@
 title: "WangchanBERTa: Pre-trained Thai Language Model"
 description: "WangchanBERTa: โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย"
 version: 1.0
-date: "2 Mar 2021"
+date: "3 Mar 2021 0:00"
 featured: true
 categories: model
 image: "/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg"
@@ -232,7 +232,7 @@ print(classify_token(processed_input_text))
 
 ## ทดลองใช้งานโมเดล
 
-- นอกจากนี้ทางสถาบันฯ ได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล ได้โดยทันทีผ่าน [Google Colaboratory](http://bit.ly/wangchanberta-getting-started_colab)
+ทางสถาบันฯ ได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล ได้โดยทันทีผ่าน [Google Colaboratory](http://bit.ly/wangchanberta-getting-started_colab)
 
 สำหรับรายละเอียดของชุดข้อมูลที่ใช้และการเทรนโมเดลในแต่ละรูปแบบ ได้มีการอธิบายไว้ใน [technical report](https://arxiv.org/abs/2101.09635)
 
