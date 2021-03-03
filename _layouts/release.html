@@ -1,9 +1,19 @@
 ---
 layout: default
 ---
+
 <section class="release">
-  <section class="release-jumbotron text-light d-flex flex-col align-items-end position-relative" {% if page.image %}
-    style="background-image: url('{{ page.image | relative_url }}');" {% endif %}>
+  <section
+    class="release-jumbotron text-light d-flex flex-col align-items-end position-relative"
+    {%
+    if
+    page.image
+    %}
+    style="background-image: url('{{ page.image | relative_url }}');"
+    {%
+    endif
+    %}
+  >
     <div class="w-100 h-100 release-jumbotron-filter position-absolute"></div>
     <div class="container mb-4">
       <div class="row align-items-stretch">
@@ -12,8 +22,14 @@ layout: default
           <p class="lead">{{ page.description }}</p>
         </div>
         <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
-          <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ page.version }}</span>
-          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e %b %Y" }}</span>
+          <span
+            ><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ page.version
+            }}</span
+          >
+          <span
+            ><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date |
+            date: "%e %b %Y" }}</span
+          >
           <div class="d-flex flex-row mt-2">
             {% for category in page.categories %}
             <span class="badge badge-light mr-1">{{ category }}</span>
@@ -26,27 +42,40 @@ layout: default
   <section class="container mt-5">
     <div class="row">
       <div class="col-lg-8">
-        <article class="text-justify">
-          {{ content }}
-        </article>
+        <article class="text-justify">{{ content }}</article>
       </div>
       <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
         {% if page.items %}
         <h3>ดาวน์โหลด</h3>
         <div class="list-group rounded-0 border-0">
           {% for item in page.items %}
-          <div class="list-group-item list-group-item-action download-item" target="_blank">
+          <div
+            class="list-group-item list-group-item-action download-item"
+            target="_blank"
+          >
             <h6>{{ item.item }}</h6>
             <p><small>{{ item.description }}</small></p>
-            <small><i class="far fa-hdd"></i> {{ item.size }}</small><br>
+            <small><i class="far fa-hdd"></i> {{ item.size }}</small><br />
             {% if item.sha256 %}
-            <small><span data-toggle="tooltip" data-placement="bottom" title="{{ item.sha256 }}"><i
-                  class="fas fa-hashtag fa-sm fa-fw"></i> <small>SHA256</small>
-                {{ item.sha256 | truncate: 24 }}</span></small>
+            <small
+              ><span
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="{{ item.sha256 }}"
+                ><i class="fas fa-hashtag fa-sm fa-fw"></i>
+                <small>SHA256</small> {{ item.sha256 | truncate: 24 }}</span
+              ></small
+            >
             {% endif %}
             <p class="text-right mt-2 mb-0">
-              <a href="{{ item.href }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" title="Download"><i
-                  class="fas fa-download"></i><span class="sr-only">Download</span></a>
+              <a
+                href="{{ item.href }}"
+                class="btn btn-secondary btn-sm"
+                data-toggle="tooltip"
+                title="Download"
+                ><i class="fas fa-download"></i
+                ><span class="sr-only">Download</span></a
+              >
               <!-- <a href="#"><img alt="Deploy to azure" class="azure-deploy-button" loading="lazy"
                   src="https://aka.ms/deploytoazurebutton" /></a> -->
             </p>

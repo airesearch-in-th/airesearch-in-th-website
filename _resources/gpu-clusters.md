@@ -4,6 +4,7 @@ description: ด้วยการ์ดประมวลผล Nvidia V100 GPU
 order: 2
 date: "1 June 2020"
 featured: true
-image: '/assets/img/resources/gpus.jpg'
+image: "/assets/img/resources/gpus.jpg"
 ---
+
 # Article space

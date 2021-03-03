@@ -4,6 +4,7 @@ description: หน่วยประมวลผลสำหรับงาน�
 order: 4
 date: "1 June 2020"
 featured: true
-image: '/assets/img/resources/hard-drive.jpg'
+image: "/assets/img/resources/hard-drive.jpg"
 ---
+
 # Article space

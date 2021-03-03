@@ -4,6 +4,7 @@ description: Cluster หน่วยประมวลผลสำหรับ�
 order: 3
 date: "1 June 2020"
 featured: true
-image: '/assets/img/resources/cpus.jpg'
+image: "/assets/img/resources/cpus.jpg"
 ---
+
 # Article space

@@ -1,9 +1,19 @@
 ---
 layout: default
 ---
+
 <section class="release">
-  <section class="release-jumbotron text-light d-flex flex-col align-items-end position-relative" {% if page.image %}
-    style="background-image: url('{{ page.image | relative_url }}');" {% endif %}>
+  <section
+    class="release-jumbotron text-light d-flex flex-col align-items-end position-relative"
+    {%
+    if
+    page.image
+    %}
+    style="background-image: url('{{ page.image | relative_url }}');"
+    {%
+    endif
+    %}
+  >
     <div class="w-100 h-100 release-jumbotron-filter position-absolute"></div>
     <div class="container mb-4">
       <div class="row align-items-stretch">
@@ -12,7 +22,10 @@ layout: default
           <p class="lead">{{ page.description }}</p>
         </div>
         <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
-          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e %b %Y" }}</span>
+          <span
+            ><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date |
+            date: "%e %b %Y" }}</span
+          >
           <div class="d-flex flex-row mt-2">
             {% for category in page.categories %}
             <span class="badge badge-light mr-1">{{ category }}</span>
@@ -25,9 +38,7 @@ layout: default
   <section class="container mt-5">
     <div class="row">
       <div class="col-lg-12">
-        <article class="text-justify">
-          {{ content }}
-        </article>
+        <article class="text-justify">{{ content }}</article>
       </div>
       <!-- <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
         {% if page.items %}

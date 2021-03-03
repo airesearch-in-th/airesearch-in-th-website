@@ -48,41 +48,41 @@ collections:
 
 defaults:
   - scope:
-      path: 
+      path:
       type: posts
     values:
       layout: post
   - scope:
-      path: 
+      path:
       type: pages
     values:
       layout: default
       navbar_display: true
   - scope:
-      path: 
+      path:
       type: releases
     values:
       featured: false
       layout: release
   - scope:
-      path: 
+      path:
       type: services
     values:
       featured: false
       layout: service
   - scope:
-      path: 
+      path:
       type: resources
     values:
       featured: false
       layout: resource
   - scope:
-      path: 
+      path:
       type: supporters
     values:
       featured: true
   - scope:
-      path: 
+      path:
       type: crew
     values:
       layout: crew_member
@@ -96,7 +96,7 @@ kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     default_lang: plaintext
-    
+
 exclude:
   - ".github"
   - ".gitignore"

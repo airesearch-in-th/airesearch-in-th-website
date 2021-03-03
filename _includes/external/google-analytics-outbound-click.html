@@ -11,26 +11,47 @@
       if (el.addEventListener) {
         el.addEventListener(eventName, handler);
       } else {
-        el.attachEvent('on' + eventName, function () {
+        el.attachEvent("on" + eventName, function () {
           handler.call(el);
         });
       }
-    }
+    };
     if (document.getElementsByTagName) {
-      var el = document.getElementsByTagName('a');
-      var getDomain = document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0];
+      var el = document.getElementsByTagName("a");
+      var getDomain =
+        document.domain.split(".").reverse()[1] +
+        "." +
+        document.domain.split(".").reverse()[0];
       for (var i = 0; i < el.length; i++) {
-        var href = (typeof (el[i].getAttribute('href')) == 'string') ? el[i].getAttribute('href') : '';
+        var href =
+          typeof el[i].getAttribute("href") == "string"
+            ? el[i].getAttribute("href")
+            : "";
         var myDomain = href.match(getDomain);
 
-        // If link is outbound and is not to this domain        
-        if ((href.match(/^(https?:|\/\/)/i) && !myDomain) || href.match(/^mailto\:/i)) {
-          addEvent(el[i], 'click', function (e) {
-            var url = this.getAttribute('href'), win = (typeof (this.getAttribute('target')) == 'string') ? this.getAttribute('target') : '';
+        // If link is outbound and is not to this domain
+        if (
+          (href.match(/^(https?:|\/\/)/i) && !myDomain) ||
+          href.match(/^mailto\:/i)
+        ) {
+          addEvent(el[i], "click", function (e) {
+            var url = this.getAttribute("href"),
+              win =
+                typeof this.getAttribute("target") == "string"
+                  ? this.getAttribute("target")
+                  : "";
             console.log("add event", url);
-            ga('send', 'event', 'outbound', 'click', url,
-              { 'hitCallback': hitCallbackHandler(url, win), 'transport': 'beacon' },
-              { 'nonInteraction': 1 }
+            ga(
+              "send",
+              "event",
+              "outbound",
+              "click",
+              url,
+              {
+                hitCallback: hitCallbackHandler(url, win),
+                transport: "beacon",
+              },
+              { nonInteraction: 1 }
             );
             e.preventDefault();
           });
