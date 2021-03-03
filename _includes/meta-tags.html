@@ -1,31 +1,43 @@
 <!-- Charset -->
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <!-- Viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- Search Engine -->
-<meta name="description" content="{{ page.description }}">
-<meta name="image" content="{{ page.image | absolute_url }}">
-<meta name="keywords"
-  content="{% if page.categories %}{{ page.categories | join: ", " }}, {% endif %}{{ site.seo_keywords | join: ", " }}">
-<meta name="author" content="{{ page.author }}">
+<meta name="description" content="{{ page.description }}" />
+<meta name="image" content="{{ page.image | absolute_url }}" />
+<meta name="keywords" content="{% if page.categories.size > 0 %}{{ page.categories |
+join: ", " }}, {% endif %}{{ site.seo_keywords | join: ", " }}">
+<meta name="author" content="{{ page.author }}" />
 {% unless jekyll.environment == "production" %}
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow" />
 {% endunless %}
 <!-- Schema.org for Google -->
-<meta itemprop="name" content="{{ page.title }} | {{ site.title }}">
-<meta itemprop="description" content="{{ page.description }}">
-<meta itemprop="image" content="{{ page.image | absolute_url }}">
+<meta itemprop="name" content="{{ page.title }} | {{ site.title }}" />
+<meta itemprop="description" content="{{ page.description }}" />
+<meta itemprop="image" content="{{ page.image | absolute_url }}" />
 <!-- Twitter -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
-<meta name="twitter:description" content="{{ page.description }}">
-<meta name="twitter:image:src" content="{{ page.image | absolute_url }}">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ page.title }} | {{ site.title }}" />
+<meta name="twitter:description" content="{{ page.description }}" />
+<meta name="twitter:image:src" content="{{ page.image | absolute_url }}" />
 <!-- Open Graph general -->
-<meta property="og:title" name="og:title" content="{{ page.title }}">
-<meta property="og:description" name="og:description" content="{{ page.description }}">
-<meta property="og:image" name="og:image" content="{{ page.image | absolute_url }}">
-<meta property="og:url" name="og:url" content="{{ page.url | absolute_url }}">
-<meta property="og:site_name" name="og:site_name" content="{{ site.title }}">
-<meta property="og:locale" name="og:locale" content="{{ site.locale }}">
-<meta property="og:type" name="og:type" content="website">
-<meta property="fb:admins" name="fb:admins" content="{{ site.facebook_page_id }}">
+<meta property="og:title" name="og:title" content="{{ page.title }}" />
+<meta
+  property="og:description"
+  name="og:description"
+  content="{{ page.description }}"
+/>
+<meta
+  property="og:image"
+  name="og:image"
+  content="{{ page.image | absolute_url }}"
+/>
+<meta property="og:url" name="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:site_name" name="og:site_name" content="{{ site.title }}" />
+<meta property="og:locale" name="og:locale" content="{{ site.locale }}" />
+<meta property="og:type" name="og:type" content="website" />
+<meta
+  property="fb:admins"
+  name="fb:admins"
+  content="{{ site.facebook_page_id }}"
+/>
