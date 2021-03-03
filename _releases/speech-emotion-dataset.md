@@ -1,13 +1,13 @@
 ---
 title: Thai Speech Emotion Dataset
 description: ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย
-version: 1.0
+version: 0.8
 items:
   - item: Download on GitHub
     description: AIS-SER-TH-2020
     size: ~9.85G
     href: https://github.com/vistec-AI/dataset-releases/releases/tag/v0.8
-date: "2 March 2021"
+date: "3 March 2021"
 featured: true
 categories: dataset
 image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
@@ -84,7 +84,6 @@ image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
 
 ## การระบุอารมณ์จากเสียงพูด
 
-F
 หลังจากบันทึกข้อมูลเรียบร้อยแล้ว ข้อมูลเสียงทั้งหมดจะถูกตัดเป็นประโยคย่อย และนำมาระบุอารมณ์ ด้วยวิธีคราวด์ซอสซิ่ง (crowdsourcing) โดยให้ผู้ประเมินฟังเสียงและเลือกอารมณ์ผ่านระบบ ผู้ฟังสามารถเลือกอารมณ์ที่แสดงให้ 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ หรือสามารถเลือก ‘อื่นๆ’ ได้ในกรณีที่คิดว่าเป็นอารมณ์อื่น ข้อมูลเสียง 1 ประโยคจะใช้ผู้ประเมินทั้งหมด 3-8 คนและใช้วิธีเสียงข้างมากเพื่อเลือกเป็นอารมณ์สำหรับประโยคนั้นๆ (Majority emotion) และคำนวณค่าความเห็นพ้องของอารมณ์ในประโยค (Majority agreement)
 
 ### ความเชื่อมั่นระหว่างผู้ประเมิน (Inter-rater reliability)
