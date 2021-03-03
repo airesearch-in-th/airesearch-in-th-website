@@ -117,11 +117,11 @@ image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
 
 ## อ้างอิง
 
-- C. Busso, M. Bulut, C.C. Lee, A. Kazemzadeh, E. Mower, S. Kim, J.N. Chang, S. Lee, and S.S. Narayanan (2008). IEMO-CAP: Interactive emotional dyadic motion capture database. InJournal of Language Resources and Evaluation, vol.42, no. 4, (pp. 335-359).
-- Michael Grimm, Kristian Kroschel, and Shrikanth Narayanan.The Vera am Mittag German Audio-Visual EmotionalSpeech Database (2008). InIEEE International Conference on Multimedia and Expo (ICME), Hannover, (pp.865-868).
-- Carlos Busso, Srinivas Parthasarathy, Alec Burmania, Mohammed AbdelWahab, Najmeh Sadoughi, and EmilyMower Provost (2017).MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception. InIEEETransactions on Affective Computing, vol. 8, no. 1, (pp. 119-130).
-- Cao H, Cooper DG, Keutmann MK, Gur RC, Nenkova A, Verma R (2014). CREMA-D: Crowd-sourced EmotionalMultimodal Actors Dataset. InIEEE Trans Affect Comput., (pp. 377–390).
-- Kossaifi, Jean, Robert Walecki, Yannis Panagakis, Jie Shen, Maximilian Schmitt, Fabien Ringeval, Jing Han et al (2019). SEWA DB: A Rich Database for Audio-Visual Emotion and Sentiment Research in the Wild. InIEEE Transactionson Pattern Analysis and Machine Intelligence
-- Costantini, Giovanni Iaderola, Iacopo Paoloni, Todisco, Massimiliano.EMOVO Corpusan Italian EmotionalSpeech Database (2014). Inthe Ninth International Conference on Language Resources and Evaluation (LREC’14), (pp. 3501–3504).
-- Emilia Parada-Cabaleiro, Giovanni Costantini, Anton Batliner, Maximilian Schmitt, and Björn SchullerDEMoS:An Italian emotional speech corpus (2019). Elicitation methods, machine learning, and perception. InLanguage, Resources,and Evaluation
-- Passonneau, Rebecca. (2006). Measuring agreement on set-valued items (MASI) for semantic and pragmatic annotation.
+- Busso, Carlos, et al. "IEMOCAP: Interactive emotional dyadic motion capture database." Language resources and evaluation 42.4 (2008): 335-359.
+- Grimm, Michael, Kristian Kroschel, and Shrikanth Narayanan. "The Vera am Mittag German audio-visual emotional speech database." 2008 IEEE international conference on multimedia and expo. IEEE, 2008.
+- Busso, Carlos, et al. "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception." IEEE Transactions on Affective Computing 8.1 (2016): 67-80.
+- Cao, Houwei, et al. "Crema-d: Crowd-sourced emotional multimodal actors dataset." IEEE transactions on affective computing 5.4 (2014): 377-390.
+- Kossaifi, Jean, et al. "Sewa db: A rich database for audio-visual emotion and sentiment research in the wild." IEEE transactions on pattern analysis and machine intelligence (2019).
+- Costantini, Giovanni, et al. "EMOVO corpus: an Italian emotional speech database." International Conference on Language Resources and Evaluation (LREC 2014). European Language Resources Association (ELRA), 2014.
+- Parada-Cabaleiro, Emilia, et al. "DEMoS: An Italian emotional speech corpus." Language Resources and Evaluation (2019): 1-43.
+- Passonneau, Rebecca. "Measuring agreement on set-valued items (MASI) for semantic and pragmatic annotation." (2006).
