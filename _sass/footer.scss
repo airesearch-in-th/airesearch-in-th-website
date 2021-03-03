@@ -16,8 +16,8 @@ footer {
     a:active {
       display: inline;
       background: $signature-gradient;
-      background-clip: text;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-transform: scale(1.2);
       transform: scale(1.2);

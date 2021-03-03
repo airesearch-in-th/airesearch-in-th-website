@@ -33,6 +33,24 @@ body {
     z-index: -999999;
   }
 
+  table {
+    border-bottom: 1px solid #808080;
+    border-top: 1px solid #808080;
+    margin-bottom: .5rem;
+  }
+
+  th {
+    border-bottom: 2px solid #808080;
+    border-top: 2px solid #808080;
+    padding: 0 .5rem;
+  }
+
+  td {
+    border-bottom: 1px solid #808080;
+    border-top: 1px solid #808080;
+    padding: 0 .5rem;
+  }
+
   .font-weight-semibold {
     font-weight: 600;
   }
@@ -70,8 +88,8 @@ body {
       background: rgba($color: $foreground-color, $alpha: 0.75) !important;
       @supports (backdrop-filter: $filter) or (-webkit-backdrop-filter: $filter) {
         background: rgba($color: $foreground-color, $alpha: 0.4) !important;
-        backdrop-filter: $filter;
         -webkit-backdrop-filter: $filter;
+        backdrop-filter: $filter;
       }
       z-index: 2;
     }

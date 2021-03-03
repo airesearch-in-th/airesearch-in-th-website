@@ -2,10 +2,10 @@
 <html lang="{{ site.lang | default: "en-US" }}">
 
 <head>
-  <title>{% if jekyll.environment == "development" %}[dev] {% endif %}{{ page.title }} | {{ site.title }}</title>
-
   {% include meta-tags.html %}
-
+  
+  <title>{% if jekyll.environment == "development" %}[dev] {% endif %}{{ page.title }} | {{ site.title }}</title>
+  
   {% include external/bootstrap-css.html %}
 
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
