@@ -7,7 +7,7 @@ items:
     description: THAI SER
     size: ~9.85G
     href: https://github.com/vistec-AI/dataset-releases/releases/tag/v0.8
-date: "3 March 2021 0:01"
+date: "4 March 2021"
 featured: true
 categories: dataset
 image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"

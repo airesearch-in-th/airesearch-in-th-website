@@ -2,7 +2,7 @@
 title: "WangchanBERTa: Pre-trained Thai Language Model"
 description: "โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย"
 version: 1.0
-date: "3 Mar 2021 0:00"
+date: "3 Mar 2021"
 featured: true
 categories: model
 image: "/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg"
