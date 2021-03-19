@@ -84,7 +84,7 @@ image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
 
 ## การระบุอารมณ์จากเสียงพูด
 
-หลังจากบันทึกข้อมูลเรียบร้อยแล้ว ข้อมูลเสียงทั้งหมดจะถูกตัดเป็นประโยคย่อย และนำมาระบุอารมณ์ ด้วยวิธีคราวด์ซอสซิ่ง (crowdsourcing) โดยให้ผู้ประเมินฟังเสียงและเลือกอารมณ์ผ่านระบบ ผู้ฟังสามารถเลือกอารมณ์ที่แสดงให้ 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ หรือสามารถเลือก ‘อื่นๆ’ ได้ในกรณีที่คิดว่าเป็นอารมณ์อื่น ข้อมูลเสียง 1 ประโยคจะใช้ผู้ประเมินทั้งหมด 3-8 คนและใช้วิธีเสียงข้างมากเพื่อเลือกเป็นอารมณ์สำหรับประโยคนั้นๆ (Majority emotion) และคำนวณค่าความเห็นพ้องของอารมณ์ในประโยค (Majority agreement)
+หลังจากบันทึกข้อมูลเรียบร้อยแล้ว ข้อมูลเสียงทั้งหมดจะถูกตัดเป็นประโยคย่อย และนำมาระบุอารมณ์ ด้วยวิธีคราวด์ซอสซิ่ง (crowdsourcing) ผ่าน [wang.in.th](http://wang.in.th) และ HOPE data annotation โดยให้ผู้ประเมินฟังเสียงและเลือกอารมณ์ผ่านระบบ ผู้ฟังสามารถเลือกอารมณ์ที่แสดงให้ 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ หรือสามารถเลือก ‘อื่นๆ’ ได้ในกรณีที่คิดว่าเป็นอารมณ์อื่น ข้อมูลเสียง 1 ประโยคจะใช้ผู้ประเมินทั้งหมด 3-8 คนและใช้วิธีเสียงข้างมากเพื่อเลือกเป็นอารมณ์สำหรับประโยคนั้นๆ (Majority emotion) และคำนวณค่าความเห็นพ้องของอารมณ์ในประโยค (Majority agreement)
 
 ### ความเชื่อมั่นระหว่างผู้ประเมิน (Inter-rater reliability)
 
@@ -125,3 +125,10 @@ image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
 - Costantini, Giovanni, et al. "EMOVO corpus: an Italian emotional speech database." International Conference on Language Resources and Evaluation (LREC 2014). European Language Resources Association (ELRA), 2014.
 - Parada-Cabaleiro, Emilia, et al. "DEMoS: An Italian emotional speech corpus." Language Resources and Evaluation (2019): 1-43.
 - Passonneau, Rebecca. "Measuring agreement on set-valued items (MASI) for semantic and pragmatic annotation." (2006).
+
+## ผู้สนับสนุน และเงื่อนไขการใช้งาน
+![ais logo](/assets/img/releases/speech_emotion_dataset/ais-logo.svg)
+
+บริษัท แอดวานซ์ อินโฟร์ เซอร์วิส จำกัด (มหาชน) ได้ทำการบริจาคชุดข้อมูลนี้ให้แก่สาธารณะ 
+
+ชุดข้อมูลนี้ได้ถูกเผยแพร่สู่สาธารณะภายใต้เงื่อนไขลิขสิทธิ์แบบครีเอทีฟคอมมอนส์ แสดงที่มา-อนุญาตแบบเดียวกัน 4.0 International (CC BY-SA 4.0)
