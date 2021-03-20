@@ -8,6 +8,9 @@
 <meta name="keywords"
   content="{% if page.categories %}{{ page.categories | join: ", " }}, {% endif %}{{ site.seo_keywords | join: ", " }}">
 <meta name="author" content="{{ page.author }}">
+{% unless jekyll.environment == "production" %}
+<meta name="robots" content="noindex, nofollow">
+{% endunless %}
 <!-- Schema.org for Google -->
 <meta itemprop="name" content="{{ page.title }} | {{ site.title }}">
 <meta itemprop="description" content="{{ page.description }}">

@@ -13,7 +13,7 @@ layout: default
         </div>
         <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
           <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ page.version }}</span>
-          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e/%-m/%Y" }}</span>
+          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> {{ page.date | date: "%e %b %Y" }}</span>
           <div class="d-flex flex-row mt-2">
             {% for category in page.categories %}
             <span class="badge badge-light mr-1">{{ category }}</span>
@@ -39,9 +39,11 @@ layout: default
             <h6>{{ item.item }}</h6>
             <p><small>{{ item.description }}</small></p>
             <small><i class="far fa-hdd"></i> {{ item.size }}</small><br>
+            {% if item.sha256 %}
             <small><span data-toggle="tooltip" data-placement="bottom" title="{{ item.sha256 }}"><i
                   class="fas fa-hashtag fa-sm fa-fw"></i> <small>SHA256</small>
                 {{ item.sha256 | truncate: 24 }}</span></small>
+            {% endif %}
             <p class="text-right mt-2 mb-0">
               <a href="{{ item.href }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" title="Download"><i
                   class="fas fa-download"></i><span class="sr-only">Download</span></a>
