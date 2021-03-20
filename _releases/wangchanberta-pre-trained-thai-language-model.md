@@ -30,7 +30,7 @@ image: "/assets/img/releases/wangchanberta-pre-trained-thai-language-model/viste
 
 2. การตัดแบ่งคำจาก dictionary ของคำในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า `newmm`) ด้วยไลบรารี่ [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp) [Phatthiyaphaibun et al., 2016]
 
-3. การตัดแบ่งพยางค์ในภาษาไทย ด้วยโมเดล Conditional Random Fields (CRFs) (ใช้ชื่อย่อว่า `ssg`) ซึ่งตัดแบ่งพยางค์นี้เป็นส่วนหนึ่งของตัวตัดแบ่งคำ `AttaCut` จากบทความทางวิชาการชื่อ "Syllable-­based Neural Thai Word Segmentation" [Chormai et al., 2020]
+3. การตัดแบ่งพยางค์ในภาษาไทย จาก dictionary ของพยางค์ในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า `syllable`) ด้วยไลบรารี่ [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)
 
 4. การตัดแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า `sefr`) จากบทความทางวิชาการชื่อ "Stacked Ensemble Filter and Refine for Word Segmentation" [Limkonchotiwat et al., 2020]
 
@@ -76,7 +76,7 @@ Token classification
 ติดตั้ง Python package ดังต่อไปนี้ `transformers` และ `thai2transformers` ด้วย `pip`
 
 ```
-pip install transformers==3.5.1 thai2transformers==0.1.1
+pip install transformers==3.5.1 thai2transformers==0.1.2
 ```
 
 ### 1. สำหรับการทำโจทย์ Masked Language Model (MLM)
@@ -242,7 +242,7 @@ print(classify_token(processed_input_text))
   - โมเดล `wangcahbert-base-att-spm-uncased` ที่เทรนบนชุดข้อมูลขนาด 78.5 GB ที่ checkpoint 360,000
   - โมเดล `wangcahbert-base-wiki-spm` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 7,000
   - โมเดล `wangcahbert-base-wiki-newmm` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 5,000
-  - โมเดล `wangcahbert-base-wiki-ssg` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 8,000
+  - โมเดล `wangcahbert-base-wiki-syllable` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 8,000
   - โมเดล `wangcahbert-base-wiki-sefr` ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 4,500
   - โมเดล `bert-base-multilingual-cased` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
   - โมเดล `xlm-roberta-base` ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด
@@ -255,6 +255,5 @@ print(classify_token(processed_input_text))
 - Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., & Stoyanov, V. (2019). RoBERTa: A Robustly Optimized BERT Pretraining Approach. ArXiv, abs/1907.11692.
 - Conneau, A., Khandelwal, K., Goyal, N., Chaudhary, V., Wenzek, G., Guzmán, F., Grave, E., Ott, M., Zettlemoyer, L., & Stoyanov, V. (2020). Unsupervised Cross-lingual Representation Learning at Scale. ACL.
 - Kudo, T., & Richardson, J. (2018). SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing. EMNLP.
-- Chormai, P., Prasertsom, P., Cheevaprawatdomrong, J., & Rutherford, A. (2020). Syllable-based Neural Thai Word Segmentation. COLING.
 - Limkonchotiwat, P., Phatthiyaphaibun, W., Sarwar, R., Chuangsuwanich, E., & Nutanong, S. (2020). Domain Adaptation of Thai Word Segmentation Models using Stacked Ensemble. EMNLP.
 - Phatthiyaphaibun, W., Chaovavanich, K., Polpanumas, C., Suriyawongkul, A., Lowphansirikul, L., & Chormai, P. (2016, Jun 27). PyThaiNLP: Thai Natural Language Processing in Python. Zenodo. http://doi.org/10.5281/zenodo.3519354
