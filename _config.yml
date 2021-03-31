@@ -104,3 +104,5 @@ exclude:
   - ".vscode"
   - Gemfile
   - Gemfile.lock
+  - Gemfile.development
+  - Gemfile.development.lock
