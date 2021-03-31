@@ -111,7 +111,7 @@ image: "/assets/img/releases/speech_emotion_dataset/microphone.jpg"
 
 <p style="text-align: center">รูปที่ 2: emotion confusion matrix แสดงค่าจากจำนวนประโยคทั้งหมด</p>
 
-![CM_07_v1](/assets/img/releases/speech_emotion_dataset/CM_071_v1.png)
+![CM_071_v1](/assets/img/releases/speech_emotion_dataset/CM_071_v1.png)
 
 <p style="text-align: center">รูปที่ 3: emotion confusion matrix แสดงค่าหลังจากคัดกรองค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.71  (ปกติ: Neutral, โกรธ: Angry, สุข: Happy, เศร้า: Sad, หงุดหงิด: Frustrated, อารมณ์อื่นๆ: Other, ไม่มีความเห็นพ้อง: None)</p>
 
