@@ -1,7 +1,7 @@
 ---
 title: Thai Speech Emotion Dataset
 description: ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย
-version: 1
+version: 1.0
 items:
   - item: Download on GitHub
     description: THAI SER
