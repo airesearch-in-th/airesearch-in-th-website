@@ -45,6 +45,10 @@ collections:
     output: true
     sort_by: order
     permalink: /:collection/:name/
+  knowledge:
+    output: true
+    sort_by: order
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
@@ -86,6 +90,12 @@ defaults:
       type: crew
     values:
       layout: crew_member
+  - scope:
+      path: 
+      type: knowledge
+    values:
+      featured: false
+      layout: knowledge
 
 sass:
   style: compressed
