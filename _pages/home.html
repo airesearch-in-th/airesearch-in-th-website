@@ -9,6 +9,54 @@ navbar_display: false
   <div class="container">
     <div class="row">
       <div class="col-md-8">
+        <h2>คลังความรู้</h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row card-stack text-white align-items-stretch">
+        {% assign releases = site.knowledge | reverse %}
+        {% for release in releases %}
+        {% if release.featured %}
+        <div class="col-md-6 col-xl-6 rounded-0 border-0 p-0">
+          <a href="{{ release.url }}" class="card-stack-item-link">
+            <div class="card-stack-item-container m-2">
+              <div class="card-stack-item card-genie h-100 w-100 text-white d-flex flex-column rounded rounded-lg">
+                <div
+                  class="d-flex flex-column h-100 w-100 p-4 position-relative card-item-content flex-grow-1 rounded rounded-lg">
+                  <h5 class="font-weight-semibold">{{ release.title }}</h5>
+                  <p class="text-justify">{{ release.description }}</p>
+                  <div class="d-flex flex-row justify-content-between align-items-center mt-auto">
+                    <p class="mb-0">{{ release.date | date: "%e %b %Y" }}</p>
+                    <p class="mb-0 d-flex flex-row align-items-center">
+                      {% for category in release.categories limit:2 %}
+                      <span class="badge badge-light mr-1">{{ category }}</span>
+                      {% endfor %}
+                      <i class="fas fa-code-branch fa-fw fa-sm"></i> v{{ release.version }}
+                    </p>
+                  </div>
+                </div>
+                <div class="h-100 w-100 position-absolute card-bg-filter rounded rounded-lg"></div>
+                <div class="h-100 w-100 position-absolute card-bg rounded rounded-lg" {% if release.image %}
+                  style="background-image: url('{{ release.image }}')" {% endif %}></div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-12 d-md-none d-flex align-items-center justify-content-end text-dark mt-2">
+          <i class="fas fa-stream fa-fw fa-sm"></i> <a class="text-dark" href="{% link _pages/releases.html %}">All
+            Releases</a>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="container mt-5">
+    {% include separator.html %}
+    <div class="row mt-5">
+      <div class="col-md-8">
         <h2>ชุดข้อมูลและโมเดลที่น่าสนใจ</h2>
       </div>
       <!-- <div class="col-md-4 d-md-flex d-none align-items-center justify-content-end">
