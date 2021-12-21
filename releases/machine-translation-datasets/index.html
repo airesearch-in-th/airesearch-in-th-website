@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- Charset -->
+<meta charset="utf-8">
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Search Engine -->
+<meta name="description" content="ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย กว่า 1 ล้านคู่ประโยค">
+<meta name="image" content="https://airesearch.in.th/assets/img/releases/books.jpg">
+<meta name="keywords"
+  content="dataset, artificial intelligence, research, vistec, depa, vidyasirimedhi, vidyasirimedhi institute of science and technology, digital economy promotion agency, machine translation, open data, dataset, model, artificial intelligence research, research institute">
+<meta name="author" content="">
+
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="English-Thai Machine Translation Dataset | airesearch.in.th">
+<meta itemprop="description" content="ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย กว่า 1 ล้านคู่ประโยค">
+<meta itemprop="image" content="https://airesearch.in.th/assets/img/releases/books.jpg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="English-Thai Machine Translation Dataset | airesearch.in.th">
+<meta name="twitter:description" content="ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย กว่า 1 ล้านคู่ประโยค">
+<meta name="twitter:image:src" content="https://airesearch.in.th/assets/img/releases/books.jpg">
+<!-- Open Graph general -->
+<meta property="og:title" name="og:title" content="English-Thai Machine Translation Dataset">
+<meta property="og:description" name="og:description" content="ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย กว่า 1 ล้านคู่ประโยค">
+<meta property="og:image" name="og:image" content="https://airesearch.in.th/assets/img/releases/books.jpg">
+<meta property="og:url" name="og:url" content="https://airesearch.in.th/releases/machine-translation-datasets/">
+<meta property="og:site_name" name="og:site_name" content="airesearch.in.th">
+<meta property="og:locale" name="og:locale" content="en-US">
+<meta property="og:type" name="og:type" content="website">
+<meta property="fb:admins" name="fb:admins" content="106755957360414">
+
+  
+  <title>English-Thai Machine Translation Dataset | airesearch.in.th</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/assets/css/main.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+
+  <!-- ICONS: DO NOT CHANGE ORDER! -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/assets/favicon/favicon-194x194.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#FFF200">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="airesearch.in.th">
+<meta name="application-name" content="airesearch.in.th">
+<meta name="msapplication-TileColor" content="#fff200">
+<meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- END OF ICONS -->
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+  integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
+  <div class="container">
+    <a class="navbar-brand p-2" href="/"><img loading="lazy"
+        src="/assets/img/logo/airesearch-logo.svg" alt="airesearch.in.th logo"></a>
+    <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
+      data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
+      <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
+        <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#releases" class="nav-link">ชุดข้อมูลและโมเดล</a>
+          <!-- <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#posts" class="nav-link">News+Stories</a>
+        </li> -->
+          
+          
+        <li
+          class="nav-item">
+          <a class="nav-link" href="/contact/">
+            ติดต่อเรา
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/">
+            หน้าแรก
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/terms-of-use/">
+            ข้อกำหนดและเงื่อนไขตกลงการใช้งาน
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/releases/">
+            Releases
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/posts/">
+            Posts
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/knowledge/">
+            Knowledge
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/404.html">
+            404
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="" style="min-height: 4.75rem;"></div>
+  <section class="release">
+  <section class="release-jumbotron text-light d-flex flex-col align-items-end position-relative" 
+    style="background-image: url('/assets/img/releases/books.jpg');" >
+    <div class="w-100 h-100 release-jumbotron-filter position-absolute"></div>
+    <div class="container mb-4">
+      <div class="row align-items-stretch">
+        <div class="col-lg-10">
+          <h1>English-Thai Machine Translation Dataset</h1>
+          <p class="lead">ชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย กว่า 1 ล้านคู่ประโยค</p>
+        </div>
+        <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
+          <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v1.0</span>
+          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> 23 Jun 2020</span>
+          <div class="d-flex flex-row mt-2">
+            
+            <span class="badge badge-light mr-1">dataset</span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article class="text-justify">
+          <p>สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย ได้ทำการเปิดชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย จำนวนกว่า 1 ล้านคู่ประโยคสู่สาธารณะ โดยได้รับการสนับสนุนจาก SCB ภายใต้ชื่อ <em>scb-mt-en-th-2020</em> ชุดข้อมูลคู่ประโยคนี้ ได้รวบรวมจากหลายข้อมูลแหล่งอาทิเช่น ประโยคจากบทสนทนา ข้อมูลจากเว็บไซต์ข่าวหรือองค์กรที่มีเนื้อหาในสองภาษา บทความวิกิพีเดีย และ เอกสารราชการ</p>
+
+<p>การได้มาซึ่งคู่ภาษามีทั้ง การจ้างนักแปลภาษา และ การใช้ Algorithm ในจับคู่ประโยคภาษาไทยและอังกฤษโดยอัตโนมัติ (Sentence alignment) จากหน้าเอกสาร บทความ และเว็บไซต์</p>
+
+<p>โดยชุดข้อมูลนี้ เป็น Model-ready หรือ พร้อมสำหรับการนำไปใช้ฝึกฝนโมเดลแปลภาษาได้ทันที ทางสถาบันฯ ได้เปิด Pre-trained model สำหรับการนำไปใช้งาน และเป็น Baseline model (สามารถดูเพิ่มเติมที่ <a href="https://www.airesearch.in.th/releases/machine-translation-models">Thai-English Machine Translation Model</a>)</p>
+
+<p>นอกจากนี้การสร้างชุดข้อมูล <em>scb-mt-en-th-2020</em> ยังทำให้ทางสถาบันฯ ได้ชุดข้อมูลอื่นๆ ที่พร้อมจะนำไปแก้โจทย์ด้าน NLP อื่นๆ ดังนี้</p>
+
+<ol>
+  <li>คุณภาพการแปลประโยคจากอังกฤษเป็นภาษาไทย</li>
+  <li>การตัดแบ่งประโยคภาษาไทย</li>
+  <li>การ Paraphrase ประโยคภาษาไทย</li>
+  <li>การคัดแยกคะแนนที่ได้รับจากรีวิวสินค้าในภาษาไทย</li>
+</ol>
+
+<h2 id="สถิติชุดข้อมูล">สถิติชุดข้อมูล</h2>
+
+<p><img src="/assets/img/releases/machine_translation_datasets/scb-mt-en-th-2020_stats_v1.0.png" alt="Dataset Statistics" /></p>
+
+<p style="text-align: center;">ตาราง 1: จำนวนคู่ประโยคในภาษาอังกฤษ-ไทย แบ่งตาม แหล่งที่มาของข้อมูลและวิธีการจับคู่ประโยค รวมจำนวนคู่ประโยคทั้งหมดคือ 1,001,752 คู่ประโยค</p>
+
+<h2 id="แหล่งที่มา">แหล่งที่มา</h2>
+
+<p>สำหรับแหล่งที่มาของชุดข้อมูลคู่ประโยค มีดังนี้</p>
+
+<ol>
+  <li>ชุดข้อมูลด้าน NLP จากต่างประเทศที่เผยแพร่สู่สาธารณะ โดยชุดข้อมูลที่นำมาใช้จะ ประกอบด้วย ชุดข้อมูลบทสนทนา (Taskmaster-1 [Byrne et al. 2019]), ชุดข้อมูลข้อความ SMS จากผู้ใช้ในสิงค์โปร์ (NUS SMS [Chen et al. 2013]) ชุดข้อมูลการ Paraphrase ประโยค (Microsoft Research Paraphrase Identification [Dolan et al. 2005]) แล้วชุดข้อมูลประโยคสำหรับโจทย์ Automatic Speech Recognition (ASR) จาก <a href="https://voice.mozilla.org/en">Mozilla Common Voice</a></li>
+  <li>การใช้โมเดล Text Generation เพื่อสร้างรีวิวสินค้าในภาษาอังกฤษ โดยทางสถาบันฯ ได้ทำการสร้างรีวิวสินค้าในภาษาอังกฤษ จากโมเดล Conditional Transformer Language Model for Controllable Generation (CTRL) [Keskar et al. 2019] ซึ่งเป็นโมเดลสำหรับ การสร้างข้อความขึ้นมาใหม่ โดยสามารถกำหนดบริบทหรือรูปแบบของข้อความที่จะสร้างได้</li>
+  <li>การเก็บข้อมูลจากหน้าเว็บไซต์ที่มีเนื้อหาในสองภาษา โดยอิงจากโดเมนภาษาไทยที่ถูกจัดอันใน alexa.com 500 อันดับแรก และโดเมนที่อยู่ในชุดข้อมูล ParaCrawl Corpus [Esplà-Gomis et al. 2015] ซึ่งเป็นชุดข้อมูลที่รวบรวมเว็บไซต์ ที่มีเนื้อหาในภาษาอังกฤษและภาษาที่ใช้ในกลุ่มประเทศสมาชิกสหภาพยุโรป (EU)</li>
+  <li>เอกสารราชการที่มีเนื้อหาทั้งภาษาไทยและอังกฤษ อาทิเช่น แผนพัฒนาการเศรษฐกิจและสังคมแห่งชาติ ประมวลกฎหมายแพ่งและพาณิชย์</li>
+  <li>บทความจากวิกิพีเดียในภาษาไทยและภาษาอังกฤษ ที่มีเนื้อหาในหัวข้อเดียวกัน</li>
+</ol>
+
+<h2 id="ระเบียบวิธี">ระเบียบวิธี</h2>
+
+<h5 id="การจ้างนักแปลภาษาโดยตรง">การจ้างนักแปลภาษาโดยตรง</h5>
+
+<p>สำหรับการจ้างแปลโดยตรง จะเป็นการแปล จากชุดข้อมูล Taskmaster-1 และ ชุดข้อมูลรีวิวสินค้าที่ถูกสร้างจาก โมเดล CTRL</p>
+
+<h5 id="นักแปลจาก-crowdsourcing-platform">นักแปลจาก Crowdsourcing platform</h5>
+
+<p>สำหรับการจ้างแปลจาก Crowdsourcing platform จะเป็นการแปล จากชุดข้อมูล NUS SMS, Microsoft Research Paraphrase Identidication, Mozilla Common Voice และ ชุดข้อมูลรีวิวสินค้า</p>
+
+<h5 id="การจ้างนักแปลเพื่อทำการยืนยันความถูกต้องจากผลการแปล-จาก-google-translation-api">การจ้างนักแปลเพื่อทำการยืนยันความถูกต้องจากผลการแปล จาก Google Translation API</h5>
+
+<p>สำหรับวิธีนี้ ทางสถาบันฯ ให้นำรีวิวสินค้า ส่วนหนึ่งจะส่งต่อไปยัง Google Translation API เพื่อทำการแปลเป็นภาษาไทยแล้วจึง ให้นักแปลยินยันความถูกต้องและความครบถ้วนของเนื้อหาจากผลการแปล</p>
+
+<h5 id="การใช้-algorithm-ในการจับคู่ประโยคในภาษาอังกฤษ-ไทย-จาก-ข้อมูลที่ได้จากการ-crawl-เว็บไซต์-บทความวิกิพีเดีย-และ-เอกสารราชการ">การใช้ Algorithm ในการจับคู่ประโยคในภาษาอังกฤษ-ไทย จาก ข้อมูลที่ได้จากการ crawl เว็บไซต์ บทความวิกิพีเดีย และ เอกสารราชการ</h5>
+
+<p>การจับคู่ประโยค ในส่วนของข้อมูลจากการ Crawl และ เอกสารราชการนั้น จะเป็นการจับคู่เอกสาร บทความ และ หน้าเว็บไซต์ก่อน (Document alignment or URL alignment) แล้วจึงทำการจับคู่ประโยค (Sentence alignment)</p>
+
+<h2 id="การตรวจคุณภาพ">การตรวจคุณภาพ</h2>
+
+<p>สำหรับ การแปลจากการจ้างนักแปลโดยตรง จะมีทีมนักแปลที่ทำหน้าที่ตรวจสอบคุณภาพการแปล แต่ในส่วนของการ Crawl ข้อมูลนั้น จะมีความผิดพลาดในการการจับคู่ประโยคสูง ทางสถาบันฯ ได้ใช้ โมเดล Universal Sentence Encoder Multilingual [Cer et al. 2018] ในการคำนวณหาการแปลที่ตรงกันระหว่างประโยคภาษาอังกฤษและไทย และคัดกรองเอาคู่ประโยคไม่ได้จับคู่กันอย่างถูกต้องออก สำหรับวิธีการใช้ Universal Sentence Encoder Multilingual สามารถดูเพิ่มเติมได้จากบทความ <a href="https://medium.com/airesearch-in-th/%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%96%E0%B8%B9%E0%B8%81%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9B%E0%B8%A5-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-universal-sentence-encoder-ad3c156c2e9b">ตรวจสอบความถูกต้องของการแปล ด้วย Universal Sentence Encoder</a></p>
+
+<h2 id="เวอร์ชัน">เวอร์ชัน</h2>
+
+<ul>
+  <li><strong>Version 1.0 (23 June 2020):</strong> ชุดข้อมูลคู่ประโยคในภาษาอังกฤษ-ไทย จำนวน 1,001,752 คู่ประโยค</li>
+</ul>
+
+<h2 id="อ้างอิง">อ้างอิง</h2>
+
+<ul>
+  <li>Byrne, B., Krishnamoorthi, K., Sankar, C., Neelakantan, A., Goodrich, B., Duckworth, D., … &amp; Cedilnik, A. (2019). Taskmaster-1: Toward a Realistic and Diverse Dialog Dataset. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP) (pp. 4506-4517).</li>
+  <li>Tao Chen and Min-Yen Kan (2013). Creating a Live, Public Short Message Service Corpus: The NUS SMS Corpus. Language Resources and Evaluation, 47(2)(2013), pages 299-355.</li>
+  <li>Dolan, W.B., &amp; Brockett, C. (2005). Automatically Constructing a Corpus of Sentential Paraphrases. IWP@IJCNLP.</li>
+  <li>Esplà-Gomis, M., Forcada, M.L., Ramírez-Sánchez, G., &amp; Hoang, H. (2019). ParaCrawl: Web-scale parallel corpora for the languages of the EU. MTSummit.</li>
+  <li>Keskar, N.S., McCann, B., Varshney, L.R., Xiong, C., &amp; Socher, R. (2019). CTRL: A Conditional Transformer Language Model for Controllable Generation. ArXiv, abs/1909.05858.</li>
+  <li>Cer, D.M., Yang, Y., Kong, S., Hua, N., Limtiaco, N., John, R.S., Constant, N., Guajardo-Cespedes, M., Yuan, S., Tar, C., Sung, Y., Strope, B., &amp; Kurzweil, R. (2018). Universal Sentence Encoder. ArXiv, abs/1803.11175.</li>
+</ul>
+
+<h2 id="ผู้สนับสนุน-และเงื่อนไขการใช้งาน">ผู้สนับสนุน และเงื่อนไขการใช้งาน</h2>
+
+<p><img src="/assets/img/supporters/scb-logo.svg" alt="SCB" /></p>
+
+<p>บมจ. ธนาคารไทยพาณิชย์ ได้ทำการบริจาคชุดข้อมูลนี้ให้แก่สาธารณะ ภายใต้เงื่อนไขลิขสิทธิ์แบบ<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.th"><em>ครีเอทีฟคอมมอนส์ แสดงที่มา-อนุญาตแบบเดียวกัน 4.0 International (CC BY-SA 4.0)</em></a> ยกเว้นชุดข้อมูลคู่ประโยคภาษาอังกฤษ-ไทย จาก Mozilla Common Voice จะไม่สงวนลิขสิทธิ์ (CC0; No Rights Reserved)</p>
+
+        </article>
+      </div>
+      <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
+        
+        <h3>ดาวน์โหลด</h3>
+        <div class="list-group rounded-0 border-0">
+          
+          <div class="list-group-item list-group-item-action download-item" target="_blank">
+            <h6>scb-mt-en-th-2020.zip</h6>
+            <p><small>Version 1.0 (zip)</small></p>
+            <small><i class="far fa-hdd"></i> 101M</small><br>
+            
+            <small><span data-toggle="tooltip" data-placement="bottom" title="d902eb187c3140150f7156e8433d0da7486be53e83dd342698b56ed6f74e09fb"><i
+                  class="fas fa-hashtag fa-sm fa-fw"></i> <small>SHA256</small>
+                d902eb187c3140150f715...</span></small>
+            
+            <p class="text-right mt-2 mb-0">
+              <a href="https://github.com/vistec-AI/dataset-releases/releases/download/scb-mt-en-th-2020_v1.0/scb-mt-en-th-2020.zip" class="btn btn-secondary btn-sm" data-toggle="tooltip" title="Download"><i
+                  class="fas fa-download"></i><span class="sr-only">Download</span></a>
+              <!-- <a href="#"><img alt="Deploy to azure" class="azure-deploy-button" loading="lazy"
+                  src="https://aka.ms/deploytoazurebutton" /></a> -->
+            </p>
+          </div>
+          
+          <div class="list-group-item list-group-item-action download-item" target="_blank">
+            <h6>scb-mt-en-th-2020.tar.gz</h6>
+            <p><small>Version 1.0 (tar.gz)</small></p>
+            <small><i class="far fa-hdd"></i> 104M</small><br>
+            
+            <small><span data-toggle="tooltip" data-placement="bottom" title="700b044b84d456261b681ad20e28ff5cab3af389238f876ee435b3e0850d0858"><i
+                  class="fas fa-hashtag fa-sm fa-fw"></i> <small>SHA256</small>
+                700b044b84d456261b681...</span></small>
+            
+            <p class="text-right mt-2 mb-0">
+              <a href="https://github.com/vistec-AI/dataset-releases/releases/download/scb-mt-en-th-2020_v1.0/scb-mt-en-th-2020.tar.gz" class="btn btn-secondary btn-sm" data-toggle="tooltip" title="Download"><i
+                  class="fas fa-download"></i><span class="sr-only">Download</span></a>
+              <!-- <a href="#"><img alt="Deploy to azure" class="azure-deploy-button" loading="lazy"
+                  src="https://aka.ms/deploytoazurebutton" /></a> -->
+            </p>
+          </div>
+          
+        </div>
+        
+      </section>
+    </div>
+  </section>
+</section>
+  <footer id="footer" class="footer container my-5">
+  <div class="border rounded-lg rounded"
+  style="width: 40vw; min-width: 18rem; max-width: 30rem; height: 0; border-width: 0.125rem !important;">
+</div>
+  <div class="row mt-4">
+    <div class="col-lg-9 mb-2">
+      <div class="row align-items-center">
+        <div class="col-auto mb-2">
+          <a href="https://www.vistec.ac.th" target="_blank"
+            ><img class="footer-logos" id="vistec-footer-logo" alt="VISTEC logo"
+            loading="lazy" src="/assets/img/logo/vistec-logo-notext.svg"></a
+          >
+        </div>
+        <div class="col-auto p-0 mb-2">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="col-auto mb-2">
+          <a href="https://www.depa.or.th" target="_blank"
+            ><img class="footer-logos" id="depa-footer-logo" alt="depa logo"
+            loading="lazy" src="/assets/img/logo/depa-logo.svg"></a
+          >
+        </div>
+        <div class="col-lg-12 mb-3">
+          <h6 class="font-weight-semibold mb-1">
+            VISTEC-depa Thailand Artificial Intelligence Research Institute
+          </h6>
+          สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย
+          จากความร่วมมือระหว่างสถาบันวิทยสิริเมธี
+          และสำนักงานส่งเสริมเศรษฐกิจดิจิทัล
+        </div>
+      </div>
+    </div>
+    <div
+      class="social-row col-lg-3 mb-3 d-flex justify-content-lg-end align-items-start mt-lg-3"
+    >
+      <a class="ml-0 mr-4" href="https://www.facebook.com/AIResearch.in.th">
+        <i class="fab fa-fw fa-2x fa-facebook d-inline"></i>
+      </a>
+      <!-- <a class="mr-4" href="#"><i class="fab fa-fw fa-2x fa-youtube d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#enquiries"
+        ><i class="fas fa-fw fa-2x fa-envelope d-inline"></i
+      ></a>
+      <!-- <a class="mr-4" href="/contact/#enquiries"><i class="fas fa-fw fa-2x fa-phone-alt d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#offices"
+        ><i class="fas fa-fw fa-2x fa-map-marked-alt d-inline"></i
+      ></a>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานกรุงเทพ</a
+      ><br />
+      ชั้นที่ 2 สำนักงานส่งเสริมเศรษฐกิจดิจิทัล (depa)<br />
+      อาคารลาดพร้าวฮิลล์<br />
+      80 ซอยลาดพร้าว 4 แขวงจอมพล<br />
+      เขตจตุจักร กรุงเทพมหานคร 10900
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานระยอง</a
+      ><br />
+      ชั้นที่ 3 อาคารสำนักวิชาวิทยาศาสตร์และเทคโนโลยีสารสนเทศ (IST)<br />
+      สถาบันวิทยสิริเมธี (VISTEC)<br />
+      555 หมู่ที่ 1 ตำบลป่ายุบใน<br />
+      อำเภอวังจันทร์ ระยอง 21210
+    </div>
+    <div class="col-lg-12 mb-3">
+      <span class="font-weight-semibold">© สงวนลิขสิทธิ์ทุกประการ</span>
+      นอกจากได้ระบุไว้เป็นอื่น<br />
+      <a href="/terms-of-use/">เงื่อนไขตกลงการใช้งาน</a> |
+      <a href="#">นโยบายความเป็นส่วนตัว</a>
+    </div>
+  </div>
+</footer>
+
+
+  
+  <!-- Google Analytics -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-141096942-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+  <script>
+  (function trackOutbounds() {
+    var hitCallbackHandler = function (url, win) {
+      if (win) {
+        window.open(url, win);
+      } else {
+        window.location.href = url;
+      }
+    };
+    var addEvent = function (el, eventName, handler) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function () {
+          handler.call(el);
+        });
+      }
+    }
+    if (document.getElementsByTagName) {
+      var el = document.getElementsByTagName('a');
+      var getDomain = document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0];
+      for (var i = 0; i < el.length; i++) {
+        var href = (typeof (el[i].getAttribute('href')) == 'string') ? el[i].getAttribute('href') : '';
+        var myDomain = href.match(getDomain);
+
+        // If link is outbound and is not to this domain        
+        if ((href.match(/^(https?:|\/\/)/i) && !myDomain) || href.match(/^mailto\:/i)) {
+          addEvent(el[i], 'click', function (e) {
+            var url = this.getAttribute('href'), win = (typeof (this.getAttribute('target')) == 'string') ? this.getAttribute('target') : '';
+            console.log("add event", url);
+            ga('send', 'event', 'outbound', 'click', url,
+              { 'hitCallback': hitCallbackHandler(url, win), 'transport': 'beacon' },
+              { 'nonInteraction': 1 }
+            );
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  })();
+</script>
+  
+</body>
+
+</html>

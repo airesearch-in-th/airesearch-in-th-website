@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- Charset -->
+<meta charset="utf-8">
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Search Engine -->
+<meta name="description" content="ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย">
+<meta name="image" content="https://airesearch.in.th/assets/img/releases/speech_emotion_dataset/microphone.jpg">
+<meta name="keywords"
+  content="dataset, artificial intelligence, research, vistec, depa, vidyasirimedhi, vidyasirimedhi institute of science and technology, digital economy promotion agency, machine translation, open data, dataset, model, artificial intelligence research, research institute">
+<meta name="author" content="">
+
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="Thai Speech Emotion Dataset | airesearch.in.th">
+<meta itemprop="description" content="ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย">
+<meta itemprop="image" content="https://airesearch.in.th/assets/img/releases/speech_emotion_dataset/microphone.jpg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Thai Speech Emotion Dataset | airesearch.in.th">
+<meta name="twitter:description" content="ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย">
+<meta name="twitter:image:src" content="https://airesearch.in.th/assets/img/releases/speech_emotion_dataset/microphone.jpg">
+<!-- Open Graph general -->
+<meta property="og:title" name="og:title" content="Thai Speech Emotion Dataset">
+<meta property="og:description" name="og:description" content="ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย">
+<meta property="og:image" name="og:image" content="https://airesearch.in.th/assets/img/releases/speech_emotion_dataset/microphone.jpg">
+<meta property="og:url" name="og:url" content="https://airesearch.in.th/releases/speech-emotion-dataset/">
+<meta property="og:site_name" name="og:site_name" content="airesearch.in.th">
+<meta property="og:locale" name="og:locale" content="en-US">
+<meta property="og:type" name="og:type" content="website">
+<meta property="fb:admins" name="fb:admins" content="106755957360414">
+
+  
+  <title>Thai Speech Emotion Dataset | airesearch.in.th</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/assets/css/main.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+
+  <!-- ICONS: DO NOT CHANGE ORDER! -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/assets/favicon/favicon-194x194.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#FFF200">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="airesearch.in.th">
+<meta name="application-name" content="airesearch.in.th">
+<meta name="msapplication-TileColor" content="#fff200">
+<meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- END OF ICONS -->
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+  integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
+  <div class="container">
+    <a class="navbar-brand p-2" href="/"><img loading="lazy"
+        src="/assets/img/logo/airesearch-logo.svg" alt="airesearch.in.th logo"></a>
+    <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
+      data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
+      <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
+        <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#releases" class="nav-link">ชุดข้อมูลและโมเดล</a>
+          <!-- <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#posts" class="nav-link">News+Stories</a>
+        </li> -->
+          
+          
+        <li
+          class="nav-item">
+          <a class="nav-link" href="/contact/">
+            ติดต่อเรา
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/">
+            หน้าแรก
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/terms-of-use/">
+            ข้อกำหนดและเงื่อนไขตกลงการใช้งาน
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/releases/">
+            Releases
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/posts/">
+            Posts
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/knowledge/">
+            Knowledge
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/404.html">
+            404
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="" style="min-height: 4.75rem;"></div>
+  <section class="release">
+  <section class="release-jumbotron text-light d-flex flex-col align-items-end position-relative" 
+    style="background-image: url('/assets/img/releases/speech_emotion_dataset/microphone.jpg');" >
+    <div class="w-100 h-100 release-jumbotron-filter position-absolute"></div>
+    <div class="container mb-4">
+      <div class="row align-items-stretch">
+        <div class="col-lg-10">
+          <h1>Thai Speech Emotion Dataset</h1>
+          <p class="lead">ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย</p>
+        </div>
+        <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
+          <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v1.0</span>
+          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i> 26 Mar 2021</span>
+          <div class="d-flex flex-row mt-2">
+            
+            <span class="badge badge-light mr-1">dataset</span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article class="text-justify">
+          <p>ชุดข้อมูลจำแนกอารมณ์จากเสียงพูดภาษาไทย (Thai Speech Emotion Dataset) ประกอบไปด้วยเสียงพูดภาษาไทยที่สื่ออารมณ์ทั้งหมด 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ โดยนักแสดง 200 คน (ชาย 87 และหญิง 113) จำนวน 41 ชม. 36 นาที (27,854 ประโยค) พัฒนาโดยสถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (AIResearch) ร่วมมือกับภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ และ ภาควิชาศิลปการละคร คณะอักษรศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย พร้อมทั้งได้รับการสนับสนุนโดยบริษัท แอดวานซ์ อินโฟร์ เซอร์วิส จำกัด (AIS)</p>
+
+<p>ในปัจจุบันมีชุดข้อมูลจำแนกอารมณ์จากเสียงพูดในภาษาต่างๆอยู่ค่อนข้างจำกัด ไม่ว่าจะเป็นภาษาอังกฤษ เยอรมัน อิตาเลี่ยน และอื่นๆ ดังตัวอย่างในตารางที่ 1 แต่สำหรับข้อมูลภาษาไทยยังไม่มีงานวิจัยที่พัฒนาชุดข้อมูลนี้ขึ้นมา ชุดข้อมูลนี้จึงเป็นชุดข้อมูลแรกที่วิจัยในภาษาไทย โดยมีวัตถุประสงค์เพื่อใช้ในการพัฒนาโมเดลการรู้จำอารมณ์จากเสียงพูด และเพื่อนำโมเดลไปประยุกต์ใช้ในอุปกรณ์หรือแอปพลิเคชั่นต่างๆ</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ชุดข้อมูล</th>
+      <th style="text-align: center">ภาษา</th>
+      <th style="text-align: center">ชั่วโมง</th>
+      <th style="text-align: center">ประโยค</th>
+      <th style="text-align: center">นักแสดง</th>
+      <th style="text-align: center">อารมณ์</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">IEMOCAP <br />[Busso et al., 2008]</td>
+      <td style="text-align: center">อังกฤษ</td>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">10,039</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">โกรธ เศร้า สุข หงุดหงิด ปกติ ตื่นเต้น กลัว รังเกียจ อื่นๆ</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Emo-DB <br />[Burkhardt et al., 2005]</td>
+      <td style="text-align: center">เยอรมัน</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">โกรธ เศร้า สุข เซ็ง เครียด กลัว รังเกียจ</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">CREMA-D <br />[Cao et al., 2014]</td>
+      <td style="text-align: center">อังกฤษ</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">7,356</td>
+      <td style="text-align: center">91</td>
+      <td style="text-align: center">โกรธ เศร้า สุข รังเกียจ กลัว ปกติ</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">EMOVO <br />[Costantini et al., 2014]</td>
+      <td style="text-align: center">อิตาเลี่ยน</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">โกรธ เศร้า ตกใจ สุข รังเกียจ กลัว ปกติ</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">MSP-IMPROV<br />[Busso et al., 2016]</td>
+      <td style="text-align: center">อังกฤษ</td>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">7,818</td>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">โกรธ เศร้า สุข รังเกียจ กลัว ปกติ</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DEMoS<br />[Parada-Cabaleiro et al., 2019]</td>
+      <td style="text-align: center">อิตาเลี่ยน</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">9,697</td>
+      <td style="text-align: center">68</td>
+      <td style="text-align: center">โกรธ เศร้า สุข ตกใจ กลัว รู้สึกผิด</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SEWA<br />[Kossaifi et al., 2019]</td>
+      <td style="text-align: center">อังกฤษ, จีน, เยอรมัน, กรีก, ฮังการี, และเซอร์เบีย</td>
+      <td style="text-align: center">44</td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">398</td>
+      <td style="text-align: center">อารมณ์แบบค่าต่อเนื่อง <br /> (ค่าความสุข: Valence และค่าความตื่นตัว: Arousal)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">THAI SER dataset</td>
+      <td style="text-align: center">ไทย</td>
+      <td style="text-align: center">41</td>
+      <td style="text-align: center">27,854</td>
+      <td style="text-align: center">200</td>
+      <td style="text-align: center">โกรธ เศร้า สุข หงุดหงิด ปกติ</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="text-align: center">ตารางที่ 1: ตัวอย่างชุดข้อมูลจำแนกอารมณ์จากเสียงพูดในปัจจุบัน</p>
+
+<h2 id="รูปแบบการบันทึกข้อมูล">รูปแบบการบันทึกข้อมูล</h2>
+
+<p>ชุดข้อมูลนี้ประกอบด้วยการบันทึกข้อมูลจำนวน 100 ชุด แบ่งออกเป็น 2 รูปแบบ ได้แก่ การบันทึกข้อมูลในสตูดิโอ (Studio recording) จำนวน 80 ชุด และการบันทึกข้อมูลทางอินเทอร์เน็ต (Zoom recording) จำนวน 20 ชุด</p>
+
+<h3 id="รูปแบบที่-1-การบันทึกข้อมูลในสตูดิโอ-studio-recording">รูปแบบที่ 1: การบันทึกข้อมูลในสตูดิโอ (Studio recording)</h3>
+
+<p>การบันทึกข้อมูลในห้องที่มีสภาพแวดล้อมที่แตกต่างกัน 2 ห้อง ได้แก่ ห้องอัดเสียงระดับมืออาชีพและห้องสำหรับใช้งานทั่วไป พร้อมอุปกรณ์คุณภาพสำหรับบันทึกเสียง ได้แก่ ไมค์คอนเดนเซอร์, ไมค์หนีบปกเสื้อ และกล้องดิจิตอล อุปกรณ์สำหรับบันทึกเสียงและวิดีโอ ตำแหน่งนักแสดงและการวางอุปกรณ์แสดงในรูปที่ 1. การบันทึกข้อมูลรูปแบบที่ 1 ทั้งหมด ถูกจัดทำขึ้นที่คณะอักษรศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</p>
+
+<p><img src="/assets/img/releases/speech_emotion_dataset/studio_setup.png" alt="studio_setup" /></p>
+
+<p style="text-align: center">รูปที่ 1: ตำแหน่งนักแสดงและอุปกรณ์</p>
+
+<h3 id="รูปแบบที่-2-การบันทึกข้อมูลทางอินเทอร์เน็ต-zoom-recording">รูปแบบที่ 2: การบันทึกข้อมูลทางอินเทอร์เน็ต (Zoom recording)</h3>
+
+<p>การบันทึกข้อมูลผ่านทางเครือข่ายอินเทอร์เน็ต ด้วยโปรแกรม Zencastr สำหรับบันทึกเสียง และ Zoom สำหรับบันทึกวิดีโอ นักแสดงมีอิสระในการบันทึกข้อมูลจากสถานที่, ใช้ไมโครโฟนและกล้องเว็บแคม (webcam) ของตนเอง โดยไม่มีข้อจำกัดของอุปกรณ์</p>
+
+<h2 id="ขั้นตอนการบันทึกข้อมูล">ขั้นตอนการบันทึกข้อมูล</h2>
+
+<p>การบันทึกข้อมูล 1 ชุด จะถูกแบ่งออกเป็น 2 ส่วน</p>
+
+<h3 id="ส่วนที่-1-การแสดงแบบมีประโยคให้-sentence">ส่วนที่ 1: การแสดงแบบมีประโยคให้ (Sentence)</h3>
+
+<p>ส่วนนี้จะบันทึกข้อมูลนักแสดงทีละ 1 คน นักแสดงจะต้องพูดตามประโยคที่กำหนดให้ทั้งหมด 3 ประโยค โดย 1 ประโยคจะแสดงทั้งหมด 5 อารมณ์ อารมณ์ละ 2 ระดับคือ ระดับปกติและระดับเข้มข้น ประโยคละ 2 รอบ นักแสดงจะต้องพูดประโยคอย่างถูกต้องและเป็นธรรมชาติ ห้ามเติมคำหรือเปลี่ยนคำในประโยคเด็ดขาด ประโยคที่ใช้ในการบันทึกเสียงได้แก่</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ประโยคที่ 1: พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย
+ประโยคที่ 2: อ่านหนังสือพิมพ์วันนี้รึยัง รู้มั้ยเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว
+ประโยคที่ 3: ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเค้าคิดแบบนั้น
+</code></pre></div></div>
+
+<h3 id="ส่วนที่-2-การแสดงแบบกำหนดสถานการณ์-improvisation">ส่วนที่ 2: การแสดงแบบกำหนดสถานการณ์ (Improvisation)</h3>
+
+<p>ส่วนนี้จะบันทึกข้อมูลนักแสดงเป็นคู่ นักแสดงแต่ละคนจะได้รับบทบาทที่แตกต่างกัน (บทบาท A และ บทบาท B) ตามสถานการณ์ที่กำหนดไว้ นักแสดงแต่ละคู่จะต้องสนทนาตามบทบาทและอารมณ์ที่กำหนดให้ทั้งหมด 5 สถานการณ์ แต่ละสถานการณ์จะต้องแสดงยาวต่อเนื่องประมาณ 3 นาที และจะบันทึกสถานการณ์เพียงหนึ่งครั้งเท่านั้น สถานการณ์ทั้งหมดแสดงตามตารางที่ 1 ด้านล่าง</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">สถานการณ์</th>
+      <th>บทบาท A</th>
+      <th>บทบาท B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>พนักงานฝ่ายต้อนรับในโรงเเรมที่พยายามรับมือและไกล่เกลี่ยกับลูกค้าที่ไม่พอใจ (ปกติ)</td>
+      <td>ลูกค้าที่ไม่พอใจโรงแรมหรือบริการบางอย่างของโรงแรม เลยต้องการเรียกร้องหรือตำหนิ (โกรธ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td>เพื่อนที่มาบอกข่าวดีว่าจะแต่งงาน และต้องการชวนคู่สนทนา ไปงานแต่งและช่วยในงานเเต่ง (สุข)</td>
+      <td>เพื่อนที่ได้รับข่าวดี ร่วมยินดีและตื่นเต้นกับการที่จะได้ช่วยคิดงาน (สุข)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td>คนไข้ที่มาปรึกษาอาการป่วยและระบายปัญหาชีวิต (เศร้า)</td>
+      <td>หมอที่รับฟังปัญหาหรืออาการป่วยของคนไข้ (ปกติ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td>เจ้านายหรือรุ่นพี่ที่ต้องการต่อว่าคู่สนทนา เรื่องการทำงาน (โกรธ)</td>
+      <td>ลูกน้องหรือรุ่นน้องที่โดนคู่สนทนาที่ตัวเองไม่เคารพต่อว่า และรู้สึกว่าตัวเองไม่ผิด (เซ็ง)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td>เพื่อนหรือพี่น้องที่บ่นเกี่ยวกับพฤติกรรมบางอย่างที่ตัวเองรู้สึกไม่พอใจ (เซ็ง)</td>
+      <td>เพื่อนหรือพี่น้องที่โดนบ่นแล้วรู้สึกผิด และพยายามขอให้อีกฝ่ายยกโทษให้ (เศร้า)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td>พนักงานในโรงเเรมที่มีใจรักในการบริการ ที่พร้อมจะทำทุกอย่างให้ลูกค้าพอใจ (สุข)</td>
+      <td>ลูกค้าที่มาเข้าพักในโรงแรม ที่รู้สึกพอใจในโรงแรมและการบริการเป็นอย่างมาก (สุข)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td>คนที่กำลังจะเเต่งงาน แต่ไม่มั่นใจว่าควรแต่งหรือไม่ แต่ก็ไม่กล้าปฏิเสธการเศร้า (เศร้า)</td>
+      <td>คนรับฟังปัญหาและเริ่มรำคาญ เพราะฟังมาบ่อยมากแล้ว และแนะนำอะไรไปก็ไม่ฟัง (เซ็ง)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td>คนไข้ที่มาปรึกษาอาการป่วยและมีเรื่องรำคาญใจ (เซ็ง)</td>
+      <td>หมอที่รับฟังปัญหาหรืออาการป่วยของคนไข้ (ปกติ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td>พนักงานฝ่ายทรัพยากรบุคคลที่ได้รับมอบหมายให้มาแจ้งพนักงานเรื่องการเลิกจ้าง (ปกติ)</td>
+      <td>พนักงานที่โดนเลิกจ้าง ที่ไม่อยากถูกเลิกจ้างด้วยเหตุผลส่วนตัว (เศร้า)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td>คนที่โกรธที่อีกคนทำผิดอะไรมาสักอย่าง (โกรธ)</td>
+      <td>คนที่โมโหที่อีกคนมากล่าวโทษและต่อว่าอย่างรุนแรง (โกรธ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">11</td>
+      <td>ผู้กำกับที่เบื่อและเซ็ง เพราะยังไม่ได้อย่างที่ต้องการ (เซ็ง)</td>
+      <td>นักแสดงหรือทีมงาน ที่ทำให้แล้วแต่ยังไม่ถูกใจสักที (เซ็ง)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td>คนที่ได้ย้ายไปทำงานใหม่/ตำแหน่งใหม่ในต่างประเทศ ที่มาเล่าให้เพื่อนฟัง (สุข)</td>
+      <td>คนที่รู้สึกว่าตัวเองยังอยู่ที่เดิมและเศร้าที่ เพื่อนจะจากไปไกล (เศร้า)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">13</td>
+      <td>คนไข้ที่ไม่เข้าใจโรคหรือวิธีการรักษา และสอบถามข้อมูลหมอ (ปกติ)</td>
+      <td>หมอที่ตรวจคนไข้แบบใจดี และพยายามอธิบายวิธีการรักษา (สุข)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">14</td>
+      <td>พนักงานที่โมโหลูกค้าหรือหัวหน้า แล้วมาเล่าให้เพื่อนฟัง (โกรธ)</td>
+      <td>เพื่อนที่รับฟังเรื่องราวของเพื่อน (ปกติ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td>คนที่โดนแฟนนอกใจ และรู้สึกเสียใจที่โดนหลอก (เศร้า)</td>
+      <td>เพื่อนที่ฟังเรื่องของเพื่อแล้วรู้สึกโมโหในสิ่งที่เพื่อนต้องโดน (โกรธ)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="text-align: center">ตารางที่ 2: สถานการณ์ บทบาทและอารมณ์ที่กำหนดในการแสดง</p>
+
+<h2 id="การระบุอารมณ์จากเสียงพูด">การระบุอารมณ์จากเสียงพูด</h2>
+
+<p>หลังจากบันทึกข้อมูลเรียบร้อยแล้ว ข้อมูลเสียงทั้งหมดจะถูกตัดเป็นประโยคย่อย และนำมาระบุอารมณ์ ด้วยวิธีคราวด์ซอสซิ่ง (crowdsourcing) ผ่าน <a href="http://wang.in.th">wang.in.th</a> และ HOPE data annotation โดยให้ผู้ประเมินฟังเสียงและเลือกอารมณ์ผ่านระบบ ผู้ฟังสามารถเลือกอารมณ์ที่แสดงให้ 5 อารมณ์ ได้แก่ โกรธ เศร้า สุข หงุดหงิด ปกติ หรือสามารถเลือก ‘อื่นๆ’ ได้ในกรณีที่คิดว่าเป็นอารมณ์อื่น ข้อมูลเสียง 1 ประโยคจะใช้ผู้ประเมินทั้งหมด 3-8 คนและใช้วิธีเสียงข้างมากเพื่อเลือกเป็นอารมณ์สำหรับประโยคนั้นๆ (Majority emotion) และคำนวณค่าความเห็นพ้องของอารมณ์ในประโยค (Majority agreement)</p>
+
+<h3 id="ความเชื่อมั่นระหว่างผู้ประเมิน-inter-rater-reliability">ความเชื่อมั่นระหว่างผู้ประเมิน (Inter-rater reliability)</h3>
+
+<p>ข้อมูลอารมณ์ที่ได้รับจากผู้ประเมินทั้งหมดจะถูกนำมาความเชื่อมั่นระหว่างผู้ประเมิน ซึ่งเป็นการวัดความสอดคล้องภายในคำตอบทั้งหมดระหว่างผู้ประเมินตั้งแต่ 2 คนขึ้นไป ผู้ประเมินแต่ละคนมีความเป็นอิสระต่อกัน โดยใช้หลักการที่ว่าเมื่อผู้ประเมินทำแบบทดลองด้วยแบบชุดเดียวกัน ผลการสังเกตที่ได้ควรจะสอดคล้องกัน ค่าความสอดคล้องจะขึ้นอยู่กับความคงเส้นคงวาของคำตอบของผู้ประเมินในข้อมูลชุดนี้จะใช้วิธีการคำนวณความสอดคล้องระหว่างผู้ประเมินด้วย <a href="https://en.wikipedia.org/wiki/Krippendorff%27s_alpha">Krippendorff’s Alpha</a> ซึ่งสามารถใช้ได้กับผู้ประเมินจำนวนเท่าใดก็ได้ จำนวนคำตอบของแต่ละข้อไม่เท่ากันได้ และใช้มาตรวัดระยะห่าง (Distance metric) ได้หลากหลาย ในที่นี้ใช้ <a href="https://www.researchgate.net/publication/228528415_Measuring_agreement_on_set-valued_items_MASI_for_semantic_and_pragmatic_annotation">Measuring Agreement on Set-values Items (MASI)</a> [Passonneau et al. 2006] ค่าของ Krippendorff’s alpha มีค่าเท่ากับ 1 แปลว่าข้อมูลชุดนั้นมีความน่าเชื่อเป็นอย่างมาก ในการนำไปใช้ค่า alpha ควรมีค่ามากกว่าหรือเท่ากับ 0.667 ถ้าน้อยกว่านั้นถือว่าคำตอบไม่มีความสอดคล้องกันและไม่น่าเชื่อถือ</p>
+
+<p>เมื่อนำข้อมูลอารมณ์ทั้งหมดมาประเมินค่าความเชื่อมั่นระหว่างผู้ประเมินอยู่ที่ 0.412 ทางผู้พัฒนาถึงทำการคัดเลือกประโยคที่มีค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.71 เป็นต้นไป มาคำนวณใหม่ ได้ค่าความเชื่อมั่นอยู่ที่ 0.692 ซึ่งเป็นค่าที่แสดงความความสอดคล้องและน่าเชื่อถือของคำตอบ จำนวนประโยคในแต่ละอารมณ์แสดงในตารางที่ 3</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">ข้อมูลอารมณ์ทั้งหมด</th>
+      <th style="text-align: center">ข้อมูลอารมณ์ที่มีค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.71</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">ปกติ</td>
+      <td style="text-align: center">7360</td>
+      <td style="text-align: center">4170</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">โกรธ</td>
+      <td style="text-align: center">3112</td>
+      <td style="text-align: center">1974</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">สุข</td>
+      <td style="text-align: center">4071</td>
+      <td style="text-align: center">2974</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">เศร้า</td>
+      <td style="text-align: center">2781</td>
+      <td style="text-align: center">1595</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">หงุดหงิด</td>
+      <td style="text-align: center">7861</td>
+      <td style="text-align: center">3469</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">อารมณ์อื่นๆ</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ไม่มีความเห็นพ้อง</td>
+      <td style="text-align: center">2664</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Total</strong></td>
+      <td style="text-align: center"><strong>27854</strong></td>
+      <td style="text-align: center"><strong>14182</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="text-align: center">ตารางที่ 3: เปรียบเทียบจำนวนประโยคในแต่ละอารมณ์ก่อนและหลังคัดเลือกประโยคที่มีค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.71</p>
+
+<p>รูปที่ 2 และ 3 แสดง confusion matrix ระหว่างอารมณ์ที่ระบุให้นักแสดงแสดง (Assigned emotion) กับอารมณ์จากเสียงข้างมากของผู้ประเมิน (Majority emotion) ซึ่งจะเห็นได้ว่าอารมณ์ที่ผู้ฟังมีความเห็นตรงกับสิ่งที่นักแสดงต้องการจะสื่อมากที่สุดคืออารมณ์ปกติ (Neutral) ในขณะที่อารมณ์โกรธ (Angry) และอารมณ์เศร้า (Sad) ผู้ฟังมักจะสับสนกับอารมณ์หงุดหงิด (Frustrated)</p>
+
+<p><img src="/assets/img/releases/speech_emotion_dataset/CM_all_v1.png" alt="CM_all_v1" /></p>
+
+<p style="text-align: center">รูปที่ 2: emotion confusion matrix แสดงค่าจากจำนวนประโยคทั้งหมด</p>
+
+<p><img src="/assets/img/releases/speech_emotion_dataset/CM_071_v1.png" alt="CM_071_v1" /></p>
+
+<p style="text-align: center">รูปที่ 3: emotion confusion matrix แสดงค่าหลังจากคัดกรองค่าความเห็นพ้องของอารมณ์ในประโยคมากกว่าหรือเท่ากับ 0.71  (ปกติ: Neutral, โกรธ: Angry, สุข: Happy, เศร้า: Sad, หงุดหงิด: Frustrated, อารมณ์อื่นๆ: Other, ไม่มีความเห็นพ้อง: None)</p>
+
+<h2 id="อ้างอิง">อ้างอิง</h2>
+
+<ul>
+  <li>Busso, Carlos, et al. “IEMOCAP: Interactive emotional dyadic motion capture database.” Language resources and evaluation 42.4 (2008): 335-359.</li>
+  <li>Grimm, Michael, Kristian Kroschel, and Shrikanth Narayanan. “The Vera am Mittag German audio-visual emotional speech database.” 2008 IEEE international conference on multimedia and expo. IEEE, 2008.</li>
+  <li>Busso, Carlos, et al. “MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception.” IEEE Transactions on Affective Computing 8.1 (2016): 67-80.</li>
+  <li>Cao, Houwei, et al. “Crema-d: Crowd-sourced emotional multimodal actors dataset.” IEEE transactions on affective computing 5.4 (2014): 377-390.</li>
+  <li>Kossaifi, Jean, et al. “Sewa db: A rich database for audio-visual emotion and sentiment research in the wild.” IEEE transactions on pattern analysis and machine intelligence (2019).</li>
+  <li>Costantini, Giovanni, et al. “EMOVO corpus: an Italian emotional speech database.” International Conference on Language Resources and Evaluation (LREC 2014). European Language Resources Association (ELRA), 2014.</li>
+  <li>Parada-Cabaleiro, Emilia, et al. “DEMoS: An Italian emotional speech corpus.” Language Resources and Evaluation (2019): 1-43.</li>
+  <li>Passonneau, Rebecca. “Measuring agreement on set-valued items (MASI) for semantic and pragmatic annotation.” (2006).</li>
+</ul>
+
+<h2 id="ผู้สนับสนุน-และเงื่อนไขการใช้งาน">ผู้สนับสนุน และเงื่อนไขการใช้งาน</h2>
+<p><img src="/assets/img/releases/speech_emotion_dataset/ais-logo.svg" alt="ais logo" /></p>
+
+<p>บริษัท แอดวานซ์ อินโฟร์ เซอร์วิส จำกัด (มหาชน) ได้ทำการบริจาคชุดข้อมูลนี้ให้แก่สาธารณะ</p>
+
+<p>ชุดข้อมูลนี้ได้ถูกเผยแพร่สู่สาธารณะภายใต้เงื่อนไขลิขสิทธิ์แบบครีเอทีฟคอมมอนส์ แสดงที่มา-อนุญาตแบบเดียวกัน 4.0 International (CC BY-SA 4.0)</p>
+
+        </article>
+      </div>
+      <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
+        
+        <h3>ดาวน์โหลด</h3>
+        <div class="list-group rounded-0 border-0">
+          
+          <div class="list-group-item list-group-item-action download-item" target="_blank">
+            <h6>Download on GitHub</h6>
+            <p><small>THAI SER</small></p>
+            <small><i class="far fa-hdd"></i> ~11.73G</small><br>
+            
+            <p class="text-right mt-2 mb-0">
+              <a href="https://github.com/vistec-AI/dataset-releases/releases/tag/v1" class="btn btn-secondary btn-sm" data-toggle="tooltip" title="Download"><i
+                  class="fas fa-download"></i><span class="sr-only">Download</span></a>
+              <!-- <a href="#"><img alt="Deploy to azure" class="azure-deploy-button" loading="lazy"
+                  src="https://aka.ms/deploytoazurebutton" /></a> -->
+            </p>
+          </div>
+          
+        </div>
+        
+      </section>
+    </div>
+  </section>
+</section>
+  <footer id="footer" class="footer container my-5">
+  <div class="border rounded-lg rounded"
+  style="width: 40vw; min-width: 18rem; max-width: 30rem; height: 0; border-width: 0.125rem !important;">
+</div>
+  <div class="row mt-4">
+    <div class="col-lg-9 mb-2">
+      <div class="row align-items-center">
+        <div class="col-auto mb-2">
+          <a href="https://www.vistec.ac.th" target="_blank"
+            ><img class="footer-logos" id="vistec-footer-logo" alt="VISTEC logo"
+            loading="lazy" src="/assets/img/logo/vistec-logo-notext.svg"></a
+          >
+        </div>
+        <div class="col-auto p-0 mb-2">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="col-auto mb-2">
+          <a href="https://www.depa.or.th" target="_blank"
+            ><img class="footer-logos" id="depa-footer-logo" alt="depa logo"
+            loading="lazy" src="/assets/img/logo/depa-logo.svg"></a
+          >
+        </div>
+        <div class="col-lg-12 mb-3">
+          <h6 class="font-weight-semibold mb-1">
+            VISTEC-depa Thailand Artificial Intelligence Research Institute
+          </h6>
+          สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย
+          จากความร่วมมือระหว่างสถาบันวิทยสิริเมธี
+          และสำนักงานส่งเสริมเศรษฐกิจดิจิทัล
+        </div>
+      </div>
+    </div>
+    <div
+      class="social-row col-lg-3 mb-3 d-flex justify-content-lg-end align-items-start mt-lg-3"
+    >
+      <a class="ml-0 mr-4" href="https://www.facebook.com/AIResearch.in.th">
+        <i class="fab fa-fw fa-2x fa-facebook d-inline"></i>
+      </a>
+      <!-- <a class="mr-4" href="#"><i class="fab fa-fw fa-2x fa-youtube d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#enquiries"
+        ><i class="fas fa-fw fa-2x fa-envelope d-inline"></i
+      ></a>
+      <!-- <a class="mr-4" href="/contact/#enquiries"><i class="fas fa-fw fa-2x fa-phone-alt d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#offices"
+        ><i class="fas fa-fw fa-2x fa-map-marked-alt d-inline"></i
+      ></a>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานกรุงเทพ</a
+      ><br />
+      ชั้นที่ 2 สำนักงานส่งเสริมเศรษฐกิจดิจิทัล (depa)<br />
+      อาคารลาดพร้าวฮิลล์<br />
+      80 ซอยลาดพร้าว 4 แขวงจอมพล<br />
+      เขตจตุจักร กรุงเทพมหานคร 10900
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานระยอง</a
+      ><br />
+      ชั้นที่ 3 อาคารสำนักวิชาวิทยาศาสตร์และเทคโนโลยีสารสนเทศ (IST)<br />
+      สถาบันวิทยสิริเมธี (VISTEC)<br />
+      555 หมู่ที่ 1 ตำบลป่ายุบใน<br />
+      อำเภอวังจันทร์ ระยอง 21210
+    </div>
+    <div class="col-lg-12 mb-3">
+      <span class="font-weight-semibold">© สงวนลิขสิทธิ์ทุกประการ</span>
+      นอกจากได้ระบุไว้เป็นอื่น<br />
+      <a href="/terms-of-use/">เงื่อนไขตกลงการใช้งาน</a> |
+      <a href="#">นโยบายความเป็นส่วนตัว</a>
+    </div>
+  </div>
+</footer>
+
+
+  
+  <!-- Google Analytics -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-141096942-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+  <script>
+  (function trackOutbounds() {
+    var hitCallbackHandler = function (url, win) {
+      if (win) {
+        window.open(url, win);
+      } else {
+        window.location.href = url;
+      }
+    };
+    var addEvent = function (el, eventName, handler) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function () {
+          handler.call(el);
+        });
+      }
+    }
+    if (document.getElementsByTagName) {
+      var el = document.getElementsByTagName('a');
+      var getDomain = document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0];
+      for (var i = 0; i < el.length; i++) {
+        var href = (typeof (el[i].getAttribute('href')) == 'string') ? el[i].getAttribute('href') : '';
+        var myDomain = href.match(getDomain);
+
+        // If link is outbound and is not to this domain        
+        if ((href.match(/^(https?:|\/\/)/i) && !myDomain) || href.match(/^mailto\:/i)) {
+          addEvent(el[i], 'click', function (e) {
+            var url = this.getAttribute('href'), win = (typeof (this.getAttribute('target')) == 'string') ? this.getAttribute('target') : '';
+            console.log("add event", url);
+            ga('send', 'event', 'outbound', 'click', url,
+              { 'hitCallback': hitCallbackHandler(url, win), 'transport': 'beacon' },
+              { 'nonInteraction': 1 }
+            );
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  })();
+</script>
+  
+</body>
+
+</html>

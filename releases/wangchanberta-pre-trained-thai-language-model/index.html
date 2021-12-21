@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- Charset -->
+<meta charset="utf-8">
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Search Engine -->
+<meta name="description" content="โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย">
+<meta name="image" content="https://airesearch.in.th/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg">
+<meta name="keywords"
+  content="model, artificial intelligence, research, vistec, depa, vidyasirimedhi, vidyasirimedhi institute of science and technology, digital economy promotion agency, machine translation, open data, dataset, model, artificial intelligence research, research institute">
+<meta name="author" content="">
+
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="WangchanBERTa: Pre-trained Thai Language Model | airesearch.in.th">
+<meta itemprop="description" content="โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย">
+<meta itemprop="image" content="https://airesearch.in.th/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WangchanBERTa: Pre-trained Thai Language Model | airesearch.in.th">
+<meta name="twitter:description" content="โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย">
+<meta name="twitter:image:src" content="https://airesearch.in.th/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg">
+<!-- Open Graph general -->
+<meta property="og:title" name="og:title" content="WangchanBERTa: Pre-trained Thai Language Model">
+<meta property="og:description" name="og:description" content="โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย">
+<meta property="og:image" name="og:image" content="https://airesearch.in.th/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg">
+<meta property="og:url" name="og:url" content="https://airesearch.in.th/releases/wangchanberta-pre-trained-thai-language-model/">
+<meta property="og:site_name" name="og:site_name" content="airesearch.in.th">
+<meta property="og:locale" name="og:locale" content="en-US">
+<meta property="og:type" name="og:type" content="website">
+<meta property="fb:admins" name="fb:admins" content="106755957360414">
+
+  
+  <title>WangchanBERTa: Pre-trained Thai Language Model | airesearch.in.th</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/assets/css/main.css" media="none" onload="if(media!='all')media='all'"><noscript><link rel="stylesheet" href="css.css"></noscript>
+
+  <!-- ICONS: DO NOT CHANGE ORDER! -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="194x194" href="/assets/favicon/favicon-194x194.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#FFF200">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="airesearch.in.th">
+<meta name="application-name" content="airesearch.in.th">
+<meta name="msapplication-TileColor" content="#fff200">
+<meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- END OF ICONS -->
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+  integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"
+  media="none" onload="if(media!='all')media='all'"><noscript>
+  <link rel="stylesheet" href="css.css"></noscript>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
+  <div class="container">
+    <a class="navbar-brand p-2" href="/"><img loading="lazy"
+        src="/assets/img/logo/airesearch-logo.svg" alt="airesearch.in.th logo"></a>
+    <button class="navbar-toggler align-self-end mb-2 rounded-0 border-0" type="button" data-toggle="collapse"
+      data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-self-end" id="navbar-toggler">
+      <ul class="navbar-nav my-2 my-lg-0 ml-auto font-weight-semibold">
+        <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#releases" class="nav-link">ชุดข้อมูลและโมเดล</a>
+          <!-- <li class="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
+          <a href="/#posts" class="nav-link">News+Stories</a>
+        </li> -->
+          
+          
+        <li
+          class="nav-item">
+          <a class="nav-link" href="/contact/">
+            ติดต่อเรา
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/">
+            หน้าแรก
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/terms-of-use/">
+            ข้อกำหนดและเงื่อนไขตกลงการใช้งาน
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/releases/">
+            Releases
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/posts/">
+            Posts
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/knowledge/">
+            Knowledge
+          </a>
+        </li>
+        
+        <li
+          class="nav-item d-none disabled">
+          <a class="nav-link" href="/404.html">
+            404
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="" style="min-height: 4.75rem;"></div>
+  <section class="release">
+  <section class="release-jumbotron text-light d-flex flex-col align-items-end position-relative" 
+    style="background-image: url('/assets/img/releases/wangchanberta-pre-trained-thai-language-model/vistec-main-building.jpg');" >
+    <div class="w-100 h-100 release-jumbotron-filter position-absolute"></div>
+    <div class="container mb-4">
+      <div class="row align-items-stretch">
+        <div class="col-lg-10">
+          <h1>WangchanBERTa: Pre-trained Thai Language Model</h1>
+          <p class="lead">โมเดลภาษาสำหรับงานประมวลผล และการเข้าใจภาษาไทย</p>
+        </div>
+        <div class="col-lg-2 d-flex flex-column my-auto pl-lg-0">
+          <span><i class="fas fa-code-branch fa-fw fa-sm"></i> v1.0</span>
+          <span><i class="far fa-calendar-alt fa-fw fa-sm"></i>  3 Mar 2021</span>
+          <div class="d-flex flex-row mt-2">
+            
+            <span class="badge badge-light mr-1">model</span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article class="text-justify">
+          <p>สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย (Thailand Artificial Intelligence Research Institute) ได้ทำการเทรนโมเดลภาษา (language model) บนชุดข้อมูลในภาษาไทยที่ได้จากแหล่งต่างๆ เช่น ข่าว, วิกิพีเดีย, ข้อความในโซเชียลมีเดีย และข้อมูลที่ได้จากการ crawl เว็บไซต์ในอินเทอร์เน็ต ซึ่งมีขนาดข้อมูลรวม 78.5 GB และได้วัดประสิทธิภาพของโมเดลภาษาที่ finetune แล้ว ได้ผลคะแนน micro-averaged F1 score สูงที่สุดบน 5 ขุดข้อมูล จากทั้งหมด 6 ชุดข้อมูล โดยเป็นชุดข้อมูลทดสอบในโจทย์การจำแนกข้อความ (text classification) และการจำแนกคำ (token classifcation) เมื่อเทียบกับ baseline model และโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่มีอยู่ในปัจจุบัน (mBERT และ XLMR)</p>
+
+<h2 id="โมเดลทางภาษาจาก-google-ai-language-และ-facebook-ai-research">โมเดลทางภาษาจาก Google AI Language และ Facebook AI Research</h2>
+
+<p>ในปี 2018 Google AI Language ได้ทำการเสนอวิธีการหนึ่งชื่อว่า BERT [Devlin et al., 2019] ที่จะนำโมเดลภาษา (language model) จากสถาปัตยกรรม Transformer [Vaswani et al., 2017] เฉพาะในส่วน encoder มาฝึกฝนบนชุดข้อมูลที่ไม่ผ่านการกำกับ (unannotated text) จากชุดข้อมูลวิกิพีเดียและชุดข้อมูลจากหนังสือที่ถูกตีพิมพ์ในภาษาอังกฤษ (BookCorpus) และได้นำโมเดลภาษานี้มา finetune บนโจทย์ด้านการประมวลผลภาษาธรรมชาติอื่นๆ เช่น text classification, NER/POS tagging, question answering การนำเสนอวิธีการนี้พบว่า BERT หลังจากการนำไป finetune แล้วได้คะแนนสูงสุดบน 8 ชุดข้อมูลทดสอบทางด้านการเข้าใจภาษาธรรมชาติในภาษาอังกฤษซึ่งเป็นส่วนหนึ่งของ GLUE (General Language Understanding Evaluation benchmark) [Wang et al., 2019] ได้คะแนนสูงสุดในโจทย์การถามตอบ (question answering) จากชุดข้อมูล SQuAD 1.1 และ SQuAD 2.0 และได้คะแนนสูงสุดในโจทย์การหาความสอดคล้องหรือขัดแย้งกันจากคู่ของประโยค จากชุดข้อมูล MultiNLI</p>
+
+<p>ถัดมาในปี 2019 Facebook AI Research นำเสนอ เป็นเทคนิคการเทรนโมเดลภาษาให้มีประสิทธิภาพมากยิ่งขึ้น โดยใ้ช้ชื่อว่า RoBERTa [Liu et al., 2019] โดยเป็นการต่อยอดจาก BERT จากผลการทดลองพบว่าได้คะแนนสูงสุด บนชุดข้อมูล GLUE, SQuAD 1.1, SQuAD 2.0 และ MultiNLI โดยโมเดลที่ได้นั้นมีประสิทธิภาพสูงกว่า BERT</p>
+
+<h2 id="ข้อจำกัดของ-multilingual-bert-และ-roberta-กับภาษาไทย">ข้อจำกัดของ Multilingual BERT และ RoBERTa กับภาษาไทย</h2>
+
+<p>เนื่องด้วยปัจจุบันโมเดลภาษาแบบหลายภาษา (multilingual language model) ที่รวมภาษาไทยในชุดเข้าไปอยู่ในชุดข้อมูลฝึกฝนด้วย (อาทิเช่น <a href="https://github.com/google-research/bert/blob/master/multilingual.md">mBERT</a> [Devlin et al., 2019] และ <a href="https://github.com/pytorch/fairseq/tree/master/examples/xlmr">XLMR</a> [Conneau et al., 2020]) ยังมีข้อจำกัดบางประการอาทิเช่น การฝึกฝนโมเดลจะต้องเรียนรู้บนช้อมูลในภาษาอื่นๆรวมกว่า 100 ภาษาพร้อมกันทำให้ไม่สามารถที่จะเจาะจงไปที่รูปแบบการใช้ภาษา หรือการเพิ่มความหลากหลายของหัวข้อที่ปรากฏในชุดข้อมูลของภาษาไทยโดยเฉพาะได้ (ตัวอย่างเช่น XLMR อาศัยชุดข้อมูลจากการ crawl เว็บไซต์เพียงแหล่งเดียว หรือ mBERT ที่อาศัยข้อมูลจากวิกิพีเดียเท่านั้น) ทาง AIResearch จึงได้เริ่มการเทรนโมเดลแบบภาษาเดียว (monolingual language model) บนชุดข้อมูลภาษาไทยขนาดกว่า 78.5 GB จากแหล่งข้อมูลต่างๆ โดยได้เลือกใช้วิธีการที่ชื่อ RoBERTa ในการเทรนครั้งนี้</p>
+
+<h2 id="วิธีการเทรนโมเดล-wangchanberta">วิธีการเทรนโมเดล WangchanBERTa</h2>
+
+<p>สำหรับการเทรนโมเดลนั้นจะใช้ objective คือ Masked Language Model (MLM) หรือการทำนายคำในประโยคที่ถูกแทนที่ด้วย masked token โดยชุดข้อมูลที่ใช้ในการเทรนโมเดล จะเป็นชุดข้อมูลจากแหล่งต่างๆ เช่น วิกิพีเดียภาษาไทย, ข่าวจากสำนักข่าวในประเทศไทย, โพสท์/คอมเมนต์จากสื่อโซเชียลมีเดีย, ซับไตเติ้ลจากโครงการ OpenSubtitles และชุดข้อมูลอื่นๆที่มีการเผยแพร่และเปิดข้อมูลสู่สาธารณะจะสำหรับการฝึกฝนโมเดลการประมวลผลภาษาไทยในโจทย์ต่างๆเช่น machine translation (เฉพาะส่วนที่เป็นภาษาไทย) , sentiment analysis, และ text classification รวมเป็นข้อมูลขนาด 78.5 GB โมเดลที่เทรนบนชุดมูลดังกล่าวจะอยู่ภายใต้ชื่อขึ้นต้นว่า <code class="language-plaintext highlighter-rouge">wangchanberta-base-att</code> นอกจากนี่ได้มีการเทรนโมเดลบนข้อมูลในเฉพาะส่วนที่มาจากวิกิพีเดียภาษาไทย (ภายใต้ชื่อขึ้นต้นว่า <code class="language-plaintext highlighter-rouge">wangchanberta-base-wiki</code>)</p>
+
+<p>เนื่องด้วยการนำชุดข้อมูลเข้าสู่โมเดลเพื่อทำการทำนาย masked token จะต้องผ่านกระบวนการตัดแบ่งคำ (word tokenization) โดยการตัดแบ่งคำที่ใช้นั้นจะเป็น 4 รูปแบบการตัดแบ่งคำคือ</p>
+
+<ol>
+  <li>
+    <p>การตัดแบ่งหน่วยคำย่อย (subword-level tokenization) ด้วยไลบรารี่ <a href="https://github.com/google/sentencepiece">SentencePiece</a> [Kudo et al., 2018] (ใช้ชื่อย่อว่า <code class="language-plaintext highlighter-rouge">spm</code>) โดยตัวตัดแบ่งหน่วยคำย่อยอาศัยข้อมูลทางสถิติของการปรากฏร่วมกันของตัวอักษรในชุดข้อมูลในการกำหนดขอบเขตของหน่วยคำย่อย</p>
+  </li>
+  <li>
+    <p>การตัดแบ่งคำจาก dictionary ของคำในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า <code class="language-plaintext highlighter-rouge">newmm</code>) ด้วยไลบรารี่ <a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a> [Phatthiyaphaibun et al., 2016]</p>
+  </li>
+  <li>
+    <p>การตัดแบ่งพยางค์ในภาษาไทย จาก dictionary ของพยางค์ในภาษาไทยด้วย maximal matching algorithm (ใช้ชื่อย่อว่า <code class="language-plaintext highlighter-rouge">syllable</code>) ด้วยไลบรารี่ <a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a></p>
+  </li>
+  <li>
+    <p>การตัดแบ่งคำจากโมเดล machine learning (ใช้ชื่อย่อว่า <code class="language-plaintext highlighter-rouge">sefr</code>) จากบทความทางวิชาการชื่อ “Stacked Ensemble Filter and Refine for Word Segmentation” [Limkonchotiwat et al., 2020]</p>
+  </li>
+</ol>
+
+<p><img src="/assets/img/releases/wangchanberta-pre-trained-thai-language-model/illustration_word-segmentation.png" alt="Illustration of word segmentation algorithm" /></p>
+
+<p style="text-align: center;">รูป 1: ภาพประกอบแสดงการตัดแบ่งคำ, พยางค์ และหน่วยคำย่อยจากโมเดลการตัดแบ่งตามหน่อยคำ, หน่วยคำย่อย, หน่วยพยางค์ และหน่วยตัวอักษร</p>
+
+<p>โดยการเทรนโมเดลในชุดข้อมูลขนาด 78.5GB จะใช้ตัดแบ่งหน่วยคำย่อย (<code class="language-plaintext highlighter-rouge">spm</code>)และการเทรนโมเดลในชุดข้อมูลวิกิพีเดียภาษาไทยจะใช้ตัวตัดแบ่งคำในทั้ง 4 รูปแบบ</p>
+
+<p>ในการเทรนโมเดลด้วย Nvidia DGX-1 ซึ่งประกอบด้วย GPU รุ่น Nvidia Tesla V100 ขนาด 32GB จำนวน 8 หน่วย ใช้เวลาประมาณ 125 วัน สำหรับการเทรนโมเดลจากชุดข้อมูล 78.5GB (<code class="language-plaintext highlighter-rouge">wangchanberta-base-att</code>) เป็นจำนวน 500,000 training steps (หรือเป็นการเทรนจำนวนประมาณ 5 รอบของชุดข้อมูลฝึกฝน หรือ 5 epochs)</p>
+
+<p>และใช้เวลาอยู่ในช่วงระหว่าง 2-4 วัน สำหรับการเทรนโมเดลบนชุดข้อมูลากวิกิพีเดียภาษาไทย (<code class="language-plaintext highlighter-rouge">wangchanberta-base-wiki</code>) ในแต่ละรูปแบบของ token ที่เลือกใช้</p>
+
+<h2 id="การวัดผลโมเดล">การวัดผลโมเดล</h2>
+
+<p>การเปรียบเทียบ micro F1-score จากโมเดล WangchanBERTa ในรูปแบบต่างๆที่ finetune บน ชุดข้อมูลสำหรับโจทย์ multi-class sequence classification, multi-label sequence classification และ token classification โดยชุดข้อมูลที่นำมา finetune และเปรียบเทียบประสิทธิภาพโมเดลมีดังนนี้</p>
+
+<p>Multi-class sequence classification</p>
+
+<ul>
+  <li>Wisesight Sentiment Corpus (<a href="https://github.com/PyThaiNLP/wisesight-sentiment">github</a>): เป็นชุดมูลสำหรับการจำแนกอารมณ์จากข้อความ (sentiment analysis) จากข้อความในโซเชียลเน็ตเวิร์ค ว่ามีอารมณ์เป็นไปทางบวก, กลาง, ลบ หรือเป็นข้อความประเภทคำถาม</li>
+  <li>Wongnai Reviews (<a href="https://github.com/wongnai/wongnai-corpus">github</a>): เป็นชุดมูลสำหรับการจำแนกรีวิวร้านอาหารจากผู้ใช้บริการแพลทฟอร์ม Wongnai โดยจะมีการกำกับว่าผู้ใช้บริการรีวิวได้เขียนรีวิวพร้อมให้คะแนนร้านอาหารจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)</li>
+  <li>English-Thai Generated Reviews (<a href="https://github.com/vistec-AI/dataset-releases/releases/tag/scb-mt-en-th-2020_v1.0">github</a>, <a href="https://arxiv.org/abs/2007.03541">paper</a>): เป็นชุดข้อมูล การจำแนกคะแนนจากรีวิวสินค้า ที่ถูกสร้างขึ้นด้วยโมเดล <a href="https://github.com/salesforce/ctrl">CTRL</a> (machine-generated texts) เป็นภาษาอังกฤษแล้วแปลเป็นภาษาไทยด้วยคนและ Google Translate โดยจะมีการกำกับว่ารีวิวดังกล่าวเป็นรีวิวที่ได้มีการให้คะแนนต่อสินค่านั้นๆจำนวนกี่คะแนน (ระหว่าง 1 – 5 ดาว)</li>
+</ul>
+
+<p>Multi-label sequence classificaion</p>
+
+<ul>
+  <li>Prachathai67k (<a href="https://github.com/PyThaiNLP/prachathai-67k">github</a>): เป็นชุดข้อมูลข่าวจาก <a href="http://prachathai.com/">Prachathai.com</a> ซึ่งเป็นโจทย์ประเภท multi-label classification โดยเป็นการกำกับว่า พาดหัวข่าวดังกล่าว จะอยู่ในหมวดหมู่ (tag) ของข่าวใดบ้าง โดยจะมีจำนวน 12 หมวดหมู่ เช่น ข่าวการเมือง, เศรษฐกิจ, ต่างประเทศ, สิ่งแวดล้อม, และ สิทธิมนุษยชน เป็นต้น โดยหนึ่งพาดหัวข่าวจะมีการกำกับหมวดหมู่ ได้มากกว่า 1 หมวดหมู่</li>
+</ul>
+
+<p><img src="/assets/img/releases/wangchanberta-pre-trained-thai-language-model/tab1_text-cls-results.png" alt="Evaluation result on sequence classification dataset" /></p>
+
+<p style="text-align: center;">ตารางที่ 1: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ sequence classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
+
+<p>Token classification</p>
+
+<ul>
+  <li>ThaiNER (<a href="https://github.com/wannaphong/thai-ner">github</a>): เป็นชุดข้อมูลการกำกับ หน้าที่ของคำ (Named-entity recognition; NER) ในภาษาไทย โดยมีจำนวน NER tags ทั้งหมด 13 ประเภท ชุดข้อมูลนี้รวบรวมโดยคุณ <a href="https://github.com/wannaphong">Wannaphong Phatthiyaphaibun</a> ซึ่งเป็นการพัฒนาต่อจากชุดข้อมูลจาก คุณ Nutcha Tirasaroj [<a href="https://www.aclweb.org/anthology/people/n/nutcha-tirasaroj/">Tirasaroj and Aroonmanakun, 2011</a>] จำนวน 2,258 ข้อความ</li>
+  <li>LST20 (<a href="https://aiforthai.in.th/corpus.php">website</a>, <a href="https://arxiv.org/abs/2008.05055v1">paper</a>): เป็นชุดมูลสำหรับ การตัดแบ่งคำ, ประโยค, อนุประโยค, หน้าที่ของคำ และ นามจำเพาะ พัฒนาโดยศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC) มีจำนวนการกำกับข้อความทั้งสิ้น 78,931 ข้อความ โดยในการทดลองนี้ได้ใช้โจทย์การกำกับ หน้าที่ของคำ (Part-of-speech; POS) และ การกำกับนามจำเพาะ (NER) โดยมีจำนวน tag สำหรับ POS 16 ประเภท และ สำหรับ NER 10 ประเภท</li>
+</ul>
+
+<p><img src="/assets/img/releases/wangchanberta-pre-trained-thai-language-model/tab2_token-cls-results.png" alt="Evaluation result on token classification dataset" /></p>
+
+<p style="text-align: center;">ตารางที่ 2: ผลการทดสอบบนชุดข้อมูลสำหรับโจทย์ token classification บนชุดข้อมูลทดสอบ (test set) โดยเกณฑ์ในการวัดผลคือ micro-averaged F1 score</p>
+
+<h2 id="ตัวอย่างการใช้ในภาษา-python">ตัวอย่างการใช้ในภาษา Python</h2>
+
+<p>ติดตั้ง Python package ดังต่อไปนี้ <code class="language-plaintext highlighter-rouge">transformers</code> และ <code class="language-plaintext highlighter-rouge">thai2transformers</code> ด้วย <code class="language-plaintext highlighter-rouge">pip</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install transformers==3.5.1 thai2transformers==0.1.2
+</code></pre></div></div>
+
+<h3 id="1-สำหรับการทำโจทย์-masked-language-model-mlm">1. สำหรับการทำโจทย์ Masked Language Model (MLM)</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CamembertTokenizer</span><span class="p">,</span>
+    <span class="n">AutoModelForMaskedLM</span><span class="p">,</span>
+    <span class="n">pipeline</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">thai2transformers.preprocess</span> <span class="kn">import</span> <span class="n">process_transformers</span>
+
+<span class="c1"># Load pre-trained tokenizer
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CamembertTokenizer</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'main'</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">additional_special_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="s">'&lt;s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;/s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;_&gt;'</span><span class="p">]</span>
+
+<span class="c1"># Load pre-trained model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForMaskedLM</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'main'</span><span class="p">)</span>
+
+<span class="n">fill_mask</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s">'fill-mask'</span><span class="p">,</span>
+          <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+          <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">input_text</span> <span class="o">=</span> <span class="s">"โครงการมีระยะทางทั้งหมด 114.3 &lt;mask&gt; มีจำนวนสถานี 36 สถานี"</span>
+
+<span class="n">processed_input_text</span> <span class="o">=</span> <span class="n">process_transformers</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fill_mask</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Output:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">โครงการมีระยะทางทั</span><span class="err">้</span><span class="n">งหมด</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="mf">114.3</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&lt;</span><span class="n">mask</span><span class="o">&gt;&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">มีจำนวนสถานี</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="mi">36</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">สถานี</span>
+
+<span class="p">[{</span><span class="s">'sequence'</span><span class="p">:</span> <span class="s">'&lt;s&gt; โครงการมีระยะทางทั้งหมด&lt;_&gt;114.3&lt;_&gt;กิโลเมตร &lt;_&gt;มีจํานวนสถานี&lt;_&gt;36&lt;_&gt;สถานี&lt;/s&gt;'</span><span class="p">,</span>
+  <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9890820980072021</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="mi">1712</span><span class="p">,</span>
+  <span class="s">'token_str'</span><span class="p">:</span> <span class="s">'กิโลเมตร'</span><span class="p">},</span>
+  <span class="p">{</span><span class="s">'sequence'</span><span class="p">:</span> <span class="s">'&lt;s&gt; โครงการมีระยะทางทั้งหมด&lt;_&gt;114.3&lt;_&gt;กม &lt;_&gt;มีจํานวนสถานี&lt;_&gt;36&lt;_&gt;สถานี&lt;/s&gt;'</span><span class="p">,</span>
+  <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.0037021981552243233</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="mi">2258</span><span class="p">,</span>
+  <span class="s">'token_str'</span><span class="p">:</span> <span class="s">'กม'</span><span class="p">},</span>
+  <span class="p">{</span><span class="s">'sequence'</span><span class="p">:</span> <span class="s">'&lt;s&gt; โครงการมีระยะทางทั้งหมด&lt;_&gt;114.3&lt;_&gt;เมตร &lt;_&gt;มีจํานวนสถานี&lt;_&gt;36&lt;_&gt;สถานี&lt;/s&gt;'</span><span class="p">,</span>
+  <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.002338711405172944</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="mi">913</span><span class="p">,</span>
+  <span class="s">'token_str'</span><span class="p">:</span> <span class="s">'เมตร'</span>
+  <span class="p">},</span>
+  <span class="p">{</span><span class="s">'sequence'</span><span class="p">:</span> <span class="s">'&lt;s&gt; โครงการมีระยะทางทั้งหมด&lt;_&gt;114.3&lt;_&gt;กิโล &lt;_&gt;มีจํานวนสถานี&lt;_&gt;36&lt;_&gt;สถานี&lt;/s&gt;'</span><span class="p">,</span>
+  <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.0022131178993731737</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="mi">8017</span><span class="p">,</span>
+  <span class="s">'token_str'</span><span class="p">:</span> <span class="s">'กิโล'</span>
+  <span class="p">},</span>
+  <span class="p">{</span><span class="s">'sequence'</span><span class="p">:</span> <span class="s">'&lt;s&gt; โครงการมีระยะทางทั้งหมด&lt;_&gt;114.3&lt;_&gt;ไมล์ &lt;_&gt;มีจํานวนสถานี&lt;_&gt;36&lt;_&gt;สถานี&lt;/s&gt;'</span><span class="p">,</span>
+  <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.0013257935643196106</span><span class="p">,</span>
+  <span class="s">'token'</span><span class="p">:</span> <span class="mi">6089</span><span class="p">,</span>
+  <span class="s">'token_str'</span><span class="p">:</span> <span class="s">'ไมล์'</span>
+  <span class="p">}]</span>
+</code></pre></div></div>
+
+<h3 id="2-สำหรับการทำโจทย์-sequence-classification">2. สำหรับการทำโจทย์ Sequence classification</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CamembertTokenizer</span><span class="p">,</span>
+    <span class="n">AutoModelForSequenceClassification</span><span class="p">,</span>
+    <span class="n">pipeline</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">thai2transformers.preprocess</span> <span class="kn">import</span> <span class="n">process_transformers</span>
+
+<span class="c1"># Load pre-trained tokenizer
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CamembertTokenizer</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'main'</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">additional_special_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="s">'&lt;s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;/s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;_&gt;'</span><span class="p">]</span>
+
+<span class="c1"># Load pre-trained model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'finetuned@wisesight_sentiment'</span><span class="p">)</span>
+
+<span class="n">classify_sequence</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s">'sentiment-analysis'</span><span class="p">,</span>
+          <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+          <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">input_text</span> <span class="o">=</span> <span class="s">"ฟอร์ด บุกตลาด อีวี ในอินเดีย #prachachat #ตลาดรถยนต์"</span>
+<span class="n">processed_input_text</span> <span class="o">=</span> <span class="n">process_transformers</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classify_sequence</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">))</span>
+
+<span class="n">input_text</span> <span class="o">=</span> <span class="s">"สั่งไป 2 เมนูคือมัชฉะลาเต้ร้อนกับไอศครีมชาเขียว มัชฉะลาเต้ร้อน รสชาเขียวเข้มข้น หอม มัน แต่ไม่กลมกล่อม มันจืดแบบจืดสนิท ส่วนไอศครีมชาเขียว ทานแล้วรสมันออกใบไม้ๆมากกว่าชาเขียว แล้วก็หวานไป โดยรวมแล้วเฉยมากก ดีแค่รสชาเขียวเข้ม มีน้ำเปล่าบริการฟรี"</span>
+<span class="n">processed_input_text</span> <span class="o">=</span> <span class="n">process_transformers</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">processed_input_text</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classify_sequence</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Output:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ฟอร</span><span class="err">์</span><span class="n">ด</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">บุกตลาด</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">อีวี</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">ในอินเดีย</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="c1">#prachachat&lt;_&gt;#ตลาดรถยนต์
+</span><span class="p">[{</span><span class="s">'label'</span><span class="p">:</span> <span class="s">'neu'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9879224896430969</span><span class="p">}]</span>
+
+<span class="n">สั</span><span class="err">่</span><span class="n">งไป</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">เมนูคือมัชฉะลาเต</span><span class="err">้</span><span class="n">ร</span><span class="err">้</span><span class="n">อนกับไอศครีมชาเขียว</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">มัชฉะลาเต</span><span class="err">้</span><span class="n">ร</span><span class="err">้</span><span class="n">อน</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">รสชาเขียวเข</span><span class="err">้</span><span class="n">มข</span><span class="err">้</span><span class="n">น</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">หอม</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">มัน</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">แต</span><span class="err">่</span><span class="n">ไม</span><span class="err">่</span><span class="n">กลมกล</span><span class="err">่</span><span class="n">อม</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">มันจืดแบบจืดสนิท</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">ส</span><span class="err">่</span><span class="n">วนไอศครีมชาเขียว</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">ทานแล</span><span class="err">้</span><span class="n">วรสมันออกใบไม</span><span class="err">้</span><span class="n">ๆมากกว</span><span class="err">่</span><span class="n">าชาเขียว</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">แล</span><span class="err">้</span><span class="n">วก</span><span class="err">็</span><span class="n">หวานไป</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">โดยรวมแล</span><span class="err">้</span><span class="n">วเฉยมากก</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">ดีแค</span><span class="err">่</span><span class="n">รสชาเขียวเข</span><span class="err">้</span><span class="n">ม</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="n">มีน</span><span class="err">้</span><span class="n">ำเปล</span><span class="err">่</span><span class="n">าบริการฟรี</span>
+<span class="p">[{</span><span class="s">'label'</span><span class="p">:</span> <span class="s">'neg'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9252662062644958</span><span class="p">}]</span>
+</code></pre></div></div>
+
+<h3 id="3-สำหรับการทำโจทย์-token-classification">3. สำหรับการทำโจทย์ Token classification</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CamembertTokenizer</span><span class="p">,</span>
+    <span class="n">AutoModelForTokenClassification</span><span class="p">,</span>
+    <span class="n">pipeline</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">thai2transformers.preprocess</span> <span class="kn">import</span> <span class="n">process_transformers</span>
+
+<span class="c1"># Load pre-trained tokenizer
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CamembertTokenizer</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'main'</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="p">.</span><span class="n">additional_special_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="s">'&lt;s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;/s&gt;NOTUSED'</span><span class="p">,</span> <span class="s">'&lt;_&gt;'</span><span class="p">]</span>
+
+<span class="c1"># Load pre-trained model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForTokenClassification</span><span class="p">.</span><span class="n">from_pre</span><span class="o">-</span><span class="n">trained</span><span class="p">(</span>
+                                  <span class="s">'airesearch/wangchanberta-base-att-spm-uncased'</span><span class="p">,</span>
+                                  <span class="n">revision</span><span class="o">=</span><span class="s">'finetuned@thainer-ner'</span><span class="p">)</span>
+
+<span class="n">classify_token</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s">'ner'</span><span class="p">,</span>
+          <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+          <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+          <span class="n">grouped_entities</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">input_text</span> <span class="o">=</span> <span class="s">"กสช. เตรียมทดลองประมููลคลื่น3จี 25 กค นี้"</span>
+<span class="n">processed_input_text</span> <span class="o">=</span> <span class="n">process_transformers</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classify_token</span><span class="p">(</span><span class="n">processed_input_text</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Output:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9989495873451233</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">''</span><span class="p">},</span>
+<span class="p">{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9986395835876465</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">'ก'</span><span class="p">},</span>
+<span class="p">{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9985694289207458</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">'ส'</span><span class="p">},</span>
+<span class="p">{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9982855916023254</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">'ช'</span><span class="p">},</span>
+<span class="p">{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'ORGANIZATION'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9971947073936462</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">'.'</span><span class="p">},</span>
+<span class="p">{</span><span class="s">'entity_group'</span><span class="p">:</span> <span class="s">'DATE'</span><span class="p">,</span> <span class="s">'score'</span><span class="p">:</span> <span class="mf">0.9695429682731629</span><span class="p">,</span> <span class="s">'word'</span><span class="p">:</span> <span class="s">'25&lt;_&gt;กค&lt;_&gt;'</span><span class="p">}]</span>
+</code></pre></div></div>
+
+<h2 id="ทดลองใช้งานโมเดล">ทดลองใช้งานโมเดล</h2>
+
+<p>ทางสถาบันฯ ได้เตรียม Jupyter Notebook สำหรับการทดสอบการรันโมเดล ได้โดยทันทีผ่าน <a href="http://bit.ly/wangchanberta-getting-started_colab">Google Colaboratory</a></p>
+
+<p>สำหรับรายละเอียดของชุดข้อมูลที่ใช้และการเทรนโมเดลในแต่ละรูปแบบ ได้มีการอธิบายไว้ใน <a href="https://arxiv.org/abs/2101.09635">technical report</a></p>
+
+<h2 id="เวอร์ชัน">เวอร์ชัน</h2>
+
+<ul>
+  <li>เวอร์ชัน 1.0 (24 มกราคม 2021):
+    <ul>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">wangcahbert-base-att-spm-uncased</code> ที่เทรนบนชุดข้อมูลขนาด 78.5 GB ที่ checkpoint 360,000</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">wangcahbert-base-wiki-spm</code> ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 7,000</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">wangcahbert-base-wiki-newmm</code> ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 5,000</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">wangcahbert-base-wiki-syllable</code> ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 8,000</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">wangcahbert-base-wiki-sefr</code> ที่เทรนบนชุดข้อมูลจากวิกิพีเดียภาษาไทย ที่ checkpoint 4,500</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">bert-base-multilingual-cased</code> ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด</li>
+      <li>โมเดล <code class="language-plaintext highlighter-rouge">xlm-roberta-base</code> ที่นำมา finetune บน downstream task โดยเลือกจาก checkpoint ที่ได้คะแนน micro-averaged F1 score สูงที่สุด</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="อ้างอิง">อ้างอิง</h2>
+
+<ul>
+  <li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. &amp; Polosukhin, L. (2017). Attention is all you need. In Advances in Neural Information Processing Systems (pp. 5998-6008).</li>
+  <li>Devlin, J., Chang, M., Lee, K., &amp; Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. In Proceedings of the 2019 Conference of the NAACL Volume 1 (pp. 4174-4186)</li>
+  <li>Wang, A., Singh, A., Michael, J., Hill, F., Levy, O., &amp; Bowman, S.R. (2018). GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding. BlackboxNLP@EMNLP.</li>
+  <li>Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., &amp; Stoyanov, V. (2019). RoBERTa: A Robustly Optimized BERT Pretraining Approach. ArXiv, abs/1907.11692.</li>
+  <li>Conneau, A., Khandelwal, K., Goyal, N., Chaudhary, V., Wenzek, G., Guzmán, F., Grave, E., Ott, M., Zettlemoyer, L., &amp; Stoyanov, V. (2020). Unsupervised Cross-lingual Representation Learning at Scale. ACL.</li>
+  <li>Kudo, T., &amp; Richardson, J. (2018). SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing. EMNLP.</li>
+  <li>Limkonchotiwat, P., Phatthiyaphaibun, W., Sarwar, R., Chuangsuwanich, E., &amp; Nutanong, S. (2020). Domain Adaptation of Thai Word Segmentation Models using Stacked Ensemble. EMNLP.</li>
+  <li>Phatthiyaphaibun, W., Chaovavanich, K., Polpanumas, C., Suriyawongkul, A., Lowphansirikul, L., &amp; Chormai, P. (2016, Jun 27). PyThaiNLP: Thai Natural Language Processing in Python. Zenodo. http://doi.org/10.5281/zenodo.3519354</li>
+</ul>
+
+        </article>
+      </div>
+      <section id="downloads" class="col-lg-4 download-items mt-4 mt-lg-0">
+        
+      </section>
+    </div>
+  </section>
+</section>
+  <footer id="footer" class="footer container my-5">
+  <div class="border rounded-lg rounded"
+  style="width: 40vw; min-width: 18rem; max-width: 30rem; height: 0; border-width: 0.125rem !important;">
+</div>
+  <div class="row mt-4">
+    <div class="col-lg-9 mb-2">
+      <div class="row align-items-center">
+        <div class="col-auto mb-2">
+          <a href="https://www.vistec.ac.th" target="_blank"
+            ><img class="footer-logos" id="vistec-footer-logo" alt="VISTEC logo"
+            loading="lazy" src="/assets/img/logo/vistec-logo-notext.svg"></a
+          >
+        </div>
+        <div class="col-auto p-0 mb-2">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="col-auto mb-2">
+          <a href="https://www.depa.or.th" target="_blank"
+            ><img class="footer-logos" id="depa-footer-logo" alt="depa logo"
+            loading="lazy" src="/assets/img/logo/depa-logo.svg"></a
+          >
+        </div>
+        <div class="col-lg-12 mb-3">
+          <h6 class="font-weight-semibold mb-1">
+            VISTEC-depa Thailand Artificial Intelligence Research Institute
+          </h6>
+          สถาบันวิจัยปัญญาประดิษฐ์ประเทศไทย
+          จากความร่วมมือระหว่างสถาบันวิทยสิริเมธี
+          และสำนักงานส่งเสริมเศรษฐกิจดิจิทัล
+        </div>
+      </div>
+    </div>
+    <div
+      class="social-row col-lg-3 mb-3 d-flex justify-content-lg-end align-items-start mt-lg-3"
+    >
+      <a class="ml-0 mr-4" href="https://www.facebook.com/AIResearch.in.th">
+        <i class="fab fa-fw fa-2x fa-facebook d-inline"></i>
+      </a>
+      <!-- <a class="mr-4" href="#"><i class="fab fa-fw fa-2x fa-youtube d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#enquiries"
+        ><i class="fas fa-fw fa-2x fa-envelope d-inline"></i
+      ></a>
+      <!-- <a class="mr-4" href="/contact/#enquiries"><i class="fas fa-fw fa-2x fa-phone-alt d-inline"></i></a> -->
+      <a class="mr-4" href="/contact/#offices"
+        ><i class="fas fa-fw fa-2x fa-map-marked-alt d-inline"></i
+      ></a>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานกรุงเทพ</a
+      ><br />
+      ชั้นที่ 2 สำนักงานส่งเสริมเศรษฐกิจดิจิทัล (depa)<br />
+      อาคารลาดพร้าวฮิลล์<br />
+      80 ซอยลาดพร้าว 4 แขวงจอมพล<br />
+      เขตจตุจักร กรุงเทพมหานคร 10900
+    </div>
+    <div class="col-lg-6 mb-3">
+      <a
+        class="font-weight-semibold"
+        href="/contact/#offices"
+        >สำนักงานระยอง</a
+      ><br />
+      ชั้นที่ 3 อาคารสำนักวิชาวิทยาศาสตร์และเทคโนโลยีสารสนเทศ (IST)<br />
+      สถาบันวิทยสิริเมธี (VISTEC)<br />
+      555 หมู่ที่ 1 ตำบลป่ายุบใน<br />
+      อำเภอวังจันทร์ ระยอง 21210
+    </div>
+    <div class="col-lg-12 mb-3">
+      <span class="font-weight-semibold">© สงวนลิขสิทธิ์ทุกประการ</span>
+      นอกจากได้ระบุไว้เป็นอื่น<br />
+      <a href="/terms-of-use/">เงื่อนไขตกลงการใช้งาน</a> |
+      <a href="#">นโยบายความเป็นส่วนตัว</a>
+    </div>
+  </div>
+</footer>
+
+
+  
+  <!-- Google Analytics -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-141096942-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+  <script>
+  (function trackOutbounds() {
+    var hitCallbackHandler = function (url, win) {
+      if (win) {
+        window.open(url, win);
+      } else {
+        window.location.href = url;
+      }
+    };
+    var addEvent = function (el, eventName, handler) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function () {
+          handler.call(el);
+        });
+      }
+    }
+    if (document.getElementsByTagName) {
+      var el = document.getElementsByTagName('a');
+      var getDomain = document.domain.split('.').reverse()[1] + '.' + document.domain.split('.').reverse()[0];
+      for (var i = 0; i < el.length; i++) {
+        var href = (typeof (el[i].getAttribute('href')) == 'string') ? el[i].getAttribute('href') : '';
+        var myDomain = href.match(getDomain);
+
+        // If link is outbound and is not to this domain        
+        if ((href.match(/^(https?:|\/\/)/i) && !myDomain) || href.match(/^mailto\:/i)) {
+          addEvent(el[i], 'click', function (e) {
+            var url = this.getAttribute('href'), win = (typeof (this.getAttribute('target')) == 'string') ? this.getAttribute('target') : '';
+            console.log("add event", url);
+            ga('send', 'event', 'outbound', 'click', url,
+              { 'hitCallback': hitCallbackHandler(url, win), 'transport': 'beacon' },
+              { 'nonInteraction': 1 }
+            );
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  })();
+</script>
+  
+</body>
+
+</html>
