@@ -13,7 +13,7 @@ items:
     size: 104M
     href: https://github.com/vistec-AI/dataset-releases/releases/download/scb-mt-en-th-2020_v1.0/scb-mt-en-th-2020.tar.gz
     sha256: 700b044b84d456261b681ad20e28ff5cab3af389238f876ee435b3e0850d0858
-date: "16 Dec 2021"
+date: "21 Dec 2021"
 featured: true
 categories: knowledge
 image: "/assets/img/knowledge/k1.jpg"
