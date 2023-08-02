@@ -20,5 +20,5 @@ jobs:
         env:
           JEKYLL_PAT: "${{ secrets.JEKYLL_PAT }}"
           JEKYLL_ENV: production
-          BUILD_DIR: public/
+          BUILD_DIR: ./_site
           GH_PAT: ${{ secrets.GH_PAT }}
